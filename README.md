@@ -81,8 +81,8 @@ Unlike generic tourist portals or basic databases, Virasat AI presents a museum 
 ### Installation & Run
 ```bash
 # Clone repository
-git clone https://github.com/ShrilCarpenter/HeritageX.git
-cd HeritageX
+git clone https://github.com/ShrilCarpenter/VirasatX.git
+cd VirasatX
 
 # Install dependencies
 npm install --ignore-scripts
