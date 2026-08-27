@@ -6,7 +6,7 @@ import { Search, X, Compass, Clock, MapPin, BookOpen, ChevronRight, Sparkles } f
 import { ARTIFACTS_DATA } from '@/data/artifactsData';
 import { TIMELINE_EPOCHS } from '@/data/timelineData';
 import { HERITAGE_MAP_SITES } from '@/data/heritageMapData';
-import { MANUSCRIPTS_DATA } from '@/data/manuscriptsData';
+import { ANCIENT_MANUSCRIPTS_DATA } from '@/data/manuscriptsData';
 
 interface SearchModalProps {
   isOpen: boolean;
@@ -70,128 +70,99 @@ export default function SearchModal({ isOpen, onClose }: SearchModalProps) {
     : [];
 
   const matchedManuscripts = q
-    ? MANUSCRIPTS_DATA.filter(
+    ? ANCIENT_MANUSCRIPTS_DATA.filter(
         m =>
           m.title.toLowerCase().includes(q) ||
-          m.script.toLowerCase().includes(q) ||
+          m.scriptType.toLowerCase().includes(q) ||
           m.language.toLowerCase().includes(q)
       ).slice(0, 2)
     : [];
 
   return (
     <div className="fixed inset-0 z-50 flex items-start justify-center pt-20 px-4">
-      <div className="fixed inset-0 bg-[#141311]/70 backdrop-blur-sm transition-opacity" onClick={onClose} />
+      <div className="fixed inset-0 bg-black/40 backdrop-blur-sm transition-opacity" onClick={onClose} />
 
-      <div className="relative w-full max-w-2xl bg-[#FFFDF9] border border-[#E2DAC9] rounded-2xl shadow-2xl overflow-hidden z-10 animate-in fade-in zoom-in-95 duration-200">
+      <div className="relative w-full max-w-2xl bg-[#FFFFFF] border border-[#E7E1D4] rounded-2xl shadow-2xl overflow-hidden z-10 animate-in fade-in zoom-in-95 duration-150">
         {/* Search Input Bar */}
-        <div className="flex items-center px-4 py-3.5 border-b border-[#E2DAC9] bg-[#FAF7F0]">
-          <Search className="w-5 h-5 text-[#BE4D2A] mr-3" />
+        <div className="flex items-center px-4 py-3.5 border-b border-[#E7E1D4] bg-[#FBF9F4]">
+          <Search className="w-5 h-5 text-[#9A3412] mr-3" />
           <input
             ref={inputRef}
             type="text"
             value={query}
             onChange={e => setQuery(e.target.value)}
             placeholder="Search artifacts, dynasties, manuscripts, monuments..."
-            className="w-full bg-transparent text-[#1C1A17] placeholder-[#8C8275] text-base focus:outline-none font-sans"
+            className="w-full bg-transparent text-[#1C1917] placeholder-[#78716C] text-sm sm:text-base focus:outline-none font-sans"
           />
           {query && (
-            <button onClick={() => setQuery('')} className="p-1 hover:bg-[#EBE3D3] rounded-full text-[#8C8275] mr-2">
+            <button onClick={() => setQuery('')} className="p-1 hover:bg-[#F4EFE6] rounded-full text-[#78716C] mr-2">
               <X className="w-4 h-4" />
             </button>
           )}
-          <button
-            onClick={onClose}
-            className="text-xs font-mono uppercase bg-[#EAE2D2] text-[#5C554B] px-2 py-1 rounded"
-          >
+          <kbd className="hidden sm:inline-block px-2 py-0.5 text-[10px] font-mono bg-[#FFFFFF] border border-[#E7E1D4] rounded text-[#78716C]">
             ESC
-          </button>
+          </kbd>
         </div>
 
         {/* Results Container */}
-        <div className="max-h-[60vh] overflow-y-auto p-4 space-y-6">
-          {/* Quick Category Suggestions if no query */}
-          {!q && (
-            <div>
-              <p className="text-[11px] font-bold uppercase tracking-widest text-[#8C8275] mb-2.5">
-                Popular Heritage Horizons
-              </p>
-              <div className="flex flex-wrap gap-2">
-                {['Chola Bronzes', 'Ajanta Frescoes', 'Ashoka Pillar', 'Rigveda Manuscripts', 'Hampi', 'Patan Patola'].map(
-                  tag => (
-                    <button
-                      key={tag}
-                      onClick={() => setQuery(tag)}
-                      className="px-3 py-1.5 rounded-full text-xs bg-[#F4EFE2] text-[#2C2824] hover:bg-[#BE4D2A] hover:text-white transition-colors"
-                    >
-                      {tag}
-                    </button>
-                  )
-                )}
-              </div>
-            </div>
-          )}
-
+        <div className="max-h-[60vh] overflow-y-auto p-4 space-y-4">
           {/* Artifacts */}
-          {matchedArtifacts.length > 0 && (
-            <div>
-              <div className="flex items-center justify-between mb-2">
-                <span className="text-[11px] font-bold uppercase tracking-widest text-[#BE4D2A] flex items-center gap-1.5">
-                  <Compass className="w-3.5 h-3.5" />
-                  Artifacts & Masterpieces
-                </span>
-                <span className="text-[11px] text-[#8C8275]">{matchedArtifacts.length} found</span>
-              </div>
-              <div className="space-y-1.5">
-                {matchedArtifacts.map(art => (
-                  <Link
-                    key={art.id}
-                    href={`/artifact/${art.id}`}
-                    onClick={onClose}
-                    className="flex items-center justify-between p-2.5 rounded-xl hover:bg-[#F4EFE2] transition-colors group"
-                  >
-                    <div className="flex items-center gap-3">
-                      <div className="w-10 h-10 rounded-lg overflow-hidden bg-stone-200 shrink-0">
-                        {/* eslint-disable-next-line @next/next/no-img-element */}
-                        <img src={art.imageUrl} alt={art.title} className="w-full h-full object-cover" />
-                      </div>
-                      <div>
-                        <h4 className="text-sm font-medium text-[#1C1A17] group-hover:text-[#BE4D2A] transition-colors">
-                          {art.title}
-                        </h4>
-                        <p className="text-xs text-[#8C8275]">
-                          {art.period} • {art.category} • {art.state}
-                        </p>
-                      </div>
+          <div>
+            <span className="text-[10px] font-sans font-bold uppercase tracking-wider text-[#78716C] px-2 mb-2 block">
+              Museum Artifacts ({matchedArtifacts.length})
+            </span>
+            <div className="space-y-1">
+              {matchedArtifacts.map(art => (
+                <Link
+                  key={art.id}
+                  href={`/artifact/${art.id}`}
+                  onClick={onClose}
+                  className="flex items-center justify-between p-2.5 rounded-xl hover:bg-[#FBF9F4] transition-colors group"
+                >
+                  <div className="flex items-center gap-3">
+                    <div className="w-10 h-10 rounded-lg overflow-hidden bg-stone-100 shrink-0">
+                      {/* eslint-disable-next-line @next/next/no-img-element */}
+                      <img src={art.imageUrl} alt={art.title} className="w-full h-full object-cover" />
                     </div>
-                    <ChevronRight className="w-4 h-4 text-[#8C8275] group-hover:text-[#BE4D2A] group-hover:translate-x-0.5 transition-all" />
-                  </Link>
-                ))}
-              </div>
+                    <div>
+                      <h4 className="text-xs font-bold text-[#1C1917] group-hover:text-[#9A3412] transition-colors">
+                        {art.title}
+                      </h4>
+                      <p className="text-[11px] text-[#78716C]">
+                        {art.period} • {art.category} • {art.state}
+                      </p>
+                    </div>
+                  </div>
+                  <ChevronRight className="w-4 h-4 text-[#78716C] group-hover:text-[#9A3412]" />
+                </Link>
+              ))}
             </div>
-          )}
+          </div>
 
-          {/* Historical Epochs */}
+          {/* Timeline Epochs */}
           {matchedTimeline.length > 0 && (
-            <div>
-              <p className="text-[11px] font-bold uppercase tracking-widest text-[#C5A059] flex items-center gap-1.5 mb-2">
-                <Clock className="w-3.5 h-3.5" />
-                Historical Timeline Epochs
-              </p>
-              <div className="space-y-1.5">
+            <div className="pt-2 border-t border-[#E7E1D4]">
+              <span className="text-[10px] font-sans font-bold uppercase tracking-wider text-[#78716C] px-2 mb-2 block">
+                Historical Epochs
+              </span>
+              <div className="space-y-1">
                 {matchedTimeline.map(epoch => (
                   <Link
                     key={epoch.id}
                     href={`/timeline?epoch=${epoch.id}`}
                     onClick={onClose}
-                    className="flex items-center justify-between p-2.5 rounded-xl hover:bg-[#F4EFE2] transition-colors group"
+                    className="flex items-center justify-between p-2.5 rounded-xl hover:bg-[#FBF9F4] transition-colors group"
                   >
-                    <div>
-                      <h4 className="text-sm font-medium text-[#1C1A17] group-hover:text-[#C5A059]">
-                        {epoch.name}
-                      </h4>
-                      <p className="text-xs text-[#8C8275]">{epoch.dateRange}</p>
+                    <div className="flex items-center gap-3">
+                      <Clock className="w-4 h-4 text-[#9A3412]" />
+                      <div>
+                        <h4 className="text-xs font-bold text-[#1C1917] group-hover:text-[#9A3412]">
+                          {epoch.name}
+                        </h4>
+                        <p className="text-[11px] text-[#78716C]">{epoch.dateRange}</p>
+                      </div>
                     </div>
-                    <ChevronRight className="w-4 h-4 text-[#8C8275] group-hover:text-[#C5A059]" />
+                    <ChevronRight className="w-4 h-4 text-[#78716C]" />
                   </Link>
                 ))}
               </div>
@@ -200,26 +171,28 @@ export default function SearchModal({ isOpen, onClose }: SearchModalProps) {
 
           {/* Heritage Sites */}
           {matchedSites.length > 0 && (
-            <div>
-              <p className="text-[11px] font-bold uppercase tracking-widest text-[#10B981] flex items-center gap-1.5 mb-2">
-                <MapPin className="w-3.5 h-3.5" />
-                Heritage Locations & Monuments
-              </p>
-              <div className="space-y-1.5">
+            <div className="pt-2 border-t border-[#E7E1D4]">
+              <span className="text-[10px] font-sans font-bold uppercase tracking-wider text-[#78716C] px-2 mb-2 block">
+                Heritage Sites & Monuments
+              </span>
+              <div className="space-y-1">
                 {matchedSites.map(site => (
                   <Link
                     key={site.id}
                     href={`/map?site=${site.id}`}
                     onClick={onClose}
-                    className="flex items-center justify-between p-2.5 rounded-xl hover:bg-[#F4EFE2] transition-colors group"
+                    className="flex items-center justify-between p-2.5 rounded-xl hover:bg-[#FBF9F4] transition-colors group"
                   >
-                    <div>
-                      <h4 className="text-sm font-medium text-[#1C1A17] group-hover:text-[#10B981]">
-                        {site.name}
-                      </h4>
-                      <p className="text-xs text-[#8C8275]">{site.state} • {site.type}</p>
+                    <div className="flex items-center gap-3">
+                      <MapPin className="w-4 h-4 text-[#9A3412]" />
+                      <div>
+                        <h4 className="text-xs font-bold text-[#1C1917] group-hover:text-[#9A3412]">
+                          {site.name}
+                        </h4>
+                        <p className="text-[11px] text-[#78716C]">{site.state} • {site.dynastyPeriod}</p>
+                      </div>
                     </div>
-                    <ChevronRight className="w-4 h-4 text-[#8C8275] group-hover:text-[#10B981]" />
+                    <ChevronRight className="w-4 h-4 text-[#78716C]" />
                   </Link>
                 ))}
               </div>
@@ -228,42 +201,33 @@ export default function SearchModal({ isOpen, onClose }: SearchModalProps) {
 
           {/* Manuscripts */}
           {matchedManuscripts.length > 0 && (
-            <div>
-              <p className="text-[11px] font-bold uppercase tracking-widest text-[#6366F1] flex items-center gap-1.5 mb-2">
-                <BookOpen className="w-3.5 h-3.5" />
+            <div className="pt-2 border-t border-[#E7E1D4]">
+              <span className="text-[10px] font-sans font-bold uppercase tracking-wider text-[#78716C] px-2 mb-2 block">
                 Ancient Manuscripts
-              </p>
-              <div className="space-y-1.5">
+              </span>
+              <div className="space-y-1">
                 {matchedManuscripts.map(ms => (
                   <Link
                     key={ms.id}
-                    href={`/manuscripts?id=${ms.id}`}
+                    href="/manuscripts"
                     onClick={onClose}
-                    className="flex items-center justify-between p-2.5 rounded-xl hover:bg-[#F4EFE2] transition-colors group"
+                    className="flex items-center justify-between p-2.5 rounded-xl hover:bg-[#FBF9F4] transition-colors group"
                   >
-                    <div>
-                      <h4 className="text-sm font-medium text-[#1C1A17] group-hover:text-[#6366F1]">
-                        {ms.title}
-                      </h4>
-                      <p className="text-xs text-[#8C8275]">{ms.script} Script • {ms.language}</p>
+                    <div className="flex items-center gap-3">
+                      <BookOpen className="w-4 h-4 text-[#9A3412]" />
+                      <div>
+                        <h4 className="text-xs font-bold text-[#1C1917] group-hover:text-[#9A3412]">
+                          {ms.title}
+                        </h4>
+                        <p className="text-[11px] text-[#78716C]">{ms.scriptType} • {ms.estimatedPeriod}</p>
+                      </div>
                     </div>
-                    <ChevronRight className="w-4 h-4 text-[#8C8275] group-hover:text-[#6366F1]" />
+                    <ChevronRight className="w-4 h-4 text-[#78716C]" />
                   </Link>
                 ))}
               </div>
             </div>
           )}
-        </div>
-
-        {/* Footer */}
-        <div className="p-3 bg-[#FAF7F0] border-t border-[#E2DAC9] flex items-center justify-between text-xs text-[#8C8275]">
-          <span className="flex items-center gap-1">
-            <Sparkles className="w-3.5 h-3.5 text-[#C5A059]" />
-            Powered by Virasat AI Full-Text & Semantic Search Engine
-          </span>
-          <Link href="/explore" onClick={onClose} className="font-semibold text-[#BE4D2A] hover:underline">
-            View all 30+ artifacts →
-          </Link>
         </div>
       </div>
     </div>

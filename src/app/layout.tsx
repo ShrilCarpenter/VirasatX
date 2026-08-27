@@ -1,13 +1,13 @@
 import type { Metadata } from 'next';
-import { Cinzel, Cormorant_Garamond, Outfit } from 'next/font/google';
+import { Playfair_Display, Cormorant_Garamond, Inter } from 'next/font/google';
 import './globals.css';
 import Header from '@/components/common/Header';
 import Footer from '@/components/common/Footer';
 import SoundscapeManager from '@/components/common/SoundscapeManager';
 
-const cinzel = Cinzel({
+const playfair = Playfair_Display({
   subsets: ['latin'],
-  weight: ['400', '600', '700', '900'],
+  weight: ['400', '600', '700', '800'],
   variable: '--font-serif-heading',
   display: 'swap',
 });
@@ -19,7 +19,7 @@ const cormorant = Cormorant_Garamond({
   display: 'swap',
 });
 
-const outfit = Outfit({
+const inter = Inter({
   subsets: ['latin'],
   weight: ['300', '400', '500', '600', '700'],
   variable: '--font-sans',
@@ -27,22 +27,22 @@ const outfit = Outfit({
 });
 
 export const metadata: Metadata = {
-  title: 'Virasat AI — Digital Heritage Museum of India | Smart India Hackathon 2026',
+  title: 'Virasat AI — Digital Heritage Museum of India',
   description:
-    'India’s Heritage, Reimagined. Explore thousands of years of ancient sculptures, illuminated manuscripts, temple architecture, master artisans, and living cultural traditions through an intelligent digital museum.',
+    'Explore India’s art, architecture, manuscripts, and living traditions through an intelligent digital heritage museum. Smart India Hackathon 2026 Innovation Prototype.',
   keywords: [
     'Virasat AI',
     'Digital Heritage Museum',
-    'Smart India Hackathon 2026',
     'Indian Heritage',
     'Indian Art',
-    'Archaeology of India',
+    'Archaeological Survey of India',
     'Chola Bronzes',
     'Ancient Manuscripts',
-    'Sustainable Heritage Tourism',
+    'Responsible Tourism',
     'AI Heritage Guide',
+    'Smart India Hackathon 2026',
   ],
-  authors: [{ name: 'Virasat AI Team — SIH 2026' }],
+  authors: [{ name: 'Virasat AI — SIH 2026' }],
   icons: {
     icon: '/favicon.ico',
   },
@@ -56,9 +56,9 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className={`${cinzel.variable} ${cormorant.variable} ${outfit.variable} h-full antialiased scroll-smooth`}
+      className={`${playfair.variable} ${cormorant.variable} ${inter.variable} h-full antialiased scroll-smooth`}
     >
-      <body className="min-h-full flex flex-col bg-[#FAF7F0] text-[#1C1A17] parchment-texture">
+      <body className="min-h-full flex flex-col bg-[#FBF9F4] text-[#1C1917] parchment-texture">
         <SoundscapeManager />
         <Header />
         <main className="flex-1">{children}</main>

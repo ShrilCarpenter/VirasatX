@@ -2,41 +2,38 @@
 
 @layer base {
   :root {
-    --bg-parchment: #FAF7F0;
-    --bg-parchment-warm: #F4EFE2;
-    --bg-parchment-light: #FFFDF9;
+    --bg-parchment: #FBF9F4;
+    --bg-parchment-warm: #F4EFE6;
+    --bg-parchment-light: #FFFFFF;
     --bg-card: #FFFFFF;
-    --text-charcoal: #1C1A17;
-    --text-charcoal-light: #3D3934;
-    --text-muted: #6B655D;
-    --antique-gold: #C5A059;
-    --antique-gold-light: #E0C287;
-    --terracotta: #BE4D2A;
-    --terracotta-dark: #98381A;
-    --saffron: #DE7525;
-    --heritage-indigo: #1C2B48;
-    --border-parchment: #E6DCB8;
-    --border-subtle: #EBE3D3;
+    --text-charcoal: #1C1917;
+    --text-charcoal-light: #292524;
+    --text-muted: #78716C;
+    --antique-gold: #B45309;
+    --antique-gold-light: #D97706;
+    --terracotta: #9A3412;
+    --terracotta-dark: #7C2D12;
+    --saffron: #D97706;
+    --heritage-border: #E7E1D4;
+    --heritage-border-subtle: #F0EAE0;
   }
 
   body {
-    background-color: #FAF7F0;
-    color: #1C1A17;
-    font-family: var(--font-sans), 'Outfit', system-ui, -apple-system, sans-serif;
+    background-color: #FBF9F4;
+    color: #1C1917;
+    font-family: var(--font-sans), 'Inter', system-ui, -apple-system, sans-serif;
     overflow-x: hidden;
-    selection-background-color: #C5A059;
-    selection-color: #1C1A17;
   }
 
   ::selection {
-    background: #C5A059;
-    color: #1C1A17;
+    background: #E7DFCE;
+    color: #1C1917;
   }
 }
 
 /* Typography styles */
 .font-serif-display {
-  font-family: var(--font-serif-heading), 'Cinzel', 'Playfair Display', Georgia, serif;
+  font-family: var(--font-serif-heading), 'Playfair Display', 'Cinzel', Georgia, serif;
 }
 
 .font-serif-editorial {
@@ -44,87 +41,44 @@
 }
 
 .font-sans-ui {
-  font-family: var(--font-sans), 'Outfit', 'Inter', -apple-system, sans-serif;
+  font-family: var(--font-sans), 'Inter', -apple-system, sans-serif;
 }
 
-/* Custom Heritage Styling Classes */
+/* Subtle Museum Texture & Shadow System */
 .parchment-texture {
-  background-color: #FAF7F0;
-  background-image: radial-gradient(#E8DFCE 0.75px, transparent 0.75px), radial-gradient(#E8DFCE 0.75px, #FAF7F0 0.75px);
-  background-size: 30px 30px;
-  background-position: 0 0, 15px 15px;
+  background-color: #FBF9F4;
+  background-image: radial-gradient(#E8E2D5 0.65px, transparent 0.65px);
+  background-size: 24px 24px;
 }
 
-.museum-dark-surface {
-  background-color: #141311;
-  color: #F6F3ED;
-}
-
-.gold-gradient-text {
-  background: linear-gradient(135deg, #C5A059 0%, #E6CD92 50%, #9F7E3B 100%);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-}
-
-.terracotta-gradient-text {
-  background: linear-gradient(135deg, #BE4D2A 0%, #E26A44 60%, #98381A 100%);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-}
-
-.gold-border-glow {
-  border-color: rgba(197, 160, 89, 0.4);
-  box-shadow: 0 0 25px rgba(197, 160, 89, 0.12);
-}
-
-.museum-card-shadow {
-  box-shadow: 0 10px 30px -5px rgba(28, 26, 23, 0.06), 0 4px 6px -2px rgba(28, 26, 23, 0.03);
+.museum-frame-shadow {
+  box-shadow: 0 4px 20px -2px rgba(28, 25, 23, 0.06), 0 2px 6px -1px rgba(28, 25, 23, 0.03);
 }
 
 .museum-card-hover {
-  transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 .museum-card-hover:hover {
-  transform: translateY(-4px);
-  box-shadow: 0 20px 35px -10px rgba(190, 77, 42, 0.12), 0 10px 10px -5px rgba(28, 26, 23, 0.04);
+  transform: translateY(-3px);
+  box-shadow: 0 12px 28px -4px rgba(28, 25, 23, 0.08), 0 4px 8px -2px rgba(28, 25, 23, 0.03);
 }
 
-/* Subtle Indian Motif Border */
-.indian-motif-border {
-  border-image: linear-gradient(to right, transparent, #C5A059, #BE4D2A, #C5A059, transparent) 1;
-}
-
-/* Custom Scrollbar for Archival feel */
+/* Custom Archival Scrollbar */
 ::-webkit-scrollbar {
-  width: 8px;
-  height: 8px;
+  width: 6px;
+  height: 6px;
 }
 
 ::-webkit-scrollbar-track {
-  background: #F4EFE2;
+  background: #F4EFE6;
 }
 
 ::-webkit-scrollbar-thumb {
-  background: #D4C6A9;
-  border-radius: 4px;
+  background: #D8CEBC;
+  border-radius: 3px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: #C5A059;
-}
-
-/* Glassmorphism restrained */
-.museum-glass {
-  background: rgba(255, 253, 249, 0.88);
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
-  border: 1px solid rgba(230, 220, 184, 0.7);
-}
-
-.museum-dark-glass {
-  background: rgba(20, 19, 17, 0.88);
-  backdrop-filter: blur(16px);
-  -webkit-backdrop-filter: blur(16px);
-  border: 1px solid rgba(197, 160, 89, 0.25);
+  background: #B45309;
 }

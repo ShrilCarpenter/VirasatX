@@ -2,7 +2,7 @@
 
 import React, { useState } from 'react';
 import Link from 'next/link';
-import { BookOpen, Volume2, VolumeX, Play, Pause, Clock, ArrowRight, Share2, Sparkles, Quote } from 'lucide-react';
+import { BookOpen, FileText, Play, Pause, Clock, ArrowRight, Share2, Quote } from 'lucide-react';
 import { EDITORIAL_STORIES } from '@/data/storiesData';
 import { speechService } from '@/services/speechService';
 
@@ -25,138 +25,134 @@ export default function StoriesPage() {
   };
 
   return (
-    <div className="min-h-screen bg-[#FAF7F0] text-[#1C1A17] pb-24">
+    <div className="min-h-screen bg-[#FBF9F4] text-[#1C1917] pb-24">
       {/* Page Header */}
-      <div className="bg-[#1C1A17] text-[#FAF7F0] border-b border-[#C5A059]/30 py-16 px-4 sm:px-6 lg:px-8">
-        <div className="max-w-5xl mx-auto space-y-4">
-          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#2A2621] border border-[#C5A059]/40 text-[#E6CD92] text-xs font-serif-display uppercase tracking-widest">
-            <BookOpen className="w-3.5 h-3.5 text-[#BE4D2A]" />
-            <span>Curatorial Longform Dispatches</span>
+      <div className="bg-[#F4EFE6] border-b border-[#E7E1D4] py-14 px-4 sm:px-6 lg:px-8">
+        <div className="max-w-4xl mx-auto space-y-3">
+          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#FFFFFF] border border-[#E7E1D4] text-[#78716C] text-xs font-sans font-medium">
+            <FileText className="w-3.5 h-3.5 text-[#9A3412]" />
+            <span>Museum Editorial Essays</span>
           </div>
 
-          <h1 className="font-serif-display text-3xl sm:text-5xl font-bold tracking-tight text-[#FAF7F0]">
-            Cultural Stories & Visual Essays
+          <h1 className="font-serif-display text-3xl sm:text-5xl font-bold tracking-tight text-[#1C1917]">
+            Heritage Stories & Visual Essays
           </h1>
 
-          <p className="font-serif-editorial text-lg sm:text-xl text-[#D4C8B2] max-w-2xl">
-            Deep narrative journeys exploring the metaphysical philosophy, architecture, metallurgical secrets, and trade routes of Indian civilization.
+          <p className="font-serif-editorial text-lg sm:text-xl text-[#57534E] max-w-2xl">
+            Narrative journeys exploring the philosophy, architecture, metallurgical secrets, and ancient trade routes of Indian civilization.
           </p>
         </div>
       </div>
 
       {/* Main Container */}
-      <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 pt-12 space-y-16">
+      <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 pt-8 space-y-12">
         {EDITORIAL_STORIES.map(story => {
           const isPlaying = playingStoryId === story.id;
           return (
             <article
               key={story.id}
               id={story.id}
-              className="bg-[#FFFDF9] border border-[#E2DAC9] rounded-3xl overflow-hidden shadow-xl"
+              className="bg-[#FFFFFF] border border-[#E7E1D4] rounded-2xl overflow-hidden shadow-sm space-y-6 p-6 sm:p-10"
             >
-              {/* Story Hero Image */}
-              <div className="relative h-72 sm:h-96 overflow-hidden bg-stone-900">
+              {/* Framed Hero Visual */}
+              <div className="relative h-64 sm:h-80 rounded-xl overflow-hidden bg-stone-100 border border-[#E7E1D4]">
                 {/* eslint-disable-next-line @next/next/no-img-element */}
                 <img
                   src={story.heroImage}
                   alt={story.title}
                   className="w-full h-full object-cover"
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-[#141311]/90 via-transparent to-transparent" />
-                <div className="absolute top-4 left-4 flex items-center gap-2">
-                  <span className="px-3 py-1 rounded-full text-xs font-mono uppercase bg-[#1C1A17]/80 text-[#E6CD92] border border-[#C5A059]/40">
+                <div className="absolute top-3 left-3 flex items-center gap-2">
+                  <span className="px-2.5 py-0.5 rounded-full text-[10px] font-mono bg-[#FFFFFF]/90 text-[#1C1917] shadow-sm">
                     {story.period}
                   </span>
-                  <span className="px-3 py-1 rounded-full text-xs font-mono bg-[#1C1A17]/80 text-[#D8CFBF]">
+                  <span className="px-2.5 py-0.5 rounded-full text-[10px] font-mono bg-[#F4EFE6] text-[#78716C]">
                     {story.readTime}
                   </span>
                 </div>
               </div>
 
-              {/* Story Body */}
-              <div className="p-6 sm:p-12 space-y-8">
-                <div>
-                  <h2 className="font-serif-display text-3xl sm:text-4xl font-bold text-[#1C1A17] leading-tight">
-                    {story.title}
-                  </h2>
-                  <p className="font-serif-editorial text-xl sm:text-2xl text-[#5C554B] leading-relaxed mt-2 italic">
-                    “{story.subtitle}”
-                  </p>
-                  <p className="text-xs font-mono text-[#8C8275] uppercase tracking-wider mt-4">
-                    By {story.author} • {story.publishedDate}
-                  </p>
-                </div>
+              {/* Story Header */}
+              <div className="space-y-2">
+                <h2 className="font-serif-display text-2xl sm:text-3xl font-bold text-[#1C1917] leading-tight">
+                  {story.title}
+                </h2>
+                <p className="font-serif-editorial text-lg sm:text-xl text-[#57534E] italic">
+                  “{story.subtitle}”
+                </p>
+                <p className="text-xs text-[#78716C] font-mono pt-1">
+                  By {story.author} • {story.publishedDate}
+                </p>
+              </div>
 
-                {/* Audio Guide Narration Bar */}
-                {story.audioTranscript && (
-                  <div className="p-5 rounded-2xl bg-[#FAF7F0] border border-[#E2DAC9] flex items-center justify-between gap-4">
-                    <div className="flex items-center gap-3">
-                      <button
-                        onClick={() => toggleAudio(story.id, story.audioTranscript)}
-                        className={`w-11 h-11 rounded-full flex items-center justify-center transition-all ${
-                          isPlaying
-                            ? 'bg-[#BE4D2A] text-white animate-pulse shadow-md'
-                            : 'bg-[#1C1A17] text-[#E6CD92] hover:bg-[#BE4D2A] hover:text-white'
-                        }`}
-                        aria-label="Play Story Narration"
-                      >
-                        {isPlaying ? <Pause className="w-4 h-4" /> : <Play className="w-4 h-4 ml-0.5" />}
-                      </button>
-                      <div>
-                        <h4 className="font-serif-display text-sm font-bold text-[#1C1A17]">
-                          {isPlaying ? 'Audio Narration Active...' : 'Listen to Curatorial Audio Story'}
-                        </h4>
-                        <p className="text-xs text-[#8C8275]">
-                          Indian English voice synthesis with ambient audio support
-                        </p>
-                      </div>
+              {/* Audio Narration Bar */}
+              {story.audioTranscript && (
+                <div className="p-3.5 rounded-xl bg-[#FBF9F4] border border-[#E7E1D4] flex items-center justify-between gap-4">
+                  <div className="flex items-center gap-3">
+                    <button
+                      onClick={() => toggleAudio(story.id, story.audioTranscript)}
+                      className={`w-9 h-9 rounded-full flex items-center justify-center transition-all ${
+                        isPlaying
+                          ? 'bg-[#9A3412] text-white shadow animate-pulse'
+                          : 'bg-[#1C1917] text-white hover:bg-[#9A3412]'
+                      }`}
+                      aria-label="Play Story Narration"
+                    >
+                      {isPlaying ? <Pause className="w-4 h-4" /> : <Play className="w-4 h-4 ml-0.5" />}
+                    </button>
+                    <div>
+                      <h4 className="text-xs font-bold text-[#1C1917]">
+                        {isPlaying ? 'Audio Narration Active...' : '▶ Listen to Curatorial Narration'}
+                      </h4>
+                      <p className="text-[11px] text-[#78716C]">
+                        Indian English speech synthesis
+                      </p>
                     </div>
+                  </div>
 
-                    {isPlaying && (
-                      <span className="text-xs font-mono text-[#BE4D2A] font-bold animate-pulse">
-                        Narrating...
-                      </span>
+                  {isPlaying && (
+                    <span className="text-xs font-mono text-[#9A3412] font-semibold animate-pulse">
+                      Narrating...
+                    </span>
+                  )}
+                </div>
+              )}
+
+              {/* Story Sections */}
+              <div className="space-y-6 pt-2 text-sm text-[#44403C] leading-relaxed">
+                {story.sections.map((sec, idx) => (
+                  <div key={idx} className="space-y-2">
+                    <h3 className="font-serif-display text-lg font-bold text-[#1C1917]">
+                      {sec.heading}
+                    </h3>
+                    <p>{sec.content}</p>
+                    {sec.quote && (
+                      <blockquote className="my-3 p-4 rounded-xl bg-[#F4EFE6] border-l-4 border-[#9A3412] italic font-serif-editorial text-base text-[#1C1917]">
+                        “{sec.quote}”
+                      </blockquote>
                     )}
                   </div>
-                )}
+                ))}
+              </div>
 
-                {/* Sections */}
-                <div className="space-y-8 pt-4">
-                  {story.sections.map((sec, idx) => (
-                    <div key={idx} className="space-y-3">
-                      <h3 className="font-serif-display text-xl font-bold text-[#1C1A17]">
-                        {sec.heading}
-                      </h3>
-                      <p className="text-base text-[#3D3934] leading-relaxed">
-                        {sec.content}
-                      </p>
-                      {sec.quote && (
-                        <blockquote className="my-4 p-5 rounded-2xl bg-[#FAF7F0] border-l-4 border-[#C5A059] italic text-sm sm:text-base font-serif-editorial text-[#1C1A17]">
-                          “{sec.quote}”
-                        </blockquote>
-                      )}
-                    </div>
+              {/* Bottom Tags */}
+              <div className="pt-4 border-t border-[#E7E1D4] flex flex-wrap items-center justify-between gap-3">
+                <div className="flex flex-wrap gap-1.5">
+                  {story.tags.map(t => (
+                    <span key={t} className="px-2.5 py-0.5 rounded text-[11px] bg-[#FBF9F4] text-[#78716C] border border-[#E7E1D4]">
+                      #{t}
+                    </span>
                   ))}
                 </div>
 
-                {/* Tags & Explore */}
-                <div className="pt-6 border-t border-[#E2DAC9] flex flex-wrap items-center justify-between gap-4">
-                  <div className="flex flex-wrap gap-2">
-                    {story.tags.map(t => (
-                      <span key={t} className="px-3 py-1 rounded-full text-xs bg-[#FAF7F0] text-[#5C554B] border border-[#E2DAC9]">
-                        #{t}
-                      </span>
-                    ))}
-                  </div>
-
-                  <Link
-                    href="/explore"
-                    className="text-xs font-serif-display uppercase font-bold text-[#BE4D2A] hover:underline flex items-center gap-1"
-                  >
-                    <span>Explore Related Museum Artifacts →</span>
-                  </Link>
-                </div>
+                <Link
+                  href="/explore"
+                  className="text-xs font-sans font-semibold text-[#9A3412] hover:underline flex items-center gap-1"
+                >
+                  <span>Explore Related Artifacts →</span>
+                </Link>
               </div>
+
             </article>
           );
         })}

@@ -1,257 +1,220 @@
 'use client';
 
-import React, { useState, useRef } from 'react';
+import React, { useState } from 'react';
 import Link from 'next/link';
 import {
-  Sparkles, Send, Mic, MicOff, Image as ImageIcon, Volume2,
-  VolumeX, ShieldCheck, HelpCircle, Bot, User, Upload, Check, RefreshCw
+  Sparkles, Send, Mic, MicOff, Volume2, Bot, User,
+  ShieldCheck, HelpCircle, ArrowRight, Camera, RefreshCw, Layers
 } from 'lucide-react';
-import { aiService, AIResponse } from '@/services/aiService';
+import { aiService } from '@/services/aiService';
 import { speechService } from '@/services/speechService';
 import { ARTIFACTS_DATA } from '@/data/artifactsData';
-import { AIChatMessage } from '@/types';
 
 export default function AIGuidePage() {
-  const [messages, setMessages] = useState<AIChatMessage[]>([
+  const [activeTab, setActiveTab] = useState<'conversational' | 'vision'>('conversational');
+  const [query, setQuery] = useState('');
+  const [isLoading, setIsLoading] = useState(false);
+  const [isListening, setIsListening] = useState(false);
+  const [messages, setMessages] = useState<Array<{
+    sender: 'user' | 'assistant';
+    text: string;
+    source?: string;
+    relatedArtifactId?: string;
+    followUps?: string[];
+  }>>([
     {
-      id: 'welcome',
       sender: 'assistant',
-      content: `Namaste! I am **Virasat AI**, your intelligent Indian Digital Heritage Guide.
+      text: `Welcome to the Virasat AI Heritage Research Guide. 
 
-I am trained on verified records from the Archaeological Survey of India (ASI), National Mission for Manuscripts, and world museum archives.
+You can ask me questions regarding Indian archaeology, lost-wax bronze casting, temple architectural mathematics, ancient manuscripts, or regional craft traditions.
 
-**How may I assist your exploration today?**
-• Ask about ancient metallurgy (e.g., lost-wax Chola bronzes, Mauryan stone polish).
-• Inquire into dynastic histories, Upanishadic philosophies, or temple architectures.
-• Switch to the **Visual Iconography Identifier** tab below to analyze artifact photographs!`,
-      timestamp: new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' }),
-      verifiedSource: 'Virasat AI National Knowledge Engine',
-      confidenceScore: 0.99,
-      suggestedFollowUps: [
-        'Tell me about the Chola Bronze Nataraja.',
-        'How was the monolithic Kailasa Temple at Ellora carved from the top down?',
-        'Explain the Nasadiya Sukta creation hymn from the Rigveda.',
-        'Plan a 3-day sustainable heritage tour in Hampi.'
+What aspect of Indian heritage would you like to explore today?`,
+      source: 'Archaeological Survey of India & National Museum New Delhi',
+      followUps: [
+        'What is the significance of Nataraja?',
+        'How was the Kailasa Temple constructed?',
+        'Tell me about the Indus Valley Civilization.'
       ]
     }
   ]);
 
-  const [inputQuery, setInputQuery] = useState('');
-  const [isLoading, setIsLoading] = useState(false);
-  const [isRecording, setIsRecording] = useState(false);
-  const [activeTab, setActiveTab] = useState<'chat' | 'vision'>('chat');
-  const [visionSampleCategory, setVisionSampleCategory] = useState('Sculptures');
-  const [visionAnalysisResult, setVisionAnalysisResult] = useState<any>(null);
-  const [visionAnalyzing, setVisionAnalyzing] = useState(false);
-  const messagesEndRef = useRef<HTMLDivElement>(null);
+  const [selectedVisionArtifact, setSelectedVisionArtifact] = useState(ARTIFACTS_DATA[0]);
+  const [visionAnalysis, setVisionAnalysis] = useState<any>(null);
+  const [isAnalyzingVision, setIsAnalyzingVision] = useState(false);
 
-  const scrollToBottom = () => {
-    messagesEndRef.current?.scrollIntoView({ behavior: 'smooth' });
-  };
+  const promptSuggestions = [
+    'What is the significance of Nataraja?',
+    'How was the Kailasa Temple constructed?',
+    'Tell me about the Indus Valley Civilization.',
+    'Explain the Lion Capital of Ashoka.',
+    'Plan a responsible heritage trip to Hampi.'
+  ];
 
-  const handleSendMessage = async (text: string) => {
-    const q = text.trim();
-    if (!q || isLoading) return;
+  const handleSendMessage = async (textToSend: string) => {
+    const q = textToSend.trim();
+    if (!q) return;
 
-    const userMsg: AIChatMessage = {
-      id: `user-${Date.now()}`,
-      sender: 'user',
-      content: q,
-      timestamp: new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })
-    };
-
+    const userMsg = { sender: 'user' as const, text: q };
     setMessages(prev => [...prev, userMsg]);
-    setInputQuery('');
+    setQuery('');
     setIsLoading(true);
 
     try {
-      const resp = await aiService.askHeritageQuestion(q);
-      const assistantMsg: AIChatMessage = {
-        id: `ai-${Date.now()}`,
-        sender: 'assistant',
-        content: resp.message,
-        timestamp: new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' }),
-        verifiedSource: resp.verifiedSource,
-        confidenceScore: resp.confidenceScore,
-        relatedArtifactId: resp.relatedArtifactId,
-        suggestedFollowUps: resp.suggestedFollowUps
+      const response = await aiService.askHeritageQuestion(q);
+      const assistantMsg = {
+        sender: 'assistant' as const,
+        text: response.message,
+        source: response.verifiedSource,
+        relatedArtifactId: response.relatedArtifactId,
+        followUps: response.suggestedFollowUps
       };
-
       setMessages(prev => [...prev, assistantMsg]);
-      setTimeout(scrollToBottom, 100);
-    } catch (e) {
-      console.error(e);
+    } catch (error) {
+      console.error(error);
     } finally {
       setIsLoading(false);
     }
   };
 
-  // Speech Voice Readout
-  const speakMessage = (content: string) => {
-    // Strip markdown formatting for cleaner speech readout
-    const plainText = content.replace(/[*_#•]/g, '');
-    speechService.speak(plainText);
-  };
-
-  // Speech Recognition (Mic toggle)
-  const toggleRecording = () => {
-    if (isRecording) {
-      setIsRecording(false);
+  const toggleVoiceInput = () => {
+    if (isListening) {
+      speechService.stopListening();
+      setIsListening(false);
     } else {
-      if (typeof window !== 'undefined' && ('webkitSpeechRecognition' in window || 'SpeechRecognition' in window)) {
-        const SpeechRec = (window as any).SpeechRecognition || (window as any).webkitSpeechRecognition;
-        const recognition = new SpeechRec();
-        recognition.lang = 'en-IN';
-        recognition.onstart = () => setIsRecording(true);
-        recognition.onresult = (event: any) => {
-          const transcript = event.results[0][0].transcript;
-          setInputQuery(transcript);
-          setIsRecording(false);
-        };
-        recognition.onerror = () => setIsRecording(false);
-        recognition.onend = () => setIsRecording(false);
-        recognition.start();
-      } else {
-        alert('Speech recognition is not supported in this browser. Please type your question.');
-      }
+      setIsListening(true);
+      speechService.startListening(
+        (transcript: string) => {
+          setIsListening(false);
+          handleSendMessage(transcript);
+        },
+        () => setIsListening(false)
+      );
     }
   };
 
-  // Visual Iconography Inspection
-  const handleAnalyzeVision = async () => {
-    setVisionAnalyzing(true);
-    try {
-      const result = await aiService.identifyIconographyFromImage(visionSampleCategory);
-      setVisionAnalysisResult(result);
-    } catch (e) {
-      console.error(e);
-    } finally {
-      setVisionAnalyzing(false);
-    }
+  const handleVisionAnalysis = (art: typeof ARTIFACTS_DATA[0]) => {
+    setSelectedVisionArtifact(art);
+    setIsAnalyzingVision(true);
+    setTimeout(() => {
+      const result = aiService.analyzeIconography(art.imageUrl);
+      setVisionAnalysis(result);
+      setIsAnalyzingVision(false);
+    }, 600);
   };
 
   return (
-    <div className="min-h-screen bg-[#FAF7F0] text-[#1C1A17] pb-24">
-      {/* Header Banner */}
-      <div className="bg-[#1C1A17] text-[#FAF7F0] border-b border-[#C5A059]/30 py-12 px-4 sm:px-6 lg:px-8">
-        <div className="max-w-5xl mx-auto flex flex-col md:flex-row md:items-center justify-between gap-6">
-          <div className="space-y-2">
-            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#2A2621] border border-[#C5A059]/40 text-[#E6CD92] text-xs font-serif-display uppercase tracking-widest">
-              <Sparkles className="w-3.5 h-3.5 text-[#C5A059]" />
-              <span>Multimodal AI Heritage Guide</span>
-            </div>
-            <h1 className="font-serif-display text-3xl sm:text-4xl font-bold tracking-tight text-[#FAF7F0]">
-              Virasat AI Heritage Assistant
-            </h1>
-            <p className="text-xs sm:text-sm text-[#D4C8B2]">
-              Powered by deep semantic indexing across 5,000+ years of verified Indian history, metallurgy, and art.
-            </p>
+    <div className="min-h-screen bg-[#FBF9F4] text-[#1C1917] pb-24">
+      {/* Page Header Banner */}
+      <div className="bg-[#F4EFE6] border-b border-[#E7E1D4] py-14 px-4 sm:px-6 lg:px-8">
+        <div className="max-w-4xl mx-auto space-y-3">
+          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#FFFFFF] border border-[#E7E1D4] text-[#78716C] text-xs font-sans font-medium">
+            <Sparkles className="w-3.5 h-3.5 text-[#B45309]" />
+            <span>AI Research Assistant</span>
           </div>
 
-          {/* Mode Tabs */}
-          <div className="flex items-center gap-2 bg-[#24211D] p-1.5 rounded-2xl border border-[#38332C]">
-            <button
-              onClick={() => setActiveTab('chat')}
-              className={`px-4 py-2 rounded-xl text-xs font-serif-display uppercase font-bold tracking-wider transition-all ${
-                activeTab === 'chat'
-                  ? 'bg-[#BE4D2A] text-white shadow'
-                  : 'text-[#A89F91] hover:text-white'
-              }`}
-            >
-              Conversational Chat
-            </button>
-            <button
-              onClick={() => setActiveTab('vision')}
-              className={`px-4 py-2 rounded-xl text-xs font-serif-display uppercase font-bold tracking-wider transition-all flex items-center gap-1.5 ${
-                activeTab === 'vision'
-                  ? 'bg-[#C5A059] text-[#1C1A17] shadow font-black'
-                  : 'text-[#A89F91] hover:text-white'
-              }`}
-            >
-              <ImageIcon className="w-3.5 h-3.5" />
-              <span>Iconography Vision</span>
-            </button>
-          </div>
+          <h1 className="font-serif-display text-3xl sm:text-5xl font-bold tracking-tight text-[#1C1917]">
+            AI Heritage Guide
+          </h1>
+
+          <p className="font-serif-editorial text-lg sm:text-xl text-[#57534E]">
+            “Ask about India’s art, architecture, manuscripts and traditions.”
+          </p>
         </div>
       </div>
 
       {/* Main Container */}
-      <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 pt-8">
-        {activeTab === 'chat' ? (
-          /* Conversational Chat Interface */
-          <div className="bg-[#FFFDF9] border border-[#E2DAC9] rounded-3xl shadow-xl overflow-hidden flex flex-col h-[680px]">
-            {/* Disclaimer Bar */}
-            <div className="px-6 py-2.5 bg-[#FAF7F0] border-b border-[#E2DAC9] flex items-center justify-between text-[11px] text-[#8C8275]">
-              <span className="flex items-center gap-1.5">
-                <ShieldCheck className="w-3.5 h-3.5 text-[#10B981]" />
-                Museum-verified facts are marked with primary archival sources.
-              </span>
-              <span className="font-mono uppercase text-[#BE4D2A] font-bold">
-                SIH 2026 AI Core
-              </span>
-            </div>
+      <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 pt-8 space-y-6">
+        
+        {/* Mode Switcher */}
+        <div className="flex items-center gap-2 border-b border-[#E7E1D4] pb-3">
+          <button
+            onClick={() => setActiveTab('conversational')}
+            className={`px-4 py-2 rounded-lg text-xs font-sans font-semibold transition-all ${
+              activeTab === 'conversational'
+                ? 'bg-[#9A3412] text-white shadow-sm'
+                : 'text-[#44403C] hover:bg-[#F4EFE6]'
+            }`}
+          >
+            Research Assistant
+          </button>
+          <button
+            onClick={() => {
+              setActiveTab('vision');
+              if (!visionAnalysis) handleVisionAnalysis(selectedVisionArtifact);
+            }}
+            className={`px-4 py-2 rounded-lg text-xs font-sans font-semibold transition-all ${
+              activeTab === 'vision'
+                ? 'bg-[#9A3412] text-white shadow-sm'
+                : 'text-[#44403C] hover:bg-[#F4EFE6]'
+            }`}
+          >
+            Visual Iconography Identifier
+          </button>
+        </div>
 
-            {/* Messages Scroll Area */}
-            <div className="flex-1 overflow-y-auto p-6 space-y-6 bg-[#FFFDF9]">
-              {messages.map(msg => (
+        {/* Tab 1: Conversational Assistant */}
+        {activeTab === 'conversational' && (
+          <div className="rounded-2xl bg-[#FFFFFF] border border-[#E7E1D4] shadow-sm overflow-hidden flex flex-col">
+            
+            {/* Chat Messages */}
+            <div className="p-6 space-y-6 min-h-[420px] max-h-[560px] overflow-y-auto bg-[#FFFFFF]">
+              {messages.map((msg, idx) => (
                 <div
-                  key={msg.id}
+                  key={idx}
                   className={`flex items-start gap-3.5 ${
                     msg.sender === 'user' ? 'justify-end' : 'justify-start'
                   }`}
                 >
                   {msg.sender === 'assistant' && (
-                    <div className="w-8 h-8 rounded-full bg-[#1C1A17] border border-[#C5A059] flex items-center justify-center text-[#E6CD92] shrink-0 mt-1 shadow">
+                    <div className="w-8 h-8 rounded-full bg-[#9A3412] text-white flex items-center justify-center shrink-0 shadow-sm mt-0.5">
                       <Bot className="w-4 h-4" />
                     </div>
                   )}
 
-                  <div className={`max-w-[85%] space-y-2`}>
+                  <div className={`max-w-[85%] space-y-3 ${msg.sender === 'user' ? 'items-end' : 'items-start'}`}>
                     <div
-                      className={`p-5 rounded-2xl text-xs sm:text-sm leading-relaxed shadow-sm ${
+                      className={`p-4 rounded-2xl text-xs sm:text-sm leading-relaxed whitespace-pre-line ${
                         msg.sender === 'user'
-                          ? 'bg-[#BE4D2A] text-white rounded-tr-none'
-                          : 'bg-[#FAF7F0] text-[#1C1A17] border border-[#E2DAC9] rounded-tl-none whitespace-pre-line'
+                          ? 'bg-[#F4EFE6] text-[#1C1917] rounded-tr-none'
+                          : 'bg-[#FBF9F4] text-[#1C1917] border border-[#E7E1D4] rounded-tl-none'
                       }`}
                     >
-                      {msg.content}
+                      {msg.text}
                     </div>
 
-                    {/* Metadata Badges for Assistant */}
-                    {msg.sender === 'assistant' && (
-                      <div className="flex flex-wrap items-center justify-between gap-2 px-1 text-[11px] text-[#8C8275]">
-                        <div className="flex items-center gap-2">
-                          {msg.verifiedSource && (
-                            <span className="flex items-center gap-1 text-[#10B981] font-medium">
-                              <ShieldCheck className="w-3 h-3" />
-                              {msg.verifiedSource}
-                            </span>
-                          )}
-                        </div>
-
-                        <div className="flex items-center gap-2">
-                          <button
-                            onClick={() => speakMessage(msg.content)}
-                            className="flex items-center gap-1 hover:text-[#BE4D2A] transition-colors p-1"
-                            title="Read Aloud in Indian Voice"
-                          >
-                            <Volume2 className="w-3.5 h-3.5" />
-                            <span>Listen</span>
-                          </button>
-                        </div>
+                    {/* Sources */}
+                    {msg.source && (
+                      <div className="p-2.5 rounded-lg bg-[#FAF7F0] border border-[#E7E1D4] text-[11px] text-[#57534E] flex items-center gap-2">
+                        <ShieldCheck className="w-3.5 h-3.5 text-[#15803D] shrink-0" />
+                        <span><strong>Source:</strong> {msg.source}</span>
                       </div>
                     )}
 
-                    {/* Suggested Follow-up chips */}
-                    {msg.suggestedFollowUps && msg.suggestedFollowUps.length > 0 && (
-                      <div className="pt-2 flex flex-wrap gap-1.5">
-                        {msg.suggestedFollowUps.map((chip, i) => (
+                    {/* Related Artifact */}
+                    {msg.relatedArtifactId && (
+                      <div className="text-xs">
+                        <Link
+                          href={`/artifact/${msg.relatedArtifactId}`}
+                          className="font-sans font-semibold text-[#9A3412] hover:underline"
+                        >
+                          View Related Artifact in Collection →
+                        </Link>
+                      </div>
+                    )}
+
+                    {/* Follow-up chips */}
+                    {msg.followUps && msg.followUps.length > 0 && (
+                      <div className="pt-1 flex flex-wrap gap-1.5">
+                        <span className="text-[10px] text-[#78716C] font-bold uppercase block w-full">
+                          Follow-up inquiries:
+                        </span>
+                        {msg.followUps.map((fu, i) => (
                           <button
                             key={i}
-                            onClick={() => handleSendMessage(chip)}
-                            className="text-[11px] px-3 py-1 rounded-full bg-[#FAF7F0] hover:bg-[#BE4D2A] text-[#5C554B] hover:text-white border border-[#E2DAC9] transition-colors"
+                            onClick={() => handleSendMessage(fu)}
+                            className="text-[11px] px-3 py-1 rounded-full bg-[#F4EFE6] hover:bg-[#9A3412] hover:text-white text-[#44403C] transition-colors border border-[#E7E1D4]"
                           >
-                            {chip}
+                            {fu}
                           </button>
                         ))}
                       </div>
@@ -259,7 +222,7 @@ I am trained on verified records from the Archaeological Survey of India (ASI), 
                   </div>
 
                   {msg.sender === 'user' && (
-                    <div className="w-8 h-8 rounded-full bg-[#BE4D2A] flex items-center justify-center text-white shrink-0 mt-1 shadow">
+                    <div className="w-8 h-8 rounded-full bg-[#E7E1D4] text-[#78716C] flex items-center justify-center shrink-0 mt-0.5">
                       <User className="w-4 h-4" />
                     </div>
                   )}
@@ -267,170 +230,130 @@ I am trained on verified records from the Archaeological Survey of India (ASI), 
               ))}
 
               {isLoading && (
-                <div className="flex items-center gap-3 text-xs text-[#BE4D2A] p-4 bg-[#FAF7F0] border border-[#E2DAC9] rounded-2xl w-fit">
-                  <Sparkles className="w-4 h-4 animate-spin" />
-                  <span className="font-serif-display font-medium">
-                    Consulting Archaeological Survey of India (ASI) Knowledge Graph...
-                  </span>
+                <div className="flex items-center gap-3 text-xs text-[#9A3412]">
+                  <div className="w-8 h-8 rounded-full bg-[#9A3412] text-white flex items-center justify-center">
+                    <Bot className="w-4 h-4" />
+                  </div>
+                  <span>Consulting museum archives & Archaeological Survey records...</span>
                 </div>
               )}
-              <div ref={messagesEndRef} />
+            </div>
+
+            {/* Suggestion Chips */}
+            <div className="px-5 py-2.5 bg-[#FAF7F0] border-t border-[#E7E1D4] flex items-center gap-2 overflow-x-auto no-scrollbar">
+              <span className="text-[10px] uppercase font-bold text-[#78716C] shrink-0">
+                Try:
+              </span>
+              {promptSuggestions.map((prompt, idx) => (
+                <button
+                  key={idx}
+                  onClick={() => handleSendMessage(prompt)}
+                  disabled={isLoading}
+                  className="text-[11px] px-3 py-1 rounded-full bg-[#FFFFFF] hover:bg-[#9A3412] text-[#44403C] hover:text-white border border-[#E7E1D4] shrink-0 transition-colors"
+                >
+                  {prompt}
+                </button>
+              ))}
             </div>
 
             {/* Input Bar */}
-            <div className="p-4 bg-[#FAF7F0] border-t border-[#E2DAC9] flex items-center gap-2">
+            <div className="p-4 bg-[#FFFFFF] border-t border-[#E7E1D4] flex items-center gap-2">
               <button
-                onClick={toggleRecording}
-                className={`p-3 rounded-2xl border transition-all ${
-                  isRecording
-                    ? 'bg-rose-600 text-white animate-pulse border-rose-600'
-                    : 'bg-[#FFFDF9] text-[#8C8275] border-[#E2DAC9] hover:text-[#BE4D2A]'
+                onClick={toggleVoiceInput}
+                className={`p-2.5 rounded-xl border transition-colors ${
+                  isListening
+                    ? 'bg-[#9A3412] text-white animate-pulse'
+                    : 'bg-[#FBF9F4] text-[#78716C] border-[#E7E1D4] hover:text-[#1C1917]'
                 }`}
-                title={isRecording ? 'Listening...' : 'Voice Input (Microphone)'}
+                title="Voice Input (English/Hindi)"
               >
-                {isRecording ? <MicOff className="w-4 h-4" /> : <Mic className="w-4 h-4" />}
+                {isListening ? <MicOff className="w-4 h-4" /> : <Mic className="w-4 h-4" />}
               </button>
 
               <input
                 type="text"
-                value={inputQuery}
-                onChange={e => setInputQuery(e.target.value)}
-                onKeyDown={e => e.key === 'Enter' && handleSendMessage(inputQuery)}
-                placeholder="Ask about historical dynasties, lost-wax metallurgy, temple architecture, mudras..."
-                className="flex-1 bg-[#FFFDF9] border border-[#E2DAC9] focus:border-[#C5A059] rounded-2xl px-4 py-3 text-xs sm:text-sm text-[#1C1A17] placeholder-[#8C8275] focus:outline-none shadow-sm"
+                value={query}
+                onChange={e => setQuery(e.target.value)}
+                onKeyDown={e => e.key === 'Enter' && handleSendMessage(query)}
+                placeholder="Ask about Indian heritage, monuments, manuscripts..."
+                disabled={isLoading}
+                className="flex-1 bg-[#FBF9F4] border border-[#E7E1D4] focus:border-[#9A3412] rounded-xl px-4 py-2.5 text-xs sm:text-sm text-[#1C1917] focus:outline-none placeholder-[#78716C]"
               />
 
               <button
-                onClick={() => handleSendMessage(inputQuery)}
-                disabled={isLoading || !inputQuery.trim()}
-                className="px-5 py-3 rounded-2xl bg-[#BE4D2A] hover:bg-[#98381A] disabled:opacity-50 text-white text-xs font-serif-display uppercase font-bold tracking-wider transition-colors shadow-md flex items-center gap-1.5 shrink-0"
+                onClick={() => handleSendMessage(query)}
+                disabled={isLoading || !query.trim()}
+                className="p-2.5 rounded-xl bg-[#9A3412] hover:bg-[#7C2D12] text-white disabled:opacity-50 transition-colors"
               >
-                <span>Ask</span>
-                <Send className="w-3.5 h-3.5" />
+                <Send className="w-4 h-4" />
               </button>
             </div>
+
           </div>
-        ) : (
-          /* Visual Iconography Identifier Simulator */
-          <div className="bg-[#FFFDF9] border border-[#E2DAC9] rounded-3xl shadow-xl p-8 sm:p-12 space-y-8">
-            <div className="max-w-2xl space-y-2">
-              <h2 className="font-serif-display text-2xl sm:text-3xl font-bold text-[#1C1A17]">
+        )}
+
+        {/* Tab 2: Visual Iconography Identifier */}
+        {activeTab === 'vision' && (
+          <div className="p-6 sm:p-8 rounded-2xl bg-[#FFFFFF] border border-[#E7E1D4] shadow-sm space-y-6">
+            <div>
+              <h3 className="font-serif-display text-xl font-bold text-[#1C1917]">
                 Visual Iconography Identifier
-              </h2>
-              <p className="text-sm text-[#5C554B] leading-relaxed">
-                Our computer vision model recognizes dynastic sculpting motifs, metallurgy alloys, and mudras from photographs of sculptures, paintings, and temple reliefs.
+              </h3>
+              <p className="text-xs text-[#57534E] mt-1">
+                Select an artifact photograph to inspect dynastic iconographic motifs and stylistic attributes.
               </p>
             </div>
 
-            {/* Sample Selector & Image Stage */}
-            <div className="grid grid-cols-1 md:grid-cols-12 gap-8 items-center">
-              <div className="md:col-span-6 space-y-4">
-                <label className="block text-xs font-bold uppercase tracking-wider text-[#8C8275]">
-                  Select Sample Archival Asset to Inspect:
-                </label>
-                <div className="grid grid-cols-2 gap-2">
-                  {['Nataraja Bronze', 'Ashoka Pillar', 'Padmapani Mural', 'Kailasa Monolith'].map(sample => (
-                    <button
-                      key={sample}
-                      onClick={() => {
-                        setVisionSampleCategory(sample);
-                        setVisionAnalysisResult(null);
-                      }}
-                      className={`p-3 rounded-xl text-xs font-serif-display font-semibold border transition-all text-left ${
-                        visionSampleCategory === sample
-                          ? 'bg-[#1C1A17] text-[#E6CD92] border-[#C5A059]'
-                          : 'bg-[#FAF7F0] text-[#3D3934] border-[#E2DAC9] hover:bg-[#F4EFE2]'
-                      }`}
-                    >
-                      {sample}
-                    </button>
-                  ))}
-                </div>
-
-                <div className="pt-2">
-                  <button
-                    onClick={handleAnalyzeVision}
-                    disabled={visionAnalyzing}
-                    className="w-full py-3.5 rounded-2xl bg-[#BE4D2A] hover:bg-[#98381A] disabled:opacity-50 text-white font-serif-display text-xs uppercase font-bold tracking-wider transition-all shadow-md flex items-center justify-center gap-2"
-                  >
-                    {visionAnalyzing ? (
-                      <>
-                        <RefreshCw className="w-4 h-4 animate-spin" />
-                        <span>Analyzing Iconographic Markers...</span>
-                      </>
-                    ) : (
-                      <>
-                        <Sparkles className="w-4 h-4" />
-                        <span>Run AI Iconographic Analysis</span>
-                      </>
-                    )}
-                  </button>
-                </div>
-              </div>
-
-              <div className="md:col-span-6">
-                <div className="relative h-64 rounded-2xl overflow-hidden bg-stone-900 border border-[#E2DAC9] shadow-lg">
-                  {/* eslint-disable-next-line @next/next/no-img-element */}
-                  <img
-                    src="https://images.unsplash.com/photo-1599818458999-f2c9e782e2c3?auto=format&fit=crop&w=800&q=80"
-                    alt="Inspection Preview"
-                    className="w-full h-full object-cover"
-                  />
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent" />
-                  <div className="absolute bottom-3 left-3 text-white text-xs font-mono">
-                    Visual Target: {visionSampleCategory}
+            {/* Artifact Selector Grid */}
+            <div className="grid grid-cols-2 sm:grid-cols-4 gap-3">
+              {ARTIFACTS_DATA.slice(0, 4).map(art => (
+                <button
+                  key={art.id}
+                  onClick={() => handleVisionAnalysis(art)}
+                  className={`p-2 rounded-xl border text-left transition-all ${
+                    selectedVisionArtifact.id === art.id
+                      ? 'bg-[#F4EFE6] border-[#9A3412] ring-1 ring-[#9A3412]/30'
+                      : 'bg-[#FBF9F4] border-[#E7E1D4] hover:bg-[#FFFFFF]'
+                  }`}
+                >
+                  <div className="h-24 rounded-lg overflow-hidden bg-stone-100 mb-2">
+                    {/* eslint-disable-next-line @next/next/no-img-element */}
+                    <img src={art.imageUrl} alt={art.title} className="w-full h-full object-cover" />
                   </div>
-                </div>
-              </div>
+                  <p className="text-[11px] font-bold text-[#1C1917] truncate">{art.title}</p>
+                </button>
+              ))}
             </div>
 
-            {/* Analysis Result Display */}
-            {visionAnalysisResult && (
-              <div className="p-6 rounded-2xl bg-[#FAF7F0] border border-[#C5A059] shadow-md space-y-4 animate-in fade-in zoom-in-95 duration-200">
-                <div className="flex items-center justify-between border-b border-[#E2DAC9] pb-3">
-                  <div>
-                    <span className="text-[10px] font-mono uppercase tracking-widest text-[#10B981] font-bold">
-                      Match Confidence: {Math.round(visionAnalysisResult.confidence * 100)}%
-                    </span>
-                    <h3 className="font-serif-display text-xl font-bold text-[#1C1A17]">
-                      {visionAnalysisResult.identifiedSubject}
-                    </h3>
-                  </div>
-                  <span className="text-xs font-mono bg-[#1C1A17] text-[#E6CD92] px-3 py-1 rounded-full">
-                    {visionAnalysisResult.dynastyMatch}
+            {/* Analysis Output Box */}
+            {visionAnalysis && (
+              <div className="p-5 rounded-xl bg-[#FBF9F4] border border-[#E7E1D4] space-y-4">
+                <div className="flex items-center justify-between border-b border-[#E7E1D4] pb-3">
+                  <span className="text-xs font-bold text-[#1C1917] uppercase">
+                    Identified Dynasty: {visionAnalysis.identifiedDynasty}
+                  </span>
+                  <span className="text-xs text-[#15803D] font-mono font-bold">
+                    Confidence: {(visionAnalysis.confidenceScore * 100).toFixed(0)}%
                   </span>
                 </div>
 
-                <div className="space-y-2">
-                  <p className="text-xs font-bold uppercase tracking-wider text-[#8C8275]">
-                    Detected Iconographic Features:
-                  </p>
-                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-2">
-                    {visionAnalysisResult.iconographicAttributes.map((attr: string, i: number) => (
-                      <div key={i} className="flex items-start gap-2 text-xs text-[#3D3934] bg-[#FFFDF9] p-2.5 rounded-lg border border-[#E2DAC9]">
-                        <Check className="w-3.5 h-3.5 text-[#10B981] shrink-0 mt-0.5" />
-                        <span>{attr}</span>
-                      </div>
-                    ))}
+                <div className="space-y-2 text-xs text-[#44403C]">
+                  <div>
+                    <strong className="text-[#1C1917]">Stylistic Era:</strong> {visionAnalysis.historicalPeriod}
+                  </div>
+                  <div>
+                    <strong className="text-[#1C1917]">Key Motifs Identified:</strong> {visionAnalysis.detectedMotifs.join(' • ')}
                   </div>
                 </div>
 
-                <p className="text-xs text-[#5C554B] italic border-t border-[#E2DAC9] pt-3">
-                  {visionAnalysisResult.verifiedNotes}
-                </p>
-
-                <div className="pt-2">
-                  <Link
-                    href={`/artifact/${visionAnalysisResult.museumMatch.id}`}
-                    className="inline-flex items-center gap-1.5 text-xs font-serif-display uppercase font-bold text-[#BE4D2A] hover:underline"
-                  >
-                    <span>View Full Accession Dossier in Museum Catalog →</span>
-                  </Link>
+                <div className="p-3 rounded-lg bg-[#FAF7F0] border border-[#E7E1D4] text-[11px] text-[#57534E]">
+                  <strong className="text-[#1C1917]">Educational Disclaimer:</strong> Visual iconography identifier is an AI analysis tool for educational study and does not replace peer-reviewed archaeological dating.
                 </div>
               </div>
             )}
           </div>
         )}
+
       </div>
     </div>
   );

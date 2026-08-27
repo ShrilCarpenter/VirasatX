@@ -2,10 +2,9 @@
 
 import React, { useState } from 'react';
 import Link from 'next/link';
-import { MapPin, ArrowRight, Compass, Sparkles } from 'lucide-react';
+import { MapPin, ArrowRight, Compass } from 'lucide-react';
 import { HeritageRegion } from '@/types';
 import { ARTIFACTS_DATA } from '@/data/artifactsData';
-import { HERITAGE_MAP_SITES } from '@/data/heritageMapData';
 
 export default function RegionExplorer() {
   const [selectedRegion, setSelectedRegion] = useState<HeritageRegion>('South');
@@ -15,83 +14,93 @@ export default function RegionExplorer() {
       id: 'North',
       name: 'North India',
       hindi: 'उत्तर भारत',
-      states: 'Jammu & Kashmir, Himachal, Punjab, Haryana, UP, Uttarakhand, Delhi',
-      description: 'Himalayan monasteries, Kashmiri Kani shawls, Sarnath Ashoka edicts, Vedic riverbanks, and Mughal monumental marble.'
+      states: 'Jammu & Kashmir, Himachal, Punjab, Haryana, Uttar Pradesh, Uttarakhand, Delhi',
+      description: 'Himalayan monasteries, Kashmiri Kani shawls, Sarnath Ashoka edicts, and the living spiritual ghats of Varanasi.'
     },
     {
       id: 'South',
       name: 'South India',
       hindi: 'दक्षिण भारत',
       states: 'Tamil Nadu, Karnataka, Kerala, Andhra Pradesh, Telangana',
-      description: 'Chola lost-wax bronzes, Brihadisvara granite towers, Vijayanagara Hampi, Kathakali dance-theatre, and Mysore Bidriware.'
+      description: 'Chola lost-wax panchaloha bronzes, Brihadisvara granite towers, Vijayanagara Hampi, and Kathakali dance-theatre.'
     },
     {
       id: 'East',
       name: 'East India',
       hindi: 'पूर्वी भारत',
       states: 'Bihar, Odisha, West Bengal, Jharkhand',
-      description: 'Nalanda Buddhist university, Konark Sun Temple sundials, Puri Pattachitra scrolls, and Didarganj Yakshi sculptures.'
+      description: 'Nalanda ancient university, Konark Sun Temple sundials, Puri Pattachitra scrolls, and Didarganj Yakshi sculptures.'
     },
     {
       id: 'West',
       name: 'West India',
       hindi: 'पश्चिम भारत',
       states: 'Maharashtra, Gujarat, Rajasthan, Goa',
-      description: 'Ajanta rock frescoes, Ellora Kailasa monolith, Patan Patola double-ikat, Dholavira Harappan citadel, and desert Rogan art.'
+      description: 'Ajanta Buddhist rock frescoes, Ellora Kailasa monolith, Patan Patola double-ikat, and Dholavira Harappan citadel.'
     },
     {
       id: 'Central',
       name: 'Central India',
       hindi: 'मध्य भारत',
       states: 'Madhya Pradesh, Chhattisgarh',
-      description: 'Sanchi Buddhist toranas, Khajuraho temples, Bastar tribal Dhokra lost-wax metallurgy, and Bhimbetka prehistoric shelters.'
+      description: 'Sanchi Great Stupa toranas, Khajuraho temples, and Bastar tribal Dhokra lost-wax metallurgy.'
     },
     {
       id: 'Northeast',
       name: 'Northeast India',
       hindi: 'पूर्वोत्तर भारत',
-      states: 'Assam, Meghalaya, Arunachal, Nagaland, Manipur, Mizoram, Tripura, Sikkim',
-      description: 'Majuli river island Sattras, Sattriya classical dance, sacred living root bridges, Muga golden silk, and tribal weaving lore.'
+      states: 'Assam, Meghalaya, Arunachal Pradesh, Nagaland, Manipur, Mizoram, Tripura, Sikkim',
+      description: 'Majuli river island Sattras, Sattriya classical dance, sacred living root bridges, and indigenous weaving traditions.'
     }
   ];
 
   const currentRegionMeta = regions.find(r => r.id === selectedRegion) || regions[1];
   const regionArtifacts = ARTIFACTS_DATA.filter(a => a.region === selectedRegion);
-  const regionSites = HERITAGE_MAP_SITES.filter(s => s.region === selectedRegion);
 
   return (
-    <section className="w-full py-24 bg-[#F4EFE2] border-t border-[#E2DAC9]">
+    <section className="w-full py-20 bg-[#F4EFE6] border-b border-[#E7E1D4]">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        
         {/* Section Header */}
-        <div className="text-center max-w-3xl mx-auto mb-14">
-          <div className="inline-flex items-center gap-2 text-xs font-serif-display uppercase font-bold tracking-widest text-[#BE4D2A] mb-2">
-            <Compass className="w-4 h-4" />
-            <span>Geographic Heritage Atlas</span>
+        <div className="flex flex-col md:flex-row md:items-end justify-between mb-10 gap-4">
+          <div>
+            <div className="inline-flex items-center gap-2 text-xs font-sans uppercase font-bold tracking-widest text-[#9A3412] mb-1.5">
+              <Compass className="w-3.5 h-3.5" />
+              <span>Geographic Heritage Atlas</span>
+            </div>
+            <h2 className="font-serif-display text-3xl sm:text-4xl font-bold text-[#1C1A17]">
+              Explore by Region
+            </h2>
+            <p className="font-serif-editorial text-lg text-[#57534E] mt-1 max-w-xl">
+              Discover cultural heritage across the six geographic regions of the Indian subcontinent.
+            </p>
           </div>
-          <h2 className="font-serif-display text-3xl sm:text-4xl lg:text-5xl font-bold text-[#1C1A17]">
-            Explore by Region
-          </h2>
-          <p className="font-serif-editorial text-lg sm:text-xl text-[#5C554B] mt-2">
-            Navigate the extraordinary cultural diversity across all six geographic zones of the Indian subcontinent.
-          </p>
+
+          <Link
+            href="/map"
+            className="inline-flex items-center gap-1.5 text-xs font-sans font-bold uppercase tracking-wider text-[#9A3412] hover:text-[#7C2D12] group"
+          >
+            <span>Open Interactive Heritage Map</span>
+            <ArrowRight className="w-3.5 h-3.5 group-hover:translate-x-0.5 transition-transform" />
+          </Link>
         </div>
 
         {/* Region Selector Pills */}
-        <div className="flex flex-wrap items-center justify-center gap-2 sm:gap-3 mb-12">
+        <div className="flex flex-wrap items-center gap-2 mb-8">
           {regions.map(r => {
             const isSelected = selectedRegion === r.id;
             return (
               <button
                 key={r.id}
                 onClick={() => setSelectedRegion(r.id)}
-                className={`px-5 py-2.5 rounded-full text-xs sm:text-sm font-serif-display uppercase font-bold tracking-wider transition-all duration-200 ${
+                className={`px-4 py-2 rounded-full text-xs font-sans font-semibold transition-all ${
                   isSelected
-                    ? 'bg-[#1C1A17] text-[#E6CD92] shadow-md scale-105 border border-[#C5A059]'
-                    : 'bg-[#FFFDF9] text-[#3D3934] border border-[#E2DAC9] hover:border-[#C5A059] hover:bg-[#FAF7F0]'
+                    ? 'bg-[#9A3412] text-white shadow-sm'
+                    : 'bg-[#FFFFFF] text-[#44403C] border border-[#E7E1D4] hover:border-[#9A3412]/50 hover:bg-[#FBF9F4]'
                 }`}
               >
                 <span>{r.name}</span>
-                <span className={`text-[10px] ml-1.5 opacity-80 ${isSelected ? 'text-[#E6CD92]' : 'text-[#8C8275]'}`}>
+                <span className={`text-[10px] ml-1 opacity-75 ${isSelected ? 'text-white' : 'text-[#78716C]'}`}>
                   ({r.hindi})
                 </span>
               </button>
@@ -99,45 +108,38 @@ export default function RegionExplorer() {
           })}
         </div>
 
-        {/* Region Content Display Card */}
-        <div className="bg-[#FFFDF9] border border-[#E2DAC9] rounded-2xl p-6 sm:p-10 shadow-lg space-y-8">
-          {/* Overview Banner */}
-          <div className="flex flex-col md:flex-row md:items-center justify-between pb-6 border-b border-[#E2DAC9]/80 gap-4">
+        {/* Region Card */}
+        <div className="bg-[#FFFFFF] border border-[#E7E1D4] rounded-2xl p-6 sm:p-8 shadow-sm space-y-6">
+          <div className="flex flex-col sm:flex-row sm:items-center justify-between pb-4 border-b border-[#E7E1D4] gap-2">
             <div>
-              <div className="flex items-center gap-3">
-                <h3 className="font-serif-display text-2xl sm:text-3xl font-bold text-[#1C1A17]">
-                  {currentRegionMeta.name}
-                </h3>
-                <span className="text-sm font-serif-display font-medium text-[#BE4D2A]">
-                  {currentRegionMeta.hindi}
-                </span>
-              </div>
-              <p className="text-xs text-[#8C8275] font-mono mt-1">
-                States: {currentRegionMeta.states}
+              <h3 className="font-serif-display text-2xl font-bold text-[#1C1A17]">
+                {currentRegionMeta.name}
+              </h3>
+              <p className="text-xs text-[#78716C] mt-0.5">
+                {currentRegionMeta.states}
               </p>
             </div>
-
             <Link
               href={`/map?region=${selectedRegion}`}
-              className="inline-flex items-center gap-2 px-5 py-2 rounded-full bg-[#FAF7F0] border border-[#C5A059] text-xs font-serif-display font-bold uppercase tracking-wider text-[#BE4D2A] hover:bg-[#BE4D2A] hover:text-white transition-all shadow-sm"
+              className="inline-flex items-center gap-1.5 px-4 py-1.5 rounded-full bg-[#FBF9F4] border border-[#E7E1D4] text-xs font-sans font-medium text-[#9A3412] hover:bg-[#F4EFE6] self-start sm:self-auto"
             >
               <MapPin className="w-3.5 h-3.5" />
-              <span>Open on Heritage Map</span>
+              <span>Locate on Map</span>
             </Link>
           </div>
 
-          <p className="text-base text-[#3D3934] leading-relaxed">
+          <p className="text-sm text-[#44403C] leading-relaxed">
             {currentRegionMeta.description}
           </p>
 
-          {/* Featured Regional Artifacts Grid */}
+          {/* Regional Artifacts Grid */}
           <div>
             <div className="flex items-center justify-between mb-4">
-              <h4 className="text-xs font-bold uppercase tracking-widest text-[#8C8275]">
-                Masterpiece Artifacts from {currentRegionMeta.name} ({regionArtifacts.length} Catalogued)
-              </h4>
-              <Link href={`/explore?region=${selectedRegion}`} className="text-xs font-semibold text-[#BE4D2A] hover:underline">
-                View all →
+              <span className="text-xs font-bold uppercase tracking-wider text-[#78716C]">
+                Curated Artifacts from {currentRegionMeta.name}:
+              </span>
+              <Link href={`/explore?region=${selectedRegion}`} className="text-xs font-semibold text-[#9A3412] hover:underline">
+                View all in {currentRegionMeta.name} →
               </Link>
             </div>
 
@@ -146,31 +148,29 @@ export default function RegionExplorer() {
                 <Link
                   key={art.id}
                   href={`/artifact/${art.id}`}
-                  className="group rounded-xl border border-[#E2DAC9] overflow-hidden bg-[#FAF7F0] hover:border-[#BE4D2A] hover:shadow-md transition-all flex flex-col"
+                  className="group rounded-xl border border-[#E7E1D4] overflow-hidden bg-[#FBF9F4] hover:border-[#9A3412]/50 hover:bg-[#FFFFFF] transition-all flex flex-col justify-between"
                 >
-                  <div className="relative h-44 overflow-hidden bg-stone-900">
+                  <div className="relative h-44 overflow-hidden bg-stone-100">
                     {/* eslint-disable-next-line @next/next/no-img-element */}
                     <img
                       src={art.imageUrl}
                       alt={art.title}
-                      className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                      className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
                     />
-                    <div className="absolute top-3 left-3 px-2.5 py-0.5 rounded-full text-[10px] font-mono bg-[#1C1A17]/80 text-[#E6CD92] border border-[#C5A059]/40">
+                    <div className="absolute top-3 left-3 px-2 py-0.5 rounded text-[10px] font-sans font-medium bg-white/90 text-[#44403C] shadow-sm">
                       {art.category}
                     </div>
                   </div>
-                  <div className="p-4 flex-1 flex flex-col justify-between">
-                    <div>
-                      <h5 className="font-serif-display text-base font-bold text-[#1C1A17] group-hover:text-[#BE4D2A] transition-colors line-clamp-1">
-                        {art.title}
-                      </h5>
-                      <p className="text-xs text-[#8C8275] mt-1">
-                        {art.period} • {art.location}, {art.state}
-                      </p>
-                    </div>
-                    <div className="pt-3 mt-3 border-t border-[#E2DAC9]/60 flex items-center justify-between text-xs font-semibold text-[#BE4D2A]">
-                      <span>Inspect Artifact</span>
-                      <ArrowRight className="w-3.5 h-3.5 group-hover:translate-x-1 transition-transform" />
+                  <div className="p-4 space-y-2">
+                    <h4 className="font-serif-display text-base font-bold text-[#1C1A17] group-hover:text-[#9A3412] transition-colors line-clamp-1">
+                      {art.title}
+                    </h4>
+                    <p className="text-xs text-[#78716C]">
+                      {art.period} • {art.location}, {art.state}
+                    </p>
+                    <div className="pt-2 border-t border-[#E7E1D4] flex items-center justify-between text-xs font-semibold text-[#9A3412]">
+                      <span>Examine Artifact</span>
+                      <ArrowRight className="w-3.5 h-3.5 group-hover:translate-x-0.5 transition-transform" />
                     </div>
                   </div>
                 </Link>
@@ -178,6 +178,7 @@ export default function RegionExplorer() {
             </div>
           </div>
         </div>
+
       </div>
     </section>
   );

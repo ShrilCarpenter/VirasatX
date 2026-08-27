@@ -2,102 +2,105 @@
 
 import React from 'react';
 import Link from 'next/link';
-import { Compass, Sparkles, Eye, ArrowRight, ShieldCheck, Volume2 } from 'lucide-react';
+import { Compass, Sparkles, ArrowRight, ShieldCheck, Landmark } from 'lucide-react';
 
 export default function HeroSection() {
   return (
-    <section className="relative w-full min-h-[92vh] flex items-center justify-center overflow-hidden bg-[#161513] text-[#FAF7F0]">
-      {/* Background Cinematic Visual with Multi-Layer Gradient Overlays */}
-      <div className="absolute inset-0 z-0">
-        {/* eslint-disable-next-line @next/next/no-img-element */}
-        <img
-          src="https://images.unsplash.com/photo-1599818458999-f2c9e782e2c3?auto=format&fit=crop&w=2000&q=90"
-          alt="Virasat AI Indian Heritage Digital Museum"
-          className="w-full h-full object-cover object-right md:object-center brightness-[0.42] scale-105 transition-transform duration-1000 ease-out"
-        />
-        {/* Editorial Gradients for readability */}
-        <div className="absolute inset-0 bg-gradient-to-r from-[#141311] via-[#141311]/85 to-transparent md:w-3/4" />
-        <div className="absolute inset-0 bg-gradient-to-t from-[#141311] via-transparent to-[#141311]/60" />
-        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-transparent via-[#141311]/30 to-[#141311]/90" />
-      </div>
-
-      {/* Foreground Content Container */}
-      <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20 lg:py-28 w-full">
-        <div className="max-w-3xl space-y-8">
-          {/* Top Tagline Badge */}
-          <div className="inline-flex items-center gap-2.5 px-4 py-1.5 rounded-full bg-[#2A2621]/90 border border-[#C5A059]/40 backdrop-blur-md shadow-xl">
-            <span className="w-2 h-2 rounded-full bg-[#BE4D2A] animate-pulse" />
-            <span className="text-xs uppercase font-serif-display font-semibold tracking-widest text-[#E6CD92]">
-              Smart India Hackathon 2026 • Heritage & Culture
-            </span>
-          </div>
-
-          {/* Main Editorial Headline */}
-          <div className="space-y-3">
-            <h1 className="font-serif-display text-4xl sm:text-6xl lg:text-7xl font-bold tracking-tight text-[#FAF7F0] leading-[1.1]">
-              India’s Heritage, <br />
-              <span className="gold-gradient-text">Reimagined.</span>
-            </h1>
-            <p className="font-serif-editorial text-xl sm:text-2xl text-[#E8DFC8] font-normal leading-relaxed max-w-2xl pt-2">
-              Discover thousands of years of ancient sculptures, illuminated manuscripts, temple architecture, master artisans, and living traditions through an intelligent digital museum.
-            </p>
-          </div>
-
-          {/* CTAs */}
-          <div className="flex flex-wrap items-center gap-4 pt-2">
-            <Link
-              href="/explore"
-              className="flex items-center gap-2.5 px-7 py-3.5 rounded-full bg-gradient-to-r from-[#BE4D2A] via-[#C85A32] to-[#98381A] text-[#FFFDF9] font-serif-display font-bold text-sm tracking-wider uppercase shadow-xl hover:shadow-[#BE4D2A]/30 hover:scale-105 active:scale-95 transition-all duration-200"
-            >
-              <Compass className="w-4 h-4" />
-              <span>Explore the Museum</span>
-              <ArrowRight className="w-4 h-4 ml-0.5" />
-            </Link>
-
-            <Link
-              href="/ai-guide"
-              className="flex items-center gap-2.5 px-6 py-3.5 rounded-full bg-[#24211D]/90 hover:bg-[#332E27] text-[#E6CD92] border border-[#C5A059]/50 font-serif-display font-semibold text-sm tracking-wider uppercase backdrop-blur-md shadow-lg hover:border-[#C5A059] transition-all"
-            >
-              <Sparkles className="w-4 h-4 text-[#C5A059]" />
-              <span>Ask the AI Guide</span>
-            </Link>
-
-            <Link
-              href="/gallery/gupta-golden-hall"
-              className="flex items-center gap-2 px-5 py-3.5 rounded-full text-xs font-serif-display tracking-widest text-[#D4C8B2] hover:text-[#FAF7F0] transition-colors"
-            >
-              <Eye className="w-4 h-4 text-[#C5A059]" />
-              <span>Enter 3D Virtual Gallery</span>
-            </Link>
-          </div>
-
-          {/* Quick Metrics Bar */}
-          <div className="pt-8 grid grid-cols-2 sm:grid-cols-4 gap-6 border-t border-[#38332C]/80 max-w-2xl">
-            <div>
-              <p className="font-serif-display text-2xl sm:text-3xl font-bold text-[#E6CD92]">10,000+</p>
-              <p className="text-xs uppercase tracking-wider text-[#A89F91]">Digital Artifacts</p>
+    <section className="relative w-full py-16 sm:py-24 bg-[#FBF9F4] border-b border-[#E7E1D4]">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-center">
+          
+          {/* Left Editorial Content Column */}
+          <div className="lg:col-span-6 space-y-8">
+            {/* Museum Institutional Badge */}
+            <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-[#FFFFFF] border border-[#E7E1D4] shadow-sm">
+              <span className="w-2 h-2 rounded-full bg-[#9A3412]" />
+              <span className="text-xs font-sans font-medium text-[#78716C] tracking-wide">
+                Smart India Hackathon 2026 • Heritage & Culture Prototype
+              </span>
             </div>
-            <div>
-              <p className="font-serif-display text-2xl sm:text-3xl font-bold text-[#E6CD92]">28</p>
-              <p className="text-xs uppercase tracking-wider text-[#A89F91]">States & UTs</p>
+
+            {/* Main Editorial Headline */}
+            <div className="space-y-4">
+              <h1 className="font-serif-display text-4xl sm:text-5xl lg:text-6xl font-bold tracking-tight text-[#1C1917] leading-[1.15]">
+                India’s Heritage, <br />
+                <span className="text-[#9A3412] italic font-normal">Reimagined.</span>
+              </h1>
+              <p className="font-serif-editorial text-xl sm:text-2xl text-[#57534E] font-normal leading-relaxed max-w-xl">
+                Explore India’s art, architecture, manuscripts and living traditions through an intelligent digital museum.
+              </p>
             </div>
-            <div>
-              <p className="font-serif-display text-2xl sm:text-3xl font-bold text-[#E6CD92]">11</p>
-              <p className="text-xs uppercase tracking-wider text-[#A89F91]">Historical Epochs</p>
+
+            {/* CTAs: Clean Primary & Secondary only */}
+            <div className="flex flex-wrap items-center gap-4 pt-2">
+              <Link
+                href="/explore"
+                className="flex items-center gap-2 px-6 py-3.5 rounded-full bg-[#9A3412] hover:bg-[#7C2D12] text-white font-sans font-semibold text-sm transition-all shadow-sm group"
+              >
+                <Compass className="w-4 h-4" />
+                <span>Explore the Museum</span>
+                <ArrowRight className="w-4 h-4 group-hover:translate-x-0.5 transition-transform" />
+              </Link>
+
+              <Link
+                href="/ai-guide"
+                className="flex items-center gap-2 px-6 py-3.5 rounded-full bg-[#FFFFFF] hover:bg-[#F4EFE6] text-[#1C1917] border border-[#E7E1D4] hover:border-[#9A3412] font-sans font-semibold text-sm transition-all shadow-sm"
+              >
+                <Sparkles className="w-4 h-4 text-[#B45309]" />
+                <span>Meet the AI Heritage Guide</span>
+              </Link>
             </div>
-            <div>
-              <p className="font-serif-display text-2xl sm:text-3xl font-bold text-[#E6CD92]">12+</p>
-              <p className="text-xs uppercase tracking-wider text-[#A89F91]">Indian Languages</p>
+
+            {/* Editorial Museum Meta Highlight */}
+            <div className="pt-6 border-t border-[#E7E1D4] grid grid-cols-3 gap-4 text-xs">
+              <div>
+                <span className="font-bold text-[#1C1917] block">5,000+ Years</span>
+                <span className="text-[#78716C]">Civilizational History</span>
+              </div>
+              <div>
+                <span className="font-bold text-[#1C1917] block">28 States & UTs</span>
+                <span className="text-[#78716C]">Regional Collections</span>
+              </div>
+              <div>
+                <span className="font-bold text-[#1C1917] block">Curated Archive</span>
+                <span className="text-[#78716C]">ASI Verified Metadata</span>
+              </div>
             </div>
           </div>
-        </div>
-      </div>
 
-      {/* Subtle bottom scroll anchor */}
-      <div className="absolute bottom-6 left-1/2 -translate-x-1/2 z-10 hidden md:flex flex-col items-center gap-1.5 text-[#8C8275] text-[11px] uppercase font-sans tracking-widest">
-        <span>Scroll to Explore</span>
-        <div className="w-4 h-7 border border-[#C5A059]/40 rounded-full flex justify-center pt-1">
-          <div className="w-1 h-1.5 bg-[#C5A059] rounded-full animate-bounce" />
+          {/* Right Museum Visual Frame Column */}
+          <div className="lg:col-span-6">
+            <div className="relative rounded-2xl overflow-hidden bg-[#FFFFFF] border border-[#E7E1D4] p-3 sm:p-4 shadow-md">
+              {/* Museum Framed Photograph */}
+              <div className="relative h-[380px] sm:h-[460px] overflow-hidden rounded-xl bg-stone-100">
+                {/* eslint-disable-next-line @next/next/no-img-element */}
+                <img
+                  src="https://images.unsplash.com/photo-1599818458999-f2c9e782e2c3?auto=format&fit=crop&w=1200&q=85"
+                  alt="Chola Bronze Nataraja Artifact"
+                  className="w-full h-full object-cover object-center brightness-[0.96]"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent pointer-events-none" />
+              </div>
+
+              {/* Museum Institutional Caption Plaque */}
+              <div className="pt-3 px-2 flex items-center justify-between text-xs text-[#78716C]">
+                <div>
+                  <strong className="text-[#1C1917] font-serif-display text-sm block">
+                    Nataraja — Lord of the Cosmic Dance
+                  </strong>
+                  <span>Chola Dynasty • 11th Century CE • Tamil Nadu</span>
+                </div>
+                <Link
+                  href="/artifact/chola-bronze-nataraja"
+                  className="text-xs font-semibold text-[#9A3412] hover:underline flex items-center gap-1 shrink-0"
+                >
+                  <span>View Artifact</span>
+                  <ArrowRight className="w-3 h-3" />
+                </Link>
+              </div>
+            </div>
+          </div>
+
         </div>
       </div>
     </section>

@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useState, useRef } from 'react';
+import React, { useState } from 'react';
 import { RotateCw, Sun, ZoomIn, ZoomOut, Maximize2, Sparkles, Layers } from 'lucide-react';
 import { Artifact } from '@/types';
 
@@ -38,50 +38,50 @@ export default function ArtifactViewer3D({ artifact }: ArtifactViewer3DProps) {
     setLightingAngle(45);
   };
 
-  // Lighting studio gradient calculation
+  // Lighting studio calculation
   const lightX = 50 + Math.cos((lightingAngle * Math.PI) / 180) * 40;
   const lightY = 50 + Math.sin((lightingAngle * Math.PI) / 180) * 40;
 
   return (
-    <div className="relative w-full rounded-3xl overflow-hidden bg-[#141311] border border-[#C5A059]/40 shadow-2xl flex flex-col select-none">
+    <div className="relative w-full rounded-2xl overflow-hidden bg-[#FFFFFF] border border-[#E7E1D4] shadow-sm flex flex-col select-none">
       {/* Top Controls Bar */}
-      <div className="px-6 py-4 bg-[#1C1A17] border-b border-[#332E27] flex flex-wrap items-center justify-between gap-4 z-10">
-        <div className="flex items-center gap-3">
-          <span className="w-2.5 h-2.5 rounded-full bg-[#BE4D2A] animate-pulse" />
-          <span className="font-serif-display text-xs uppercase font-bold tracking-widest text-[#E6CD92]">
+      <div className="px-5 py-3.5 bg-[#F4EFE6] border-b border-[#E7E1D4] flex flex-wrap items-center justify-between gap-3 z-10">
+        <div className="flex items-center gap-2">
+          <span className="w-2 h-2 rounded-full bg-[#9A3412]" />
+          <span className="text-xs font-sans font-semibold text-[#1C1917]">
             3D Archival Inspection Studio
           </span>
         </div>
 
         {/* Mode Switcher */}
-        <div className="flex items-center gap-1.5 bg-[#26231E] p-1 rounded-xl border border-[#38332C]">
+        <div className="flex items-center gap-1 bg-[#FFFFFF] p-1 rounded-lg border border-[#E7E1D4]">
           <button
             onClick={() => setActiveViewMode('standard')}
-            className={`px-3 py-1 rounded-lg text-xs font-serif-display uppercase tracking-wider transition-colors ${
+            className={`px-3 py-1 rounded-md text-xs font-sans font-medium transition-colors ${
               activeViewMode === 'standard'
-                ? 'bg-[#BE4D2A] text-white font-bold'
-                : 'text-[#A89F91] hover:text-white'
+                ? 'bg-[#9A3412] text-white font-semibold'
+                : 'text-[#57534E] hover:text-[#1C1917]'
             }`}
           >
             360° Rotate
           </button>
           <button
             onClick={() => setActiveViewMode('lighting')}
-            className={`px-3 py-1 rounded-lg text-xs font-serif-display uppercase tracking-wider transition-colors flex items-center gap-1 ${
+            className={`px-3 py-1 rounded-md text-xs font-sans font-medium transition-colors flex items-center gap-1 ${
               activeViewMode === 'lighting'
-                ? 'bg-[#C5A059] text-[#1C1A17] font-bold'
-                : 'text-[#A89F91] hover:text-white'
+                ? 'bg-[#9A3412] text-white font-semibold'
+                : 'text-[#57534E] hover:text-[#1C1917]'
             }`}
           >
             <Sun className="w-3 h-3" />
-            <span>Lighting Studio</span>
+            <span>Lighting</span>
           </button>
           <button
             onClick={() => setActiveViewMode('inspection')}
-            className={`px-3 py-1 rounded-lg text-xs font-serif-display uppercase tracking-wider transition-colors flex items-center gap-1 ${
+            className={`px-3 py-1 rounded-md text-xs font-sans font-medium transition-colors flex items-center gap-1 ${
               activeViewMode === 'inspection'
-                ? 'bg-[#6366F1] text-white font-bold'
-                : 'text-[#A89F91] hover:text-white'
+                ? 'bg-[#9A3412] text-white font-semibold'
+                : 'text-[#57534E] hover:text-[#1C1917]'
             }`}
           >
             <Layers className="w-3 h-3" />
@@ -92,92 +92,87 @@ export default function ArtifactViewer3D({ artifact }: ArtifactViewer3DProps) {
 
       {/* Main Interactive Stage */}
       <div
-        className="relative h-[460px] sm:h-[540px] flex items-center justify-center overflow-hidden cursor-grab active:cursor-grabbing"
+        className="relative h-[380px] sm:h-[460px] flex items-center justify-center overflow-hidden cursor-grab active:cursor-grabbing bg-stone-100/60"
         onMouseDown={handleMouseDown}
         onMouseMove={handleMouseMove}
         onMouseUp={handleMouseUp}
         onMouseLeave={handleMouseUp}
       >
-        {/* Dynamic Studio Spotlighting */}
+        {/* Dynamic Studio Lighting Overlay */}
         {activeViewMode === 'lighting' && (
           <div
-            className="absolute inset-0 pointer-events-none transition-all duration-75"
+            className="absolute inset-0 pointer-events-none transition-all duration-150"
             style={{
-              background: `radial-gradient(circle at ${lightX}% ${lightY}%, rgba(230, 205, 146, 0.25) 0%, transparent 65%)`
+              background: `radial-gradient(circle at ${lightX}% ${lightY}%, rgba(255, 255, 255, 0.6) 0%, rgba(220, 210, 195, 0.4) 60%, rgba(180, 170, 155, 0.5) 100%)`
             }}
           />
         )}
 
-        {/* Pedestal Shadow */}
-        <div className="absolute bottom-10 w-3/5 h-8 bg-black/60 rounded-full blur-xl pointer-events-none" />
-
-        {/* Artifact Image with dynamic transforms */}
+        {/* Artifact 3D Object Rendering */}
         <div
-          className="relative max-h-[85%] max-w-[85%] transition-transform duration-75 ease-out"
+          className="relative max-h-[85%] max-w-[85%] transition-transform duration-75 flex items-center justify-center"
           style={{
             transform: `scale(${zoomLevel}) rotateY(${rotationAngle}deg)`,
-            filter: activeViewMode === 'lighting' ? `brightness(${1 + Math.sin(rotationAngle * 0.05) * 0.15})` : 'none'
+            transformStyle: 'preserve-3d'
           }}
         >
           {/* eslint-disable-next-line @next/next/no-img-element */}
           <img
             src={artifact.imageUrl}
             alt={artifact.title}
-            className="max-h-[420px] object-contain drop-shadow-[0_20px_35px_rgba(0,0,0,0.8)] pointer-events-none"
+            className="max-h-[340px] sm:max-h-[400px] w-auto object-contain drop-shadow-lg"
+            draggable={false}
           />
         </div>
 
-        {/* Drag Hint Overlay */}
-        <div className="absolute bottom-4 left-6 pointer-events-none text-[11px] font-mono uppercase tracking-widest text-[#A89F91] flex items-center gap-2 bg-[#1C1A17]/80 px-3 py-1.5 rounded-full border border-[#332E27]">
-          <RotateCw className="w-3.5 h-3.5 text-[#C5A059] animate-spin" />
-          <span>Click & Drag to Rotate 360° ({Math.round(rotationAngle)}°)</span>
+        {/* Angle Overlay Badge */}
+        <div className="absolute top-3 left-3 px-2.5 py-1 rounded-md text-[10px] font-mono bg-[#FFFFFF]/90 text-[#57534E] border border-[#E7E1D4] shadow-sm">
+          Azimuth: {Math.round(rotationAngle)}°
         </div>
       </div>
 
-      {/* Bottom Tool Sliders */}
-      <div className="px-6 py-4 bg-[#1C1A17] border-t border-[#332E27] flex flex-wrap items-center justify-between gap-4">
-        {/* Zoom Controls */}
-        <div className="flex items-center gap-3">
+      {/* Bottom Tool Controls */}
+      <div className="px-5 py-3 bg-[#F4EFE6] border-t border-[#E7E1D4] flex flex-wrap items-center justify-between gap-3 text-xs text-[#57534E]">
+        <div className="flex items-center gap-2">
+          <span>Zoom:</span>
           <button
-            onClick={() => setZoomLevel(prev => Math.max(0.8, prev - 0.2))}
-            className="p-1.5 rounded-lg bg-[#26231E] text-[#D8CFBF] hover:bg-[#332E27] border border-[#38332C]"
+            onClick={() => setZoomLevel(Math.max(1, zoomLevel - 0.25))}
+            className="p-1 rounded bg-[#FFFFFF] border border-[#E7E1D4] hover:bg-[#FBF9F4]"
             title="Zoom Out"
           >
-            <ZoomOut className="w-4 h-4" />
+            <ZoomOut className="w-3.5 h-3.5" />
           </button>
-          <span className="text-xs font-mono text-[#E6CD92] w-12 text-center">
-            {Math.round(zoomLevel * 100)}%
+          <span className="font-mono text-[11px] w-10 text-center">
+            {(zoomLevel * 100).toFixed(0)}%
           </span>
           <button
-            onClick={() => setZoomLevel(prev => Math.min(2.5, prev + 0.2))}
-            className="p-1.5 rounded-lg bg-[#26231E] text-[#D8CFBF] hover:bg-[#332E27] border border-[#38332C]"
+            onClick={() => setZoomLevel(Math.min(2.5, zoomLevel + 0.25))}
+            className="p-1 rounded bg-[#FFFFFF] border border-[#E7E1D4] hover:bg-[#FBF9F4]"
             title="Zoom In"
           >
-            <ZoomIn className="w-4 h-4" />
+            <ZoomIn className="w-3.5 h-3.5" />
           </button>
         </div>
 
-        {/* Dynamic Light Slider if in lighting mode */}
         {activeViewMode === 'lighting' && (
-          <div className="flex items-center gap-2 text-xs text-[#A89F91]">
-            <Sun className="w-4 h-4 text-[#C5A059]" />
-            <span>Spotlight Angle:</span>
+          <div className="flex items-center gap-2">
+            <span>Light Angle:</span>
             <input
               type="range"
               min="0"
               max="360"
               value={lightingAngle}
               onChange={e => setLightingAngle(Number(e.target.value))}
-              className="w-28 accent-[#C5A059]"
+              className="w-24 accent-[#9A3412]"
             />
           </div>
         )}
 
         <button
           onClick={resetView}
-          className="text-xs font-mono uppercase tracking-wider text-[#A89F91] hover:text-[#FAF7F0] underline"
+          className="text-xs font-semibold text-[#9A3412] hover:underline"
         >
-          Reset View
+          Reset Studio
         </button>
       </div>
     </div>
