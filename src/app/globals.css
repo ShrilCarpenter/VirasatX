@@ -1,0 +1,130 @@
+@import "tailwindcss";
+
+@layer base {
+  :root {
+    --bg-parchment: #FAF7F0;
+    --bg-parchment-warm: #F4EFE2;
+    --bg-parchment-light: #FFFDF9;
+    --bg-card: #FFFFFF;
+    --text-charcoal: #1C1A17;
+    --text-charcoal-light: #3D3934;
+    --text-muted: #6B655D;
+    --antique-gold: #C5A059;
+    --antique-gold-light: #E0C287;
+    --terracotta: #BE4D2A;
+    --terracotta-dark: #98381A;
+    --saffron: #DE7525;
+    --heritage-indigo: #1C2B48;
+    --border-parchment: #E6DCB8;
+    --border-subtle: #EBE3D3;
+  }
+
+  body {
+    background-color: #FAF7F0;
+    color: #1C1A17;
+    font-family: var(--font-sans), 'Outfit', system-ui, -apple-system, sans-serif;
+    overflow-x: hidden;
+    selection-background-color: #C5A059;
+    selection-color: #1C1A17;
+  }
+
+  ::selection {
+    background: #C5A059;
+    color: #1C1A17;
+  }
+}
+
+/* Typography styles */
+.font-serif-display {
+  font-family: var(--font-serif-heading), 'Cinzel', 'Playfair Display', Georgia, serif;
+}
+
+.font-serif-editorial {
+  font-family: var(--font-serif-body), 'Cormorant Garamond', Garamond, Georgia, serif;
+}
+
+.font-sans-ui {
+  font-family: var(--font-sans), 'Outfit', 'Inter', -apple-system, sans-serif;
+}
+
+/* Custom Heritage Styling Classes */
+.parchment-texture {
+  background-color: #FAF7F0;
+  background-image: radial-gradient(#E8DFCE 0.75px, transparent 0.75px), radial-gradient(#E8DFCE 0.75px, #FAF7F0 0.75px);
+  background-size: 30px 30px;
+  background-position: 0 0, 15px 15px;
+}
+
+.museum-dark-surface {
+  background-color: #141311;
+  color: #F6F3ED;
+}
+
+.gold-gradient-text {
+  background: linear-gradient(135deg, #C5A059 0%, #E6CD92 50%, #9F7E3B 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.terracotta-gradient-text {
+  background: linear-gradient(135deg, #BE4D2A 0%, #E26A44 60%, #98381A 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.gold-border-glow {
+  border-color: rgba(197, 160, 89, 0.4);
+  box-shadow: 0 0 25px rgba(197, 160, 89, 0.12);
+}
+
+.museum-card-shadow {
+  box-shadow: 0 10px 30px -5px rgba(28, 26, 23, 0.06), 0 4px 6px -2px rgba(28, 26, 23, 0.03);
+}
+
+.museum-card-hover {
+  transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.museum-card-hover:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 20px 35px -10px rgba(190, 77, 42, 0.12), 0 10px 10px -5px rgba(28, 26, 23, 0.04);
+}
+
+/* Subtle Indian Motif Border */
+.indian-motif-border {
+  border-image: linear-gradient(to right, transparent, #C5A059, #BE4D2A, #C5A059, transparent) 1;
+}
+
+/* Custom Scrollbar for Archival feel */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: #F4EFE2;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #D4C6A9;
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #C5A059;
+}
+
+/* Glassmorphism restrained */
+.museum-glass {
+  background: rgba(255, 253, 249, 0.88);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(230, 220, 184, 0.7);
+}
+
+.museum-dark-glass {
+  background: rgba(20, 19, 17, 0.88);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(197, 160, 89, 0.25);
+}
