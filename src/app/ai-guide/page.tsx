@@ -29,7 +29,7 @@ export default function AIGuidePage() {
 You can ask me questions regarding Indian archaeology, lost-wax bronze casting, temple architectural mathematics, ancient manuscripts, or regional craft traditions.
 
 What aspect of Indian heritage would you like to explore today?`,
-      source: 'Archaeological Survey of India & National Museum New Delhi',
+      source: 'Virasat AI Curated Prototype Collection',
       followUps: [
         'What is the significance of Nataraja?',
         'How was the Kailasa Temple constructed?',

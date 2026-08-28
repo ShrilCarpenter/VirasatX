@@ -148,7 +148,7 @@ function MapContent() {
                         <span className="text-[10px] font-mono text-[#9A3412] font-semibold uppercase">
                           {site.state}
                         </span>
-                        {site.unescoWorldHeritage && (
+                        {site.unescoStatus && (
                           <span className="text-[9px] font-sans font-semibold uppercase bg-[#15803D] text-white px-1.5 py-0.5 rounded">
                             UNESCO
                           </span>
@@ -178,13 +178,17 @@ function MapContent() {
                   <img
                     src={activeSite.imageUrl}
                     alt={activeSite.name}
+                    loading="lazy"
                     className="w-full h-full object-cover"
                   />
-                  {activeSite.unescoWorldHeritage && (
+                  {activeSite.unescoStatus && (
                     <div className="absolute top-3 left-3 px-2.5 py-0.5 rounded-full text-[10px] font-sans font-semibold bg-[#15803D] text-white shadow-sm">
                       UNESCO World Heritage Site
                     </div>
                   )}
+                  <div className="absolute bottom-2 right-2 px-2 py-0.5 rounded text-[9px] font-sans bg-black/60 text-white/90">
+                    Representative Image
+                  </div>
                 </div>
 
                 {/* Info */}
@@ -201,11 +205,11 @@ function MapContent() {
                     </p>
                   </div>
 
-                  {/* Why it Matters */}
+                  {/* Overview */}
                   <div className="p-3.5 rounded-xl bg-[#FBF9F4] border border-[#E7E1D4] space-y-1">
-                    <strong className="text-xs font-bold text-[#1C1917] block">Why it matters:</strong>
+                    <strong className="text-xs font-bold text-[#1C1917] block">Overview:</strong>
                     <p className="text-xs text-[#57534E] leading-relaxed">
-                      {activeSite.description}
+                      {activeSite.fullDescription || activeSite.shortDescription}
                     </p>
                   </div>
 
@@ -248,7 +252,25 @@ function MapContent() {
 
 export default function MapPage() {
   return (
-    <Suspense fallback={<div className="min-h-screen bg-[#FBF9F4] flex items-center justify-center text-sm font-serif-display">Loading Heritage Map...</div>}>
+    <Suspense
+      fallback={
+        <div className="min-h-screen bg-[#FBF9F4]">
+          <div className="bg-[#F4EFE6] border-b border-[#E7E1D4] py-14 px-4 sm:px-6 lg:px-8">
+            <div className="max-w-7xl mx-auto space-y-3 animate-pulse">
+              <div className="h-5 bg-[#E7E1D4] rounded-full w-40" />
+              <div className="h-10 bg-[#E7E1D4] rounded w-64" />
+              <div className="h-4 bg-[#E7E1D4]/70 rounded w-96" />
+            </div>
+          </div>
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-8">
+            <div className="grid grid-cols-1 lg:grid-cols-12 gap-8">
+              <div className="lg:col-span-7 h-96 bg-white rounded-2xl border border-[#E7E1D4] animate-pulse" />
+              <div className="lg:col-span-5 h-96 bg-white rounded-2xl border border-[#E7E1D4] animate-pulse" />
+            </div>
+          </div>
+        </div>
+      }
+    >
       <MapContent />
     </Suspense>
   );

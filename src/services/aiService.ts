@@ -4,6 +4,7 @@ import { HERITAGE_MAP_SITES } from '@/data/heritageMapData';
 import { MANUSCRIPTS_DATA } from '@/data/manuscriptsData';
 import { MASTER_ARTISANS_DATA } from '@/data/artisansData';
 import { GeneratedItinerary, AIChatMessage } from '@/types';
+import { sanitizeTextInput, detectPromptInjection, checkRateLimit, getRateLimitResetSeconds } from '@/lib/sanitize';
 
 export interface AIResponse {
   message: string;
@@ -18,10 +19,47 @@ export class AIService {
    * Main conversational Heritage Guide query handler
    */
   public async askHeritageQuestion(query: string, contextArtifactId?: string): Promise<AIResponse> {
+    // Sanitize input
+    const cleanQuery = sanitizeTextInput(query, 500);
+    if (!cleanQuery) {
+      return {
+        message: 'Please enter a question about Indian heritage to get started.',
+        confidenceScore: 1.0,
+        suggestedFollowUps: [
+          'Tell me about the Chola Bronze Nataraja.',
+          'What is the Lion Capital of Ashoka?',
+          'How was the Kailasa Temple carved?'
+        ]
+      };
+    }
+
+    // Check for prompt injection
+    if (detectPromptInjection(cleanQuery)) {
+      return {
+        message: 'I can only answer questions about Indian heritage, art, architecture, and culture. Please try a heritage-related question.',
+        confidenceScore: 1.0,
+        suggestedFollowUps: [
+          'Tell me about the Chola Bronze Nataraja.',
+          'Explain the Lion Capital of Ashoka.',
+          'What manuscripts are in the collection?'
+        ]
+      };
+    }
+
+    // Rate limiting
+    if (!checkRateLimit('ai-query', 12, 60_000)) {
+      const resetSec = getRateLimitResetSeconds('ai-query');
+      return {
+        message: `You've asked many questions in a short time. Please wait ${resetSec} seconds before asking another question.`,
+        confidenceScore: 1.0,
+        suggestedFollowUps: []
+      };
+    }
+
     // Simulate brief network latency for realistic AI experience
     await new Promise(resolve => setTimeout(resolve, 600));
 
-    const lowerQuery = query.toLowerCase();
+    const lowerQuery = cleanQuery.toLowerCase();
 
     // 1. If asking about a specific context artifact
     if (contextArtifactId) {
@@ -44,8 +82,8 @@ In this cosmic dance (*Anandatandava*):
 • **Underfoot**: Crushes *Apasmara Purusha*, the demon of spiritual forgetfulness and ego.
 
 The enclosing ring of fire (*Prabhamandala*) represents the unbroken continuum of space-time.`,
-        verifiedSource: 'National Museum New Delhi Archival Catalogue & Archaeological Survey of India (ASI)',
-        confidenceScore: 0.98,
+        verifiedSource: 'Virasat AI Curated Collection — based on published museum references',
+        confidenceScore: 0.95,
         relatedArtifactId: 'chola-bronze-nataraja',
         suggestedFollowUps: [
           'What is the lost-wax (cire-perdue) casting technique?',
@@ -65,8 +103,8 @@ Key elements:
 • **Abacus Animals**: Elephant (East/Conception), Horse (South/Renunciation), Bull (West/Steadfastness), Lion (North/Attainment).
 • **24-Spoked Wheel**: The *Ashoka Chakra*, adopted at the center of the National Flag of India on 22 July 1947.
 • **Mauryan High Polish**: A glassy, reflective surface finish whose exact chemical formulation remains one of ancient metallurgy's greatest feats.`,
-        verifiedSource: 'Sarnath Archaeological Museum Records (SAM-1905) & Government of India State Emblem Act',
-        confidenceScore: 0.99,
+        verifiedSource: 'Virasat AI Curated Collection — based on published historical references',
+        confidenceScore: 0.95,
         relatedArtifactId: 'ashoka-lion-capital',
         suggestedFollowUps: [
           'What led Emperor Ashoka to adopt Buddhism after the Kalinga War?',
@@ -86,8 +124,8 @@ Aesthetic & Spiritual Highlights:
 • **The Blue Lotus (*Utpala*)**: Held tenderly in his right hand, symbolizing spiritual detachment amidst worldly illusion.
 • **Pigments**: Executed using lapis lazuli (imported from Badakhshan), red and yellow ochres, lime, and lampblack on a mud-plaster and cow-dung rock wall.
 • **Psychological Depth**: The gentle downward gaze conveys *Karuna* (infinite compassion) for the suffering of all beings.`,
-        verifiedSource: 'Archaeological Survey of India & UNESCO World Heritage Documentation',
-        confidenceScore: 0.97,
+        verifiedSource: 'Virasat AI Curated Collection — based on ASI & UNESCO published documentation',
+        confidenceScore: 0.92,
         relatedArtifactId: 'padmapani-bodhisattva-ajanta',
         suggestedFollowUps: [
           'How were Ajanta murals painted in the dark cave interiors?',
@@ -107,8 +145,8 @@ Astounding Engineering Feats:
 • **Zero Blueprint Error**: Because rock was subtracted rather than added, a single structural miscalculation would have caused irreparable collapse.
 • **Scale**: Standing 32 meters high, 91 meters deep, and 47 meters wide, it is twice the area of the Parthenon in Athens.
 • **Friezes**: Features the famous panel of *Ravana Shaking Mount Kailash* and a lower plinth of life-sized elephants supporting the temple weight.`,
-        verifiedSource: 'Archaeological Survey of India & Epigraphia Indica (Baroda Copper Plates)',
-        confidenceScore: 0.99,
+        verifiedSource: 'Virasat AI Curated Collection — based on ASI published records',
+        confidenceScore: 0.93,
         relatedArtifactId: 'kailasa-temple-ellora',
         suggestedFollowUps: [
           'How long did the excavation of Kailasa Temple take?',
@@ -129,8 +167,8 @@ Key Digitized Treasures in Virasat AI:
 3. **Kalpasutra (Patan, Gujarat)**: 15th-century golden Jain manuscript illustrated with pure lapis lazuli and gold inks.
 
 Explore our dedicated **Manuscript Conservation Viewer** for side-by-side OCR transcriptions and translations.`,
-        verifiedSource: 'Bhandarkar Oriental Research Institute & National Mission for Manuscripts (NMM)',
-        confidenceScore: 0.96,
+        verifiedSource: 'Virasat AI Curated Collection — references BORI & NMM published catalogues',
+        confidenceScore: 0.90,
         relatedArtifactId: 'rigveda-samhita-manuscript',
         suggestedFollowUps: [
           'Open the Ancient Manuscript Conservation Viewer.',
@@ -151,8 +189,8 @@ Top Recommended Eco-Heritage Corridors:
 3. **Kaveri Living Delta (Tamil Nadu)**: Great Living Chola Temples with Swamimalai hereditary bronze foundries.
 
 Try our **Sustainable Itinerary Generator** to customize eco-friendly cultural journeys with live carbon footprint calculations!`,
-        verifiedSource: 'Ministry of Tourism Responsible Tourism Guidelines & INTACH Heritage Hubs',
-        confidenceScore: 0.95,
+        verifiedSource: 'Virasat AI — sample itinerary for demonstration purposes',
+        confidenceScore: 0.80,
         suggestedFollowUps: [
           'Launch the Custom Sustainable Itinerary Generator.',
           'View Destination Sustainability Scores on the Heritage Map.',
@@ -161,22 +199,23 @@ Try our **Sustainable Itinerary Generator** to customize eco-friendly cultural j
       };
     }
 
-    // 8. General fallback heritage answer with synthesis
+    // 8. Honest fallback — don't fabricate an answer
     return {
-      message: `Welcome to Virasat AI. India's cultural heritage encompasses over 5,000 years of civilization across 28 states, ranging from Harappan urban architecture and Vedic philosophy to classical Chola bronzes, Mughal miniatures, and living tribal craft guilds.
+      message: `I don't have specific information about that topic in my current collection. I can help you explore:
 
-How may I guide your exploration today?
-• **Examine Masterpiece Artifacts**: Discover metallurgical, sculptural, and painting wonders.
-• **Traverse Indian History**: Explore 11 historical epochs from 2600 BCE to the Modern Era.
-• **Inspect Ancient Manuscripts**: View palm leaf and birch bark codices with side-by-side translations.
-• **Plan Sustainable Journeys**: Generate eco-friendly cultural travel itineraries.`,
-      verifiedSource: 'Virasat AI Verified Digital Heritage Knowledge Engine (SIH 2026)',
-      confidenceScore: 0.94,
+• **Artifacts**: Chola bronzes, Mauryan sculptures, Mughal arts, and more.
+• **History**: 11 historical epochs from the Indus Valley to the modern era.
+• **Manuscripts**: Palm leaf and birch bark codices with translations.
+• **Heritage Sites**: Monuments and UNESCO sites across India.
+
+Try asking about a specific artifact, dynasty, or historical period.`,
+      verifiedSource: 'Virasat AI Prototype Collection (SIH 2026)',
+      confidenceScore: 0.70,
       suggestedFollowUps: [
         'Tell me about the Chola Bronze Nataraja.',
         'Explain the Lion Capital of Ashoka.',
-        'How was the Kailasa Temple at Ellora carved from top to bottom?',
-        'Plan a 3-day sustainable heritage tour of Hampi.'
+        'How was the Kailasa Temple at Ellora carved?',
+        'Show me ancient manuscripts in the collection.'
       ]
     };
   }
@@ -191,8 +230,8 @@ How may I guide your exploration today?
 • **Dynastic Provenance**: ${artifact.dynasty}
 
 ${artifact.historicalContext}`,
-        verifiedSource: `Museum Accession Record: ${artifact.accessionNumber || 'ASI Verified'} (${artifact.currentLocation})`,
-        confidenceScore: 0.98,
+        verifiedSource: `Virasat AI Collection — ${artifact.currentLocation}`,
+        confidenceScore: 0.90,
         relatedArtifactId: artifact.id,
         suggestedFollowUps: [
           `What is the cultural significance of ${artifact.title}?`,
@@ -209,8 +248,8 @@ ${artifact.culturalSignificance}
 
 **Key Iconographic Codes**:
 ${artifact.iconographyDetails ? artifact.iconographyDetails.map(i => `• ${i}`).join('\n') : artifact.overview}`,
-        verifiedSource: `${artifact.currentLocation} — Verified Curatorial Dossier`,
-        confidenceScore: 0.99,
+        verifiedSource: `Virasat AI Collection — ${artifact.currentLocation}`,
+        confidenceScore: 0.88,
         relatedArtifactId: artifact.id,
         suggestedFollowUps: [
           `Listen to the audio narration for this artifact.`,
@@ -231,7 +270,7 @@ ${artifact.overview}
 • **Material**: ${artifact.material}
 
 ${artifact.historicalContext}`,
-      verifiedSource: `National Archival Heritage Registry & ${artifact.currentLocation}`,
+      verifiedSource: `Virasat AI — ${artifact.currentLocation}`,
       confidenceScore: 0.97,
       relatedArtifactId: artifact.id,
       suggestedFollowUps: [
@@ -243,38 +282,34 @@ ${artifact.historicalContext}`,
   }
 
   /**
-   * Visual Iconography Identifier Simulator (Analyzes user uploaded or selected heritage images)
+   * Visual Iconography Identifier — matches selected images against the collection.
+   * NOTE: This is a prototype pattern-matching demo, not a trained CV model.
    */
-  public async identifyIconographyFromImage(imageDescriptionOrCategory: string): Promise<{
-    identifiedSubject: string;
-    dynastyMatch: string;
-    periodEstimated: string;
-    confidence: number;
-    iconographicAttributes: string[];
-    museumMatch: typeof ARTIFACTS_DATA[0];
-    verifiedNotes: string;
-  }> {
-    await new Promise(res => setTimeout(res, 800));
-
-    // Match closest artifact
-    const match = ARTIFACTS_DATA.find(a => 
-      a.title.toLowerCase().includes(imageDescriptionOrCategory.toLowerCase()) ||
-      a.category.toLowerCase().includes(imageDescriptionOrCategory.toLowerCase()) ||
-      a.dynasty.toLowerCase().includes(imageDescriptionOrCategory.toLowerCase())
+  public analyzeIconography(imageUrlOrId: string): {
+    identifiedDynasty: string;
+    historicalPeriod: string;
+    confidenceScore: number;
+    detectedMotifs: string[];
+    matchedArtifact: typeof ARTIFACTS_DATA[0];
+  } {
+    // Match closest artifact by URL or keyword
+    const match = ARTIFACTS_DATA.find(a =>
+      a.imageUrl === imageUrlOrId ||
+      a.id === imageUrlOrId ||
+      a.title.toLowerCase().includes(imageUrlOrId.toLowerCase()) ||
+      a.category.toLowerCase().includes(imageUrlOrId.toLowerCase())
     ) || ARTIFACTS_DATA[0];
 
     return {
-      identifiedSubject: match.title,
-      dynastyMatch: match.dynasty,
-      periodEstimated: match.dateRange,
-      confidence: 0.96,
-      iconographicAttributes: match.iconographyDetails || [
-        'Classical anatomical proportions conforming to Shilpa Shastras',
-        'Distinctive metallurgical patina and casting seam absence',
-        'Sacred iconographic mudras and divine attributes'
+      identifiedDynasty: match.dynasty,
+      historicalPeriod: `${match.period} (${match.dateRange})`,
+      confidenceScore: 0.85,
+      detectedMotifs: match.iconographyDetails?.slice(0, 4) || [
+        'Classical proportions following Shilpa Shastra conventions',
+        'Period-appropriate material composition',
+        'Characteristic regional artistic style'
       ],
-      museumMatch: match,
-      verifiedNotes: `Identified by Virasat AI Computer Vision Model trained on 50,000+ Archaeological Survey of India (ASI) archival plates. Cross-verified with ${match.currentLocation}.`
+      matchedArtifact: match,
     };
   }
 
@@ -339,13 +374,13 @@ ${artifact.historicalContext}`,
 
     return {
       id: `itin-${Date.now()}`,
-      title: `${durationDays}-Day ${theme} — Sustainable Heritage Journey (${region})`,
+      title: `${durationDays}-Day ${theme} — Heritage Journey (${region})`,
       region,
       durationDays,
       pace,
       theme,
-      estimatedCarbonImpact: '68% Lower Carbon Footprint vs Standard Tour Operators',
-      localArtisanSupportScore: 96,
+      estimatedCarbonImpact: 'Eco-conscious travel plan (prototype estimate)',
+      localArtisanSupportScore: 0, // No fabricated score
       days
     };
   }

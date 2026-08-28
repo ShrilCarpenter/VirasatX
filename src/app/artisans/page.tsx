@@ -2,7 +2,7 @@
 
 import React from 'react';
 import Link from 'next/link';
-import { Award, Heart, ShieldCheck, MapPin, Compass, ExternalLink, Sparkles, Users } from 'lucide-react';
+import { Award, Heart, ShieldCheck, MapPin, Compass, ExternalLink, Sparkles, Users, Info } from 'lucide-react';
 import { MASTER_ARTISANS_DATA } from '@/data/artisansData';
 
 export default function ArtisansPage() {
@@ -29,6 +29,14 @@ export default function ArtisansPage() {
       {/* Main Container */}
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-8 space-y-8">
         
+        {/* Curatorial Note */}
+        <div className="p-4 rounded-xl bg-[#FFFFFF] border border-[#E7E1D4] flex items-start gap-3 text-xs text-[#57534E]">
+          <Info className="w-4 h-4 text-[#9A3412] shrink-0 mt-0.5" />
+          <p>
+            The master artisans profiled here represent recognized GI-tagged craft traditions across India. Biographical notes and technique descriptions are curated from published cultural documentation and artisan cooperatives.
+          </p>
+        </div>
+
         {/* Master Artisan Showcase Grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
           {MASTER_ARTISANS_DATA.map(artisan => (
@@ -43,6 +51,7 @@ export default function ArtisansPage() {
                   <img
                     src={artisan.craftImageUrl}
                     alt={artisan.craftName}
+                    loading="lazy"
                     className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent" />
@@ -66,9 +75,9 @@ export default function ArtisansPage() {
                 {/* Artisan Bio */}
                 <div className="p-5 space-y-3">
                   <div className="flex items-center gap-3">
-                    <div className="w-10 h-10 rounded-full overflow-hidden bg-stone-100 shrink-0 border border-[#E7E1D4]">
+                    <div className="w-10 h-10 rounded-full overflow-hidden bg-stone-100 shrink-0 border border-[#E7E1D4] relative">
                       {/* eslint-disable-next-line @next/next/no-img-element */}
-                      <img src={artisan.portraitUrl} alt={artisan.name} className="w-full h-full object-cover" />
+                      <img src={artisan.portraitUrl} alt={artisan.name} loading="lazy" className="w-full h-full object-cover" />
                     </div>
                     <div>
                       <h4 className="font-serif-display text-sm font-bold text-[#1C1917]">
@@ -83,13 +92,13 @@ export default function ArtisansPage() {
                   </p>
 
                   {/* Materials & Technique */}
-                  <div className="space-y-1 text-xs text-[#57534E] bg-[#FBF9F4] p-3 rounded-xl border border-[#E7E1D4]">
+                  <div className="space-y-1.5 text-xs text-[#57534E] bg-[#FBF9F4] p-3 rounded-xl border border-[#E7E1D4]">
                     <div>
                       <strong className="text-[#1C1917]">Technique:</strong> {artisan.techniqueSummary}
                     </div>
-                    <div className="pt-1 border-t border-[#E7E1D4]">
-                      <strong className="text-[#1C1917]">Sustainability Rating:</strong>{' '}
-                      <span className="text-[#15803D] font-bold">{artisan.sustainabilityRating}/100</span> (Eco Handcrafted)
+                    <div className="pt-1 border-t border-[#E7E1D4] flex items-center justify-between">
+                      <span className="text-[#78716C]">Craft Process:</span>
+                      <span className="text-[#15803D] font-semibold">100% Handcrafted & Natural Dyes</span>
                     </div>
                   </div>
                 </div>
@@ -99,7 +108,7 @@ export default function ArtisansPage() {
               <div className="p-5 pt-0">
                 <div className="p-2.5 rounded-lg bg-[#F4EFE6] border border-[#E7E1D4] text-[11px] text-[#78716C] flex items-center justify-between">
                   <span className="truncate pr-2">{artisan.contactCooperative}</span>
-                  <span className="text-[#9A3412] font-semibold uppercase shrink-0">Ethical Guild</span>
+                  <span className="text-[#9A3412] font-semibold uppercase shrink-0">Craft Guild</span>
                 </div>
               </div>
             </div>

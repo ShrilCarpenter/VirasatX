@@ -63,7 +63,7 @@ export default function HeroSection() {
               </div>
               <div>
                 <span className="font-bold text-[#1C1917] block">Curated Archive</span>
-                <span className="text-[#78716C]">ASI Verified Metadata</span>
+                <span className="text-[#78716C]">Digital Preservation</span>
               </div>
             </div>
           </div>
@@ -80,6 +80,9 @@ export default function HeroSection() {
                   className="w-full h-full object-cover object-center brightness-[0.96]"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent pointer-events-none" />
+                <div className="absolute bottom-3 right-3 px-2 py-0.5 rounded text-[10px] font-sans bg-black/60 text-white/90">
+                  Representative Photography
+                </div>
               </div>
 
               {/* Museum Institutional Caption Plaque */}

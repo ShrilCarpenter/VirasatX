@@ -1,52 +1,55 @@
-'use client';
-
 import React from 'react';
 import Link from 'next/link';
 import { ArrowRight, Layers } from 'lucide-react';
+import { ARTIFACTS_DATA } from '@/data/artifactsData';
 
 export default function FeaturedCollections() {
+  const getCategoryCount = (cat: string) => {
+    return ARTIFACTS_DATA.filter(a => a.category === cat).length;
+  };
+
   const collections = [
     {
       title: 'Ancient Sculptures',
       category: 'Sculptures',
       description: 'Lost-wax Chola bronzes, Mauryan polished sandstone, and classical stone icons.',
       imageUrl: 'https://images.unsplash.com/photo-1599818458999-f2c9e782e2c3?auto=format&fit=crop&w=800&q=80',
-      count: '320+ items',
+      count: `${getCategoryCount('Sculptures')} Curated Exhibits`,
     },
     {
       title: 'Classical Paintings',
       category: 'Paintings',
       description: 'Ajanta rock frescoes, Mughal court miniatures, Thanjavur gold-leaf and Pattachitra scrolls.',
       imageUrl: 'https://images.unsplash.com/photo-1590059390046-52c6755490a6?auto=format&fit=crop&w=800&q=80',
-      count: '450+ items',
+      count: `${getCategoryCount('Paintings')} Curated Exhibits`,
     },
     {
       title: 'Sacred Manuscripts',
       category: 'Manuscripts',
       description: 'Rigveda Sharada codices, Kautilya’s Arthashastra on palm leaf, and golden Kalpasutras.',
       imageUrl: 'https://images.unsplash.com/photo-1544716278-ca5e3f4abd8c?auto=format&fit=crop&w=800&q=80',
-      count: '180+ items',
+      count: `${getCategoryCount('Manuscripts')} Curated Exhibits`,
     },
     {
       title: 'Temple Architecture',
       category: 'Architecture',
       description: 'Monolithic Kailasa at Ellora, Dravidian granite vimanas of Thanjavur, and Konark sundials.',
       imageUrl: 'https://images.unsplash.com/photo-1588096344356-9a2a9cf2996d?auto=format&fit=crop&w=800&q=80',
-      count: '240+ items',
+      count: `${getCategoryCount('Architecture')} Curated Exhibits`,
     },
     {
       title: 'Folk Traditions',
       category: 'Dance',
       description: 'Kathakali dance-theatre kireedam masks, Bastar Dhokra casting, and living tribal heritage.',
       imageUrl: 'https://images.unsplash.com/photo-1598387993441-a364f854c3e1?auto=format&fit=crop&w=800&q=80',
-      count: '190+ items',
+      count: `${getCategoryCount('Dance')} Curated Exhibits`,
     },
     {
       title: 'Textiles & Crafts',
       category: 'Textiles',
       description: 'Kashmiri Kani pashmina, Patan Patola double ikat, Bidriware silver, and Varanasi zari.',
       imageUrl: 'https://images.unsplash.com/photo-1607604276583-eef5d076aa5f?auto=format&fit=crop&w=800&q=80',
-      count: '210+ items',
+      count: `${getCategoryCount('Textiles')} Curated Exhibits`,
     },
   ];
 

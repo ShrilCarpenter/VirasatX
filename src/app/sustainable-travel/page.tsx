@@ -4,9 +4,8 @@ import React, { useState } from 'react';
 import Link from 'next/link';
 import {
   Leaf, Compass, Shield, Users, Sparkles, Calendar,
-  MapPin, Check, Heart, Award, ArrowRight, ShieldCheck
+  MapPin, Check, Heart, Award, ArrowRight, ShieldCheck, Info
 } from 'lucide-react';
-import confetti from 'canvas-confetti';
 import { SUSTAINABLE_DESTINATIONS } from '@/data/sustainableDestinationsData';
 import { aiService } from '@/services/aiService';
 import { GeneratedItinerary } from '@/types';
@@ -30,18 +29,7 @@ export default function SustainableTravelPage() {
       });
       setGeneratedPlan(plan);
       setIsGenerating(false);
-
-      try {
-        confetti({
-          particleCount: 40,
-          spread: 50,
-          origin: { y: 0.6 },
-          colors: ['#9A3412', '#B45309', '#15803D']
-        });
-      } catch (e) {
-        // Fallback
-      }
-    }, 500);
+    }, 400);
   };
 
   return (
@@ -51,7 +39,7 @@ export default function SustainableTravelPage() {
         <div className="max-w-7xl mx-auto space-y-3">
           <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#FFFFFF] border border-[#E7E1D4] text-[#15803D] text-xs font-sans font-medium">
             <Leaf className="w-3.5 h-3.5 text-[#15803D]" />
-            <span>Responsible & Mindful Cultural Tourism</span>
+            <span>Responsible Heritage Travel</span>
           </div>
 
           <h1 className="font-serif-display text-3xl sm:text-5xl font-bold tracking-tight text-[#1C1917]">
@@ -59,7 +47,7 @@ export default function SustainableTravelPage() {
           </h1>
 
           <p className="font-serif-editorial text-lg sm:text-xl text-[#57534E] max-w-2xl">
-            Protect fragile stone monuments from overtourism while generating direct livelihoods for hereditary artisan families and local communities.
+            Guidelines and curated itineraries to protect historic monuments from overtourism while supporting hereditary artisan communities and local heritage trusts.
           </p>
         </div>
       </div>
@@ -78,7 +66,7 @@ export default function SustainableTravelPage() {
               </h2>
             </div>
             <span className="text-xs text-[#78716C]">
-              Audited against INTACH & Ministry of Tourism Guidelines
+              Curated travel guidelines for low-impact cultural exploration
             </span>
           </div>
 
@@ -94,10 +82,11 @@ export default function SustainableTravelPage() {
                     <img
                       src={dest.imageUrl}
                       alt={dest.name}
+                      loading="lazy"
                       className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
                     />
                     <div className="absolute top-3 left-3 px-2.5 py-0.5 rounded-full text-[10px] font-mono bg-[#FFFFFF]/90 text-[#15803D] border border-[#E7E1D4] shadow-sm">
-                      Eco-Score: {dest.sustainabilityScore}/100
+                      {dest.environmentalSensitivity}
                     </div>
                   </div>
 
@@ -114,13 +103,13 @@ export default function SustainableTravelPage() {
                         <strong>Best Visiting Season:</strong> {dest.bestVisitingPeriod}
                       </div>
                       <div>
-                        <strong>Local Economic Impact:</strong> {dest.localEconomicImpact}
+                        <strong>Local Impact:</strong> {dest.localEconomicImpact}
                       </div>
                     </div>
 
                     <div className="pt-2">
                       <p className="text-[11px] font-bold uppercase tracking-wider text-[#78716C] mb-1">
-                        Responsible Travel Code:
+                        Responsible Travel Guideline:
                       </p>
                       <p className="text-xs text-[#44403C] leading-relaxed bg-[#FBF9F4] p-3 rounded-xl border border-[#E7E1D4]">
                         {dest.responsibleTravelTips[0]}
@@ -137,7 +126,7 @@ export default function SustainableTravelPage() {
                     }}
                     className="w-full py-2.5 rounded-xl bg-[#FBF9F4] hover:bg-[#9A3412] hover:text-white border border-[#E7E1D4] text-xs font-sans font-semibold text-[#1C1917] transition-all"
                   >
-                    Build Responsible Itinerary →
+                    Build Travel Itinerary →
                   </button>
                 </div>
               </div>
@@ -150,13 +139,13 @@ export default function SustainableTravelPage() {
           <div className="max-w-2xl space-y-1.5">
             <span className="text-xs font-bold uppercase tracking-widest text-[#15803D] flex items-center gap-1.5">
               <Sparkles className="w-3.5 h-3.5" />
-              Responsible Tour Planner
+              Itinerary Planner
             </span>
             <h2 className="font-serif-display text-2xl sm:text-3xl font-bold text-[#1C1917]">
               Generate a Mindful Heritage Itinerary
             </h2>
             <p className="text-xs sm:text-sm text-[#57534E] leading-relaxed">
-              Select your preferred duration, cultural focus, and pace. Virasat AI generates a low-impact day-by-day plan with verified artisan workshops and eco-homestays.
+              Select your preferred duration, cultural focus, and pace. Virasat AI generates a low-impact day-by-day exploration plan connected to regional artisans and heritage sites.
             </p>
           </div>
 
@@ -242,7 +231,7 @@ export default function SustainableTravelPage() {
             className="w-full py-3.5 rounded-xl bg-[#9A3412] hover:bg-[#7C2D12] text-white font-sans text-xs uppercase font-bold tracking-wider shadow-sm transition-all flex items-center justify-center gap-2"
           >
             <Sparkles className="w-4 h-4" />
-            <span>{isGenerating ? 'Synthesizing Responsible Plan...' : 'Generate Responsible Heritage Itinerary'}</span>
+            <span>{isGenerating ? 'Synthesizing Itinerary...' : 'Generate Heritage Itinerary'}</span>
           </button>
 
           {/* Generated Plan Output Display */}
@@ -258,8 +247,8 @@ export default function SustainableTravelPage() {
                   </h3>
                 </div>
 
-                <span className="text-xs font-mono bg-[#FFFFFF] text-[#9A3412] px-3 py-1 rounded-full border border-[#E7E1D4]">
-                  Artisan Support: {generatedPlan.localArtisanSupportScore}%
+                <span className="text-xs font-sans bg-[#FFFFFF] text-[#9A3412] px-3 py-1 rounded-full border border-[#E7E1D4]">
+                  {generatedPlan.days.length}-Day Plan
                 </span>
               </div>
 

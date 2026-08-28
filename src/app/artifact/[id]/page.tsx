@@ -16,7 +16,7 @@ import { aiService } from '@/services/aiService';
 export default function ArtifactDetailPage() {
   const params = useParams();
   const id = params?.id as string;
-  const artifact = ARTIFACTS_DATA.find(a => a.id === id) || ARTIFACTS_DATA[0];
+  const artifact = ARTIFACTS_DATA.find(a => a.id === id);
 
   const [activeTab, setActiveTab] = useState<'overview' | 'context' | 'significance' | 'iconography'>('overview');
   const [isPlayingAudio, setIsPlayingAudio] = useState(false);
@@ -24,11 +24,11 @@ export default function ArtifactDetailPage() {
   const [aiChatOpen, setAiChatOpen] = useState(false);
   const [aiQuery, setAiQuery] = useState('');
   const [aiLoading, setAiLoading] = useState(false);
-  const [aiMessages, setAiMessages] = useState<{ sender: 'user' | 'assistant'; text: string; source?: string }[]>([
+  const [aiMessages, setAiMessages] = useState<{ sender: 'user' | 'assistant'; text: string; source?: string }[]>(() => [
     {
       sender: 'assistant',
-      text: `Greetings! I am the Virasat AI Assistant for "${artifact.title}". You can ask about its historical discovery, metallurgical casting, dynastic lineage, or iconographic symbolism.`,
-      source: artifact.currentLocation
+      text: artifact ? `Greetings! I am the Virasat AI Assistant for "${artifact.title}". You can ask about its historical discovery, metallurgical casting, dynastic lineage, or iconographic symbolism.` : '',
+      source: artifact?.currentLocation
     }
   ]);
 
@@ -340,17 +340,23 @@ export default function ArtifactDetailPage() {
                 <h3 className="font-serif-display text-xl font-bold text-[#1C1917]">
                   Iconographical Details & Motifs
                 </h3>
-                <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                  {artifact.iconographyDetails.map((detail, idx) => (
-                    <div key={idx} className="p-4 rounded-xl bg-[#FBF9F4] border border-[#E7E1D4] space-y-1">
-                      <div className="flex items-center gap-2">
-                        <span className="w-1.5 h-1.5 rounded-full bg-[#9A3412]" />
-                        <span className="text-xs font-bold text-[#1C1917]">Symbolic Element</span>
+                {artifact.iconographyDetails && artifact.iconographyDetails.length > 0 ? (
+                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                    {artifact.iconographyDetails.map((detail, idx) => (
+                      <div key={idx} className="p-4 rounded-xl bg-[#FBF9F4] border border-[#E7E1D4] space-y-1">
+                        <div className="flex items-center gap-2">
+                          <span className="w-1.5 h-1.5 rounded-full bg-[#9A3412]" />
+                          <span className="text-xs font-bold text-[#1C1917]">Symbolic Element</span>
+                        </div>
+                        <p className="text-xs text-[#57534E] leading-relaxed">{detail}</p>
                       </div>
-                      <p className="text-xs text-[#57534E] leading-relaxed">{detail}</p>
-                    </div>
-                  ))}
-                </div>
+                    ))}
+                  </div>
+                ) : (
+                  <p className="text-xs text-[#78716C] italic">
+                    Detailed iconographic breakdown is being compiled from curatorial references.
+                  </p>
+                )}
               </div>
             )}
           </div>

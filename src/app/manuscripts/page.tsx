@@ -6,12 +6,13 @@ import {
   BookOpen, Volume2, Play, Pause, ZoomIn, ZoomOut,
   Languages, FileText, CheckCircle, ShieldCheck, Compass, ArrowRight
 } from 'lucide-react';
-import { ANCIENT_MANUSCRIPTS_DATA } from '@/data/manuscriptsData';
+import { MANUSCRIPTS_DATA } from '@/data/manuscriptsData';
 import { speechService } from '@/services/speechService';
+import { ManuscriptItem } from '@/types';
 
 export default function ManuscriptsPage() {
-  const [selectedManuscript, setSelectedManuscript] = useState(ANCIENT_MANUSCRIPTS_DATA[0]);
-  const [activeTranslationTab, setActiveTranslationTab] = useState<'english' | 'hindi' | 'paleography'>('english');
+  const [selectedManuscript, setSelectedManuscript] = useState<ManuscriptItem>(MANUSCRIPTS_DATA[0]);
+  const [activeTranslationTab, setActiveTranslationTab] = useState<'english' | 'hindi' | 'paleography' | 'philosophy'>('english');
   const [isPlayingAudio, setIsPlayingAudio] = useState(false);
   const [zoomLevel, setZoomLevel] = useState(1);
 
@@ -37,7 +38,7 @@ export default function ManuscriptsPage() {
         <div className="max-w-7xl mx-auto space-y-3">
           <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#FFFFFF] border border-[#E7E1D4] text-[#78716C] text-xs font-sans font-medium">
             <BookOpen className="w-3.5 h-3.5 text-[#9A3412]" />
-            <span>National Epigraphy & Manuscript Archive</span>
+            <span>Manuscript & Paleography Archive</span>
           </div>
 
           <h1 className="font-serif-display text-3xl sm:text-5xl font-bold tracking-tight text-[#1C1917]">
@@ -45,7 +46,7 @@ export default function ManuscriptsPage() {
           </h1>
 
           <p className="font-serif-editorial text-lg sm:text-xl text-[#57534E] max-w-2xl">
-            Explore high-resolution palm-leaf (*Talapatra*) and birch-bark (*Bhojpatra*) folios with verified transcriptions and multi-script paleographical analysis.
+            Explore high-resolution palm-leaf (<em>Talapatra</em>) and birch-bark (<em>Bhojpatra</em>) codices with transcriptions and translations.
           </p>
         </div>
       </div>
@@ -60,12 +61,12 @@ export default function ManuscriptsPage() {
               Select Preserved Codex:
             </span>
             <span className="text-xs text-[#78716C]">
-              {ANCIENT_MANUSCRIPTS_DATA.length} Ancient Folios Catalogued
+              {MANUSCRIPTS_DATA.length} Preserved Folios Catalogued
             </span>
           </div>
 
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
-            {ANCIENT_MANUSCRIPTS_DATA.map(ms => {
+            {MANUSCRIPTS_DATA.map(ms => {
               const isSelected = selectedManuscript.id === ms.id;
               return (
                 <button
@@ -82,14 +83,14 @@ export default function ManuscriptsPage() {
                   }`}
                 >
                   <div className="flex items-center justify-between text-[10px] font-mono text-[#9A3412] font-semibold mb-1">
-                    <span>{ms.scriptType}</span>
-                    <span>{ms.medium.split(' ')[0]}</span>
+                    <span>{ms.script}</span>
+                    <span>{ms.material.split(' ')[0]}</span>
                   </div>
                   <h3 className="font-serif-display text-sm font-bold text-[#1C1917] line-clamp-1">
                     {ms.title}
                   </h3>
-                  <p className="text-[11px] text-[#78716C] mt-0.5">
-                    {ms.estimatedPeriod}
+                  <p className="text-[11px] text-[#78716C] mt-0.5 line-clamp-1">
+                    {ms.dateEst}
                   </p>
                 </button>
               );
@@ -105,7 +106,7 @@ export default function ManuscriptsPage() {
             <div className="rounded-2xl bg-[#FFFFFF] border border-[#E7E1D4] shadow-sm p-4 space-y-3">
               <div className="flex items-center justify-between pb-2 border-b border-[#E7E1D4] text-xs">
                 <span className="font-mono text-[#78716C]">
-                  {selectedManuscript.physicalDimensions} • {selectedManuscript.medium}
+                  {selectedManuscript.material} • {selectedManuscript.conservationStatus}
                 </span>
                 <div className="flex items-center gap-1">
                   <button
@@ -134,12 +135,16 @@ export default function ManuscriptsPage() {
                 <img
                   src={selectedManuscript.imageUrl}
                   alt={selectedManuscript.title}
+                  loading="lazy"
                   style={{ transform: `scale(${zoomLevel})` }}
                   className="max-h-full max-w-full object-contain transition-transform duration-200 cursor-grab"
                 />
+                <div className="absolute bottom-2 right-2 px-2 py-0.5 rounded text-[9px] font-sans bg-black/60 text-white/90">
+                  Representative Archival Image
+                </div>
               </div>
 
-              {/* Sanskrit Metric Chant Player */}
+              {/* Audio Player */}
               {selectedManuscript.chantAudioTranscript && (
                 <div className="p-3.5 rounded-xl bg-[#FBF9F4] border border-[#E7E1D4] flex items-center justify-between gap-4">
                   <div className="flex items-center gap-3">
@@ -155,10 +160,10 @@ export default function ManuscriptsPage() {
                     </button>
                     <div>
                       <h4 className="text-xs font-bold text-[#1C1917]">
-                        {isPlayingAudio ? 'Audio Playback Active...' : '▶ Listen to Metric Recitation'}
+                        {isPlayingAudio ? 'Audio Playback Active...' : '▶ Listen to Manuscript Recitation'}
                       </h4>
                       <p className="text-[11px] text-[#78716C]">
-                        Vedic Metre: Jagati / Anustubh • Sanskrit Audio
+                        Language: {selectedManuscript.language} • Audio synthesis
                       </p>
                     </div>
                   </div>
@@ -180,7 +185,7 @@ export default function ManuscriptsPage() {
               <div>
                 <div className="flex items-center gap-2">
                   <span className="px-2.5 py-0.5 rounded text-[10px] font-sans font-semibold bg-[#F4EFE6] text-[#9A3412]">
-                    {selectedManuscript.scriptType} Script
+                    {selectedManuscript.script} Script
                   </span>
                   <span className="text-xs text-[#78716C] font-mono">
                     {selectedManuscript.language}
@@ -190,26 +195,26 @@ export default function ManuscriptsPage() {
                   {selectedManuscript.title}
                 </h2>
                 <p className="text-xs text-[#78716C]">
-                  {selectedManuscript.estimatedPeriod} • {selectedManuscript.repositoryArchive}
+                  {selectedManuscript.dateEst} • {selectedManuscript.currentRepository}
                 </p>
               </div>
 
               {/* Ancient Script Original Transcription */}
               <div className="space-y-1.5 pt-2">
                 <span className="text-xs font-bold uppercase tracking-wider text-[#78716C] block">
-                  Original Script Transcription ({selectedManuscript.scriptType}):
+                  Original Text Transcription ({selectedManuscript.script}):
                 </span>
-                <div className="p-3.5 rounded-xl bg-[#FBF9F4] border border-[#E7E1D4] font-serif text-sm leading-relaxed text-[#1C1917]">
-                  {selectedManuscript.originalScriptSnippet}
+                <div className="p-3.5 rounded-xl bg-[#FBF9F4] border border-[#E7E1D4] font-serif text-sm leading-relaxed text-[#1C1917] whitespace-pre-line max-h-48 overflow-y-auto">
+                  {selectedManuscript.extractedSanskritPrakritText}
                 </div>
               </div>
 
               {/* Translation Tabs */}
               <div className="space-y-3 pt-2">
-                <div className="flex items-center gap-2 border-b border-[#E7E1D4] pb-2">
+                <div className="flex items-center gap-2 border-b border-[#E7E1D4] pb-2 overflow-x-auto no-scrollbar">
                   <button
                     onClick={() => setActiveTranslationTab('english')}
-                    className={`px-3 py-1 text-xs font-sans font-semibold rounded-lg transition-colors ${
+                    className={`px-3 py-1 text-xs font-sans font-semibold rounded-lg shrink-0 transition-colors ${
                       activeTranslationTab === 'english'
                         ? 'bg-[#9A3412] text-white'
                         : 'text-[#57534E] hover:bg-[#F4EFE6]'
@@ -219,7 +224,7 @@ export default function ManuscriptsPage() {
                   </button>
                   <button
                     onClick={() => setActiveTranslationTab('hindi')}
-                    className={`px-3 py-1 text-xs font-sans font-semibold rounded-lg transition-colors ${
+                    className={`px-3 py-1 text-xs font-sans font-semibold rounded-lg shrink-0 transition-colors ${
                       activeTranslationTab === 'hindi'
                         ? 'bg-[#9A3412] text-white'
                         : 'text-[#57534E] hover:bg-[#F4EFE6]'
@@ -229,7 +234,7 @@ export default function ManuscriptsPage() {
                   </button>
                   <button
                     onClick={() => setActiveTranslationTab('paleography')}
-                    className={`px-3 py-1 text-xs font-sans font-semibold rounded-lg transition-colors ${
+                    className={`px-3 py-1 text-xs font-sans font-semibold rounded-lg shrink-0 transition-colors ${
                       activeTranslationTab === 'paleography'
                         ? 'bg-[#9A3412] text-white'
                         : 'text-[#57534E] hover:bg-[#F4EFE6]'
@@ -237,21 +242,30 @@ export default function ManuscriptsPage() {
                   >
                     Paleography Notes
                   </button>
+                  <button
+                    onClick={() => setActiveTranslationTab('philosophy')}
+                    className={`px-3 py-1 text-xs font-sans font-semibold rounded-lg shrink-0 transition-colors ${
+                      activeTranslationTab === 'philosophy'
+                        ? 'bg-[#9A3412] text-white'
+                        : 'text-[#57534E] hover:bg-[#F4EFE6]'
+                    }`}
+                  >
+                    Context
+                  </button>
                 </div>
 
-                <div className="text-xs text-[#44403C] leading-relaxed p-3.5 rounded-xl bg-[#FAF7F0] border border-[#E7E1D4]">
+                <div className="text-xs text-[#44403C] leading-relaxed p-3.5 rounded-xl bg-[#FAF7F0] border border-[#E7E1D4] max-h-52 overflow-y-auto">
                   {activeTranslationTab === 'english' && (
-                    <p>{selectedManuscript.translationEnglish}</p>
+                    <p className="whitespace-pre-line">{selectedManuscript.englishTranslation}</p>
                   )}
                   {activeTranslationTab === 'hindi' && (
-                    <p>{selectedManuscript.translationHindi}</p>
+                    <p className="whitespace-pre-line">{selectedManuscript.hindiTranslation}</p>
                   )}
                   {activeTranslationTab === 'paleography' && (
-                    <div className="space-y-2">
-                      <p><strong>Scribe & Ink:</strong> {selectedManuscript.paleographyNotes.scribalHand}</p>
-                      <p><strong>Conservation State:</strong> {selectedManuscript.paleographyNotes.preservationState}</p>
-                      <p><strong>Folio ID:</strong> {selectedManuscript.paleographyNotes.folioIdentification}</p>
-                    </div>
+                    <p>{selectedManuscript.paleographyNotes}</p>
+                  )}
+                  {activeTranslationTab === 'philosophy' && (
+                    <p>{selectedManuscript.philosophicalContext}</p>
                   )}
                 </div>
               </div>
@@ -259,7 +273,7 @@ export default function ManuscriptsPage() {
               {/* Attribution */}
               <div className="pt-2 flex items-center gap-2 text-[11px] text-[#78716C]">
                 <ShieldCheck className="w-3.5 h-3.5 text-[#15803D] shrink-0" />
-                <span>Verified by <strong>National Mission for Manuscripts (NMM)</strong> & BORI Pune.</span>
+                <span>Curated from published records of the <strong>National Mission for Manuscripts (NMM)</strong> & BORI Pune.</span>
               </div>
 
             </div>

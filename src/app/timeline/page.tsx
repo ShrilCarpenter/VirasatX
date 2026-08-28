@@ -212,7 +212,23 @@ function TimelineContent() {
 
 export default function TimelinePage() {
   return (
-    <Suspense fallback={<div className="min-h-screen bg-[#FBF9F4] flex items-center justify-center text-sm font-serif-display">Loading Historical Timeline...</div>}>
+    <Suspense
+      fallback={
+        <div className="min-h-screen bg-[#FBF9F4]">
+          <div className="bg-[#F4EFE6] border-b border-[#E7E1D4] py-14 px-4 sm:px-6 lg:px-8">
+            <div className="max-w-7xl mx-auto space-y-3 animate-pulse">
+              <div className="h-5 bg-[#E7E1D4] rounded-full w-44" />
+              <div className="h-10 bg-[#E7E1D4] rounded w-64" />
+              <div className="h-4 bg-[#E7E1D4]/70 rounded w-96" />
+            </div>
+          </div>
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-8">
+            <div className="h-20 bg-white rounded-2xl border border-[#E7E1D4] mb-8 animate-pulse" />
+            <div className="h-96 bg-white rounded-2xl border border-[#E7E1D4] animate-pulse" />
+          </div>
+        </div>
+      }
+    >
       <TimelineContent />
     </Suspense>
   );

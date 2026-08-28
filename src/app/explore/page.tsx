@@ -459,7 +459,32 @@ function ExploreContent() {
 
 export default function ExplorePage() {
   return (
-    <Suspense fallback={<div className="min-h-screen bg-[#FBF9F4] flex items-center justify-center text-sm font-serif-display">Loading Museum Collections...</div>}>
+    <Suspense
+      fallback={
+        <div className="min-h-screen bg-[#FBF9F4]">
+          <div className="bg-[#F4EFE6] border-b border-[#E7E1D4] py-14 px-4 sm:px-6 lg:px-8">
+            <div className="max-w-7xl mx-auto space-y-3 animate-pulse">
+              <div className="h-5 bg-[#E7E1D4] rounded-full w-40" />
+              <div className="h-10 bg-[#E7E1D4] rounded w-64" />
+              <div className="h-4 bg-[#E7E1D4]/70 rounded w-96" />
+            </div>
+          </div>
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-8">
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+              {Array.from({ length: 6 }).map((_, i) => (
+                <div key={i} className="rounded-xl overflow-hidden bg-white border border-[#E7E1D4] animate-pulse">
+                  <div className="h-60 bg-[#E7E1D4]/60" />
+                  <div className="p-5 space-y-3">
+                    <div className="h-4 bg-[#E7E1D4] rounded w-3/4" />
+                    <div className="h-3 bg-[#E7E1D4]/70 rounded w-1/2" />
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+        </div>
+      }
+    >
       <ExploreContent />
     </Suspense>
   );

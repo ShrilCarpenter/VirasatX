@@ -29,6 +29,12 @@
     background: #E7DFCE;
     color: #1C1917;
   }
+
+  /* Accessibility: Visible focus rings */
+  :focus-visible {
+    outline: 2px solid #9A3412;
+    outline-offset: 2px;
+  }
 }
 
 /* Typography styles */
@@ -81,4 +87,16 @@
 
 ::-webkit-scrollbar-thumb:hover {
   background: #B45309;
+}
+
+/* Reduced Motion Accessibility */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
 }

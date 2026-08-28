@@ -77,6 +77,15 @@ export interface Artifact {
   };
   timelineEpochId?: string;
   heritageMapLocationId?: string;
+  sourceProvenance?: SourceProvenance;
+}
+
+export interface SourceProvenance {
+  sourceName: string;
+  sourceType: 'Museum Repository' | 'Archaeological Survey' | 'Institutional Archive' | 'Curatorial Documentation';
+  sourceUrl?: string;
+  license?: string;
+  isPrototype?: boolean;
 }
 
 export interface TimelineEpoch {

@@ -6,7 +6,8 @@ import { Search, X, Compass, Clock, MapPin, BookOpen, ChevronRight, Sparkles } f
 import { ARTIFACTS_DATA } from '@/data/artifactsData';
 import { TIMELINE_EPOCHS } from '@/data/timelineData';
 import { HERITAGE_MAP_SITES } from '@/data/heritageMapData';
-import { ANCIENT_MANUSCRIPTS_DATA } from '@/data/manuscriptsData';
+import { MANUSCRIPTS_DATA } from '@/data/manuscriptsData';
+import { sanitizeTextInput } from '@/lib/sanitize';
 
 interface SearchModalProps {
   isOpen: boolean;
@@ -37,7 +38,8 @@ export default function SearchModal({ isOpen, onClose }: SearchModalProps) {
 
   if (!isOpen) return null;
 
-  const q = query.trim().toLowerCase();
+  const cleanQuery = sanitizeTextInput(query, 100);
+  const q = cleanQuery.toLowerCase();
 
   const matchedArtifacts = q
     ? ARTIFACTS_DATA.filter(
@@ -70,10 +72,10 @@ export default function SearchModal({ isOpen, onClose }: SearchModalProps) {
     : [];
 
   const matchedManuscripts = q
-    ? ANCIENT_MANUSCRIPTS_DATA.filter(
+    ? MANUSCRIPTS_DATA.filter(
         m =>
           m.title.toLowerCase().includes(q) ||
-          m.scriptType.toLowerCase().includes(q) ||
+          m.script.toLowerCase().includes(q) ||
           m.language.toLowerCase().includes(q)
       ).slice(0, 2)
     : [];
@@ -219,7 +221,7 @@ export default function SearchModal({ isOpen, onClose }: SearchModalProps) {
                         <h4 className="text-xs font-bold text-[#1C1917] group-hover:text-[#9A3412]">
                           {ms.title}
                         </h4>
-                        <p className="text-[11px] text-[#78716C]">{ms.scriptType} • {ms.estimatedPeriod}</p>
+                        <p className="text-[11px] text-[#78716C]">{ms.script} Script • {ms.dateEst}</p>
                       </div>
                     </div>
                     <ChevronRight className="w-4 h-4 text-[#78716C]" />

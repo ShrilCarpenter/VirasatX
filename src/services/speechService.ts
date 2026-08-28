@@ -11,11 +11,16 @@ export interface SpeechOptions {
   onError?: (err: unknown) => void;
 }
 
+// SpeechRecognition type for cross-browser support
+type SpeechRecognitionType = typeof window extends { SpeechRecognition: infer T } ? T : unknown;
+
 class SpeechService {
   private synth: SpeechSynthesis | null = null;
   private currentUtterance: SpeechSynthesisUtterance | null = null;
+  private recognition: any = null;
   private isSpeaking: boolean = false;
   private isPaused: boolean = false;
+  private isListeningActive: boolean = false;
 
   constructor() {
     if (typeof window !== 'undefined' && 'speechSynthesis' in window) {
@@ -99,11 +104,83 @@ class SpeechService {
     }
   }
 
+  /**
+   * Start speech recognition (voice input).
+   * Uses the Web Speech Recognition API with cross-browser support.
+   */
+  public startListening(
+    onResult: (transcript: string) => void,
+    onError?: (error?: unknown) => void
+  ) {
+    if (typeof window === 'undefined') {
+      onError?.('Not in browser environment');
+      return;
+    }
+
+    // Cross-browser SpeechRecognition
+    const SpeechRecognitionAPI =
+      (window as unknown as { SpeechRecognition?: any }).SpeechRecognition ||
+      (window as unknown as { webkitSpeechRecognition?: any }).webkitSpeechRecognition;
+
+    if (!SpeechRecognitionAPI) {
+      console.warn('Speech Recognition is not supported in this browser.');
+      onError?.('Speech Recognition not supported');
+      return;
+    }
+
+    try {
+      const recognition = new SpeechRecognitionAPI();
+      recognition.lang = 'en-IN';
+      recognition.interimResults = false;
+      recognition.maxAlternatives = 1;
+
+      recognition.onresult = (event: any) => {
+        const transcript = event.results?.[0]?.[0]?.transcript || '';
+        this.isListeningActive = false;
+        if (transcript) {
+          onResult(transcript);
+        }
+      };
+
+      recognition.onerror = (event: any) => {
+        this.isListeningActive = false;
+        console.warn('Speech recognition error:', event?.error);
+        onError?.(event?.error);
+      };
+
+      recognition.onend = () => {
+        this.isListeningActive = false;
+      };
+
+      this.recognition = recognition;
+      this.isListeningActive = true;
+      recognition.start();
+    } catch (e) {
+      console.warn('Speech recognition failed to start:', e);
+      onError?.(e);
+    }
+  }
+
+  /** Stop speech recognition */
+  public stopListening() {
+    if (this.recognition && this.isListeningActive) {
+      try {
+        (this.recognition as unknown as { stop: () => void }).stop();
+      } catch {
+        // Already stopped
+      }
+      this.isListeningActive = false;
+      this.recognition = null;
+    }
+  }
+
   public getStatus() {
     return {
       isSpeaking: this.isSpeaking,
       isPaused: this.isPaused,
-      supported: typeof window !== 'undefined' && 'speechSynthesis' in window,
+      isListening: this.isListeningActive,
+      ttsSupported: typeof window !== 'undefined' && 'speechSynthesis' in window,
+      sttSupported: typeof window !== 'undefined' && ('SpeechRecognition' in window || 'webkitSpeechRecognition' in window),
     };
   }
 }
