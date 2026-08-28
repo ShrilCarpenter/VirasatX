@@ -37,7 +37,7 @@ export const SUSTAINABLE_DESTINATIONS: SustainableDestination[] = [
       'Hire certified local desert guides from the archaeological sanctuary to support local hamlet employment.',
       'Visit Rogan and Ajrakh artisan homes in Nirona and Ajrakhpur to buy directly with zero middleman markup.'
     ],
-    imageUrl: 'https://images.unsplash.com/photo-1568605117036-5fe5e7bab0b7?auto=format&fit=crop&w=800&q=80',
+    imageUrl: 'https://images.unsplash.com/photo-1548013146-72479768bada?auto=format&fit=crop&w=800&q=80',
     recommendedStayDays: 4,
     ecoStays: ['Shaam-e-Sarhad Village Resort Hodka', 'Toran Rann Resort'],
     localCraftCoops: ['Khamir Craft Resource Centre', 'Kutch Rogan Art Heritage Guild', 'Shrujan Thread of Life']

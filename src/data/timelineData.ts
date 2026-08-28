@@ -20,7 +20,7 @@ export const TIMELINE_EPOCHS: TimelineEpoch[] = [
     architecturalStyle: 'Baked Brick Urbanism, Great Bath of Mohenjo-daro, Dholavira Stone Reservoirs & Citadel',
     artisticTraditions: ['Lost-Wax Bronze Casting', 'Intaglio Steatite Seal Carving', 'Terracotta Figurines', 'Micro-bead Agate Jewellery'],
     primaryLocations: ['Mohenjo-daro', 'Harappa', 'Dholavira (Gujarat)', 'Lothal (Gujarat)', 'Rakhigarhi (Haryana)', 'Kalibangan (Rajasthan)'],
-    heroImageUrl: 'https://images.unsplash.com/photo-1568605117036-5fe5e7bab0b7?auto=format&fit=crop&w=1200&q=80',
+    heroImageUrl: 'https://images.unsplash.com/photo-1548013146-72479768bada?auto=format&fit=crop&w=1200&q=80',
     mapGeoContext: 'Indus & Ghaggar-Hakra River Basins extending to Arabian Sea coastline',
     artifactsCount: 420,
     relatedArtifactIds: ['dancing-girl-mohenjodaro']

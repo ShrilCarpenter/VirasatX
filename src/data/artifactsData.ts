@@ -146,7 +146,7 @@ export const ARTIFACTS_DATA: Artifact[] = [
     dimensions: '10.5 cm × 5 cm × 2.5 cm; 340 grams',
     currentLocation: 'National Museum, New Delhi',
     accessionNumber: 'NM-IVC-ND-HR-5721',
-    imageUrl: 'https://images.unsplash.com/photo-1568605117036-5fe5e7bab0b7?auto=format&fit=crop&w=1200&q=80',
+    imageUrl: 'https://images.unsplash.com/photo-1548013146-72479768bada?auto=format&fit=crop&w=1200&q=80',
     audioNarrative: {
       title: 'A Confident Stance Across 4,500 Years',
       duration: '1 min 55 sec',
@@ -424,7 +424,7 @@ export const ARTIFACTS_DATA: Artifact[] = [
     dimensions: 'Height: 28 cm, Base Diameter: 21 cm; 2.4 kg',
     currentLocation: 'Salar Jung Museum, Hyderabad',
     accessionNumber: 'SJM-MET-BID-192',
-    imageUrl: 'https://images.unsplash.com/photo-1618221195710-dd6b41faaea6?auto=format&fit=crop&w=1200&q=80',
+    imageUrl: 'https://images.unsplash.com/photo-1579783902614-a3fb3927b675?auto=format&fit=crop&w=1200&q=80',
     audioNarrative: {
       title: 'The Black Soil Alchemy of Bidar',
       duration: '2 min 05 sec',
@@ -493,7 +493,7 @@ export const ARTIFACTS_DATA: Artifact[] = [
     dimensions: 'Diameter: 21 mm; Weight: 7.8 grams',
     currentLocation: 'National Museum, New Delhi (Numismatics Vault)',
     accessionNumber: 'NM-NUM-GUP-COIN-09',
-    imageUrl: 'https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?auto=format&fit=crop&w=1200&q=80',
+    imageUrl: 'https://images.unsplash.com/photo-1610030469983-98e550d6193c?auto=format&fit=crop&w=1200&q=80',
     audioNarrative: {
       title: 'The King as Musician and Conqueror',
       duration: '1 min 50 sec',

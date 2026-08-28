@@ -2,25 +2,55 @@
 
 import React, { useState } from 'react';
 import Link from 'next/link';
-import { Clock, ArrowRight, ChevronRight, Landmark } from 'lucide-react';
+import { Clock, ArrowRight } from 'lucide-react';
 import { TIMELINE_EPOCHS } from '@/data/timelineData';
 
 export default function TimelineRibbon() {
   const [selectedPeriodIdx, setSelectedPeriodIdx] = useState(0);
 
   const keyEras = [
-    { title: 'Ancient India', period: '2600 BCE – 600 BCE', epochId: 'indus-valley', highlight: 'Indus Valley Urbanism & Vedic Philosophy' },
-    { title: 'Classical India', period: '600 BCE – 550 CE', epochId: 'mauryan-era', highlight: 'Mauryan Imperial Unity & Gupta Golden Age' },
-    { title: 'Early Medieval', period: '550 CE – 1300 CE', epochId: 'chola-era', highlight: 'Chola Maritime Bronzes & Monolithic Kailasa' },
-    { title: 'Late Medieval', period: '1300 CE – 1818 CE', epochId: 'vijayanagara-era', highlight: 'Vijayanagara Splendor, Mughals & Marathas' },
-    { title: 'Modern India', period: '1947 – Present', epochId: 'independent-era', highlight: 'Sovereign Republic & Living Cultural Preservation' },
+    {
+      title: 'Ancient India',
+      period: '2600 BCE – 600 BCE',
+      epochId: 'indus-valley',
+      highlight: 'Indus Valley Urbanism & Vedic Philosophy',
+      thumbnailUrl: 'https://images.unsplash.com/photo-1548013146-72479768bada?auto=format&fit=crop&w=400&q=80'
+    },
+    {
+      title: 'Classical India',
+      period: '600 BCE – 550 CE',
+      epochId: 'mauryan-era',
+      highlight: 'Mauryan Imperial Unity & Gupta Golden Age',
+      thumbnailUrl: 'https://images.unsplash.com/photo-1590059390046-52c6755490a6?auto=format&fit=crop&w=400&q=80'
+    },
+    {
+      title: 'Early Medieval',
+      period: '550 CE – 1300 CE',
+      epochId: 'chola-era',
+      highlight: 'Chola Maritime Bronzes & Monolithic Kailasa',
+      thumbnailUrl: 'https://images.unsplash.com/photo-1588096344356-9a2a9cf2996d?auto=format&fit=crop&w=400&q=80'
+    },
+    {
+      title: 'Late Medieval',
+      period: '1300 CE – 1818 CE',
+      epochId: 'vijayanagara-era',
+      highlight: 'Vijayanagara Splendor, Mughals & Marathas',
+      thumbnailUrl: 'https://images.unsplash.com/photo-1582510003544-4d00b7f74220?auto=format&fit=crop&w=400&q=80'
+    },
+    {
+      title: 'Modern India',
+      period: '1947 – Present',
+      epochId: 'independent-era',
+      highlight: 'Sovereign Republic & Living Cultural Preservation',
+      thumbnailUrl: 'https://images.unsplash.com/photo-1598387993441-a364f854c3e1?auto=format&fit=crop&w=400&q=80'
+    },
   ];
 
   const currentEra = keyEras[selectedPeriodIdx];
   const matchedEpoch = TIMELINE_EPOCHS.find(e => e.id === currentEra.epochId) || TIMELINE_EPOCHS[0];
 
   return (
-    <section className="w-full py-20 bg-[#F4EFE6] border-b border-[#E7E1D4]">
+    <section className="w-full py-20 sm:py-24 bg-[#F4EFE6] border-b border-[#E7E1D4]">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         
         {/* Section Header */}
@@ -33,8 +63,8 @@ export default function TimelineRibbon() {
             <h2 className="font-serif-display text-3xl sm:text-4xl font-bold text-[#1C1917]">
               Explore India Through Time
             </h2>
-            <p className="font-serif-editorial text-lg text-[#57534E] mt-1 max-w-xl">
-              Chronological journeys across 5,000 years of dynastic evolution, artistic traditions, and architectural marvels.
+            <p className="font-serif-editorial text-lg sm:text-xl text-[#57534E] mt-1 max-w-2xl">
+              Chronological journeys across 5,000 years of civilizational evolution, master metallurgy, and rock architecture.
             </p>
           </div>
 
@@ -47,52 +77,81 @@ export default function TimelineRibbon() {
           </Link>
         </div>
 
-        {/* Clean Timeline Nodes */}
-        <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-3 mb-8">
+        {/* Visual Timeline Era Selectors */}
+        <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-3 sm:gap-4 mb-8">
           {keyEras.map((era, idx) => {
             const isSelected = selectedPeriodIdx === idx;
             return (
               <button
                 key={era.title}
                 onClick={() => setSelectedPeriodIdx(idx)}
-                className={`p-4 rounded-xl text-left border transition-all duration-200 ${
+                className={`group rounded-xl overflow-hidden text-left border transition-all duration-300 flex flex-col justify-between ${
                   isSelected
-                    ? 'bg-[#FFFFFF] text-[#1C1917] border-[#9A3412] shadow-md ring-1 ring-[#9A3412]/30'
-                    : 'bg-[#FBF9F4] text-[#44403C] border-[#E7E1D4] hover:bg-[#FFFFFF] hover:border-[#9A3412]/40'
+                    ? 'bg-[#FFFFFF] text-[#1C1917] border-[#9A3412] shadow-md ring-2 ring-[#9A3412]/30'
+                    : 'bg-[#FBF9F4] text-[#44403C] border-[#E7E1D4] hover:bg-[#FFFFFF] hover:border-[#9A3412]/50'
                 }`}
               >
-                <span className={`text-[10px] font-mono uppercase tracking-wider block mb-1 ${isSelected ? 'text-[#9A3412] font-bold' : 'text-[#78716C]'}`}>
-                  {era.period}
-                </span>
-                <h3 className="font-serif-display text-base font-bold text-[#1C1917]">
-                  {era.title}
-                </h3>
+                {/* Era Image Thumbnail */}
+                <div className="relative h-24 w-full overflow-hidden bg-stone-200">
+                  {/* eslint-disable-next-line @next/next/no-img-element */}
+                  <img
+                    src={era.thumbnailUrl}
+                    alt={era.title}
+                    loading="lazy"
+                    className={`w-full h-full object-cover transition-transform duration-500 ${
+                      isSelected ? 'scale-105 brightness-100' : 'group-hover:scale-105 brightness-90'
+                    }`}
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent pointer-events-none" />
+                  <span className="absolute bottom-1.5 left-2 text-[10px] font-mono text-white/90 drop-shadow-sm font-semibold">
+                    {era.period}
+                  </span>
+                </div>
+
+                <div className="p-3">
+                  <h3 className="font-serif-display text-sm sm:text-base font-bold text-[#1C1917] group-hover:text-[#9A3412] transition-colors">
+                    {era.title}
+                  </h3>
+                </div>
               </button>
             );
           })}
         </div>
 
-        {/* Selected Epoch Spotlight Box */}
+        {/* Large Historical Epoch Spotlight Card */}
         <div className="bg-[#FFFFFF] border border-[#E7E1D4] rounded-2xl overflow-hidden shadow-sm grid grid-cols-1 lg:grid-cols-12 gap-0">
-          {/* Visual Column */}
-          <div className="lg:col-span-5 relative min-h-[260px] lg:min-h-[340px] bg-stone-100">
+          
+          {/* Large Historical Visual Column */}
+          <div className="lg:col-span-6 relative min-h-[300px] lg:min-h-[420px] bg-stone-100">
             {/* eslint-disable-next-line @next/next/no-img-element */}
             <img
               src={matchedEpoch.heroImageUrl}
               alt={matchedEpoch.name}
-              className="w-full h-full object-cover"
+              loading="lazy"
+              className="w-full h-full object-cover object-center brightness-[0.96]"
             />
-            <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent lg:hidden" />
-            <div className="absolute bottom-3 left-4 right-4 text-white lg:hidden">
-              <span className="text-[10px] font-mono">{matchedEpoch.dateRange}</span>
-              <h4 className="font-serif-display text-lg font-bold">{matchedEpoch.name}</h4>
+            <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent pointer-events-none" />
+            
+            {/* Overlay Caption */}
+            <div className="absolute bottom-4 left-5 right-5 text-white">
+              <span className="text-[11px] font-mono uppercase tracking-wider text-amber-200 block">
+                {matchedEpoch.dateRange}
+              </span>
+              <h3 className="font-serif-display text-2xl sm:text-3xl font-bold text-white drop-shadow-md">
+                {matchedEpoch.name}
+              </h3>
+              {matchedEpoch.nativeName && (
+                <p className="text-xs text-white/80 font-serif-display italic mt-0.5">
+                  {matchedEpoch.nativeName}
+                </p>
+              )}
             </div>
           </div>
 
-          {/* Info Column */}
-          <div className="lg:col-span-7 p-6 sm:p-8 flex flex-col justify-between space-y-6">
-            <div className="space-y-3">
-              <div className="flex items-center justify-between border-b border-[#E7E1D4] pb-2.5">
+          {/* Curatorial Context Column */}
+          <div className="lg:col-span-6 p-6 sm:p-8 flex flex-col justify-between space-y-6">
+            <div className="space-y-4">
+              <div className="flex items-center justify-between border-b border-[#E7E1D4] pb-3">
                 <span className="text-xs font-mono tracking-wider text-[#9A3412] font-bold">
                   {matchedEpoch.dateRange}
                 </span>
@@ -101,28 +160,19 @@ export default function TimelineRibbon() {
                 </span>
               </div>
 
-              <h3 className="font-serif-display text-2xl font-bold text-[#1C1917]">
-                {matchedEpoch.name}
-              </h3>
-              {matchedEpoch.nativeName && (
-                <p className="text-xs text-[#78716C] font-serif-display italic -mt-2">
-                  {matchedEpoch.nativeName}
-                </p>
-              )}
-
-              <p className="text-sm text-[#44403C] leading-relaxed">
-                {matchedEpoch.summary}
+              <p className="text-sm sm:text-base text-[#44403C] leading-relaxed">
+                {matchedEpoch.description || matchedEpoch.summary}
               </p>
 
               {/* Civilizational Highlights */}
               <div className="pt-2">
-                <p className="text-xs font-bold uppercase tracking-wider text-[#78716C] mb-1.5">
+                <p className="text-xs font-bold uppercase tracking-wider text-[#78716C] mb-2">
                   Key Historical Milestones:
                 </p>
-                <div className="space-y-1">
-                  {matchedEpoch.keyEvents.slice(0, 2).map((ev, i) => (
-                    <div key={i} className="flex items-start gap-2 text-xs text-[#44403C]">
-                      <span className="w-1.5 h-1.5 rounded-full bg-[#9A3412] mt-1 shrink-0" />
+                <div className="space-y-2">
+                  {matchedEpoch.keyEvents.slice(0, 3).map((ev, i) => (
+                    <div key={i} className="flex items-start gap-2.5 text-xs text-[#44403C]">
+                      <span className="w-1.5 h-1.5 rounded-full bg-[#9A3412] mt-1.5 shrink-0" />
                       <span>{ev}</span>
                     </div>
                   ))}
@@ -130,20 +180,21 @@ export default function TimelineRibbon() {
               </div>
             </div>
 
-            {/* Bottom Link */}
+            {/* Bottom Museum Action Link */}
             <div className="pt-4 border-t border-[#E7E1D4] flex items-center justify-between">
               <span className="text-xs text-[#78716C]">
-                Architecture: <strong className="text-[#1C1917]">{matchedEpoch.architecturalStyle.split(',')[0]}</strong>
+                Art & Architecture: <strong className="text-[#1C1917]">{matchedEpoch.architecturalStyle.split(',')[0]}</strong>
               </span>
               <Link
                 href={`/timeline?epoch=${matchedEpoch.id}`}
-                className="inline-flex items-center gap-1 text-xs font-sans font-bold uppercase tracking-wider text-[#9A3412] hover:text-[#7C2D12]"
+                className="inline-flex items-center gap-1.5 text-xs font-sans font-bold uppercase tracking-wider text-[#9A3412] hover:text-[#7C2D12] group"
               >
-                <span>Examine Epoch Dossier</span>
-                <ChevronRight className="w-3.5 h-3.5" />
+                <span>Examine Full Era</span>
+                <ArrowRight className="w-3.5 h-3.5 group-hover:translate-x-0.5 transition-transform" />
               </Link>
             </div>
           </div>
+
         </div>
 
       </div>
