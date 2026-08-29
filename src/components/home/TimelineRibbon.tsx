@@ -14,35 +14,35 @@ export default function TimelineRibbon() {
       period: '2600 BCE – 600 BCE',
       epochId: 'indus-valley',
       highlight: 'Indus Valley Urbanism & Vedic Philosophy',
-      thumbnailUrl: 'https://images.unsplash.com/photo-1548013146-72479768bada?auto=format&fit=crop&w=400&q=80'
+      thumbnailUrl: 'https://commons.wikimedia.org/wiki/Special:FilePath/Dancing_girl_of_Mohenjo-daro.jpg'
     },
     {
       title: 'Classical India',
       period: '600 BCE – 550 CE',
       epochId: 'mauryan-era',
       highlight: 'Mauryan Imperial Unity & Gupta Golden Age',
-      thumbnailUrl: 'https://images.unsplash.com/photo-1590059390046-52c6755490a6?auto=format&fit=crop&w=400&q=80'
+      thumbnailUrl: 'https://commons.wikimedia.org/wiki/Special:FilePath/Lion_Capital_of_Ashoka_2.jpg'
     },
     {
       title: 'Early Medieval',
       period: '550 CE – 1300 CE',
       epochId: 'chola-era',
       highlight: 'Chola Maritime Bronzes & Monolithic Kailasa',
-      thumbnailUrl: 'https://images.unsplash.com/photo-1588096344356-9a2a9cf2996d?auto=format&fit=crop&w=400&q=80'
+      thumbnailUrl: 'https://commons.wikimedia.org/wiki/Special:FilePath/Brihadisvara_Temple,_Thanjavur,_Tamil_Nadu,_India.jpg'
     },
     {
       title: 'Late Medieval',
       period: '1300 CE – 1818 CE',
       epochId: 'vijayanagara-era',
       highlight: 'Vijayanagara Splendor, Mughals & Marathas',
-      thumbnailUrl: 'https://images.unsplash.com/photo-1582510003544-4d00b7f74220?auto=format&fit=crop&w=400&q=80'
+      thumbnailUrl: 'https://commons.wikimedia.org/wiki/Special:FilePath/Stone_chariot_at_Hampi.jpg'
     },
     {
       title: 'Modern India',
       period: '1947 – Present',
       epochId: 'independent-era',
       highlight: 'Sovereign Republic & Living Cultural Preservation',
-      thumbnailUrl: 'https://images.unsplash.com/photo-1598387993441-a364f854c3e1?auto=format&fit=crop&w=400&q=80'
+      thumbnailUrl: 'https://commons.wikimedia.org/wiki/Special:FilePath/Kathakali_dancer.jpg'
     },
   ];
 

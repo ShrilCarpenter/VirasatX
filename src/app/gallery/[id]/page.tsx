@@ -15,29 +15,29 @@ const GALLERIES = [
     id: 'sculpture-gallery',
     name: 'Gallery 01: Sculpture Gallery',
     nativeName: 'मूर्तिकला दीर्घा',
-    description: 'Lost-wax Chola bronzes, Mauryan polished sandstone, and classical Indian stone sculpture.',
-    artworkIds: ['chola-bronze-nataraja', 'ashoka-lion-capital', 'didarganj-yakshi-sculpture', 'samudragupta-gold-dinar-coin'],
+    description: 'Lost-wax Chola bronzes, Mauryan polished sandstone, Harappan bronzes, and classical Indian stone sculpture.',
+    artworkIds: ['chola-bronze-nataraja', 'ashoka-lion-capital', 'dancing-girl-mohenjodaro', 'didarganj-yakshi-sculpture', 'samudragupta-gold-dinar-coin', 'dhokra-brass-tribal-bull'],
   },
   {
     id: 'manuscript-gallery',
     name: 'Gallery 02: Manuscript Gallery',
     nativeName: 'प्राचीन पाण्डुलिपि दीर्घा',
-    description: 'Ancient birch-bark and palm-leaf codices containing classical philosophical and administrative treatises.',
+    description: 'Ancient birch-bark and palm-leaf codices containing classical philosophical, medical, and administrative treatises.',
     artworkIds: ['rigveda-samhita-manuscript', 'kautilya-arthashastra-manuscript', 'kalpasutra-golden-jain-folio', 'charaka-samhita-ayurveda'],
   },
   {
     id: 'architecture-gallery',
     name: 'Gallery 03: Temple Architecture Gallery',
     nativeName: 'मंदिर स्थापत्य दीर्घा',
-    description: 'Architectural documentation of monolithic rock excavations, Dravidian vimanas, and Nagara shikharas.',
-    artworkIds: ['ashoka-lion-capital', 'chola-bronze-nataraja', 'padmapani-bodhisattva-ajanta', 'didarganj-yakshi-sculpture'],
+    description: 'Architectural documentation of monolithic rock excavations, Dravidian vimanas, Konark sundials, and Sanchi toranas.',
+    artworkIds: ['kailasa-temple-ellora', 'konark-sun-temple-wheel', 'sanchi-stupa-great-torana', 'ashoka-lion-capital'],
   },
   {
     id: 'painting-gallery',
     name: 'Gallery 04: Painting Gallery',
     nativeName: 'चित्रकला दीर्घा',
-    description: 'Ajanta rock fresco murals, Thanjavur gold-leaf icons, and miniature court manuscripts.',
-    artworkIds: ['padmapani-bodhisattva-ajanta', 'tanjore-gold-leaf-painting', 'kalpasutra-golden-jain-folio', 'bidriware-silver-inlay-huqqa'],
+    description: 'Ajanta rock fresco murals, Thanjavur gold-leaf icons, Hamzanama miniatures, and Odisha Pattachitra scrolls.',
+    artworkIds: ['padmapani-bodhisattva-ajanta', 'tanjore-gold-leaf-painting', 'mughal-miniature-hamzanama', 'pattachitra-scroll-jagannath'],
   }
 ];
 

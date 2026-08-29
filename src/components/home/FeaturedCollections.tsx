@@ -15,7 +15,7 @@ export default function FeaturedCollections() {
       title: 'Ancient Sculptures',
       category: 'Sculptures',
       description: 'Lost-wax Chola bronzes, Mauryan polished sandstone, and classical stone icons.',
-      imageUrl: 'https://images.unsplash.com/photo-1599818458999-f2c9e782e2c3?auto=format&fit=crop&w=1200&q=85',
+      imageUrl: 'https://commons.wikimedia.org/wiki/Special:FilePath/Shiva_as_the_Lord_of_Dance_LACMA_edit.jpg',
       count: `${getCategoryCount('Sculptures')} Curated Exhibits`,
       periodTag: '10th Century BCE – 13th Century CE'
     },
@@ -23,7 +23,7 @@ export default function FeaturedCollections() {
       title: 'Classical Paintings',
       category: 'Paintings',
       description: 'Ajanta rock cave frescoes, Mughal court miniatures, and Thanjavur gold-leaf works.',
-      imageUrl: 'https://images.unsplash.com/photo-1590059390046-52c6755490a6?auto=format&fit=crop&w=1200&q=85',
+      imageUrl: 'https://commons.wikimedia.org/wiki/Special:FilePath/Ajanta_Padmapani.jpg',
       count: `${getCategoryCount('Paintings')} Curated Exhibits`,
       periodTag: '2nd Century BCE – 18th Century CE'
     },
@@ -31,7 +31,7 @@ export default function FeaturedCollections() {
       title: 'Sacred Manuscripts',
       category: 'Manuscripts',
       description: 'Rigveda Sharada codices on birch bark and Kautilya’s Arthashastra on palm leaf.',
-      imageUrl: 'https://images.unsplash.com/photo-1544716278-ca5e3f4abd8c?auto=format&fit=crop&w=1200&q=85',
+      imageUrl: 'https://commons.wikimedia.org/wiki/Special:FilePath/Rigveda_MS2097.jpg',
       count: `${getCategoryCount('Manuscripts')} Curated Exhibits`,
       periodTag: 'Vedic Composition – Medieval Archives'
     },
@@ -39,7 +39,7 @@ export default function FeaturedCollections() {
       title: 'Temple Architecture',
       category: 'Architecture',
       description: 'Monolithic Kailasa at Ellora, Dravidian granite vimanas, and Konark stone sundials.',
-      imageUrl: 'https://images.unsplash.com/photo-1588096344356-9a2a9cf2996d?auto=format&fit=crop&w=1200&q=85',
+      imageUrl: 'https://commons.wikimedia.org/wiki/Special:FilePath/Kailasha_temple_at_ellora.JPG',
       count: `${getCategoryCount('Architecture')} Curated Exhibits`,
       periodTag: '3rd Century BCE – 16th Century CE'
     },
@@ -47,7 +47,7 @@ export default function FeaturedCollections() {
       title: 'Folk Traditions',
       category: 'Dance',
       description: 'Kathakali ritual kireedam masks, Bastar Dhokra casting, and sacred performing arts.',
-      imageUrl: 'https://images.unsplash.com/photo-1598387993441-a364f854c3e1?auto=format&fit=crop&w=1200&q=85',
+      imageUrl: 'https://commons.wikimedia.org/wiki/Special:FilePath/Kathakali_dancer.jpg',
       count: `${getCategoryCount('Dance')} Curated Exhibits`,
       periodTag: 'Ancient – Living Heritage Traditions'
     },
@@ -55,7 +55,7 @@ export default function FeaturedCollections() {
       title: 'Textiles & Crafts',
       category: 'Textiles',
       description: 'Kashmiri Kani pashmina, Patan Patola double ikat, and Bidriware pure silver inlays.',
-      imageUrl: 'https://images.unsplash.com/photo-1607604276583-eef5d076aa5f?auto=format&fit=crop&w=1200&q=85',
+      imageUrl: 'https://commons.wikimedia.org/wiki/Special:FilePath/Patan_Patola_Silk_Saree.jpg',
       count: `${getCategoryCount('Textiles')} Curated Exhibits`,
       periodTag: 'Hereditary GI Guild Lineages'
     },

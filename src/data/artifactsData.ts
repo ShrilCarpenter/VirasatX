@@ -16,10 +16,10 @@ export const ARTIFACTS_DATA: Artifact[] = [
     dimensions: '112 cm × 94 cm × 32 cm; 84 kg',
     currentLocation: 'National Museum, New Delhi (Archival Bronze Gallery)',
     accessionNumber: 'NM-BR-56.12/Chola',
-    imageUrl: 'https://images.unsplash.com/photo-1599818458999-f2c9e782e2c3?auto=format&fit=crop&w=1200&q=80',
+    imageUrl: 'https://commons.wikimedia.org/wiki/Special:FilePath/Shiva_as_the_Lord_of_Dance_LACMA_edit.jpg',
     secondaryImages: [
-      'https://images.unsplash.com/photo-1582510003544-4d00b7f74220?auto=format&fit=crop&w=800&q=80',
-      'https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=800&q=80'
+      'https://commons.wikimedia.org/wiki/Special:FilePath/11th_century_Nataraja,_Chola_period_bronze,_Government_Museum,_Chennai.jpg',
+      'https://commons.wikimedia.org/wiki/Special:FilePath/NatarajaMET.JPG'
     ],
     audioNarrative: {
       title: 'The Cosmic Rhythm of Anandatandava',
@@ -63,7 +63,7 @@ export const ARTIFACTS_DATA: Artifact[] = [
     dimensions: '215 cm × 120 cm; approx 2,200 kg',
     currentLocation: 'Sarnath Archaeological Museum, Uttar Pradesh',
     accessionNumber: 'SAM-MAUR-01/1905',
-    imageUrl: 'https://images.unsplash.com/photo-1548013146-72479768bada?auto=format&fit=crop&w=1200&q=80',
+    imageUrl: 'https://commons.wikimedia.org/wiki/Special:FilePath/Lion_Capital_of_Ashoka_2.jpg',
     audioNarrative: {
       title: 'The Lion Roar of Dharma',
       duration: '2 min 10 sec',
@@ -104,7 +104,7 @@ export const ARTIFACTS_DATA: Artifact[] = [
     dimensions: '165 cm × 110 cm (Mural Panel)',
     currentLocation: 'Cave 1, Ajanta Rock-Cut Monasteries (In Situ / ASI Protected)',
     accessionNumber: 'AJT-C1-MUR-04',
-    imageUrl: 'https://images.unsplash.com/photo-1590059390046-52c6755490a6?auto=format&fit=crop&w=1200&q=80',
+    imageUrl: 'https://commons.wikimedia.org/wiki/Special:FilePath/Ajanta_Padmapani.jpg',
     audioNarrative: {
       title: 'The Gaze of Infinite Compassion',
       duration: '2 min 30 sec',
@@ -146,7 +146,7 @@ export const ARTIFACTS_DATA: Artifact[] = [
     dimensions: '10.5 cm × 5 cm × 2.5 cm; 340 grams',
     currentLocation: 'National Museum, New Delhi',
     accessionNumber: 'NM-IVC-ND-HR-5721',
-    imageUrl: 'https://images.unsplash.com/photo-1548013146-72479768bada?auto=format&fit=crop&w=1200&q=80',
+    imageUrl: 'https://commons.wikimedia.org/wiki/Special:FilePath/Dancing_girl_of_Mohenjo-daro.jpg',
     audioNarrative: {
       title: 'A Confident Stance Across 4,500 Years',
       duration: '1 min 55 sec',
@@ -181,7 +181,7 @@ export const ARTIFACTS_DATA: Artifact[] = [
     dimensions: '30 folios; 28 cm × 12 cm',
     currentLocation: 'Bhandarkar Oriental Research Institute (BORI), Pune',
     accessionNumber: 'BORI-MS-RIG-NO-5/1875-76',
-    imageUrl: 'https://images.unsplash.com/photo-1544716278-ca5e3f4abd8c?auto=format&fit=crop&w=1200&q=80',
+    imageUrl: 'https://commons.wikimedia.org/wiki/Special:FilePath/Rigveda_MS2097.jpg',
     audioNarrative: {
       title: 'The Eternal Chants of Creation: Nasadiya Sukta',
       duration: '2 min 40 sec',
@@ -216,7 +216,7 @@ export const ARTIFACTS_DATA: Artifact[] = [
     dimensions: 'Height: 32 m, Length: 91 m, Width: 47 m; 200,000+ tons of rock excavated',
     currentLocation: 'Ellora Caves Complex (UNESCO World Heritage Site)',
     accessionNumber: 'ELR-CAVE-16-MON',
-    imageUrl: 'https://images.unsplash.com/photo-1588096344356-9a2a9cf2996d?auto=format&fit=crop&w=1200&q=80',
+    imageUrl: 'https://commons.wikimedia.org/wiki/Special:FilePath/Kailasha_temple_at_ellora.JPG',
     audioNarrative: {
       title: 'Carved Out of a Single Living Mountain',
       duration: '2 min 50 sec',
@@ -251,7 +251,7 @@ export const ARTIFACTS_DATA: Artifact[] = [
     dimensions: 'Height: 160 cm (Life-size); approx 650 kg',
     currentLocation: 'Bihar Museum, Patna',
     accessionNumber: 'PAT-MUS-YAK-01',
-    imageUrl: 'https://images.unsplash.com/photo-1596707328905-ebcc5032cb07?auto=format&fit=crop&w=1200&q=80',
+    imageUrl: 'https://commons.wikimedia.org/wiki/Special:FilePath/Didarganj_Yakshi_statue_in_the_Bihar_Museum.jpg',
     audioNarrative: {
       title: 'The Ideal of Classical Indian Feminine Beauty',
       duration: '2 min 15 sec',
@@ -286,7 +286,7 @@ export const ARTIFACTS_DATA: Artifact[] = [
     dimensions: '284 leaves; 35 cm × 5 cm',
     currentLocation: 'Oriental Research Institute (ORI), University of Mysore',
     accessionNumber: 'ORI-MYS-MS-AS-1905',
-    imageUrl: 'https://images.unsplash.com/photo-1455390582262-044cdead277a?auto=format&fit=crop&w=1200&q=80',
+    imageUrl: 'https://commons.wikimedia.org/wiki/Special:FilePath/Palm_leaf_manuscript_Nagarjuna_c1000.jpg',
     audioNarrative: {
       title: 'The Rediscovery of Ancient Indian Statecraft',
       duration: '2 min 20 sec',
@@ -320,7 +320,7 @@ export const ARTIFACTS_DATA: Artifact[] = [
     dimensions: 'Diameter: 3.0 m (9.8 feet); Depth: 1.2 m',
     currentLocation: 'Konark Sun Temple Complex, Odisha (UNESCO World Heritage Site)',
     accessionNumber: 'ASI-KNR-WH-07',
-    imageUrl: 'https://images.unsplash.com/photo-1598890777032-bde835ba27c2?auto=format&fit=crop&w=1200&q=80',
+    imageUrl: 'https://commons.wikimedia.org/wiki/Special:FilePath/Sun_temple_Konark.JPG',
     audioNarrative: {
       title: 'The Cosmic Timekeeper of the Sun God',
       duration: '2 min 25 sec',
@@ -354,7 +354,7 @@ export const ARTIFACTS_DATA: Artifact[] = [
     dimensions: '68 cm × 51 cm (Extra-large imperial folio format)',
     currentLocation: 'National Museum, New Delhi',
     accessionNumber: 'NM-PG-MUG-HZ-42',
-    imageUrl: 'https://images.unsplash.com/photo-1579783900882-c0d3dad7b119?auto=format&fit=crop&w=1200&q=80',
+    imageUrl: 'https://commons.wikimedia.org/wiki/Special:FilePath/Assad_Ibn_Kariba_Attacks_the_Army_of_Iraj_Hamzanama.jpg',
     audioNarrative: {
       title: 'The Dynamic Fusion of Persian and Indian Painting Traditions',
       duration: '2 min 15 sec',
@@ -389,7 +389,7 @@ export const ARTIFACTS_DATA: Artifact[] = [
     dimensions: '220 cm × 110 cm; 280 grams (Can pass through a finger ring)',
     currentLocation: 'Crafts Museum, Pragati Maidan, New Delhi',
     accessionNumber: 'CM-TEX-JK-781',
-    imageUrl: 'https://images.unsplash.com/photo-1607604276583-eef5d076aa5f?auto=format&fit=crop&w=1200&q=80',
+    imageUrl: 'https://commons.wikimedia.org/wiki/Special:FilePath/Kashmir_Shawl_with_Paisley_Motifs.jpg',
     audioNarrative: {
       title: 'The Woven Poem of the Himalayas',
       duration: '2 min 20 sec',
@@ -424,7 +424,7 @@ export const ARTIFACTS_DATA: Artifact[] = [
     dimensions: 'Height: 28 cm, Base Diameter: 21 cm; 2.4 kg',
     currentLocation: 'Salar Jung Museum, Hyderabad',
     accessionNumber: 'SJM-MET-BID-192',
-    imageUrl: 'https://images.unsplash.com/photo-1579783902614-a3fb3927b675?auto=format&fit=crop&w=1200&q=80',
+    imageUrl: 'https://commons.wikimedia.org/wiki/Special:FilePath/Huqqa_Base_Bidriware_LACMA.jpg',
     audioNarrative: {
       title: 'The Black Soil Alchemy of Bidar',
       duration: '2 min 05 sec',
@@ -458,7 +458,7 @@ export const ARTIFACTS_DATA: Artifact[] = [
     dimensions: '90 cm × 60 cm × 5 cm in Teak Frame',
     currentLocation: 'Thanjavur Art Gallery, Royal Palace Complex',
     accessionNumber: 'TAG-MAR-TN-45',
-    imageUrl: 'https://images.unsplash.com/photo-1577083552431-6e5fd01aa342?auto=format&fit=crop&w=1200&q=80',
+    imageUrl: 'https://commons.wikimedia.org/wiki/Special:FilePath/Tanjore_painting_of_Krishna.jpg',
     audioNarrative: {
       title: 'Sacred Gold Leaf and Gemstone Splendor',
       duration: '2 min 10 sec',
@@ -493,7 +493,7 @@ export const ARTIFACTS_DATA: Artifact[] = [
     dimensions: 'Diameter: 21 mm; Weight: 7.8 grams',
     currentLocation: 'National Museum, New Delhi (Numismatics Vault)',
     accessionNumber: 'NM-NUM-GUP-COIN-09',
-    imageUrl: 'https://images.unsplash.com/photo-1610030469983-98e550d6193c?auto=format&fit=crop&w=1200&q=80',
+    imageUrl: 'https://commons.wikimedia.org/wiki/Special:FilePath/Coin_of_Samudragupta_with_lyre.jpg',
     audioNarrative: {
       title: 'The King as Musician and Conqueror',
       duration: '1 min 50 sec',
@@ -528,7 +528,7 @@ export const ARTIFACTS_DATA: Artifact[] = [
     dimensions: 'Height: 85 cm, Width: 60 cm; 3.5 kg',
     currentLocation: 'Kerala Kalamandalam Deemed University Museum, Thrissur',
     accessionNumber: 'KKM-THEATRE-VSH-12',
-    imageUrl: 'https://images.unsplash.com/photo-1598387993441-a364f854c3e1?auto=format&fit=crop&w=1200&q=80',
+    imageUrl: 'https://commons.wikimedia.org/wiki/Special:FilePath/Kathakali_dancer.jpg',
     audioNarrative: {
       title: 'The Sacred Visual Grammar of Mudra and Chutti',
       duration: '2 min 10 sec',
@@ -562,7 +562,7 @@ export const ARTIFACTS_DATA: Artifact[] = [
     dimensions: 'Height: 10.4 meters, Width: 6.2 meters',
     currentLocation: 'Sanchi Stupa Complex (UNESCO World Heritage Site)',
     accessionNumber: 'ASI-SNC-STP-GT1',
-    imageUrl: 'https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=1200&q=80',
+    imageUrl: 'https://commons.wikimedia.org/wiki/Special:FilePath/The_Great_Stupa_at_Sanchi.jpg',
     audioNarrative: {
       title: 'A Picture Book in Stone: The Jatakas of Sanchi',
       duration: '2 min 30 sec',
@@ -597,7 +597,7 @@ export const ARTIFACTS_DATA: Artifact[] = [
     dimensions: '32 cm × 24 cm × 14 cm; 4.2 kg',
     currentLocation: 'Tribal Museum, Bhopal / Crafts Museum, Delhi',
     accessionNumber: 'TM-BAS-DK-89',
-    imageUrl: 'https://images.unsplash.com/photo-1579783902614-a3fb3927b675?auto=format&fit=crop&w=1200&q=80',
+    imageUrl: 'https://commons.wikimedia.org/wiki/Special:FilePath/Dhokra_Art_Tribal_Craft.jpg',
     audioNarrative: {
       title: 'The 4,000-Year-Old Tribal Wire Alchemy',
       duration: '2 min 00 sec',
@@ -631,7 +631,7 @@ export const ARTIFACTS_DATA: Artifact[] = [
     dimensions: '150 cm × 90 cm',
     currentLocation: 'Odisha State Museum, Bhubaneswar',
     accessionNumber: 'OSM-PAT-RGH-33',
-    imageUrl: 'https://images.unsplash.com/photo-1579783900882-c0d3dad7b119?auto=format&fit=crop&w=1200&q=80',
+    imageUrl: 'https://commons.wikimedia.org/wiki/Special:FilePath/Pattachitra_painting_of_Jagannath.jpg',
     audioNarrative: {
       title: 'Painting with the Crushed Shells and Minerals of Odisha',
       duration: '2 min 10 sec',
@@ -665,7 +665,7 @@ export const ARTIFACTS_DATA: Artifact[] = [
     dimensions: '5.5 meters length × 1.1 meters width',
     currentLocation: 'Patan Patola Museum / National Museum, Delhi',
     accessionNumber: 'NM-TEX-GUJ-PAT-102',
-    imageUrl: 'https://images.unsplash.com/photo-1610030469983-98e550d6193c?auto=format&fit=crop&w=1200&q=80',
+    imageUrl: 'https://commons.wikimedia.org/wiki/Special:FilePath/Patan_Patola_Silk_Saree.jpg',
     audioNarrative: {
       title: 'The Mathematical Miracle of Double Ikat',
       duration: '2 min 25 sec',
@@ -699,7 +699,7 @@ export const ARTIFACTS_DATA: Artifact[] = [
     dimensions: 'Length: 135 cm; Gourd Diameter: 38 cm; 4.8 kg',
     currentLocation: 'Sangeet Natak Akademi Museum, New Delhi',
     accessionNumber: 'SNA-MUS-STR-RV-04',
-    imageUrl: 'https://images.unsplash.com/photo-1511671782779-c97d3d27a1d4?auto=format&fit=crop&w=1200&q=80',
+    imageUrl: 'https://commons.wikimedia.org/wiki/Special:FilePath/Rudra_veena.jpg',
     audioNarrative: {
       title: 'The Deep Acoustic Resonance of Dhrupad',
       duration: '2 min 15 sec',

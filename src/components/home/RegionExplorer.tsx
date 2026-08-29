@@ -23,7 +23,7 @@ export default function RegionExplorer() {
       hindi: 'उत्तर भारत',
       states: 'Jammu & Kashmir, Himachal, Punjab, Haryana, Uttar Pradesh, Uttarakhand, Delhi',
       description: 'Himalayan monasteries, Kashmiri Kani shawls, Sarnath Ashoka edicts, and the living spiritual ghats of Varanasi.',
-      bannerImageUrl: 'https://images.unsplash.com/photo-1548013146-72479768bada?auto=format&fit=crop&w=1200&q=80'
+      bannerImageUrl: 'https://commons.wikimedia.org/wiki/Special:FilePath/Dhamekh_Stupa_at_Sarnath.jpg'
     },
     {
       id: 'South',
@@ -31,7 +31,7 @@ export default function RegionExplorer() {
       hindi: 'दक्षिण भारत',
       states: 'Tamil Nadu, Karnataka, Kerala, Andhra Pradesh, Telangana',
       description: 'Chola lost-wax panchaloha bronzes, Brihadisvara granite towers, Vijayanagara Hampi, and Kathakali dance-theatre.',
-      bannerImageUrl: 'https://images.unsplash.com/photo-1599818458999-f2c9e782e2c3?auto=format&fit=crop&w=1200&q=80'
+      bannerImageUrl: 'https://commons.wikimedia.org/wiki/Special:FilePath/Brihadisvara_Temple,_Thanjavur,_Tamil_Nadu,_India.jpg'
     },
     {
       id: 'East',
@@ -39,7 +39,7 @@ export default function RegionExplorer() {
       hindi: 'पूर्वी भारत',
       states: 'Bihar, Odisha, West Bengal, Jharkhand',
       description: 'Nalanda ancient university, Konark Sun Temple sundials, Puri Pattachitra scrolls, and Didarganj Yakshi sculptures.',
-      bannerImageUrl: 'https://images.unsplash.com/photo-1598890777032-bde835ba27c2?auto=format&fit=crop&w=1200&q=80'
+      bannerImageUrl: 'https://commons.wikimedia.org/wiki/Special:FilePath/Sun_temple_Konark.JPG'
     },
     {
       id: 'West',
@@ -47,7 +47,7 @@ export default function RegionExplorer() {
       hindi: 'पश्चिम भारत',
       states: 'Maharashtra, Gujarat, Rajasthan, Goa',
       description: 'Ajanta Buddhist rock frescoes, Ellora Kailasa monolith, Patan Patola double-ikat, and Dholavira Harappan citadel.',
-      bannerImageUrl: 'https://images.unsplash.com/photo-1590059390046-52c6755490a6?auto=format&fit=crop&w=1200&q=80'
+      bannerImageUrl: 'https://commons.wikimedia.org/wiki/Special:FilePath/Rani_ki_vav_07.jpg'
     },
     {
       id: 'Central',
@@ -55,7 +55,7 @@ export default function RegionExplorer() {
       hindi: 'मध्य भारत',
       states: 'Madhya Pradesh, Chhattisgarh',
       description: 'Sanchi Great Stupa toranas, Khajuraho temples, and Bastar tribal Dhokra lost-wax metallurgy.',
-      bannerImageUrl: 'https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=1200&q=80'
+      bannerImageUrl: 'https://commons.wikimedia.org/wiki/Special:FilePath/The_Great_Stupa_at_Sanchi.jpg'
     },
     {
       id: 'Northeast',
@@ -63,7 +63,7 @@ export default function RegionExplorer() {
       hindi: 'पूर्वोत्तर भारत',
       states: 'Assam, Meghalaya, Arunachal Pradesh, Nagaland, Manipur, Mizoram, Tripura, Sikkim',
       description: 'Majuli river island Sattras, Sattriya classical dance, sacred living root bridges, and indigenous weaving traditions.',
-      bannerImageUrl: 'https://images.unsplash.com/photo-1608889825205-eebdb9fc5806?auto=format&fit=crop&w=1200&q=80'
+      bannerImageUrl: 'https://commons.wikimedia.org/wiki/Special:FilePath/Majuli_island_Assam.jpg'
     }
   ];
 

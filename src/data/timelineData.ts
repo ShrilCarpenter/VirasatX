@@ -20,7 +20,7 @@ export const TIMELINE_EPOCHS: TimelineEpoch[] = [
     architecturalStyle: 'Baked Brick Urbanism, Great Bath of Mohenjo-daro, Dholavira Stone Reservoirs & Citadel',
     artisticTraditions: ['Lost-Wax Bronze Casting', 'Intaglio Steatite Seal Carving', 'Terracotta Figurines', 'Micro-bead Agate Jewellery'],
     primaryLocations: ['Mohenjo-daro', 'Harappa', 'Dholavira (Gujarat)', 'Lothal (Gujarat)', 'Rakhigarhi (Haryana)', 'Kalibangan (Rajasthan)'],
-    heroImageUrl: 'https://images.unsplash.com/photo-1548013146-72479768bada?auto=format&fit=crop&w=1200&q=80',
+    heroImageUrl: 'https://commons.wikimedia.org/wiki/Special:FilePath/Dancing_girl_of_Mohenjo-daro.jpg',
     mapGeoContext: 'Indus & Ghaggar-Hakra River Basins extending to Arabian Sea coastline',
     artifactsCount: 420,
     relatedArtifactIds: ['dancing-girl-mohenjodaro']
@@ -43,7 +43,7 @@ export const TIMELINE_EPOCHS: TimelineEpoch[] = [
     architecturalStyle: 'Sacred Vedic Fire Altars (Yajna Kundas built using Sulba Sutra geometry), Early Timber and Mud-Brick Viharas',
     artisticTraditions: ['Flawless Oral Mnemonic Chanting (Veda Patha)', 'Sacred Geometric Altar Construction', 'Painted Grey Ware Ceramics'],
     primaryLocations: ['Saptasindhu Basin', 'Kurukshetra', 'Kashi (Varanasi)', 'Videha (Mithila)', 'Brahmavarta'],
-    heroImageUrl: 'https://images.unsplash.com/photo-1544716278-ca5e3f4abd8c?auto=format&fit=crop&w=1200&q=80',
+    heroImageUrl: 'https://commons.wikimedia.org/wiki/Special:FilePath/Rigveda_MS2097.jpg',
     mapGeoContext: 'Saptasindhu to Indo-Gangetic Plains',
     artifactsCount: 280,
     relatedArtifactIds: ['rigveda-samhita-manuscript']
@@ -67,7 +67,7 @@ export const TIMELINE_EPOCHS: TimelineEpoch[] = [
     architecturalStyle: 'Polished Monolithic Pillars, Barabar Rock-Cut Caves, Great Stupa of Sanchi, Pataliputra Wooden Palaces',
     artisticTraditions: ['Mauryan Mirror Polish on Sandstone', 'Yakshi Monumental Sculptures', 'Brahmi & Kharosthi Rock Inscriptions'],
     primaryLocations: ['Pataliputra (Patna)', 'Sarnath (Varanasi)', 'Sanchi (Madhya Pradesh)', 'Taxila', 'Ujjain', 'Dhauli (Odisha)'],
-    heroImageUrl: 'https://images.unsplash.com/photo-1548013146-72479768bada?auto=format&fit=crop&w=1200&q=80',
+    heroImageUrl: 'https://commons.wikimedia.org/wiki/Special:FilePath/Lion_Capital_of_Ashoka_2.jpg',
     mapGeoContext: 'Pan-Indian Empire from Hindu Kush to Mysore',
     artifactsCount: 510,
     relatedArtifactIds: ['ashoka-lion-capital', 'didarganj-yakshi-sculpture', 'sanchi-stupa-great-torana', 'kautilya-arthashastra-manuscript']
@@ -92,7 +92,7 @@ export const TIMELINE_EPOCHS: TimelineEpoch[] = [
     architecturalStyle: 'Nagara Temple Prototype (Dashavatara Temple Deogarh), Ajanta Mahayana Chaitya Caves, Nalanda Mahavihara',
     artisticTraditions: ['Ajanta Mineral Frescoes', 'Classical Sarnath & Mathura Buddha Sculptures', 'Pure Gold Die-Struck Dinars'],
     primaryLocations: ['Pataliputra', 'Ujjain', 'Nalanda (Bihar)', 'Ajanta (Maharashtra)', 'Deogarh (UP)', 'Mathura'],
-    heroImageUrl: 'https://images.unsplash.com/photo-1590059390046-52c6755490a6?auto=format&fit=crop&w=1200&q=80',
+    heroImageUrl: 'https://commons.wikimedia.org/wiki/Special:FilePath/Ajanta_Padmapani.jpg',
     mapGeoContext: 'Northern, Central, and Western India with maritime trade across Southeast Asia',
     artifactsCount: 650,
     relatedArtifactIds: ['padmapani-bodhisattva-ajanta', 'samudragupta-gold-dinar-coin']
@@ -117,7 +117,7 @@ export const TIMELINE_EPOCHS: TimelineEpoch[] = [
     architecturalStyle: 'Dravidian Shore Temples of Mahabalipuram, Khajuraho Nagara Temples, Monolithic Kailasa at Ellora, Sun Temple of Konark',
     artisticTraditions: ['High-Relief Stone Carvings', 'Double-Ikat Silk Weaving (Patan Patola)', 'Palm-Leaf Pattachitra Scrolls'],
     primaryLocations: ['Ellora (Maharashtra)', 'Khajuraho (MP)', 'Konark (Odisha)', 'Badami-Pattadakal (Karnataka)', 'Kanchipuram (Tamil Nadu)', 'Patan (Gujarat)'],
-    heroImageUrl: 'https://images.unsplash.com/photo-1588096344356-9a2a9cf2996d?auto=format&fit=crop&w=1200&q=80',
+    heroImageUrl: 'https://commons.wikimedia.org/wiki/Special:FilePath/Kailasha_temple_at_ellora.JPG',
     mapGeoContext: 'Deccan, Kaveri Delta, Gangetic Plains, and Eastern Seaboard',
     artifactsCount: 780,
     relatedArtifactIds: ['kailasa-temple-ellora', 'konark-sun-temple-wheel', 'pattachitra-scroll-jagannath', 'patan-patola-double-ikat']
@@ -140,7 +140,7 @@ export const TIMELINE_EPOCHS: TimelineEpoch[] = [
     architecturalStyle: 'Dravidian Granite Temple Vimana, Gangaikonda Cholapuram, Airavatesvara Temple Darasuram (UNESCO Great Living Chola Temples)',
     artisticTraditions: ['Cire-Perdue Lost-Wax Panchaloha Bronzes', 'Chola Fresco Paintings in Temple Ambulatories', 'Granite Bas-Reliefs'],
     primaryLocations: ['Thanjavur (Tamil Nadu)', 'Gangaikonda Cholapuram', 'Darasuram', 'Chidambaram', 'Kaveripattinam'],
-    heroImageUrl: 'https://images.unsplash.com/photo-1599818458999-f2c9e782e2c3?auto=format&fit=crop&w=1200&q=80',
+    heroImageUrl: 'https://commons.wikimedia.org/wiki/Special:FilePath/Brihadisvara_Temple,_Thanjavur,_Tamil_Nadu,_India.jpg',
     mapGeoContext: 'South India, Sri Lanka, Maldives, and Indian Ocean Trade Routes to Malacca',
     artifactsCount: 520,
     relatedArtifactIds: ['chola-bronze-nataraja']
@@ -164,7 +164,7 @@ export const TIMELINE_EPOCHS: TimelineEpoch[] = [
     architecturalStyle: 'Indo-Islamic Arch & Dome Architecture, Qutb Minar, Alai Darwaza, Tughlaqabad Fort, Lodi Gardens Tombs',
     artisticTraditions: ['Arabic & Persian Calligraphy in Sandstone', 'Hindustani Classical Musical Innovations', 'Zari & Metal Damascening'],
     primaryLocations: ['Delhi (Seven Historic Cities)', 'Daulatabad (Maharashtra)', 'Jaunpur', 'Mandu (Madhya Pradesh)'],
-    heroImageUrl: 'https://images.unsplash.com/photo-1585130401366-fe05a8d813c4?auto=format&fit=crop&w=1200&q=80',
+    heroImageUrl: 'https://commons.wikimedia.org/wiki/Special:FilePath/Qutb_Minar_and_its_monuments,_Delhi.jpg',
     mapGeoContext: 'Northern India and Deccan Corridors',
     artifactsCount: 390,
     relatedArtifactIds: []
@@ -188,7 +188,7 @@ export const TIMELINE_EPOCHS: TimelineEpoch[] = [
     architecturalStyle: 'Vijayanagara Dravidian Style: Musical Pillars, Monolithic Stone Chariots (Hampi), Stepped Pushkarani Tanks, Massive Raya Gopurams',
     artisticTraditions: ['Carnatic Musical Codification', 'Deccan Bidriware Metalwork', 'Lepakshi Temple Murals'],
     primaryLocations: ['Hampi (Karnataka)', 'Lepakshi (Andhra Pradesh)', 'Sringeri', 'Madurai', 'Tirupati'],
-    heroImageUrl: 'https://images.unsplash.com/photo-1582510003544-4d00b7f74220?auto=format&fit=crop&w=1200&q=80',
+    heroImageUrl: 'https://commons.wikimedia.org/wiki/Special:FilePath/Stone_chariot_at_Hampi.jpg',
     mapGeoContext: 'South India from Tungabhadra to Cape Comorin',
     artifactsCount: 460,
     relatedArtifactIds: ['bidriware-silver-inlay-huqqa', 'kautilya-arthashastra-manuscript']
@@ -212,7 +212,7 @@ export const TIMELINE_EPOCHS: TimelineEpoch[] = [
     architecturalStyle: 'Indo-Islamic & Persian synthesis: Taj Mahal, Humayun’s Tomb, Fatehpur Sikri, Red Fort, Shalimar Gardens',
     artisticTraditions: ['Imperial Miniature Painting (Hamzanama, Akbarnama)', 'Pietra Dura Marble Inlay', 'Kashmiri Kani Pashmina Weaving', 'Rudra Veena Classical Mastery'],
     primaryLocations: ['Agra (UP)', 'Delhi (Old Delhi)', 'Fatehpur Sikri', 'Lahore', 'Srinagar (Kashmir)'],
-    heroImageUrl: 'https://images.unsplash.com/photo-1564507592333-c60657eea523?auto=format&fit=crop&w=1200&q=80',
+    heroImageUrl: 'https://commons.wikimedia.org/wiki/Special:FilePath/Taj_Mahal_(Edited).jpeg',
     mapGeoContext: 'Entire Indian Subcontinent from Kabul to the Deccan',
     artifactsCount: 890,
     relatedArtifactIds: ['mughal-miniature-hamzanama', 'pashmina-kani-shawl-kashmir', 'rudra-veena-instrument']
@@ -236,7 +236,7 @@ export const TIMELINE_EPOCHS: TimelineEpoch[] = [
     architecturalStyle: 'Deccan Hill & Sea Fort Architecture (Raigad, Murud-Janjira, Sindhudurg), Wada Residential Mansions, Maheshwar Ghats',
     artisticTraditions: ['Thanjavur Gold-Leaf & Gemstone Paintings', 'Maheshwari Handloom Sarees', 'Povada Heroic Balladry'],
     primaryLocations: ['Raigad (Maharashtra)', 'Pune (Shaniwar Wada)', 'Thanjavur (Tamil Nadu)', 'Maheshwar (MP)', 'Gwalior'],
-    heroImageUrl: 'https://images.unsplash.com/photo-1577083552431-6e5fd01aa342?auto=format&fit=crop&w=1200&q=80',
+    heroImageUrl: 'https://commons.wikimedia.org/wiki/Special:FilePath/Tanjore_painting_of_Krishna.jpg',
     mapGeoContext: 'Western Ghats, Maharashtra, Central India, Malwa, and Kaveri Delta',
     artifactsCount: 410,
     relatedArtifactIds: ['tanjore-gold-leaf-painting']
@@ -260,7 +260,7 @@ export const TIMELINE_EPOCHS: TimelineEpoch[] = [
     architecturalStyle: 'Modern Indian Heritage Architecture blending vernacular Vastu with sustainable stone and green principles',
     artisticTraditions: ['GI-Tagged Living Craft Traditions', 'Classical Kathakali & Bharatanatyam Revivals', 'Digital 3D Museum Conservation'],
     primaryLocations: ['All 28 States & 8 Union Territories across India'],
-    heroImageUrl: 'https://images.unsplash.com/photo-1598387993441-a364f854c3e1?auto=format&fit=crop&w=1200&q=80',
+    heroImageUrl: 'https://commons.wikimedia.org/wiki/Special:FilePath/Kathakali_dancer.jpg',
     mapGeoContext: 'The Sovereign Republic of India and Global Diaspora',
     artifactsCount: 1250,
     relatedArtifactIds: ['kathakali-headgear-mask', 'dhokra-brass-tribal-bull']

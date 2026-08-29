@@ -75,7 +75,7 @@ export default function HeroSection() {
               <div className="relative h-[380px] sm:h-[460px] overflow-hidden rounded-xl bg-stone-100">
                 {/* eslint-disable-next-line @next/next/no-img-element */}
                 <img
-                  src="https://images.unsplash.com/photo-1599818458999-f2c9e782e2c3?auto=format&fit=crop&w=1200&q=85"
+                  src="https://commons.wikimedia.org/wiki/Special:FilePath/Shiva_as_the_Lord_of_Dance_LACMA_edit.jpg"
                   alt="Chola Bronze Nataraja Artifact"
                   className="w-full h-full object-cover object-center brightness-[0.96]"
                 />

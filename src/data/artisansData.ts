@@ -16,8 +16,8 @@ export const MASTER_ARTISANS_DATA: MasterArtisan[] = [
     rawMaterials: ['Ladakhi Changthangi Pashm (12-15 microns)', 'Natural Walnut Shell & Saffron Dyes', 'Walnut Wood Kanis'],
     sustainabilityRating: 98,
     culturalImportance: 'Preserves the historic textile heritage of Kashmir and provides sustainable alpine livelihood to Ladakhi pastoralists and Kashmiri weavers.',
-    portraitUrl: 'https://images.unsplash.com/photo-1607604276583-eef5d076aa5f?auto=format&fit=crop&w=600&q=80',
-    craftImageUrl: 'https://images.unsplash.com/photo-1607604276583-eef5d076aa5f?auto=format&fit=crop&w=800&q=80',
+    portraitUrl: 'https://commons.wikimedia.org/wiki/Special:FilePath/Kashmiri_artisan_at_work.jpg',
+    craftImageUrl: 'https://commons.wikimedia.org/wiki/Special:FilePath/Kashmir_Shawl_with_Paisley_Motifs.jpg',
     contactCooperative: 'Kanihama Pashmina Artisans Cooperative, Budgam, J&K'
   },
   {
@@ -35,8 +35,8 @@ export const MASTER_ARTISANS_DATA: MasterArtisan[] = [
     rawMaterials: ['Panchaloha Alloy (Copper, Zinc, Lead, Silver, Gold)', 'Natural Beeswax & Groundnut Oil', 'Kaveri River Alluvial Clay'],
     sustainabilityRating: 95,
     culturalImportance: 'Direct living continuity of the South Indian bronze casting tradition celebrated in museums worldwide.',
-    portraitUrl: 'https://images.unsplash.com/photo-1599818458999-f2c9e782e2c3?auto=format&fit=crop&w=600&q=80',
-    craftImageUrl: 'https://images.unsplash.com/photo-1599818458999-f2c9e782e2c3?auto=format&fit=crop&w=800&q=80',
+    portraitUrl: 'https://commons.wikimedia.org/wiki/Special:FilePath/Swamimalai_bronze_casting.jpg',
+    craftImageUrl: 'https://commons.wikimedia.org/wiki/Special:FilePath/11th_century_Nataraja,_Chola_period_bronze,_Government_Museum,_Chennai.jpg',
     contactCooperative: 'Swamimalai Hereditary Bronze Sthapatis Association, Thanjavur'
   },
   {
@@ -54,8 +54,8 @@ export const MASTER_ARTISANS_DATA: MasterArtisan[] = [
     rawMaterials: ['Boiled Castor Seed Oil (Rogan)', 'Natural Earth & Mineral Pigments', 'Pure Handloom Silk & Cotton'],
     sustainabilityRating: 100,
     culturalImportance: 'Preserves an endangered textile painting technique recognized globally for its geometric mastery.',
-    portraitUrl: 'https://images.unsplash.com/photo-1579783900882-c0d3dad7b119?auto=format&fit=crop&w=600&q=80',
-    craftImageUrl: 'https://images.unsplash.com/photo-1579783900882-c0d3dad7b119?auto=format&fit=crop&w=800&q=80',
+    portraitUrl: 'https://commons.wikimedia.org/wiki/Special:FilePath/Rogan_Art_Nirona_Kutch.jpg',
+    craftImageUrl: 'https://commons.wikimedia.org/wiki/Special:FilePath/Rogan_painting_Tree_of_Life.jpg',
     contactCooperative: 'Rogan Art Heritage Centre, Nirona, Kutch, Gujarat'
   },
   {
@@ -73,8 +73,8 @@ export const MASTER_ARTISANS_DATA: MasterArtisan[] = [
     rawMaterials: ['Hand-reeled Mulberry Silk', 'Natural Vegetable Extracts (Pomegranate rind, Turmeric, Indigo, Madder)', 'Rosewood Slanted Loom'],
     sustainabilityRating: 94,
     culturalImportance: 'UNESCO-recognized traditional textile art representing high mathematical precision in handloom weaving.',
-    portraitUrl: 'https://images.unsplash.com/photo-1610030469983-98e550d6193c?auto=format&fit=crop&w=600&q=80',
-    craftImageUrl: 'https://images.unsplash.com/photo-1610030469983-98e550d6193c?auto=format&fit=crop&w=800&q=80',
+    portraitUrl: 'https://commons.wikimedia.org/wiki/Special:FilePath/Patan_Patola_Weaver.jpg',
+    craftImageUrl: 'https://commons.wikimedia.org/wiki/Special:FilePath/Patan_Patola_Silk_Saree.jpg',
     contactCooperative: 'Patan Patola Bhavan & Heritage Guild, Salvi Wada, Patan'
   },
   {
@@ -92,8 +92,8 @@ export const MASTER_ARTISANS_DATA: MasterArtisan[] = [
     rawMaterials: ['Natural Honeycomb Beeswax', 'Termite Mound and River Bed Clay', 'Recycled Brass and Bronze Scrap'],
     sustainabilityRating: 97,
     culturalImportance: 'Maintains ancient non-ferrous lost-wax metal casting traditions with deep indigenous roots.',
-    portraitUrl: 'https://images.unsplash.com/photo-1579783902614-a3fb3927b675?auto=format&fit=crop&w=600&q=80',
-    craftImageUrl: 'https://images.unsplash.com/photo-1579783902614-a3fb3927b675?auto=format&fit=crop&w=800&q=80',
+    portraitUrl: 'https://commons.wikimedia.org/wiki/Special:FilePath/Dhokra_tribal_craftsman.jpg',
+    craftImageUrl: 'https://commons.wikimedia.org/wiki/Special:FilePath/Dhokra_Art_Tribal_Craft.jpg',
     contactCooperative: 'Saathi Tribal Crafts Producer Cooperative, Kondagaon, Bastar'
   }
 ];

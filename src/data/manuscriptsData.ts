@@ -12,7 +12,7 @@ export const MANUSCRIPTS_DATA: ManuscriptItem[] = [
     material: 'Birch Bark (Bhojpatra)',
     locationFound: 'Kashmir Valley Archival Collection',
     currentRepository: 'Bhandarkar Oriental Research Institute (BORI), Pune',
-    imageUrl: 'https://images.unsplash.com/photo-1544716278-ca5e3f4abd8c?auto=format&fit=crop&w=1200&q=80',
+    imageUrl: 'https://commons.wikimedia.org/wiki/Special:FilePath/Rigveda_MS2097.jpg',
     pagesCount: 30,
     extractedSanskritPrakritText: `नासदासीन्नो सदासीत्तदानीं नासीद्रजो नो व्योमा परो यत्।
 किमावरीवः कुह कस्य शर्मन्नम्भः किमासीद्गहनं गभीरम्॥
@@ -56,7 +56,7 @@ Who then knows whence it has arisen?`,
     material: 'Palm Leaf (Talapatra)',
     locationFound: 'Tanjore / Mysore Royal Archive',
     currentRepository: 'Oriental Research Institute (ORI), University of Mysore',
-    imageUrl: 'https://images.unsplash.com/photo-1455390582262-044cdead277a?auto=format&fit=crop&w=1200&q=80',
+    imageUrl: 'https://commons.wikimedia.org/wiki/Special:FilePath/Palm_leaf_manuscript_Nagarjuna_c1000.jpg',
     pagesCount: 284,
     extractedSanskritPrakritText: `सुखस्य मूलं धर्मः। धर्मस्य मूलमर्थः।
 अर्थस्य मूलं राज्यम्। राज्यस्य मूलमिन्द्रियजयः।
@@ -95,7 +95,7 @@ But whatever pleases his citizens he shall esteem as his ultimate good.`,
     material: 'Handmade Rag Paper',
     locationFound: 'Patan Jain Jnana Bhandara, Gujarat',
     currentRepository: 'L.D. Institute of Indology, Ahmedabad',
-    imageUrl: 'https://images.unsplash.com/photo-1579783900882-c0d3dad7b119?auto=format&fit=crop&w=1200&q=80',
+    imageUrl: 'https://commons.wikimedia.org/wiki/Special:FilePath/Folio_from_a_Kalpasutra_Manuscript_LACMA.jpg',
     pagesCount: 120,
     extractedSanskritPrakritText: `नमो अरिहंताणं। नमो सिद्धाणं।
 नमो आयरियाणं। नमो उवज्झायाणं।
@@ -129,7 +129,7 @@ And of all auspicious mantras, it is the supreme foremost auspicious benediction
     material: 'Handmade Rag Paper',
     locationFound: 'Varanasi Sanskrit Academy Archives',
     currentRepository: 'National Institute of Ayurveda / Banaras Hindu University',
-    imageUrl: 'https://images.unsplash.com/photo-1532012197267-da84d127e765?auto=format&fit=crop&w=1200&q=80',
+    imageUrl: 'https://commons.wikimedia.org/wiki/Special:FilePath/Ayurvedic_manuscript.jpg',
     pagesCount: 180,
     extractedSanskritPrakritText: `हिताहितं सुखं दुःखमायुस्तस्य हिताहितम्।
 मानं च तच्च यत्रोक्तमायुर्वेदः स उच्यते॥

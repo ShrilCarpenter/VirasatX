@@ -17,7 +17,7 @@ export const SUSTAINABLE_DESTINATIONS: SustainableDestination[] = [
       'Stay in community-run homestays across the Tungabhadra river in Anegundi village.',
       'Purchase banana-fiber handicrafts directly from the Kishkinda Trust women’s cooperative.'
     ],
-    imageUrl: 'https://images.unsplash.com/photo-1582510003544-4d00b7f74220?auto=format&fit=crop&w=800&q=80',
+    imageUrl: 'https://commons.wikimedia.org/wiki/Special:FilePath/Stone_chariot_at_Hampi.jpg',
     recommendedStayDays: 3,
     ecoStays: ['Uramma Heritage Homes Anegundi', 'Kishkinda Eco Retreat'],
     localCraftCoops: ['The Kishkinda Trust (Banana Fiber Crafts)', 'Sandur Kushala Kala Kendra (Lambani Embroidery)']
@@ -37,7 +37,7 @@ export const SUSTAINABLE_DESTINATIONS: SustainableDestination[] = [
       'Hire certified local desert guides from the archaeological sanctuary to support local hamlet employment.',
       'Visit Rogan and Ajrakh artisan homes in Nirona and Ajrakhpur to buy directly with zero middleman markup.'
     ],
-    imageUrl: 'https://images.unsplash.com/photo-1548013146-72479768bada?auto=format&fit=crop&w=800&q=80',
+    imageUrl: 'https://commons.wikimedia.org/wiki/Special:FilePath/Dholavira_Reservoir.jpg',
     recommendedStayDays: 4,
     ecoStays: ['Shaam-e-Sarhad Village Resort Hodka', 'Toran Rann Resort'],
     localCraftCoops: ['Khamir Craft Resource Centre', 'Kutch Rogan Art Heritage Guild', 'Shrujan Thread of Life']
@@ -57,7 +57,7 @@ export const SUSTAINABLE_DESTINATIONS: SustainableDestination[] = [
       'Visit the Swamimalai bronze casting units to see hereditary cire-perdue casting without touching chemical lacquers.',
       'Dine on banana-leaf regional millets and traditional Kaveri delta organic rice varieties.'
     ],
-    imageUrl: 'https://images.unsplash.com/photo-1599818458999-f2c9e782e2c3?auto=format&fit=crop&w=800&q=80',
+    imageUrl: 'https://commons.wikimedia.org/wiki/Special:FilePath/Brihadisvara_Temple,_Thanjavur,_Tamil_Nadu,_India.jpg',
     recommendedStayDays: 3,
     ecoStays: ['Svatma Heritage Residence', 'Mantra Koodam Eco Living Kumbakonam'],
     localCraftCoops: ['Swamimalai Hereditary Bronze Guild', 'Thanjavur Art Plate Cooperative', 'Nachiyar Koil Brass Lamp Guild']
@@ -77,7 +77,7 @@ export const SUSTAINABLE_DESTINATIONS: SustainableDestination[] = [
       'Stay in indigenous bamboo chang-ghars (stilt cottages) built by the Mishing tribal community.',
       'Attend the morning Naam-Ghosha prayers at Sattras with reverence and humility.'
     ],
-    imageUrl: 'https://images.unsplash.com/photo-1608889825205-eebdb9fc5806?auto=format&fit=crop&w=800&q=80',
+    imageUrl: 'https://commons.wikimedia.org/wiki/Special:FilePath/Majuli_island_Assam.jpg',
     recommendedStayDays: 3,
     ecoStays: ['La Maison de Ananda Bamboo Eco Lodge', 'Yggdrasil Bamboo Cottage'],
     localCraftCoops: ['Samaguri Sattra Mask Making Atelier', 'Mishing Handloom Weavers Producer Group']
@@ -97,7 +97,7 @@ export const SUSTAINABLE_DESTINATIONS: SustainableDestination[] = [
       'Purchase authentic Dhokra brass, Tuma gourd craft, and wrought iron items bearing the Bastar GI tag.',
       'Taste Mahua flower tea and traditional red rice cooked in terracotta handis.'
     ],
-    imageUrl: 'https://images.unsplash.com/photo-1579783902614-a3fb3927b675?auto=format&fit=crop&w=800&q=80',
+    imageUrl: 'https://commons.wikimedia.org/wiki/Special:FilePath/Chitrakote_Falls_Bastar.jpg',
     recommendedStayDays: 4,
     ecoStays: ['Bastar Jungle Eco Camp', 'Dandami Luxury Cottages Chitrakote'],
     localCraftCoops: ['Saathi Tribal Crafts Society Kondagaon', 'Bastar Iron & Bell Metal Federation']

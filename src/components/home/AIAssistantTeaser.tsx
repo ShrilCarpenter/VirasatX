@@ -98,7 +98,7 @@ export default function AIAssistantTeaser() {
             <div className="relative h-64 sm:h-72 rounded-xl overflow-hidden bg-stone-100">
               {/* eslint-disable-next-line @next/next/no-img-element */}
               <img
-                src="https://images.unsplash.com/photo-1599818458999-f2c9e782e2c3?auto=format&fit=crop&w=1000&q=85"
+                src="https://commons.wikimedia.org/wiki/Special:FilePath/Shiva_as_the_Lord_of_Dance_LACMA_edit.jpg"
                 alt="Chola Bronze Nataraja Masterpiece"
                 loading="lazy"
                 className="w-full h-full object-cover object-center brightness-[0.96]"
