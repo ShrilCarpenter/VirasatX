@@ -3,7 +3,7 @@
 import React, { useState } from 'react';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
-import { Search, ChevronDown, Menu, X, Landmark, Compass, BookOpen, Users, FileText, Info, Leaf } from 'lucide-react';
+import { Search, Menu, X, Landmark, Rotate3d, Compass, Clock, Map, Sparkles, Info } from 'lucide-react';
 import LanguageSelector from './LanguageSelector';
 import SearchModal from './SearchModal';
 
@@ -11,23 +11,15 @@ export default function Header() {
   const pathname = usePathname();
   const [isSearchOpen, setIsSearchOpen] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
-  const [isMoreDropdownOpen, setIsMoreDropdownOpen] = useState(false);
 
-  const primaryNavLinks = [
-    { label: 'Explore', href: '/explore' },
-    { label: 'Collections', href: '/explore#collections' },
-    { label: 'Timeline', href: '/timeline' },
-    { label: 'Heritage Map', href: '/map' },
-    { label: 'Virtual Museum', href: '/gallery/sculpture-gallery' },
-    { label: 'AI Guide', href: '/ai-guide' },
-  ];
-
-  const secondaryNavLinks = [
-    { label: 'Manuscripts', href: '/manuscripts', desc: 'Ancient palm-leaf & birch-bark codices', icon: BookOpen },
-    { label: 'Living Heritage', href: '/artisans', desc: 'Master artisans & GI-tagged traditions', icon: Users },
-    { label: 'Heritage Stories', href: '/stories', desc: 'Curatorial visual essays & dispatches', icon: FileText },
-    { label: 'Responsible Travel', href: '/sustainable-travel', desc: 'Mindful heritage tourism & etiquette', icon: Leaf },
-    { label: 'About & Sources', href: '/about', desc: 'Institutional sources & SIH 2026 project', icon: Info },
+  // Clean, focused museum pillars (no redundant or cluttered links)
+  const navLinks = [
+    { label: 'Explore', href: '/explore', icon: Compass },
+    { label: '3D Museum', href: '/gallery/sculpture-gallery', icon: Rotate3d, badge: '3D' },
+    { label: 'Timeline', href: '/timeline', icon: Clock },
+    { label: 'Heritage Map', href: '/map', icon: Map },
+    { label: 'AI Guide', href: '/ai-guide', icon: Sparkles },
+    { label: 'About', href: '/about', icon: Info },
   ];
 
   return (
@@ -35,6 +27,7 @@ export default function Header() {
       <header className="sticky top-0 z-40 w-full border-b border-[#E7E1D4] bg-[#FBF9F4]/95 backdrop-blur-md transition-all">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex items-center justify-between h-18">
+            
             {/* Museum Identity Logo */}
             <Link href="/" className="flex items-center gap-3 group">
               <div className="w-8 h-8 rounded-lg bg-[#9A3412] flex items-center justify-center shadow-sm border border-[#7C2D12]">
@@ -55,65 +48,32 @@ export default function Header() {
               </div>
             </Link>
 
-            {/* Desktop Primary Navigation */}
-            <nav className="hidden lg:flex items-center gap-6">
-              {primaryNavLinks.map(link => {
-                const isActive = pathname === link.href;
+            {/* Desktop Primary Navigation — Clean & Minimalist */}
+            <nav className="hidden lg:flex items-center gap-8">
+              {navLinks.map(link => {
+                const isActive = pathname === link.href || (link.href.startsWith('/gallery') && pathname.startsWith('/gallery'));
                 return (
                   <Link
                     key={link.label}
                     href={link.href}
-                    className={`text-sm font-sans tracking-normal transition-all relative py-1 ${
+                    className={`text-sm font-sans tracking-normal transition-all relative py-1 flex items-center gap-1.5 ${
                       isActive
                         ? 'text-[#9A3412] font-semibold'
                         : 'text-[#44403C] hover:text-[#9A3412]'
                     }`}
                   >
-                    {link.label}
+                    <span>{link.label}</span>
+                    {link.badge && (
+                      <span className="text-[9px] font-mono uppercase px-1.5 py-0.2 rounded-full bg-[#9A3412] text-white font-bold tracking-wider">
+                        {link.badge}
+                      </span>
+                    )}
                     {isActive && (
                       <span className="absolute bottom-0 left-0 right-0 h-0.5 bg-[#9A3412] rounded-full" />
                     )}
                   </Link>
                 );
               })}
-
-              {/* More Dropdown */}
-              <div className="relative">
-                <button
-                  onClick={() => setIsMoreDropdownOpen(!isMoreDropdownOpen)}
-                  onBlur={() => setTimeout(() => setIsMoreDropdownOpen(false), 200)}
-                  className="flex items-center gap-1 text-sm font-sans text-[#44403C] hover:text-[#9A3412] py-1 transition-colors"
-                >
-                  <span>More</span>
-                  <ChevronDown className={`w-3.5 h-3.5 transition-transform ${isMoreDropdownOpen ? 'rotate-180' : ''}`} />
-                </button>
-
-                {isMoreDropdownOpen && (
-                  <div className="absolute right-0 mt-2 w-64 rounded-xl bg-white border border-[#E7E1D4] shadow-lg p-2 z-50 animate-in fade-in zoom-in-95 duration-150">
-                    {secondaryNavLinks.map(sec => {
-                      const Icon = sec.icon;
-                      return (
-                        <Link
-                          key={sec.href}
-                          href={sec.href}
-                          onClick={() => setIsMoreDropdownOpen(false)}
-                          className="flex items-start gap-3 p-2.5 rounded-lg hover:bg-[#FBF9F4] transition-colors group"
-                        >
-                          <Icon className="w-4 h-4 text-[#9A3412] mt-0.5 shrink-0" />
-                          <div>
-                            <p className="text-xs font-semibold text-[#1C1917] group-hover:text-[#9A3412]">
-                              {sec.label}
-                            </p>
-                            <p className="text-[11px] text-[#78716C] leading-tight">
-                              {sec.desc}
-                            </p>
-                          </div>
-                        </Link>
-                      );
-                    })}
-                  </div>
-                )}
-              </div>
             </nav>
 
             {/* Right Side: Search, Language, Enter CTA */}
@@ -121,7 +81,7 @@ export default function Header() {
               {/* Search Button */}
               <button
                 onClick={() => setIsSearchOpen(true)}
-                className="flex items-center gap-2 px-3 py-1.5 text-xs text-[#57534E] bg-[#FFFFFF] hover:bg-[#F4EFE6] border border-[#E7E1D4] rounded-full transition-all"
+                className="flex items-center gap-2 px-3.5 py-1.5 text-xs text-[#57534E] bg-[#FFFFFF] hover:bg-[#F4EFE6] border border-[#E7E1D4] rounded-full transition-all shadow-sm"
                 title="Search Museum Collections (Ctrl+K)"
               >
                 <Search className="w-3.5 h-3.5 text-[#9A3412]" />
@@ -143,7 +103,7 @@ export default function Header() {
               </Link>
             </div>
 
-            {/* Mobile Menu Button */}
+            {/* Mobile Menu Toggle Button */}
             <div className="flex items-center gap-2 lg:hidden">
               <button
                 onClick={() => setIsSearchOpen(true)}
@@ -160,12 +120,13 @@ export default function Header() {
                 {isMobileMenuOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
               </button>
             </div>
+
           </div>
         </div>
 
         {/* Mobile Navigation Drawer */}
         {isMobileMenuOpen && (
-          <div className="lg:hidden bg-[#FFFFFF] border-b border-[#E7E1D4] px-4 pt-3 pb-6 space-y-3 shadow-md animate-in slide-in-from-top-2 duration-150">
+          <div className="lg:hidden bg-[#FFFFFF] border-b border-[#E7E1D4] px-4 pt-3 pb-6 space-y-4 shadow-md animate-in slide-in-from-top-2 duration-150">
             <div className="flex items-center justify-between pb-3 border-b border-[#E7E1D4]/60">
               <LanguageSelector />
               <Link
@@ -176,21 +137,31 @@ export default function Header() {
                 Enter Museum
               </Link>
             </div>
-            <div className="grid grid-cols-2 gap-2 pt-1">
-              {[...primaryNavLinks, ...secondaryNavLinks].map(link => (
-                <Link
-                  key={link.href}
-                  href={link.href}
-                  onClick={() => setIsMobileMenuOpen(false)}
-                  className={`px-3 py-2 rounded-lg text-xs transition-colors ${
-                    pathname === link.href
-                      ? 'bg-[#F4EFE6] text-[#9A3412] font-semibold'
-                      : 'text-[#44403C] hover:bg-[#FBF9F4]'
-                  }`}
-                >
-                  {link.label}
-                </Link>
-              ))}
+            <div className="flex flex-col gap-1">
+              {navLinks.map(link => {
+                const Icon = link.icon;
+                const isActive = pathname === link.href;
+                return (
+                  <Link
+                    key={link.href}
+                    href={link.href}
+                    onClick={() => setIsMobileMenuOpen(false)}
+                    className={`flex items-center gap-3 px-3 py-2.5 rounded-xl text-xs font-medium transition-colors ${
+                      isActive
+                        ? 'bg-[#F4EFE6] text-[#9A3412] font-bold'
+                        : 'text-[#44403C] hover:bg-[#FBF9F4]'
+                    }`}
+                  >
+                    <Icon className="w-4 h-4 text-[#9A3412]" />
+                    <span className="flex-1">{link.label}</span>
+                    {link.badge && (
+                      <span className="text-[9px] font-mono uppercase px-1.5 py-0.5 rounded-full bg-[#9A3412] text-white font-bold">
+                        {link.badge}
+                      </span>
+                    )}
+                  </Link>
+                );
+              })}
             </div>
           </div>
         )}

@@ -5,6 +5,8 @@ import Link from 'next/link';
 import { FileText, Play, Pause, ArrowRight } from 'lucide-react';
 import { EDITORIAL_STORIES } from '@/data/storiesData';
 import { speechService } from '@/services/speechService';
+import Card3DTilt from '@/components/common/Card3DTilt';
+import HeritageImage from '@/components/common/HeritageImage';
 
 export default function HeritageStoryFeature() {
   const story = EDITORIAL_STORIES[0];
@@ -107,27 +109,28 @@ export default function HeritageStoryFeature() {
             </div>
           </div>
 
-          {/* Right Column: Framed Visual */}
+          {/* Right Column: Framed Visual with 3D Tilt */}
           <div className="lg:col-span-5">
-            <div className="rounded-2xl overflow-hidden shadow-md border border-[#E7E1D4] bg-[#FFFFFF] p-3">
-              <div className="relative h-[380px] rounded-xl overflow-hidden bg-stone-100">
-                {/* eslint-disable-next-line @next/next/no-img-element */}
-                <img
-                  src={story.heroImage}
-                  alt={story.title}
-                  className="w-full h-full object-cover"
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent" />
-                <div className="absolute bottom-4 left-4 right-4 text-white">
-                  <span className="text-[10px] font-mono uppercase tracking-wider text-amber-200">
-                    Cire-Perdue Metallurgy
-                  </span>
-                  <h4 className="font-serif-display text-lg font-bold">
-                    The Anandatandava Bronze Castings
-                  </h4>
+            <Card3DTilt maxTilt={8} scaleOnHover={1.02} className="rounded-2xl">
+              <div className="rounded-2xl overflow-hidden shadow-md border border-[#E7E1D4] bg-[#FFFFFF] p-3">
+                <div className="relative h-[380px] rounded-xl overflow-hidden bg-stone-100">
+                  <HeritageImage
+                    src={story.heroImage}
+                    alt={story.title}
+                    className="w-full h-full object-cover"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent" />
+                  <div className="absolute bottom-4 left-4 right-4 text-white">
+                    <span className="text-[10px] font-mono uppercase tracking-wider text-amber-200">
+                      Cire-Perdue Metallurgy
+                    </span>
+                    <h4 className="font-serif-display text-lg font-bold">
+                      The Anandatandava Bronze Castings
+                    </h4>
+                  </div>
                 </div>
               </div>
-            </div>
+            </Card3DTilt>
           </div>
 
         </div>

@@ -12,6 +12,8 @@ import { ARTIFACTS_DATA } from '@/data/artifactsData';
 import ArtifactViewer3D from '@/components/artifact/ArtifactViewer3D';
 import { speechService } from '@/services/speechService';
 import { aiService } from '@/services/aiService';
+import HeritageImage from '@/components/common/HeritageImage';
+import Card3DTilt from '@/components/common/Card3DTilt';
 
 export default function ArtifactDetailPage() {
   const params = useParams();
@@ -401,32 +403,32 @@ export default function ArtifactDetailPage() {
 
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
             {relatedArtifacts.map(rel => (
-              <Link
-                key={rel.id}
-                href={`/artifact/${rel.id}`}
-                className="group rounded-xl overflow-hidden bg-[#FFFFFF] border border-[#E7E1D4] hover:border-[#9A3412]/50 shadow-sm transition-all flex flex-col justify-between"
-              >
-                <div className="relative h-48 overflow-hidden bg-stone-100">
-                  {/* eslint-disable-next-line @next/next/no-img-element */}
-                  <img
-                    src={rel.imageUrl}
-                    alt={rel.title}
-                    className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
-                  />
-                  <div className="absolute top-3 left-3 px-2 py-0.5 rounded text-[10px] font-sans font-medium bg-white/90 text-[#1C1917] shadow-sm">
-                    {rel.category}
+              <Card3DTilt key={rel.id} maxTilt={8} scaleOnHover={1.02} className="h-full rounded-xl">
+                <Link
+                  href={`/artifact/${rel.id}`}
+                  className="group rounded-xl overflow-hidden bg-[#FFFFFF] border border-[#E7E1D4] hover:border-[#9A3412]/50 shadow-sm transition-all flex flex-col justify-between h-full"
+                >
+                  <div className="relative h-48 overflow-hidden bg-stone-100">
+                    <HeritageImage
+                      src={rel.imageUrl}
+                      alt={rel.title}
+                      className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                    />
+                    <div className="absolute top-3 left-3 px-2 py-0.5 rounded text-[10px] font-sans font-medium bg-white/90 text-[#1C1917] shadow-sm">
+                      {rel.category}
+                    </div>
                   </div>
-                </div>
 
-                <div className="p-4 space-y-2">
-                  <h3 className="font-serif-display text-base font-bold text-[#1C1917] group-hover:text-[#9A3412] transition-colors line-clamp-1">
-                    {rel.title}
-                  </h3>
-                  <p className="text-xs text-[#78716C]">
-                    {rel.period} • {rel.location}, {rel.state}
-                  </p>
-                </div>
-              </Link>
+                  <div className="p-4 space-y-2">
+                    <h3 className="font-serif-display text-base font-bold text-[#1C1917] group-hover:text-[#9A3412] transition-colors line-clamp-1">
+                      {rel.title}
+                    </h3>
+                    <p className="text-xs text-[#78716C]">
+                      {rel.period} • {rel.location}, {rel.state}
+                    </p>
+                  </div>
+                </Link>
+              </Card3DTilt>
             ))}
           </div>
         </div>

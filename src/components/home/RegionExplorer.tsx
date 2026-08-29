@@ -5,6 +5,8 @@ import Link from 'next/link';
 import { MapPin, ArrowRight, Compass } from 'lucide-react';
 import { HeritageRegion } from '@/types';
 import { ARTIFACTS_DATA } from '@/data/artifactsData';
+import Card3DTilt from '@/components/common/Card3DTilt';
+import HeritageImage from '@/components/common/HeritageImage';
 
 export default function RegionExplorer() {
   const [selectedRegion, setSelectedRegion] = useState<HeritageRegion>('South');
@@ -167,36 +169,35 @@ export default function RegionExplorer() {
 
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
               {regionArtifacts.slice(0, 3).map(art => (
-                <Link
-                  key={art.id}
-                  href={`/artifact/${art.id}`}
-                  className="group rounded-xl border border-[#E7E1D4] overflow-hidden bg-[#FBF9F4] hover:border-[#9A3412]/50 hover:bg-[#FFFFFF] transition-all flex flex-col justify-between"
-                >
-                  <div className="relative h-52 overflow-hidden bg-stone-100">
-                    {/* eslint-disable-next-line @next/next/no-img-element */}
-                    <img
-                      src={art.imageUrl}
-                      alt={art.title}
-                      loading="lazy"
-                      className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
-                    />
-                    <div className="absolute top-3 left-3 px-2 py-0.5 rounded text-[10px] font-sans font-medium bg-white/90 text-[#44403C] shadow-sm">
-                      {art.category}
+                <Card3DTilt key={art.id} maxTilt={7} scaleOnHover={1.02} className="rounded-xl h-full">
+                  <Link
+                    href={`/artifact/${art.id}`}
+                    className="group rounded-xl border border-[#E7E1D4] overflow-hidden bg-[#FBF9F4] hover:border-[#9A3412]/50 hover:bg-[#FFFFFF] transition-all flex flex-col justify-between h-full"
+                  >
+                    <div className="relative h-52 overflow-hidden bg-stone-100">
+                      <HeritageImage
+                        src={art.imageUrl}
+                        alt={art.title}
+                        className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                      />
+                      <div className="absolute top-3 left-3 px-2 py-0.5 rounded text-[10px] font-sans font-medium bg-white/90 text-[#44403C] shadow-sm">
+                        {art.category}
+                      </div>
                     </div>
-                  </div>
-                  <div className="p-4 space-y-2">
-                    <h4 className="font-serif-display text-base font-bold text-[#1C1917] group-hover:text-[#9A3412] transition-colors line-clamp-1">
-                      {art.title}
-                    </h4>
-                    <p className="text-xs text-[#78716C]">
-                      {art.period} • {art.location}, {art.state}
-                    </p>
-                    <div className="pt-2 border-t border-[#E7E1D4] flex items-center justify-between text-xs font-semibold text-[#9A3412]">
-                      <span>Examine Artifact</span>
-                      <ArrowRight className="w-3.5 h-3.5 group-hover:translate-x-0.5 transition-transform" />
+                    <div className="p-4 space-y-2">
+                      <h4 className="font-serif-display text-base font-bold text-[#1C1917] group-hover:text-[#9A3412] transition-colors line-clamp-1">
+                        {art.title}
+                      </h4>
+                      <p className="text-xs text-[#78716C]">
+                        {art.period} • {art.location}, {art.state}
+                      </p>
+                      <div className="pt-2 border-t border-[#E7E1D4] flex items-center justify-between text-xs font-semibold text-[#9A3412]">
+                        <span>Examine Artifact</span>
+                        <ArrowRight className="w-3.5 h-3.5 group-hover:translate-x-0.5 transition-transform" />
+                      </div>
                     </div>
-                  </div>
-                </Link>
+                  </Link>
+                </Card3DTilt>
               ))}
             </div>
           </div>

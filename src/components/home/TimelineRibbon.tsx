@@ -4,6 +4,8 @@ import React, { useState } from 'react';
 import Link from 'next/link';
 import { Clock, ArrowRight } from 'lucide-react';
 import { TIMELINE_EPOCHS } from '@/data/timelineData';
+import Card3DTilt from '@/components/common/Card3DTilt';
+import HeritageImage from '@/components/common/HeritageImage';
 
 export default function TimelineRibbon() {
   const [selectedPeriodIdx, setSelectedPeriodIdx] = useState(0);
@@ -93,11 +95,9 @@ export default function TimelineRibbon() {
               >
                 {/* Era Image Thumbnail */}
                 <div className="relative h-24 w-full overflow-hidden bg-stone-200">
-                  {/* eslint-disable-next-line @next/next/no-img-element */}
-                  <img
+                  <HeritageImage
                     src={era.thumbnailUrl}
                     alt={era.title}
-                    loading="lazy"
                     className={`w-full h-full object-cover transition-transform duration-500 ${
                       isSelected ? 'scale-105 brightness-100' : 'group-hover:scale-105 brightness-90'
                     }`}
@@ -118,84 +118,85 @@ export default function TimelineRibbon() {
           })}
         </div>
 
-        {/* Large Historical Epoch Spotlight Card */}
-        <div className="bg-[#FFFFFF] border border-[#E7E1D4] rounded-2xl overflow-hidden shadow-sm grid grid-cols-1 lg:grid-cols-12 gap-0">
-          
-          {/* Large Historical Visual Column */}
-          <div className="lg:col-span-6 relative min-h-[300px] lg:min-h-[420px] bg-stone-100">
-            {/* eslint-disable-next-line @next/next/no-img-element */}
-            <img
-              src={matchedEpoch.heroImageUrl}
-              alt={matchedEpoch.name}
-              loading="lazy"
-              className="w-full h-full object-cover object-center brightness-[0.96]"
-            />
-            <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent pointer-events-none" />
+        {/* Large Historical Epoch Spotlight Card with 3D Tilt */}
+        <Card3DTilt maxTilt={6} scaleOnHover={1.01} className="rounded-2xl">
+          <div className="bg-[#FFFFFF] border border-[#E7E1D4] rounded-2xl overflow-hidden shadow-sm grid grid-cols-1 lg:grid-cols-12 gap-0">
             
-            {/* Overlay Caption */}
-            <div className="absolute bottom-4 left-5 right-5 text-white">
-              <span className="text-[11px] font-mono uppercase tracking-wider text-amber-200 block">
-                {matchedEpoch.dateRange}
-              </span>
-              <h3 className="font-serif-display text-2xl sm:text-3xl font-bold text-white drop-shadow-md">
-                {matchedEpoch.name}
-              </h3>
-              {matchedEpoch.nativeName && (
-                <p className="text-xs text-white/80 font-serif-display italic mt-0.5">
-                  {matchedEpoch.nativeName}
-                </p>
-              )}
-            </div>
-          </div>
-
-          {/* Curatorial Context Column */}
-          <div className="lg:col-span-6 p-6 sm:p-8 flex flex-col justify-between space-y-6">
-            <div className="space-y-4">
-              <div className="flex items-center justify-between border-b border-[#E7E1D4] pb-3">
-                <span className="text-xs font-mono tracking-wider text-[#9A3412] font-bold">
+            {/* Large Historical Visual Column */}
+            <div className="lg:col-span-6 relative min-h-[300px] lg:min-h-[420px] bg-stone-100">
+              <HeritageImage
+                src={matchedEpoch.heroImageUrl}
+                alt={matchedEpoch.name}
+                className="w-full h-full object-cover object-center brightness-[0.96]"
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent pointer-events-none" />
+              
+              {/* Overlay Caption */}
+              <div className="absolute bottom-4 left-5 right-5 text-white">
+                <span className="text-[11px] font-mono uppercase tracking-wider text-amber-200 block">
                   {matchedEpoch.dateRange}
                 </span>
-                <span className="text-xs text-[#78716C]">
-                  {matchedEpoch.primaryLocations.slice(0, 3).join(' • ')}
-                </span>
+                <h3 className="font-serif-display text-2xl sm:text-3xl font-bold text-white drop-shadow-md">
+                  {matchedEpoch.name}
+                </h3>
+                {matchedEpoch.nativeName && (
+                  <p className="text-xs text-white/80 font-serif-display italic mt-0.5">
+                    {matchedEpoch.nativeName}
+                  </p>
+                )}
               </div>
+            </div>
 
-              <p className="text-sm sm:text-base text-[#44403C] leading-relaxed">
-                {matchedEpoch.description || matchedEpoch.summary}
-              </p>
+            {/* Curated Historical Narrative Column */}
+            <div className="lg:col-span-6 p-6 sm:p-8 flex flex-col justify-between space-y-6">
+              <div className="space-y-4">
+                <div className="flex items-center justify-between border-b border-[#E7E1D4] pb-3">
+                  <span className="text-xs font-mono tracking-wider text-[#9A3412] font-bold">
+                    {matchedEpoch.dateRange}
+                  </span>
+                  <span className="text-xs text-[#78716C]">
+                    {matchedEpoch.primaryLocations.slice(0, 3).join(' • ')}
+                  </span>
+                </div>
 
-              {/* Civilizational Highlights */}
-              <div className="pt-2">
-                <p className="text-xs font-bold uppercase tracking-wider text-[#78716C] mb-2">
-                  Key Historical Milestones:
+                <p className="text-sm sm:text-base text-[#44403C] leading-relaxed">
+                  {matchedEpoch.description}
                 </p>
-                <div className="space-y-2">
-                  {matchedEpoch.keyEvents.slice(0, 3).map((ev, i) => (
-                    <div key={i} className="flex items-start gap-2.5 text-xs text-[#44403C]">
-                      <span className="w-1.5 h-1.5 rounded-full bg-[#9A3412] mt-1.5 shrink-0" />
-                      <span>{ev}</span>
-                    </div>
-                  ))}
+
+                {/* Key Events List */}
+                <div className="pt-2">
+                  <p className="text-xs font-bold uppercase tracking-wider text-[#78716C] mb-2">
+                    Key Historical Milestones:
+                  </p>
+                  <div className="space-y-2">
+                    {matchedEpoch.keyEvents.slice(0, 3).map((event, idx) => (
+                      <div key={idx} className="flex items-start gap-2.5 text-xs text-[#44403C]">
+                        <span className="w-1.5 h-1.5 rounded-full bg-[#9A3412] mt-1.5 shrink-0" />
+                        <span>{event}</span>
+                      </div>
+                    ))}
+                  </div>
                 </div>
               </div>
+
+              {/* Card Footer Plaque */}
+              <div className="pt-4 border-t border-[#E7E1D4] flex items-center justify-between">
+                <span className="text-xs text-[#78716C]">
+                  Art & Architecture: <strong className="text-[#1C1917]">{matchedEpoch.architecturalStyle.split(',')[0]}</strong>
+                </span>
+
+                <Link
+                  href={`/timeline?epoch=${matchedEpoch.id}`}
+                  className="inline-flex items-center gap-1.5 text-xs font-sans font-bold uppercase tracking-wider text-[#9A3412] hover:text-[#7C2D12] group"
+                >
+                  <span>Examine Full Era</span>
+                  <ArrowRight className="w-3.5 h-3.5 group-hover:translate-x-0.5 transition-transform" />
+                </Link>
+              </div>
             </div>
 
-            {/* Bottom Museum Action Link */}
-            <div className="pt-4 border-t border-[#E7E1D4] flex items-center justify-between">
-              <span className="text-xs text-[#78716C]">
-                Art & Architecture: <strong className="text-[#1C1917]">{matchedEpoch.architecturalStyle.split(',')[0]}</strong>
-              </span>
-              <Link
-                href={`/timeline?epoch=${matchedEpoch.id}`}
-                className="inline-flex items-center gap-1.5 text-xs font-sans font-bold uppercase tracking-wider text-[#9A3412] hover:text-[#7C2D12] group"
-              >
-                <span>Examine Full Era</span>
-                <ArrowRight className="w-3.5 h-3.5 group-hover:translate-x-0.5 transition-transform" />
-              </Link>
-            </div>
           </div>
-
-        </div>
+        </Card3DTilt>
 
       </div>
     </section>

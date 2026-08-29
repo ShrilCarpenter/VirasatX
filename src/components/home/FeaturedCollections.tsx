@@ -4,6 +4,8 @@ import React from 'react';
 import Link from 'next/link';
 import { ArrowRight, Layers } from 'lucide-react';
 import { ARTIFACTS_DATA } from '@/data/artifactsData';
+import Card3DTilt from '@/components/common/Card3DTilt';
+import HeritageImage from '@/components/common/HeritageImage';
 
 export default function FeaturedCollections() {
   const getCategoryCount = (cat: string) => {
@@ -89,52 +91,51 @@ export default function FeaturedCollections() {
           </Link>
         </div>
 
-        {/* 3-Column Large Image Gallery Grid */}
+        {/* 3-Column Large Image Gallery Grid with 3D Gyro Tilt */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
           {collections.map(col => (
-            <Link
-              key={col.title}
-              href={`/explore?category=${encodeURIComponent(col.category)}`}
-              className="group rounded-2xl overflow-hidden bg-[#FFFFFF] border border-[#E7E1D4] shadow-sm hover:shadow-md hover:border-[#9A3412]/50 transition-all flex flex-col justify-between"
-            >
-              {/* Large Image Container (Occupies ~70% of Card) */}
-              <div className="relative h-72 sm:h-80 overflow-hidden bg-stone-100">
-                {/* eslint-disable-next-line @next/next/no-img-element */}
-                <img
-                  src={col.imageUrl}
-                  alt={col.title}
-                  loading="lazy"
-                  className="w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-700 brightness-[0.97]"
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent pointer-events-none" />
-                
-                {/* Period & Count Tag */}
-                <div className="absolute top-3.5 left-3.5 px-2.5 py-1 rounded-md text-[10px] font-sans font-semibold bg-[#FFFFFF]/90 text-[#1C1917] backdrop-blur-sm shadow-sm border border-[#E7E1D4]">
-                  {col.count}
+            <Card3DTilt key={col.title} maxTilt={9} scaleOnHover={1.02} className="rounded-2xl h-full">
+              <Link
+                href={`/explore?category=${encodeURIComponent(col.category)}`}
+                className="group rounded-2xl overflow-hidden bg-[#FFFFFF] border border-[#E7E1D4] shadow-sm hover:shadow-lg hover:border-[#9A3412]/50 transition-all flex flex-col justify-between h-full"
+              >
+                {/* Large Image Container with Resilient Loading */}
+                <div className="relative h-72 sm:h-80 overflow-hidden bg-stone-100">
+                  <HeritageImage
+                    src={col.imageUrl}
+                    alt={col.title}
+                    className="w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-700 brightness-[0.97]"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent pointer-events-none" />
+                  
+                  {/* Period & Count Tag */}
+                  <div className="absolute top-3.5 left-3.5 px-2.5 py-1 rounded-md text-[10px] font-sans font-semibold bg-[#FFFFFF]/90 text-[#1C1917] backdrop-blur-sm shadow-sm border border-[#E7E1D4]">
+                    {col.count}
+                  </div>
+
+                  <div className="absolute bottom-3 left-3.5 right-3.5 text-white">
+                    <span className="text-[10px] font-mono uppercase tracking-wider text-amber-200 block">
+                      {col.periodTag}
+                    </span>
+                    <h3 className="font-serif-display text-2xl font-bold tracking-tight text-white drop-shadow-sm">
+                      {col.title}
+                    </h3>
+                  </div>
                 </div>
 
-                <div className="absolute bottom-3 left-3.5 right-3.5 text-white">
-                  <span className="text-[10px] font-mono uppercase tracking-wider text-amber-200 block">
-                    {col.periodTag}
-                  </span>
-                  <h3 className="font-serif-display text-2xl font-bold tracking-tight text-white drop-shadow-sm">
-                    {col.title}
-                  </h3>
-                </div>
-              </div>
+                {/* Minimalist Museum Plaque Info */}
+                <div className="p-5 flex-1 flex flex-col justify-between space-y-4">
+                  <p className="text-xs text-[#57534E] leading-relaxed">
+                    {col.description}
+                  </p>
 
-              {/* Minimalist Museum Plaque Info */}
-              <div className="p-5 flex-1 flex flex-col justify-between space-y-4">
-                <p className="text-xs text-[#57534E] leading-relaxed">
-                  {col.description}
-                </p>
-
-                <div className="pt-3 border-t border-[#E7E1D4] flex items-center justify-between text-xs font-sans font-semibold text-[#9A3412]">
-                  <span>Enter Gallery</span>
-                  <ArrowRight className="w-3.5 h-3.5 group-hover:translate-x-1 transition-transform" />
+                  <div className="pt-3 border-t border-[#E7E1D4] flex items-center justify-between text-xs font-sans font-semibold text-[#9A3412]">
+                    <span>Enter Gallery</span>
+                    <ArrowRight className="w-3.5 h-3.5 group-hover:translate-x-1 transition-transform" />
+                  </div>
                 </div>
-              </div>
-            </Link>
+              </Link>
+            </Card3DTilt>
           ))}
         </div>
 

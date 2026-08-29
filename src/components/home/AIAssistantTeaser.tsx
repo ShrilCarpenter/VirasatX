@@ -4,6 +4,8 @@ import React, { useState } from 'react';
 import Link from 'next/link';
 import { Sparkles, Send, Bot, User, ArrowRight, ShieldCheck, HelpCircle } from 'lucide-react';
 import { aiService } from '@/services/aiService';
+import Card3DTilt from '@/components/common/Card3DTilt';
+import HeritageImage from '@/components/common/HeritageImage';
 
 export default function AIAssistantTeaser() {
   const [inputQuery, setInputQuery] = useState('');
@@ -90,60 +92,60 @@ export default function AIAssistantTeaser() {
         </div>
 
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-stretch">
-          
-          {/* Left Column: Framed Masterpiece Visual with Research Desk Label */}
-          <div className="lg:col-span-5 flex flex-col justify-between rounded-2xl bg-[#FFFFFF] border border-[#E7E1D4] p-4 sm:p-5 shadow-sm space-y-4">
-            
-            {/* Museum Artifact Photograph */}
-            <div className="relative h-64 sm:h-72 rounded-xl overflow-hidden bg-stone-100">
-              {/* eslint-disable-next-line @next/next/no-img-element */}
-              <img
-                src="https://commons.wikimedia.org/wiki/Special:FilePath/Shiva_as_the_Lord_of_Dance_LACMA_edit.jpg"
-                alt="Chola Bronze Nataraja Masterpiece"
-                loading="lazy"
-                className="w-full h-full object-cover object-center brightness-[0.96]"
-              />
-              <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent pointer-events-none" />
-              
-              <div className="absolute top-3 left-3 px-2.5 py-1 rounded bg-[#FFFFFF]/90 text-[#1C1917] text-[10px] font-sans font-semibold border border-[#E7E1D4]">
-                Featured Research Subject
+           {/* Left Column: Framed Masterpiece Visual with Research Desk Label */}
+          <div className="lg:col-span-5 h-full">
+            <Card3DTilt maxTilt={7} scaleOnHover={1.01} className="h-full rounded-2xl">
+              <div className="flex flex-col justify-between rounded-2xl bg-[#FFFFFF] border border-[#E7E1D4] p-4 sm:p-5 shadow-sm space-y-4 h-full">
+                
+                {/* Museum Artifact Photograph */}
+                <div className="relative h-64 sm:h-72 rounded-xl overflow-hidden bg-stone-100">
+                  <HeritageImage
+                    src="https://commons.wikimedia.org/wiki/Special:FilePath/Shiva_as_the_Lord_of_Dance_LACMA_edit.jpg"
+                    alt="Chola Bronze Nataraja Masterpiece"
+                    className="w-full h-full object-cover object-center brightness-[0.96]"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent pointer-events-none" />
+                  
+                  <div className="absolute top-3 left-3 px-2.5 py-1 rounded bg-[#FFFFFF]/90 text-[#1C1917] text-[10px] font-sans font-semibold border border-[#E7E1D4]">
+                    Featured Research Subject
+                  </div>
+
+                  <div className="absolute bottom-3 left-3 right-3 text-white">
+                    <span className="text-[10px] font-mono uppercase text-amber-200 block">
+                      Chola Dynasty • 11th Century CE
+                    </span>
+                    <h4 className="font-serif-display text-lg font-bold text-white">
+                      Nataraja — Lord of the Cosmic Dance
+                    </h4>
+                  </div>
+                </div>
+
+                {/* Museum Desk Curatorial Note */}
+                <div className="space-y-2 text-xs text-[#57534E] leading-relaxed">
+                  <p>
+                    <strong>Archival Inquiries:</strong> Ask our AI assistant regarding the philosophical symbolism, lost-wax metallurgy, or historical context of this artifact.
+                  </p>
+                  <div className="flex items-center gap-2 text-[11px] text-[#15803D] pt-1">
+                    <ShieldCheck className="w-3.5 h-3.5 shrink-0" />
+                    <span>Verified against National Museum & ASI archival records</span>
+                  </div>
+                </div>
+
+                {/* Link to Artifact */}
+                <div className="pt-3 border-t border-[#E7E1D4] flex items-center justify-between">
+                  <span className="text-xs text-[#78716C]">
+                    Accession: <strong className="text-[#1C1917]">NM-BR-56.12</strong>
+                  </span>
+                  <Link
+                    href="/artifact/chola-bronze-nataraja"
+                    className="text-xs font-semibold text-[#9A3412] hover:underline inline-flex items-center gap-1"
+                  >
+                    <span>Full Catalog Record</span>
+                    <ArrowRight className="w-3 h-3" />
+                  </Link>
+                </div>
               </div>
-
-              <div className="absolute bottom-3 left-3 right-3 text-white">
-                <span className="text-[10px] font-mono uppercase text-amber-200 block">
-                  Chola Dynasty • 11th Century CE
-                </span>
-                <h4 className="font-serif-display text-lg font-bold text-white">
-                  Nataraja — Lord of the Cosmic Dance
-                </h4>
-              </div>
-            </div>
-
-            {/* Museum Desk Curatorial Note */}
-            <div className="space-y-2 text-xs text-[#57534E] leading-relaxed">
-              <p>
-                <strong>Archival Inquiries:</strong> Ask our AI assistant regarding the philosophical symbolism, lost-wax metallurgy, or historical context of this artifact.
-              </p>
-              <div className="flex items-center gap-2 text-[11px] text-[#15803D] pt-1">
-                <ShieldCheck className="w-3.5 h-3.5 shrink-0" />
-                <span>Verified against National Museum & ASI archival records</span>
-              </div>
-            </div>
-
-            {/* Link to Artifact */}
-            <div className="pt-3 border-t border-[#E7E1D4] flex items-center justify-between">
-              <span className="text-xs text-[#78716C]">
-                Accession: <strong className="text-[#1C1917]">NM-BR-56.12</strong>
-              </span>
-              <Link
-                href="/artifact/chola-bronze-nataraja"
-                className="text-xs font-semibold text-[#9A3412] hover:underline inline-flex items-center gap-1"
-              >
-                <span>Full Catalog Record</span>
-                <ArrowRight className="w-3 h-3" />
-              </Link>
-            </div>
-
+            </Card3DTilt>
           </div>
 
           {/* Right Column: Clean Light Chat Stage */}

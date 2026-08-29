@@ -1,10 +1,14 @@
 'use client';
 
-import React from 'react';
+import React, { useState } from 'react';
 import Link from 'next/link';
-import { Compass, Sparkles, ArrowRight, ShieldCheck, Landmark } from 'lucide-react';
+import { Compass, Sparkles, ArrowRight, Rotate3d, Image as ImageIcon } from 'lucide-react';
+import HeroCanvas3D from './HeroCanvas3D';
+import HeritageImage from '@/components/common/HeritageImage';
 
 export default function HeroSection() {
+  const [viewMode, setViewMode] = useState<'3d' | 'photo'>('3d');
+
   return (
     <section className="relative w-full py-16 sm:py-24 bg-[#FBF9F4] border-b border-[#E7E1D4]">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -27,11 +31,11 @@ export default function HeroSection() {
                 <span className="text-[#9A3412] italic font-normal">Reimagined.</span>
               </h1>
               <p className="font-serif-editorial text-xl sm:text-2xl text-[#57534E] font-normal leading-relaxed max-w-xl">
-                Explore India’s art, architecture, manuscripts and living traditions through an intelligent digital museum.
+                Explore India’s art, architecture, manuscripts and living traditions through an intelligent 3D digital museum.
               </p>
             </div>
 
-            {/* CTAs: Clean Primary & Secondary only */}
+            {/* CTAs */}
             <div className="flex flex-wrap items-center gap-4 pt-2">
               <Link
                 href="/explore"
@@ -43,15 +47,15 @@ export default function HeroSection() {
               </Link>
 
               <Link
-                href="/ai-guide"
+                href="/gallery/sculpture-gallery"
                 className="flex items-center gap-2 px-6 py-3.5 rounded-full bg-[#FFFFFF] hover:bg-[#F4EFE6] text-[#1C1917] border border-[#E7E1D4] hover:border-[#9A3412] font-sans font-semibold text-sm transition-all shadow-sm"
               >
-                <Sparkles className="w-4 h-4 text-[#B45309]" />
-                <span>Meet the AI Heritage Guide</span>
+                <Rotate3d className="w-4 h-4 text-[#9A3412]" />
+                <span>3D Virtual Museum</span>
               </Link>
             </div>
 
-            {/* Editorial Museum Meta Highlight */}
+            {/* Editorial Museum Meta Highlights */}
             <div className="pt-6 border-t border-[#E7E1D4] grid grid-cols-3 gap-4 text-xs">
               <div>
                 <span className="font-bold text-[#1C1917] block">5,000+ Years</span>
@@ -62,46 +66,77 @@ export default function HeroSection() {
                 <span className="text-[#78716C]">Regional Collections</span>
               </div>
               <div>
-                <span className="font-bold text-[#1C1917] block">Curated Archive</span>
-                <span className="text-[#78716C]">Digital Preservation</span>
+                <span className="font-bold text-[#1C1917] block">Real-Time 3D</span>
+                <span className="text-[#78716C]">WebGL Preservation</span>
               </div>
             </div>
           </div>
 
-          {/* Right Museum Visual Frame Column */}
-          <div className="lg:col-span-6">
-            <div className="relative rounded-2xl overflow-hidden bg-[#FFFFFF] border border-[#E7E1D4] p-3 sm:p-4 shadow-md">
-              {/* Museum Framed Photograph */}
-              <div className="relative h-[380px] sm:h-[460px] overflow-hidden rounded-xl bg-stone-100">
-                {/* eslint-disable-next-line @next/next/no-img-element */}
-                <img
-                  src="https://commons.wikimedia.org/wiki/Special:FilePath/Shiva_as_the_Lord_of_Dance_LACMA_edit.jpg"
-                  alt="Chola Bronze Nataraja Artifact"
-                  className="w-full h-full object-cover object-center brightness-[0.96]"
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent pointer-events-none" />
-                <div className="absolute bottom-3 right-3 px-2 py-0.5 rounded text-[10px] font-sans bg-black/60 text-white/90">
-                  Representative Photography
-                </div>
-              </div>
-
-              {/* Museum Institutional Caption Plaque */}
-              <div className="pt-3 px-2 flex items-center justify-between text-xs text-[#78716C]">
-                <div>
-                  <strong className="text-[#1C1917] font-serif-display text-sm block">
-                    Nataraja — Lord of the Cosmic Dance
-                  </strong>
-                  <span>Chola Dynasty • 11th Century CE • Tamil Nadu</span>
-                </div>
-                <Link
-                  href="/artifact/chola-bronze-nataraja"
-                  className="text-xs font-semibold text-[#9A3412] hover:underline flex items-center gap-1 shrink-0"
+          {/* Right Visual 3D Frame Column */}
+          <div className="lg:col-span-6 space-y-3">
+            
+            {/* View Mode Toggle Pill */}
+            <div className="flex items-center justify-between px-2">
+              <span className="text-xs font-mono uppercase tracking-wider text-[#78716C] font-semibold">
+                Interactive Display:
+              </span>
+              <div className="flex items-center gap-1 p-1 rounded-full bg-[#FFFFFF] border border-[#E7E1D4] shadow-sm">
+                <button
+                  onClick={() => setViewMode('3d')}
+                  className={`flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-sans font-semibold transition-all ${
+                    viewMode === '3d' ? 'bg-[#9A3412] text-white shadow-sm' : 'text-[#78716C] hover:text-[#1C1917]'
+                  }`}
                 >
-                  <span>View Artifact</span>
-                  <ArrowRight className="w-3 h-3" />
-                </Link>
+                  <Rotate3d className="w-3.5 h-3.5" />
+                  <span>3D WebGL</span>
+                </button>
+                <button
+                  onClick={() => setViewMode('photo')}
+                  className={`flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-sans font-semibold transition-all ${
+                    viewMode === 'photo' ? 'bg-[#9A3412] text-white shadow-sm' : 'text-[#78716C] hover:text-[#1C1917]'
+                  }`}
+                >
+                  <ImageIcon className="w-3.5 h-3.5" />
+                  <span>Archival Photo</span>
+                </button>
               </div>
             </div>
+
+            {/* 3D Canvas / Photo Container */}
+            {viewMode === '3d' ? (
+              <HeroCanvas3D />
+            ) : (
+              <div className="relative rounded-2xl overflow-hidden bg-[#FFFFFF] border border-[#E7E1D4] p-3 sm:p-4 shadow-md">
+                <div className="relative h-[380px] sm:h-[460px] overflow-hidden rounded-xl bg-stone-100">
+                  <HeritageImage
+                    src="https://commons.wikimedia.org/wiki/Special:FilePath/Shiva_as_the_Lord_of_Dance_LACMA_edit.jpg"
+                    alt="Chola Bronze Nataraja Masterpiece"
+                    className="w-full h-full object-cover object-center brightness-[0.96]"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent pointer-events-none" />
+                  <div className="absolute bottom-3 right-3 px-2 py-0.5 rounded text-[10px] font-sans bg-black/60 text-white/90">
+                    Archival Museum Photography
+                  </div>
+                </div>
+
+                <div className="pt-3 px-2 flex items-center justify-between text-xs text-[#78716C]">
+                  <div>
+                    <strong className="text-[#1C1917] font-serif-display text-sm block">
+                      Nataraja — Lord of the Cosmic Dance
+                    </strong>
+                    <span>Chola Dynasty • 11th Century CE • Tamil Nadu</span>
+                  </div>
+                  <Link
+                    href="/artifact/chola-bronze-nataraja"
+                    className="text-xs font-semibold text-[#9A3412] hover:underline flex items-center gap-1 shrink-0"
+                  >
+                    <span>View Artifact</span>
+                    <ArrowRight className="w-3 h-3" />
+                  </Link>
+                </div>
+              </div>
+            )}
+
           </div>
 
         </div>

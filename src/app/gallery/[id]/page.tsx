@@ -5,10 +5,12 @@ import Link from 'next/link';
 import { useParams } from 'next/navigation';
 import {
   ChevronLeft, ChevronRight, Eye, Play, Pause,
-  Map, Sparkles, Compass, Info, ArrowLeft, Layers, Volume2
+  Map, Sparkles, Compass, Info, ArrowLeft, Layers, Volume2, Rotate3d
 } from 'lucide-react';
 import { ARTIFACTS_DATA } from '@/data/artifactsData';
 import { speechService } from '@/services/speechService';
+import HeritageImage from '@/components/common/HeritageImage';
+import Card3DTilt from '@/components/common/Card3DTilt';
 
 const GALLERIES = [
   {
@@ -44,7 +46,6 @@ const GALLERIES = [
 export default function VirtualGalleryPage() {
   const params = useParams();
   const rawId = (params?.id as string) || 'sculpture-gallery';
-  // Map old route ids gracefully
   const galleryId = rawId === 'gupta-golden-hall' ? 'sculpture-gallery' :
                     rawId === 'sacred-manuscripts-vault' ? 'manuscript-gallery' :
                     rawId === 'chola-sanctum' ? 'sculpture-gallery' : rawId;
@@ -57,7 +58,6 @@ export default function VirtualGalleryPage() {
 
   const [currentIdx, setCurrentIdx] = useState(0);
   const [isPlayingAudio, setIsPlayingAudio] = useState(false);
-  const [showPlaque, setShowPlaque] = useState(true);
   const [showFloorplan, setShowFloorplan] = useState(false);
 
   const currentArt = galleryArtworks[currentIdx] || galleryArtworks[0];
@@ -154,39 +154,40 @@ export default function VirtualGalleryPage() {
         {currentArt && (
           <div className="w-full grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
             
-            {/* Left Column: Wall-Mounted Spotlight Artwork */}
-            <div className="lg:col-span-7 flex flex-col items-center">
-              <div className="relative rounded-2xl overflow-hidden bg-[#FFFFFF] border border-[#E7E1D4] shadow-md p-4 max-w-lg w-full">
-                <div className="relative h-80 sm:h-96 rounded-xl overflow-hidden bg-stone-100 flex items-center justify-center">
-                  {/* eslint-disable-next-line @next/next/no-img-element */}
-                  <img
-                    src={currentArt.imageUrl}
-                    alt={currentArt.title}
-                    className="max-h-full max-w-full object-contain"
-                  />
-                </div>
+            {/* Left Column: Wall-Mounted Spotlight Artwork with 3D Tilt */}
+            <div className="lg:col-span-7 flex flex-col items-center w-full">
+              <Card3DTilt maxTilt={8} scaleOnHover={1.01} className="w-full max-w-lg rounded-2xl">
+                <div className="relative rounded-2xl overflow-hidden bg-[#FFFFFF] border border-[#E7E1D4] shadow-md p-4 w-full">
+                  <div className="relative h-80 sm:h-96 rounded-xl overflow-hidden bg-stone-100 flex items-center justify-center">
+                    <HeritageImage
+                      src={currentArt.imageUrl}
+                      alt={currentArt.title}
+                      className="max-h-full max-w-full object-contain"
+                    />
+                  </div>
 
-                {/* Exhibit navigation arrows */}
-                <div className="flex items-center justify-between pt-3 text-xs text-[#78716C]">
-                  <button
-                    onClick={handlePrev}
-                    className="flex items-center gap-1 hover:text-[#1C1917] font-sans font-semibold"
-                  >
-                    <ChevronLeft className="w-4 h-4" />
-                    <span>Previous</span>
-                  </button>
-                  <span className="font-mono text-[11px]">
-                    Exhibit {currentIdx + 1} of {galleryArtworks.length}
-                  </span>
-                  <button
-                    onClick={handleNext}
-                    className="flex items-center gap-1 hover:text-[#1C1917] font-sans font-semibold"
-                  >
-                    <span>Next</span>
-                    <ChevronRight className="w-4 h-4" />
-                  </button>
+                  {/* Exhibit navigation arrows */}
+                  <div className="flex items-center justify-between pt-3 text-xs text-[#78716C]">
+                    <button
+                      onClick={handlePrev}
+                      className="flex items-center gap-1 hover:text-[#1C1917] font-sans font-semibold"
+                    >
+                      <ChevronLeft className="w-4 h-4" />
+                      <span>Previous</span>
+                    </button>
+                    <span className="font-mono text-[11px]">
+                      Exhibit {currentIdx + 1} of {galleryArtworks.length}
+                    </span>
+                    <button
+                      onClick={handleNext}
+                      className="flex items-center gap-1 hover:text-[#1C1917] font-sans font-semibold"
+                    >
+                      <span>Next</span>
+                      <ChevronRight className="w-4 h-4" />
+                    </button>
+                  </div>
                 </div>
-              </div>
+              </Card3DTilt>
             </div>
 
             {/* Right Column: Museum Info Plaque */}
@@ -273,8 +274,7 @@ export default function VirtualGalleryPage() {
                   : 'border-[#E7E1D4] opacity-70 hover:opacity-100'
               }`}
             >
-              {/* eslint-disable-next-line @next/next/no-img-element */}
-              <img src={art.imageUrl} alt={art.title} className="w-full h-full object-cover" />
+              <HeritageImage src={art.imageUrl} alt={art.title} className="w-full h-full object-cover" />
             </button>
           ))}
         </div>

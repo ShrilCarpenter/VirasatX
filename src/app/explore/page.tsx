@@ -9,6 +9,8 @@ import {
 } from 'lucide-react';
 import { ARTIFACTS_DATA } from '@/data/artifactsData';
 import { Artifact, ArtifactCategory, HeritageRegion, HistoricalPeriod } from '@/types';
+import Card3DTilt from '@/components/common/Card3DTilt';
+import HeritageImage from '@/components/common/HeritageImage';
 
 const CATEGORIES: ArtifactCategory[] = [
   'Sculptures', 'Paintings', 'Manuscripts', 'Architecture',
@@ -318,77 +320,75 @@ function ExploreContent() {
           </div>
         </div>
 
-        {/* Consistent Artifact Card System */}
+        {/* Consistent Artifact Card System with 3D Tilt */}
         {viewMode === 'grid' ? (
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
             {filteredArtifacts.map(art => {
               const isSaved = savedIds.includes(art.id);
               return (
-                <div
-                  key={art.id}
-                  className="group rounded-2xl overflow-hidden bg-[#FFFFFF] border border-[#E7E1D4] shadow-sm hover:shadow-md hover:border-[#9A3412]/50 transition-all duration-300 flex flex-col justify-between"
-                >
-                  {/* Framed Image Container */}
-                  <Link href={`/artifact/${art.id}`} className="relative h-64 overflow-hidden bg-stone-100 block">
-                    {/* eslint-disable-next-line @next/next/no-img-element */}
-                    <img
-                      src={art.imageUrl}
-                      alt={art.title}
-                      className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
-                    />
-                    <div className="absolute top-3 left-3 flex items-center gap-1.5">
-                      <span className="px-2.5 py-0.5 rounded-full text-[10px] font-sans font-medium bg-[#FFFFFF]/90 text-[#1C1917] shadow-sm border border-[#E7E1D4]">
-                        {art.category}
-                      </span>
-                      <span className="px-2 py-0.5 rounded-full text-[10px] font-sans font-medium bg-[#F4EFE6] text-[#78716C] border border-[#E7E1D4]">
-                        {art.region}
-                      </span>
-                    </div>
+                <Card3DTilt key={art.id} maxTilt={8} scaleOnHover={1.02} className="h-full rounded-2xl">
+                  <div className="group rounded-2xl overflow-hidden bg-[#FFFFFF] border border-[#E7E1D4] shadow-sm hover:shadow-lg hover:border-[#9A3412]/50 transition-all duration-300 flex flex-col justify-between h-full">
+                    {/* Framed Image Container */}
+                    <Link href={`/artifact/${art.id}`} className="relative h-64 overflow-hidden bg-stone-100 block">
+                      <HeritageImage
+                        src={art.imageUrl}
+                        alt={art.title}
+                        className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                      />
+                      <div className="absolute top-3 left-3 flex items-center gap-1.5 z-10">
+                        <span className="px-2.5 py-0.5 rounded-full text-[10px] font-sans font-medium bg-[#FFFFFF]/90 text-[#1C1917] shadow-sm border border-[#E7E1D4]">
+                          {art.category}
+                        </span>
+                        <span className="px-2 py-0.5 rounded-full text-[10px] font-sans font-medium bg-[#F4EFE6] text-[#78716C] border border-[#E7E1D4]">
+                          {art.region}
+                        </span>
+                      </div>
 
-                    <button
-                      onClick={e => toggleSave(art.id, e)}
-                      className={`absolute top-3 right-3 p-2 rounded-full backdrop-blur-md transition-colors ${
-                        isSaved
-                          ? 'bg-[#9A3412] text-white shadow-sm'
-                          : 'bg-[#FFFFFF]/80 text-[#78716C] hover:text-[#1C1917] hover:bg-[#FFFFFF]'
-                      }`}
-                      title={isSaved ? 'Saved in Curation' : 'Save to My Curation'}
-                      aria-label="Save"
-                    >
-                      <Bookmark className={`w-3.5 h-3.5 ${isSaved ? 'fill-current' : ''}`} />
-                    </button>
-                  </Link>
-
-                  {/* Body Content */}
-                  <div className="p-5 flex-1 flex flex-col justify-between space-y-4">
-                    <div>
-                      <Link href={`/artifact/${art.id}`}>
-                        <h3 className="font-serif-display text-lg font-bold text-[#1C1917] group-hover:text-[#9A3412] transition-colors leading-snug">
-                          {art.title}
-                        </h3>
-                      </Link>
-                      <p className="text-xs text-[#78716C] mt-1">
-                        {art.dynasty} • {art.period}
-                      </p>
-                      <p className="text-xs text-[#57534E] line-clamp-2 mt-2 leading-relaxed">
-                        {art.overview}
-                      </p>
-                    </div>
-
-                    <div className="pt-3 border-t border-[#E7E1D4] flex items-center justify-between text-xs">
-                      <span className="text-[#78716C]">
-                        {art.location}, {art.state}
-                      </span>
-                      <Link
-                        href={`/artifact/${art.id}`}
-                        className="font-sans font-semibold text-[#9A3412] hover:underline flex items-center gap-1"
+                      <button
+                        onClick={e => toggleSave(art.id, e)}
+                        className={`absolute top-3 right-3 p-2 rounded-full backdrop-blur-md transition-colors z-10 ${
+                          isSaved
+                            ? 'bg-[#9A3412] text-white shadow-sm'
+                            : 'bg-[#FFFFFF]/80 text-[#78716C] hover:text-[#1C1917] hover:bg-[#FFFFFF]'
+                        }`}
+                        title={isSaved ? 'Saved in Curation' : 'Save to My Curation'}
+                        aria-label="Save"
                       >
-                        <span>View Artifact</span>
-                        <ArrowRight className="w-3.5 h-3.5" />
-                      </Link>
+                        <Bookmark className={`w-3.5 h-3.5 ${isSaved ? 'fill-current' : ''}`} />
+                      </button>
+                    </Link>
+
+                    {/* Body Content */}
+                    <div className="p-5 flex-1 flex flex-col justify-between space-y-4">
+                      <div>
+                        <Link href={`/artifact/${art.id}`}>
+                          <h3 className="font-serif-display text-lg font-bold text-[#1C1917] group-hover:text-[#9A3412] transition-colors leading-snug">
+                            {art.title}
+                          </h3>
+                        </Link>
+                        <p className="text-xs text-[#78716C] mt-1">
+                          {art.dynasty} • {art.period}
+                        </p>
+                        <p className="text-xs text-[#57534E] line-clamp-2 mt-2 leading-relaxed">
+                          {art.overview}
+                        </p>
+                      </div>
+
+                      <div className="pt-3 border-t border-[#E7E1D4] flex items-center justify-between text-xs">
+                        <span className="text-[#78716C]">
+                          {art.location}, {art.state}
+                        </span>
+                        <Link
+                          href={`/artifact/${art.id}`}
+                          className="font-sans font-semibold text-[#9A3412] hover:underline flex items-center gap-1"
+                        >
+                          <span>View Artifact</span>
+                          <ArrowRight className="w-3.5 h-3.5" />
+                        </Link>
+                      </div>
                     </div>
                   </div>
-                </div>
+                </Card3DTilt>
               );
             })}
           </div>
@@ -403,8 +403,7 @@ function ExploreContent() {
               >
                 <div className="flex items-center gap-4">
                   <div className="w-16 h-16 rounded-lg overflow-hidden bg-stone-100 shrink-0">
-                    {/* eslint-disable-next-line @next/next/no-img-element */}
-                    <img
+                    <HeritageImage
                       src={art.imageUrl}
                       alt={art.title}
                       className="w-full h-full object-cover group-hover:scale-105 transition-transform"
