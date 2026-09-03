@@ -1,0 +1,23 @@
+<!-- SIH 2026 Logo -->
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 240 70" width="240" height="70">
+  <g transform="translate(10, 5)">
+    <!-- Gear / Hexagonal outline -->
+    <path d="M 25 0 L 35 6 L 45 6 L 48 16 L 56 22 L 53 32 L 56 42 L 48 48 L 45 58 L 35 58 L 25 64 L 15 58 L 5 58 L 2 48 L -6 42 L -3 32 L -6 22 L 2 16 L 5 6 L 15 6 Z" fill="#F97316" stroke="#C2410C" stroke-width="1.5" transform="translate(5, -2) scale(0.7)"/>
+    <!-- Left Orange Brain lines -->
+    <path d="M 12 12 Q 18 10 20 18 Q 14 22 20 28 Q 16 34 20 38 L 20 40 L 12 40 Z" fill="#EA580C"/>
+    <!-- Right Green Binary lines -->
+    <rect x="21" y="8" width="16" height="32" rx="2" fill="#15803D"/>
+    <text x="23" y="16" font-family="monospace" font-size="6" fill="#FFFFFF" font-weight="bold">1010</text>
+    <text x="23" y="23" font-family="monospace" font-size="6" fill="#FFFFFF" font-weight="bold">0101</text>
+    <text x="23" y="30" font-family="monospace" font-size="6" fill="#FFFFFF" font-weight="bold">1010</text>
+    <text x="23" y="37" font-family="monospace" font-size="6" fill="#FFFFFF" font-weight="bold">0101</text>
+    <!-- Base SIH Text -->
+    <rect x="10" y="44" width="28" height="2" fill="#334155"/>
+    <rect x="14" y="48" width="20" height="2" fill="#334155"/>
+    <text x="14" y="43" font-family="Arial, sans-serif" font-size="7" font-weight="900" fill="#0F172A" letter-spacing="1">SIH</text>
+  </g>
+  <!-- Text on Right -->
+  <text x="65" y="28" font-family="'Arial Black', Arial, sans-serif" font-size="14" font-weight="900" fill="#1E3A8A" letter-spacing="0.5">SMART INDIA</text>
+  <text x="65" y="44" font-family="'Arial Black', Arial, sans-serif" font-size="13" font-weight="900" fill="#1E3A8A" letter-spacing="0.5">HACKATHON</text>
+  <text x="65" y="60" font-family="'Arial Black', Arial, sans-serif" font-size="14" font-weight="900" fill="#1E3A8A" letter-spacing="0.5">2026</text>
+</svg>

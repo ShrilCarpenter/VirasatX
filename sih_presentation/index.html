@@ -1,0 +1,1119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Smart India Hackathon 2025 - Idea Submission</title>
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      background-color: #1E293B;
+      font-family: Arial, sans-serif;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 24px 16px;
+      color: #000000;
+    }
+
+    /* Top Control Bar */
+    .controls {
+      width: 100%;
+      max-width: 1200px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background: #0F172A;
+      border: 1px solid #334155;
+      padding: 12px 24px;
+      border-radius: 10px;
+      margin-bottom: 24px;
+      color: white;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.4);
+      font-family: Arial, sans-serif;
+    }
+
+    .controls h2 {
+      font-size: 1.05rem;
+      font-weight: bold;
+      color: #F8FAFC;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .btn-group {
+      display: flex;
+      gap: 12px;
+    }
+
+    button {
+      font-family: Arial, sans-serif;
+      background: #2563EB;
+      color: white;
+      border: none;
+      padding: 8px 18px;
+      font-size: 0.9rem;
+      font-weight: bold;
+      border-radius: 6px;
+      cursor: pointer;
+      transition: all 0.2s;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    button:hover {
+      background: #1D4ED8;
+      transform: translateY(-1px);
+    }
+
+    .btn-orange {
+      background: #EA580C;
+    }
+    .btn-orange:hover {
+      background: #C2410C;
+    }
+
+    /* Deck Container */
+    .deck {
+      width: 100%;
+      max-width: 1200px;
+      display: flex;
+      flex-direction: column;
+      gap: 36px;
+    }
+
+    /* 16:9 Slide Exact Canvas matching Reference PPT */
+    .slide {
+      width: 100%;
+      aspect-ratio: 16 / 9;
+      background: #FFFFFF;
+      position: relative;
+      overflow: hidden;
+      box-shadow: 0 12px 35px rgba(0,0,0,0.35);
+      display: flex;
+      flex-direction: column;
+      padding: 20px 38px 16px 38px;
+      font-family: Arial, sans-serif;
+    }
+
+    /* Header for Slides 2 - 6 */
+    .slide-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      height: 60px;
+      margin-bottom: 8px;
+      position: relative;
+    }
+
+    .team-oval {
+      width: 130px;
+      height: 52px;
+      border: 1.5px solid #000000;
+      border-radius: 50px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      line-height: 1.15;
+      font-size: 0.9rem;
+      font-weight: bold;
+      color: #000000;
+      font-family: Arial, sans-serif;
+      background: #FFFFFF;
+      padding: 2px 4px;
+    }
+
+    .pill-title-container {
+      flex: 1;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .pill-title {
+      border: 1.5px solid #000000;
+      border-radius: 30px;
+      padding: 3px 44px;
+      font-family: Arial, sans-serif;
+      font-size: 1.85rem;
+      font-weight: bold;
+      color: #000000;
+      letter-spacing: 0.5px;
+      text-align: center;
+      background: #FFFFFF;
+      text-transform: uppercase;
+    }
+
+    .sih-logo-img {
+      height: 54px;
+      width: auto;
+    }
+
+    /* Two-Column Grid */
+    .two-col-layout {
+      flex: 1;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 20px;
+      position: relative;
+    }
+
+    /* Center Vertical Divider Line */
+    .two-col-layout::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      left: 50%;
+      width: 1.5px;
+      background-color: #000000;
+      transform: translateX(-50%);
+    }
+
+    .col-left, .col-right {
+      display: flex;
+      flex-direction: column;
+      height: 100%;
+    }
+
+    .col-left {
+      padding-right: 12px;
+    }
+
+    .col-right {
+      padding-left: 12px;
+    }
+
+    /* Section Heading (Blue ❖) */
+    .section-heading-blue {
+      font-size: 1.45rem;
+      font-weight: bold;
+      color: #0070C0;
+      margin-bottom: 6px;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      font-family: Arial, sans-serif;
+    }
+
+    .section-heading-blue span.diamond {
+      color: #0070C0;
+      font-size: 1.5rem;
+    }
+
+    /* Green Subtitle / Item Header */
+    .item-green-title {
+      font-family: Arial, sans-serif;
+      font-size: 0.92rem;
+      font-weight: bold;
+      color: #15803D;
+      text-decoration: underline;
+      margin-bottom: 2px;
+    }
+
+    /* Bullets */
+    .compact-bullets {
+      font-family: Arial, sans-serif;
+      list-style-type: disc;
+      padding-left: 18px;
+      margin-bottom: 6px;
+      display: flex;
+      flex-direction: column;
+      gap: 2px;
+    }
+
+    .compact-bullets li {
+      font-size: 0.82rem;
+      color: #000000;
+      line-height: 1.34;
+    }
+
+    .compact-bullets li strong {
+      color: #15803D;
+      text-decoration: underline;
+      font-weight: bold;
+    }
+
+    .compact-bullets li span.desc {
+      color: #000000;
+      text-decoration: none;
+      font-weight: normal;
+    }
+
+    /* Slide 1 - Title Page Specifics */
+    .slide-1-content {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      position: relative;
+    }
+
+    .s1-top-bar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 8px;
+    }
+
+    .s1-main-title {
+      font-family: 'Times New Roman', Times, serif;
+      font-size: 2.5rem;
+      font-weight: bold;
+      color: #1A365D;
+      letter-spacing: 0.5px;
+    }
+
+    .s1-page-badge {
+      text-align: center;
+      font-family: Arial, sans-serif;
+      font-size: 2.1rem;
+      font-weight: bold;
+      color: #000000;
+      letter-spacing: 1px;
+      margin-bottom: 24px;
+    }
+
+    .s1-body {
+      flex: 1;
+      display: grid;
+      grid-template-columns: 1.3fr 0.9fr;
+      align-items: center;
+      position: relative;
+    }
+
+    .s1-details-list {
+      font-family: Arial, sans-serif;
+      list-style-type: disc;
+      padding-left: 26px;
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+
+    .s1-details-list li {
+      font-size: 1.15rem;
+      line-height: 1.38;
+      color: #000000;
+    }
+
+    .s1-details-list li strong {
+      font-size: 1.18rem;
+      font-weight: bold;
+      color: #000000;
+    }
+
+    .s1-details-list li span.val {
+      font-weight: normal;
+      color: #000000;
+    }
+
+    .s1-watermark {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      opacity: 0.9;
+    }
+
+    .s1-watermark img {
+      max-height: 290px;
+      width: auto;
+    }
+
+    /* Flowchart / Diagram Styles (Slide 2 Right) */
+    .flowchart-svg-container {
+      width: 100%;
+      height: 100%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    /* Architecture Diagram (Slide 3 Right) */
+    .arch-svg-container {
+      width: 100%;
+      height: 100%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    /* UI Draft Mockup Card (Slide 3 Left) */
+    .ui-draft-card {
+      font-family: Arial, sans-serif;
+      border: 1.2px solid #000000;
+      border-radius: 4px;
+      padding: 5px 8px;
+      background: #F0FDF4;
+      margin-top: 4px;
+      display: flex;
+      flex-direction: column;
+      gap: 3px;
+    }
+
+    .ui-draft-inner {
+      display: grid;
+      grid-template-columns: 0.8fr 1.6fr 1fr;
+      gap: 4px;
+      background: #FFFFFF;
+      border: 1px solid #CBD5E1;
+      border-radius: 3px;
+      padding: 4px;
+      font-size: 0.64rem;
+    }
+
+    .ui-caption {
+      font-size: 0.72rem;
+      font-weight: bold;
+      color: #000000;
+      margin-top: 3px;
+      text-align: left;
+    }
+
+    /* Slide Number */
+    .slide-number-bottom-right {
+      position: absolute;
+      bottom: 6px;
+      right: 18px;
+      font-family: Arial, sans-serif;
+      font-size: 1.15rem;
+      font-weight: bold;
+      color: #000000;
+    }
+
+    /* Print & Export Rules */
+    @media print {
+      body {
+        background: transparent !important;
+        padding: 0 !important;
+      }
+      .controls {
+        display: none !important;
+      }
+      .deck {
+        max-width: 100% !important;
+        gap: 0 !important;
+      }
+      .slide {
+        page-break-after: always !important;
+        page-break-inside: avoid !important;
+        break-after: page !important;
+        box-shadow: none !important;
+        width: 100vw !important;
+        height: 56.25vw !important;
+        max-height: 100vh !important;
+        margin: 0 !important;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Controls -->
+  <div class="controls">
+    <h2>🏛️ Smart India Hackathon — VirasatX Submission Deck (Exact Template Structure & Typography)</h2>
+    <div class="btn-group">
+      <button onclick="window.print()">🖨️ Print / Save as PDF</button>
+      <a href="SIH2026_SanskritiRakshaX_Idea_Submission.pptx" download style="text-decoration:none;">
+        <button class="btn-orange">📥 Download PPTX</button>
+      </a>
+    </div>
+  </div>
+
+  <div class="deck">
+
+    <!-- ==========================================
+         SLIDE 1: TITLE PAGE
+         ========================================== -->
+    <div class="slide" id="slide-1">
+      <div class="slide-1-content">
+        <div class="s1-top-bar">
+          <div class="s1-main-title">SMART INDIA HACKATHON 2025</div>
+          <img src="sih_logo.svg" alt="SIH Logo" class="sih-logo-img" />
+        </div>
+
+        <div class="s1-page-badge">TITLE PAGE</div>
+
+        <div class="s1-body">
+          <ul class="s1-details-list">
+            <li>
+              <strong>Problem Statement ID –</strong> <span class="val">SIH26197</span>
+            </li>
+            <li>
+              <strong>Problem Statement Title-</strong>
+              <span class="val">Digital Preservation, AI-Powered Paleography and Interactive 3D WebGIS Atlas for Indian Cultural Heritage, Monuments & Ancient Manuscripts. (Centres to be concentrated: National Archives, ASI Sites, Craft Clusters)</span>
+            </li>
+            <li>
+              <strong>Theme-</strong> <span class="val">Heritage & Culture</span>
+            </li>
+            <li>
+              <strong>PS Category-</strong> <span class="val">Software</span>
+            </li>
+            <li>
+              <strong>Team ID-</strong> <span class="val">57385</span>
+            </li>
+            <li>
+              <strong>Team Name-</strong> <span class="val">Sanskriti RakshaX</span>
+            </li>
+          </ul>
+
+          <div class="s1-watermark">
+            <img src="sih_bulb.svg" alt="SIH Lightbulb" />
+          </div>
+        </div>
+      </div>
+      <div class="slide-number-bottom-right">1</div>
+    </div>
+
+
+    <!-- ==========================================
+         SLIDE 2: IDEA TITLE
+         ========================================== -->
+    <div class="slide" id="slide-2">
+      <div class="slide-header">
+        <div class="team-oval">
+          <span style="font-size: 0.78rem;">Team</span>
+          <span style="font-size: 0.84rem; font-weight: bold;">Sanskriti RakshaX</span>
+        </div>
+        <div class="pill-title-container">
+          <div class="pill-title">IDEA TITLE</div>
+        </div>
+        <img src="sih_logo.svg" alt="SIH Logo" class="sih-logo-img" />
+      </div>
+
+      <div class="two-col-layout">
+        <!-- Left Column: Proposed Solution -->
+        <div class="col-left">
+          <div class="section-heading-blue">
+            <span class="diamond">❖</span> Proposed Solution:
+          </div>
+
+          <ul class="compact-bullets">
+            <li>
+              <strong>3D Archival & Artifact Studio :</strong><br/>
+              <span class="desc">360° interactive rotation, dynamic lighting simulation & sub-millimeter loupe inspection for sculptures.</span>
+            </li>
+            <li>
+              <strong>Ancient Manuscript Paleography :</strong><br/>
+              <span class="desc">AI transcription of fragile palm-leaf (Talapatra) & birch-bark (Bhojpatra) scripts with Sanskrit chant audio.</span>
+            </li>
+            <li>
+              <strong>Multimodal AI Heritage Guide :</strong><br/>
+              <span class="desc">Voice, vision, and multilingual conversational assistance grounded in verified ASI/museum archives.</span>
+            </li>
+            <li>
+              <strong>Computer Vision Iconography Scanner :</strong><br/>
+              <span class="desc">Identifies dynastic art styles, postures (asanas), mudras, and motifs from user photos.</span>
+            </li>
+            <li>
+              <strong>Chronological Epoch Explorer :</strong><br/>
+              <span class="desc">Interactive 11-epoch historical timeline spanning 5,000+ years of civilizational heritage.</span>
+            </li>
+            <li>
+              <strong>Interactive Heritage Web-GIS Atlas :</strong><br/>
+              <span class="desc">Dynamic geospatial platform for exploring monuments, excavations, and conservation zones.</span>
+            </li>
+            <li>
+              <strong>GI Artisan Marketplace & Livelihood :</strong><br/>
+              <span class="desc">Direct fair-trade connect supporting GI-certified traditional master artisan cooperatives.</span>
+            </li>
+            <li>
+              <strong>Sustainable Tourism & Itinerary AI :</strong><br/>
+              <span class="desc">Eco-friendly tour planner dispersing crowds away from overtouristed monuments.</span>
+            </li>
+            <li>
+              <strong>GI Tagging and E-Signature :</strong><br/>
+              <span class="desc">To preserve cultural heritage, safeguard traditional handicraft products and paperless verification.</span>
+            </li>
+          </ul>
+        </div>
+
+        <!-- Right Column: Flowchart Diagram with exact authentic shapes -->
+        <div class="col-right">
+          <div class="flowchart-svg-container">
+            <svg viewBox="0 0 460 380" width="100%" height="100%" style="font-family: Arial, sans-serif;">
+              <defs>
+                <marker id="arrow" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+                  <path d="M 0 1 L 8 5 L 0 9 z" fill="#000000" />
+                </marker>
+              </defs>
+
+              <!-- Top Login Box -->
+              <rect x="180" y="5" width="100" height="26" rx="13" fill="#FEF08A" stroke="#000000" stroke-width="1.5" />
+              <text x="230" y="22" font-size="11" font-weight="bold" text-anchor="middle" fill="#000000">Login</text>
+
+              <!-- Line from Login down and branching left & right -->
+              <line x1="230" y1="31" x2="230" y2="44" stroke="#000000" stroke-width="1.2" />
+              <line x1="90" y1="44" x2="355" y2="44" stroke="#000000" stroke-width="1.2" />
+              <line x1="90" y1="44" x2="90" y2="54" stroke="#000000" stroke-width="1.2" marker-end="url(#arrow)" />
+              <line x1="355" y1="44" x2="355" y2="54" stroke="#000000" stroke-width="1.2" marker-end="url(#arrow)" />
+
+              <!-- Left Branch: User Login -->
+              <rect x="25" y="56" width="130" height="24" rx="12" fill="#FEF9C3" stroke="#000000" stroke-width="1.2" />
+              <text x="90" y="72" font-size="9.5" font-weight="bold" text-anchor="middle" fill="#000000">User / Scholar Login</text>
+
+              <line x1="90" y1="80" x2="90" y2="92" stroke="#000000" stroke-width="1.2" marker-end="url(#arrow)" />
+              <rect x="20" y="94" width="140" height="24" rx="2" fill="#FEF08A" stroke="#000000" stroke-width="1.2" />
+              <text x="90" y="110" font-size="9" font-weight="bold" text-anchor="middle" fill="#000000">User Dashboard</text>
+
+              <line x1="90" y1="118" x2="90" y2="130" stroke="#000000" stroke-width="1.2" marker-end="url(#arrow)" />
+              <rect x="20" y="132" width="140" height="24" rx="2" fill="#FEF08A" stroke="#000000" stroke-width="1.2" />
+              <text x="90" y="148" font-size="9" font-weight="bold" text-anchor="middle" fill="#000000">Application Submission</text>
+
+              <line x1="90" y1="156" x2="90" y2="168" stroke="#000000" stroke-width="1.2" marker-end="url(#arrow)" />
+              <rect x="20" y="170" width="140" height="24" rx="2" fill="#FEF08A" stroke="#000000" stroke-width="1.2" />
+              <text x="90" y="186" font-size="9" font-weight="bold" text-anchor="middle" fill="#000000">DocumentUpload</text>
+
+              <line x1="90" y1="194" x2="90" y2="206" stroke="#000000" stroke-width="1.2" marker-end="url(#arrow)" />
+              <rect x="20" y="208" width="140" height="24" rx="2" fill="#FEF08A" stroke="#000000" stroke-width="1.2" />
+              <text x="90" y="224" font-size="9" font-weight="bold" text-anchor="middle" fill="#000000">Track Claim Status</text>
+
+              <line x1="90" y1="232" x2="90" y2="244" stroke="#000000" stroke-width="1.2" marker-end="url(#arrow)" />
+              <rect x="20" y="246" width="140" height="24" rx="2" fill="#FEF08A" stroke="#000000" stroke-width="1.2" />
+              <text x="90" y="262" font-size="9" font-weight="bold" text-anchor="middle" fill="#000000">Scheme Recommendations</text>
+
+              <line x1="90" y1="270" x2="90" y2="282" stroke="#000000" stroke-width="1.2" marker-end="url(#arrow)" />
+              <rect x="20" y="284" width="140" height="24" rx="2" fill="#FEF08A" stroke="#000000" stroke-width="1.2" />
+              <text x="90" y="300" font-size="9" font-weight="bold" text-anchor="middle" fill="#000000">Feedback & Support</text>
+
+              <!-- Right Branch: Govt Login -->
+              <rect x="290" y="56" width="130" height="24" rx="12" fill="#FEF9C3" stroke="#000000" stroke-width="1.2" />
+              <text x="355" y="72" font-size="9.5" font-weight="bold" text-anchor="middle" fill="#000000">Govt Login</text>
+
+              <line x1="355" y1="80" x2="355" y2="88" stroke="#000000" stroke-width="1.2" marker-end="url(#arrow)" />
+
+              <!-- 4 Govt Depts -->
+              <rect x="200" y="90" width="58" height="26" rx="2" fill="#FEF08A" stroke="#000000" stroke-width="1" />
+              <text x="229" y="100" font-size="5.8" font-weight="bold" text-anchor="middle" fill="#000000">Ministry Of</text>
+              <text x="229" y="109" font-size="5.8" font-weight="bold" text-anchor="middle" fill="#000000">Culture / Tribal</text>
+
+              <rect x="262" y="90" width="58" height="26" rx="2" fill="#FEF08A" stroke="#000000" stroke-width="1" />
+              <text x="291" y="100" font-size="5.8" font-weight="bold" text-anchor="middle" fill="#000000">ASI & Line</text>
+              <text x="291" y="109" font-size="5.8" font-weight="bold" text-anchor="middle" fill="#000000">Depts.</text>
+
+              <rect x="324" y="90" width="62" height="26" rx="2" fill="#FEF08A" stroke="#000000" stroke-width="1" />
+              <text x="355" y="100" font-size="5.8" font-weight="bold" text-anchor="middle" fill="#000000">Archives &</text>
+              <text x="355" y="109" font-size="5.8" font-weight="bold" text-anchor="middle" fill="#000000">Revenue Depts.</text>
+
+              <rect x="390" y="90" width="58" height="26" rx="2" fill="#FEF08A" stroke="#000000" stroke-width="1" />
+              <text x="419" y="100" font-size="5.8" font-weight="bold" text-anchor="middle" fill="#000000">Planning</text>
+              <text x="419" y="109" font-size="5.8" font-weight="bold" text-anchor="middle" fill="#000000">Authorities</text>
+
+              <!-- Line from 4 Depts to Govt Dashboard -->
+              <line x1="229" y1="116" x2="229" y2="122" stroke="#000000" stroke-width="1" />
+              <line x1="291" y1="116" x2="291" y2="122" stroke="#000000" stroke-width="1" />
+              <line x1="355" y1="116" x2="355" y2="122" stroke="#000000" stroke-width="1" />
+              <line x1="419" y1="116" x2="419" y2="122" stroke="#000000" stroke-width="1" />
+              <line x1="229" y1="122" x2="419" y2="122" stroke="#000000" stroke-width="1" />
+              <line x1="335" y1="122" x2="335" y2="130" stroke="#000000" stroke-width="1.2" marker-end="url(#arrow)" />
+
+              <rect x="260" y="132" width="150" height="24" rx="2" fill="#FEF08A" stroke="#000000" stroke-width="1.2" />
+              <text x="335" y="148" font-size="9" font-weight="bold" text-anchor="middle" fill="#000000">Government Dashboard</text>
+
+              <line x1="335" y1="156" x2="335" y2="168" stroke="#000000" stroke-width="1.2" marker-end="url(#arrow)" />
+              <rect x="260" y="170" width="150" height="24" rx="2" fill="#FEF08A" stroke="#000000" stroke-width="1.2" />
+              <text x="335" y="186" font-size="9" font-weight="bold" text-anchor="middle" fill="#000000">Document Verification</text>
+
+              <line x1="335" y1="194" x2="335" y2="206" stroke="#000000" stroke-width="1.2" marker-end="url(#arrow)" />
+              <rect x="260" y="208" width="150" height="24" rx="2" fill="#FEF08A" stroke="#000000" stroke-width="1.2" />
+              <text x="335" y="224" font-size="9" font-weight="bold" text-anchor="middle" fill="#000000">Spatial Verification</text>
+
+              <line x1="335" y1="232" x2="335" y2="244" stroke="#000000" stroke-width="1.2" marker-end="url(#arrow)" />
+              <rect x="260" y="246" width="150" height="24" rx="2" fill="#FEF08A" stroke="#000000" stroke-width="1.2" />
+              <text x="335" y="262" font-size="9" font-weight="bold" text-anchor="middle" fill="#000000">Approve/Reject Claim</text>
+
+              <line x1="335" y1="270" x2="335" y2="282" stroke="#000000" stroke-width="1.2" marker-end="url(#arrow)" />
+              <rect x="260" y="284" width="150" height="24" rx="2" fill="#FEF08A" stroke="#000000" stroke-width="1.2" />
+              <text x="335" y="300" font-size="9" font-weight="bold" text-anchor="middle" fill="#000000">Update FRA Atlas</text>
+
+              <line x1="335" y1="308" x2="335" y2="318" stroke="#000000" stroke-width="1.2" marker-end="url(#arrow)" />
+              <rect x="260" y="320" width="150" height="22" rx="2" fill="#FEF08A" stroke="#000000" stroke-width="1.2" />
+              <text x="335" y="335" font-size="9" font-weight="bold" text-anchor="middle" fill="#000000">Generate Reports</text>
+
+              <!-- Converging bottom box: FRA Atlas + DSS -->
+              <line x1="90" y1="308" x2="90" y2="352" stroke="#000000" stroke-width="1.2" />
+              <line x1="335" y1="342" x2="335" y2="352" stroke="#000000" stroke-width="1.2" />
+              <line x1="90" y1="352" x2="230" y2="352" stroke="#000000" stroke-width="1.2" />
+              <line x1="335" y1="352" x2="230" y2="352" stroke="#000000" stroke-width="1.2" />
+              <line x1="230" y1="352" x2="230" y2="358" stroke="#000000" stroke-width="1.2" marker-end="url(#arrow)" />
+
+              <rect x="150" y="360" width="160" height="18" rx="2" fill="#FEF08A" stroke="#000000" stroke-width="1.2" />
+              <text x="230" y="373" font-size="9.5" font-weight="bold" text-anchor="middle" fill="#000000">FRA Atlas+DSS</text>
+            </svg>
+          </div>
+        </div>
+      </div>
+
+      <div class="slide-number-bottom-right">2</div>
+    </div>
+
+
+    <!-- ==========================================
+         SLIDE 3: TECHNICAL APPROACH
+         ========================================== -->
+    <div class="slide" id="slide-3">
+      <div class="slide-header">
+        <div class="team-oval">
+          <span style="font-size: 0.78rem;">Team</span>
+          <span style="font-size: 0.84rem; font-weight: bold;">Sanskriti RakshaX</span>
+        </div>
+        <div class="pill-title-container">
+          <div class="pill-title">TECHNICAL APPROACH</div>
+        </div>
+        <img src="sih_logo.svg" alt="SIH Logo" class="sih-logo-img" />
+      </div>
+
+      <div class="two-col-layout">
+        <!-- Left Column: Tech Stack & UI Preview -->
+        <div class="col-left">
+          <ul class="compact-bullets" style="margin-bottom: 2px;">
+            <li><strong>Data Extraction :</strong> <span class="desc">Optical Character Recognition(OCR), NLP.</span></li>
+            <li><strong>WebGIS platform :</strong> <span class="desc">Leaflet.js(for interactive maps).</span></li>
+            <li><strong>Asset Mapping :</strong> <span class="desc">Random Forest & CNN.</span></li>
+            <li><strong>Data Storage :</strong> <span class="desc">PostgreSQL & PostGIS(for geospatial data).</span></li>
+            <li><strong>Data Management :</strong> <span class="desc">Cloud Object Storage & MySQL(Structured).</span></li>
+            <li><strong>GeoServer :</strong> <span class="desc">Use standard protocols WMS and WFS to serve maps.</span></li>
+            <li><strong>Decision Support System :</strong> <span class="desc">for scheme recommendations.</span></li>
+            <li><strong>Blockchain based Security :</strong> <span class="desc">Hyperledger Fabric.</span></li>
+            <li><strong>Key Lock Framework :</strong> <span class="desc">Open-source Identity & Access Management</span></li>
+            <li><strong>Rasa :</strong> <span class="desc">Preferred for its offline, multilingual, and secure chatbot.</span></li>
+          </ul>
+
+          <!-- Draft UI Preview Mockup Box -->
+          <div class="ui-draft-card">
+            <div style="font-size:0.64rem; font-weight:bold; color:#166534; display:flex; justify-content:space-between;">
+              <span>🏛️ FRA Setu / VirasatX Portal (Working Prototype)</span>
+              <span>● English / हिन्दी / தமிழ்</span>
+            </div>
+            <div class="ui-draft-inner">
+              <div style="background:#F1F5F9; padding:3px; border-radius:2px; line-height:1.2;">
+                <strong>Nav</strong><br/>
+                • Home / Login<br/>
+                • Claims & Maps<br/>
+                • Downloads<br/>
+                • Help & Support
+              </div>
+              <div style="background:#0F172A; color:#F8FAFC; padding:4px; border-radius:2px; text-align:center;">
+                <span style="font-size:0.56rem; color:#38BDF8; font-weight:bold;">Interactive FRA Map / 3D Canvas</span><br/>
+                <span style="font-size:0.5rem; color:#94A3B8;">[ Real-time Layer Rendering | GeoServer ]</span>
+                <div style="display:flex; justify-content:center; gap:4px; margin-top:3px;">
+                  <span style="background:#16A34A; color:white; padding:1px 3px; border-radius:2px; font-size:0.5rem;">1250 Verified</span>
+                  <span style="background:#DC2626; color:white; padding:1px 3px; border-radius:2px; font-size:0.5rem;">89 Rejected</span>
+                </div>
+              </div>
+              <div style="background:#F8FAFC; padding:3px; border-radius:2px; line-height:1.2;">
+                <strong>Grievance / DSS</strong><br/>
+                <span style="font-size:0.52rem; color:#475569;">• AI Scheme Match<br/>• Officer Tracker<br/>• 2.1 Avg Days</span>
+              </div>
+            </div>
+            <div class="ui-caption">User Interface: It is a draft version, subject to future updates.</div>
+          </div>
+        </div>
+
+        <!-- Right Column: System Architecture Diagram matching exact reference diagram -->
+        <div class="col-right">
+          <div class="arch-svg-container">
+            <svg viewBox="0 0 460 380" width="100%" height="100%" style="font-family: Arial, sans-serif;">
+              <defs>
+                <marker id="arrow2" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+                  <path d="M 0 1 L 8 5 L 0 9 z" fill="#000000" />
+                </marker>
+              </defs>
+
+              <!-- Web Browser Box (Top) -->
+              <rect x="140" y="8" width="180" height="30" rx="15" fill="#FFFFFF" stroke="#000000" stroke-width="1.5" />
+              <circle cx="160" cy="23" r="7" fill="none" stroke="#000000" stroke-width="1.2" />
+              <text x="235" y="27" font-size="10.5" font-weight="bold" text-anchor="middle" fill="#000000">Web Browser</text>
+
+              <line x1="230" y1="38" x2="230" y2="50" stroke="#000000" stroke-width="1.2" marker-end="url(#arrow2)" />
+
+              <!-- Frontend Box -->
+              <rect x="40" y="52" width="380" height="96" rx="2" fill="#FFFFFF" stroke="#000000" stroke-width="1.5" />
+              
+              <!-- Login & User Icon inside Frontend -->
+              <circle cx="230" cy="74" r="12" fill="#FEF08A" stroke="#000000" stroke-width="1.2" />
+              <circle cx="230" cy="70" r="4" fill="#000000" />
+              <path d="M 222 82 A 8 8 0 0 1 238 82 Z" fill="#000000" />
+              <text x="230" y="96" font-size="9.5" font-weight="bold" text-anchor="middle" fill="#000000">Frontend</text>
+
+              <!-- Tech Badges inside Frontend -->
+              <rect x="52" y="104" width="32" height="34" rx="2" fill="#E2E8F0" stroke="#CBD5E1" />
+              <text x="68" y="126" font-size="10" font-weight="bold" fill="#EA580C" text-anchor="middle">5</text>
+              <text x="68" y="135" font-size="6.5" font-weight="bold" fill="#475569" text-anchor="middle">HTML</text>
+
+              <rect x="94" y="104" width="40" height="34" rx="2" fill="#FEF3C7" stroke="#CBD5E1" />
+              <text x="114" y="124" font-size="8.5" font-weight="bold" fill="#B45309" text-anchor="middle">CSS</text>
+              <text x="114" y="135" font-size="6.5" font-weight="bold" fill="#475569" text-anchor="middle">CSS</text>
+
+              <rect x="144" y="104" width="32" height="34" rx="2" fill="#FEF9C3" stroke="#CBD5E1" />
+              <text x="160" y="124" font-size="8.5" font-weight="bold" fill="#CA8A04" text-anchor="middle">JS</text>
+              <text x="160" y="135" font-size="6.5" font-weight="bold" fill="#475569" text-anchor="middle">JS</text>
+
+              <rect x="186" y="104" width="110" height="34" rx="2" fill="#F0FDF4" stroke="#CBD5E1" />
+              <text x="241" y="124" font-size="9" font-weight="bold" fill="#166534" text-anchor="middle">Leaflet.js</text>
+              <text x="241" y="135" font-size="6.5" font-weight="bold" fill="#475569" text-anchor="middle">Leaflet.js</text>
+
+              <rect x="306" y="104" width="100" height="34" rx="2" fill="#EFF6FF" stroke="#CBD5E1" />
+              <text x="356" y="124" font-size="9" font-weight="bold" fill="#1D4ED8" text-anchor="middle">React</text>
+              <text x="356" y="135" font-size="6.5" font-weight="bold" fill="#475569" text-anchor="middle">React</text>
+
+              <!-- Request / Response Flow Lines -->
+              <line x1="90" y1="148" x2="90" y2="182" stroke="#000000" stroke-width="1.2" marker-end="url(#arrow2)" />
+              <text x="80" y="168" font-size="8.5" font-weight="bold" fill="#000000" text-anchor="end">Request</text>
+
+              <line x1="370" y1="182" x2="370" y2="148" stroke="#000000" stroke-width="1.2" marker-end="url(#arrow2)" />
+              <text x="380" y="168" font-size="8.5" font-weight="bold" fill="#000000">Response</text>
+
+              <!-- Backend Box -->
+              <rect x="40" y="184" width="380" height="96" rx="2" fill="#FFFFFF" stroke="#000000" stroke-width="1.5" />
+              
+              <!-- Backend Title & Node Logo -->
+              <text x="230" y="200" font-size="10.5" font-weight="bold" text-anchor="middle" fill="#000000">Backend</text>
+              
+              <!-- Left: Node.js / API Gateway -->
+              <rect x="50" y="206" width="75" height="42" rx="2" fill="#F0FDF4" stroke="#16A34A" stroke-width="1" />
+              <text x="87" y="226" font-size="10" font-weight="bold" fill="#15803D" text-anchor="middle">node</text>
+              <text x="87" y="238" font-size="7.5" font-weight="bold" fill="#000000" text-anchor="middle">API Gateway</text>
+
+              <!-- Right: 3 Submodules -->
+              <rect x="140" y="206" width="80" height="32" rx="2" fill="#EFF6FF" stroke="#000000" stroke-width="1" />
+              <text x="180" y="222" font-size="8" font-weight="bold" text-anchor="middle" fill="#000000">GIS module</text>
+
+              <rect x="230" y="206" width="80" height="32" rx="2" fill="#FDF2F8" stroke="#000000" stroke-width="1" />
+              <text x="270" y="222" font-size="8" font-weight="bold" text-anchor="middle" fill="#000000">AI/ML</text>
+
+              <rect x="320" y="206" width="85" height="32" rx="2" fill="#FEF3C7" stroke="#000000" stroke-width="1" />
+              <text x="362" y="222" font-size="8" font-weight="bold" text-anchor="middle" fill="#000000">Blockchain</text>
+
+              <!-- Databases Layer inside Backend -->
+              <text x="180" y="258" font-size="7" font-weight="bold" text-anchor="middle" fill="#000000">PostgreSQL</text>
+              <text x="180" y="267" font-size="7" font-weight="bold" text-anchor="middle" fill="#000000">+PostGIS</text>
+
+              <text x="270" y="260" font-size="7" font-weight="bold" text-anchor="middle" fill="#000000">Cloud Object</text>
+              <text x="270" y="269" font-size="7" font-weight="bold" text-anchor="middle" fill="#000000">Storage</text>
+
+              <text x="362" y="264" font-size="8" font-weight="bold" text-anchor="middle" fill="#000000">MySQL</text>
+
+              <!-- Line down from Backend to Integration & Security -->
+              <line x1="140" y1="280" x2="140" y2="295" stroke="#000000" stroke-width="1.2" marker-end="url(#arrow2)" />
+              <line x1="320" y1="280" x2="320" y2="295" stroke="#000000" stroke-width="1.2" marker-end="url(#arrow2)" />
+
+              <!-- Bottom Row: Integration & Security Boxes -->
+              <rect x="40" y="298" width="220" height="74" rx="2" fill="#FFFFFF" stroke="#000000" stroke-width="1.5" />
+              <text x="150" y="314" font-size="9.5" font-weight="bold" text-anchor="middle" fill="#000000">Integration:</text>
+              <text x="80" y="340" font-size="7.5" font-weight="bold" text-anchor="middle" fill="#000000">Satellite APIs</text>
+              <text x="150" y="340" font-size="7.5" font-weight="bold" text-anchor="middle" fill="#000000">Government</text>
+              <text x="150" y="350" font-size="7.5" font-weight="bold" text-anchor="middle" fill="#000000">APIS</text>
+              <text x="215" y="340" font-size="7.5" font-weight="bold" text-anchor="middle" fill="#000000">Decision Support</text>
+              <text x="215" y="350" font-size="7.5" font-weight="bold" text-anchor="middle" fill="#000000">System</text>
+
+              <rect x="270" y="298" width="150" height="74" rx="2" fill="#FFFFFF" stroke="#000000" stroke-width="1.5" />
+              <text x="345" y="314" font-size="9.5" font-weight="bold" text-anchor="middle" fill="#000000">Security:</text>
+              <text x="345" y="342" font-size="8" font-weight="bold" text-anchor="middle" fill="#000000">Blockchain, JSON web</text>
+              <text x="345" y="354" font-size="8" font-weight="bold" text-anchor="middle" fill="#000000">tokens, AES & RSA</text>
+            </svg>
+          </div>
+        </div>
+      </div>
+
+      <div class="slide-number-bottom-right">3</div>
+    </div>
+
+
+    <!-- ==========================================
+         SLIDE 4: FEASIBILITY AND VIABILITY
+         ========================================== -->
+    <div class="slide" id="slide-4">
+      <div class="slide-header">
+        <div class="team-oval">
+          <span style="font-size: 0.78rem;">Team</span>
+          <span style="font-size: 0.84rem; font-weight: bold;">Sanskriti RakshaX</span>
+        </div>
+        <div class="pill-title-container">
+          <div class="pill-title">FEASIBILITY AND VIABILITY</div>
+        </div>
+        <img src="sih_logo.svg" alt="SIH Logo" class="sih-logo-img" />
+      </div>
+
+      <div class="two-col-layout">
+        <!-- Left Column: Feasibility -->
+        <div class="col-left">
+          <div class="section-heading-blue">
+            <span class="diamond">❖</span> Feasibility:
+          </div>
+
+          <div class="item-green-title">1. Technical Feasibility:</div>
+          <div style="font-size:0.82rem; font-weight:bold; color:#000000; margin-left:4px;">1. Digitization, AI Mapping and Web-GIS Dashboards:</div>
+          <ul class="compact-bullets" style="margin-left:8px;">
+            <li>OCR and AI extract data from fragile ancient palm-leaf & birch-bark manuscripts.</li>
+            <li>Web-GIS dashboards show real-time interactive heritage maps and 3D models.</li>
+          </ul>
+
+          <div style="font-size:0.82rem; font-weight:bold; color:#000000; margin-left:4px;">2. DSS Integration with Blockchain Security:</div>
+          <ul class="compact-bullets" style="margin-left:8px;">
+            <li>AI engines match cultural schemes and tourist traffic to community needs.</li>
+            <li>Blockchain ensures secure, tamper-proof digital records and artisan GI credentials.</li>
+          </ul>
+
+          <div class="item-green-title">2. Operational Feasibility:</div>
+          <div style="font-size:0.82rem; font-weight:bold; color:#000000; margin-left:4px;">1. Existing Setup and Simple Staff Training:</div>
+          <ul class="compact-bullets" style="margin-left:8px;">
+            <li>Museum & archival data exists, needs unified digital integration.</li>
+            <li>Staff need basic training through short interactive workshops.</li>
+          </ul>
+
+          <div style="font-size:0.82rem; font-weight:bold; color:#000000; margin-left:4px;">2. Stakeholder Support and Effective Implementation:</div>
+          <ul class="compact-bullets" style="margin-left:8px;">
+            <li>Ministries, ASI, and cultural NGOs already support heritage preservation.</li>
+            <li>System strengthens existing efforts, seamlessly augmenting current curation work.</li>
+          </ul>
+
+          <div class="item-green-title">3. Legal & Ethical Feasibility:</div>
+          <div style="font-size:0.82rem; font-weight:bold; color:#000000; margin-left:4px;">1. Data Privacy & IP Safeguards:</div>
+          <ul class="compact-bullets" style="margin-left:8px;">
+            <li>Must follow India’s DPDP Act, ensuring legal compliance and encryption.</li>
+            <li>Blockchain and watermarking safeguard sensitive indigenous IP and artisan rights.</li>
+          </ul>
+
+          <div style="font-size:0.82rem; font-weight:bold; color:#000000; margin-left:4px;">2. Consent Mechanism:</div>
+          <ul class="compact-bullets" style="margin-left:8px;">
+            <li>Informed consent and transparent citations required in all archival processes.</li>
+            <li>Real-time feedback enables secure, two-way curatorial communication.</li>
+          </ul>
+        </div>
+
+        <!-- Right Column: Viability -->
+        <div class="col-right">
+          <div class="section-heading-blue">
+            <span class="diamond">❖</span> Viability:
+          </div>
+
+          <div class="item-green-title">1. Economic Viability:</div>
+          <div style="font-size:0.82rem; font-weight:bold; color:#000000; margin-left:4px;">1. Cost-Effective & Efficient:</div>
+          <ul class="compact-bullets" style="margin-left:8px;">
+            <li>Saves paperwork, manual digitizing effort, duplication, and reduces physical damage.</li>
+            <li>Cuts curation delays, transport expenses, and institutional overhead.</li>
+          </ul>
+
+          <div style="font-size:0.82rem; font-weight:bold; color:#000000; margin-left:4px;">2. Supported & Scalable Technology:</div>
+          <ul class="compact-bullets" style="margin-left:8px;">
+            <li>Backed by national digital missions and cultural tourism initiatives (SDG 8 & 11).</li>
+            <li>Open-source tech ensures flexible, low-cost, future-ready deployment.</li>
+          </ul>
+
+          <div class="item-green-title">2. Social Viability:</div>
+          <div style="font-size:0.82rem; font-weight:bold; color:#000000; margin-left:4px;">1. Empowers Communities & Improves Heritage Access:</div>
+          <ul class="compact-bullets" style="margin-left:8px;">
+            <li>Provides transparency, secure records, and interactive learning for 250M+ youth.</li>
+            <li>Directly benefits traditional GI master artisans through fair-trade market access.</li>
+          </ul>
+
+          <div style="font-size:0.82rem; font-weight:bold; color:#000000; margin-left:4px;">2. Reduces Conflict & Promotes Stronger Inclusion:</div>
+          <ul class="compact-bullets" style="margin-left:8px;">
+            <li>Verified records and academic citations reduce disputes in historical interpretations.</li>
+            <li>Mobile updates, voice guides, and regional languages improve grassroots engagement.</li>
+          </ul>
+
+          <div class="item-green-title">3. Scalability:</div>
+          <div style="font-size:0.82rem; font-weight:bold; color:#000000; margin-left:4px;">1. Pan-India Expansion for Wider Community Benefits:</div>
+          <ul class="compact-bullets" style="margin-left:8px;">
+            <li>Pilot in key museums & ASI circles, then scale seamlessly across India.</li>
+            <li>Adjust platform easily for state-level regional languages and local folklore.</li>
+          </ul>
+
+          <div style="font-size:0.82rem; font-weight:bold; color:#000000; margin-left:4px;">2. Cross-Sector Use of WebGIS + DSS:</div>
+          <ul class="compact-bullets" style="margin-left:8px;">
+            <li>Adaptable for archaeological survey, urban heritage planning, and education.</li>
+            <li>Useful in disaster management, structural monitoring, and post-crisis restoration.</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="slide-number-bottom-right">4</div>
+    </div>
+
+
+    <!-- ==========================================
+         SLIDE 5: IMPACT AND BENEFITS
+         ========================================== -->
+    <div class="slide" id="slide-5">
+      <div class="slide-header">
+        <div class="team-oval">
+          <span style="font-size: 0.78rem;">Team</span>
+          <span style="font-size: 0.84rem; font-weight: bold;">Sanskriti RakshaX</span>
+        </div>
+        <div class="pill-title-container">
+          <div class="pill-title">IMPACT AND BENEFITS</div>
+        </div>
+        <img src="sih_logo.svg" alt="SIH Logo" class="sih-logo-img" />
+      </div>
+
+      <div class="two-col-layout">
+        <!-- Left Column: Benefits -->
+        <div class="col-left">
+          <div class="section-heading-blue">
+            <span class="diamond">❖</span> Benefits:
+          </div>
+
+          <div class="item-green-title">1. Social Benefits:</div>
+          <ul class="compact-bullets">
+            <li>Digital platform empowers 250M+ students with interactive 3D civilizational exploration.</li>
+            <li>IVR helpline, voice guide, and 8 regional languages ensure inclusive literacy access.</li>
+            <li>Transparent records, authentic audio chants, and museum dossiers build cultural pride.</li>
+          </ul>
+
+          <div class="item-green-title">2. Environmental Benefits:</div>
+          <ul class="compact-bullets">
+            <li>Sustainable cultural tourism with AI-guided crowd dispersal away from fragile monuments.</li>
+            <li>Digital twins preserve physical integrity of deteriorating stone reliefs and manuscripts.</li>
+            <li>GI Tagging preserves cultural heritage, eco-friendly crafts & traditional products.</li>
+          </ul>
+
+          <div class="item-green-title">3. Economic Benefits:</div>
+          <ul class="compact-bullets">
+            <li>Access to schemes (National Heritage City Development, PRASHAD, Swadesh Darshan).</li>
+            <li>GI Tagging boosts local artisanal products & tribal livelihoods (SDG 8).</li>
+            <li>Direct artisan connect ensures economic stability -> higher wages & eliminating middlemen.</li>
+          </ul>
+
+          <div class="item-green-title">4. Governance Benefits:</div>
+          <ul class="compact-bullets">
+            <li>Audit trails ensure curatorial accountability, prevent asset theft or neglect.</li>
+            <li>Curatorial review portal boosts transparency, prevents illicit antiquities trade.</li>
+            <li>Cross-validation stops duplicate records, misinformation, and ungrounded AI claims.</li>
+          </ul>
+
+          <div class="item-green-title">5. Legal & Security Benefits:</div>
+          <ul class="compact-bullets">
+            <li>E-Signature & Digital Records provide legally valid archival accession provenance.</li>
+            <li>Protection against illicit duplication and intellectual property theft.</li>
+            <li>Digital witness/testimony ensures fair scholarly consensus and dispute settlement.</li>
+          </ul>
+        </div>
+
+        <!-- Right Column: Impacts -->
+        <div class="col-right">
+          <div class="section-heading-blue">
+            <span class="diamond">❖</span> Impacts:
+          </div>
+
+          <div class="item-green-title">1. Secure Cultural Rights & Transparency:</div>
+          <ul class="compact-bullets">
+            <li>Communities and researchers track heritage data, reducing fraud and neglect.</li>
+            <li>Digital catalog ensures authenticity in national and global archival records.</li>
+            <li>Builds institutional trust between citizens, scholars, and government authorities.</li>
+          </ul>
+
+          <div class="item-green-title">2. Heritage Protection & Conservation with AI:</div>
+          <ul class="compact-bullets">
+            <li>AI monitors structural and digital assets to prevent loss and decay.</li>
+            <li>Conserves civilizational knowledge and safeguards ancient Indian manuscripts.</li>
+            <li>Promotes sustainable, community-driven cultural resource management.</li>
+          </ul>
+
+          <div class="item-green-title">3. Boost Livelihoods & Local Development:</div>
+          <ul class="compact-bullets">
+            <li>Resource planning improves artisan incomes and rural handicraft clusters.</li>
+            <li>GI tagging protects traditional knowledge, boosts global market branding.</li>
+            <li>VirasatX enables fair access to cultural preservation grants and welfare schemes.</li>
+          </ul>
+
+          <div class="item-green-title">4. Digital, Eco-Friendly & Cost Effective:</div>
+          <ul class="compact-bullets">
+            <li>Reduces paper usage, ensuring greener, eco-friendly e-governance (SDG 11).</li>
+            <li>Preserves indigenous crafts through high-fidelity digital archiving tools.</li>
+            <li>Lowers administrative and physical curation costs while maximizing outreach.</li>
+          </ul>
+
+          <div class="item-green-title">5. Smart, Transparent & Scalable Governance:</div>
+          <ul class="compact-bullets">
+            <li>Transparent dashboards track museum digitizing progress and scholar engagement.</li>
+            <li>AI dispute mediation ensures historical fairness, reducing subjective human bias.</li>
+            <li>Unified digital platform enables future-ready, pan-India expansion (Viksit Bharat 2047).</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="slide-number-bottom-right">5</div>
+    </div>
+
+
+    <!-- ==========================================
+         SLIDE 6: RESEARCH AND REFERENCES
+         ========================================== -->
+    <div class="slide" id="slide-6">
+      <div class="slide-header">
+        <div class="team-oval">
+          <span style="font-size: 0.78rem;">Team</span>
+          <span style="font-size: 0.84rem; font-weight: bold;">Sanskriti RakshaX</span>
+        </div>
+        <div class="pill-title-container">
+          <div class="pill-title">RESEARCH AND REFERENCES</div>
+        </div>
+        <img src="sih_logo.svg" alt="SIH Logo" class="sih-logo-img" />
+      </div>
+
+      <div style="flex:1; display:flex; flex-direction:column; justify-content:space-between; font-size:0.86rem; line-height:1.45; padding-top:4px;">
+        <div>
+          <div class="item-green-title" style="font-size:0.92rem;">1. Archaeological Survey of India (ASI) & National Heritage Portals:</div>
+          <div style="font-size:0.82rem; color:#000000; margin-left:4px; margin-bottom:2px;">
+            The Archaeological Survey of India (ASI) and Ministry of Culture govern the protection and documentation of cultural heritage monuments, ancient inscriptions, and archaeological excavations.
+          </div>
+          <div style="font-size:0.8rem; color:#0070C0; text-decoration:underline; margin-left:4px; margin-bottom:6px;">
+            https://asi.nic.in/ &nbsp;|&nbsp; https://asi.nic.in/epigraphy/
+          </div>
+
+          <div class="item-green-title" style="font-size:0.92rem;">2. National Mission for Manuscripts (NMM) & Paleography Standards:</div>
+          <div style="font-size:0.82rem; color:#000000; margin-left:4px; margin-bottom:2px;">
+            Established by Ministry of Culture to unearth, preserve, and digitally catalog India’s vast manuscript heritage (Talapatra, Bhojpatra) and ancient epigraphy.
+          </div>
+          <div style="font-size:0.8rem; color:#0070C0; text-decoration:underline; margin-left:4px; margin-bottom:6px;">
+            https://www.namami.gov.in/ &nbsp;|&nbsp; https://ignca.gov.in/
+          </div>
+
+          <div class="item-green-title" style="font-size:0.92rem;">3. Best Practices for Web Security & Cryptographic Integrity:</div>
+          <div style="font-size:0.82rem; color:#000000; margin-left:4px; margin-bottom:2px;">
+            This framework outlines key web security measures, DPDP Act 2023 compliance, and verifiable tamper-proof records using Blockchain & Encryption Standards.
+          </div>
+          <div style="font-size:0.8rem; color:#0070C0; text-decoration:underline; margin-left:4px; margin-bottom:6px;">
+            https://owasp.org/www-project-top-ten/ &nbsp;|&nbsp; https://www.meity.gov.in/data-protection-framework
+          </div>
+
+          <div class="item-green-title" style="font-size:0.92rem;">4. The AMASR Act 1958 & GI Registry:</div>
+          <div style="font-size:0.82rem; color:#000000; margin-left:4px; margin-bottom:2px;">
+            The Ancient Monuments and Archaeological Sites and Remains Act (1958 & 2010) and Geographical Indications of Goods Act (1999) safeguarding cultural heritage & traditional artisan products.
+          </div>
+          <div style="font-size:0.8rem; color:#0070C0; text-decoration:underline; margin-left:4px; margin-bottom:10px;">
+            https://indiacode.nic.in/handle/123456789/1631 &nbsp;|&nbsp; https://ipindia.gov.in/geographical-indications.htm
+          </div>
+        </div>
+
+        <div style="background:#F8FAFC; border-left:3px solid #0070C0; padding:8px 12px; border-radius:3px;">
+          <div style="font-size:0.82rem; font-weight:bold; color:#0F172A; margin-bottom:4px;">
+            To enable smooth implementation and nationwide integration of the VirasatX Digital Heritage System, the following contacts and portals serve as official national-level resources for communication, data coordination, and institutional support:
+          </div>
+          <div style="display:grid; grid-template-columns:1fr 1fr; gap:4px; font-size:0.78rem;">
+            <div><strong style="color:#15803D;">5. Ministry of Culture:</strong> <a href="https://indiaculture.gov.in/" style="color:#0070C0; text-decoration:underline;">https://indiaculture.gov.in/</a></div>
+            <div><strong style="color:#15803D;">6. National Museum, New Delhi:</strong> <a href="https://nationalmuseumindia.gov.in/" style="color:#0070C0; text-decoration:underline;">https://nationalmuseumindia.gov.in/</a></div>
+            <div><strong style="color:#15803D;">7. National Archives of India:</strong> <a href="https://www.abhilekh-patal.in/" style="color:#0070C0; text-decoration:underline;">https://www.abhilekh-patal.in/</a></div>
+            <div><strong style="color:#15803D;">8. UNESCO World Heritage Centre:</strong> <a href="https://whc.unesco.org/en/statesparties/in" style="color:#0070C0; text-decoration:underline;">https://whc.unesco.org/en/statesparties/in</a></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="slide-number-bottom-right">6</div>
+    </div>
+
+  </div>
+
+</body>
+</html>

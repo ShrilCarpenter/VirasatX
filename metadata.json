@@ -1,0 +1,6 @@
+{
+  "name": "VirasatX — India's Heritage Repository",
+  "description": "An intelligent, multimodal cultural heritage platform grounded in primary scholarly archives—connecting ancient artifacts, temple iconography, sacred manuscripts, and unbroken living traditions. Smart India Hackathon 2026 (SIH26197).",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

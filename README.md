@@ -1,113 +1,140 @@
-# Virasat AI — Digital Heritage Museum of India
-> **“India’s Heritage, Reimagined.”**  
-> *Smart India Hackathon 2026 (Heritage & Culture Track — SIH26195)*
+# VirasatX — India’s Heritage Repository
+> *Smart India Hackathon 2026 (Heritage & Culture Theme — Problem Statement ID: SIH26197)*  
+> **Tagline**: *“India’s Heritage, Understood, Preserved and Experienced.”*  
+> **Lead Organization**: All India Council for Technical Education (AICTE)  
+> **Category**: Software (Student Innovation)
 
 ---
 
-## 🏛️ Executive Summary
+## 1. Executive Summary & Project Identity
 
-**Virasat AI** is a digital heritage museum web application designed to digitally preserve, celebrate, and make accessible over 5,000 years of Indian civilization, art, architecture, ancient manuscripts, and living traditions.
+**VirasatX** is an intelligent, multimodal cultural heritage platform engineered for the Smart India Hackathon 2026. Built on primary scholarly archives from the Archaeological Survey of India (ASI), National Mission for Manuscripts (NMM), and the Indira Gandhi National Centre for the Arts (IGNCA), VirasatX bridges physical monuments, temple iconography, sacred epigraphy, and unbroken living artisan guilds.
 
-Inspired by premier Indian and international cultural archives:
-- **Museum Ivory & Warm Sand Aesthetics** with elegant editorial typography (`Playfair Display`, `Cormorant Garamond`, `Inter`).
-- **Interactive 3D Archival Inspection Studio** with 360-degree rotation, zoom loupe, and dynamic gallery lighting simulation.
-- **Multimodal AI Heritage Guide** with voice input, speech synthesis, and Computer Vision for dynastic iconography recognition.
-- **Ancient Manuscript Conservation & Paleography Viewer** with side-by-side translation (Brahmi / Sharada / Grantha $\leftrightarrow$ English / Hindi) and Sanskrit chant audio.
-- **Historical Timeline Explorer** across 11 key Indian epochs from 2600 BCE (Indus Valley) to the Modern Republic.
-- **Geospatial Interactive Heritage Map** with UNESCO site documentation, conservation guidelines, and regional filtering.
-- **Responsible Cultural Tourism & AI Itinerary Generator** designed to prevent overtourism and support GI-certified master artisan cooperatives.
-- **Multilingual Support** across 8 Indian languages (English, हिन्दी, ગુજરાતી, मराठी, বাংলা, தமிழ், తెలుగు, ಕನ್ನಡ).
+### Core Philosophy: The Cultural Horizon Model
+Rather than presenting isolated objects inside static glass museum cases, VirasatX interconnects every cultural specimen across an unbroken civilizational thread:
+$$\text{Artifact} \longrightarrow \text{Historical Era} \longrightarrow \text{Cultural Corridor} \longrightarrow \text{Sacred Site} \longrightarrow \text{Living Tradition} \longrightarrow \text{Master Artisan} \longrightarrow \text{Responsible Visit}$$
 
 ---
 
-## 🌟 Key Application Horizons
+## 2. Key Capabilities & Architectural Modules
 
-### 1. 🏛️ Museum Collection Explorer (`/explore`)
-- Multi-faceted filtering across Historical Period, Region, Category, Material, and Dynasty.
-- Instant search and Grid / Archival List view modes.
-- Curated exhibits with high-resolution imagery and curatorial accession dossiers.
+### 🏛️ Interactive 360° Archival Inspection Studio
+- **WebGL Three.js Studio**: Full tactile 360° model inspection with rotational momentum, zoom loupe, and studio gallery lighting presets (Museum Amber, Gallery Neutral, Direct Raking Light).
+- **Graceful Fallback**: High-resolution multi-angle photography when WebGL 3D meshes are undergoing photogrammetry.
+- **Curatorial Audio Guides**: Synchronized speech synthesis audio narration with classical transcripts and agamic metrics.
 
-### 2. 🔍 Deep Artifact Inspection Studio (`/artifact/[id]`)
-- 360° interactive rotation, zoom inspection, and directional studio lighting controls.
-- Official audio guide narration with cross-browser speech synthesis.
-- Contextual side-panel AI Curatorial Assistant with source attribution.
-- Direct links to Timeline epochs and Heritage Map locations.
+### 🗺️ Geospatial Archaeological Atlas & Cultural Corridors
+- **Leaflet & OpenStreetMap Engine**: Genuine GPS coordinate markers for UNESCO World Heritage Sites, ASI monuments, and artisan clusters.
+- **Thematic Corridors**: Curated trans-regional corridors including the Buddhist Pilgrimage Circuit, Chola Granite & Bronze Way, Deccan Rock-Cut Sanctuary, and Kalinga Temple Arc.
 
-### 3. 🖼️ Virtual Museum Gallery (`/gallery/[id]`)
-- Curated virtual gallery walkthroughs (Sculpture Gallery, Manuscript Gallery, Architecture Gallery, Painting Gallery).
-- Wall-mounted exhibits, brass info plaques, and gallery switcher.
+### 📜 Epigraphy & Ancient Manuscripts Paleography Studio
+- **Folio Viewer with Zoom**: Deep inspection of ancient palm-leaf (*Talapatra*) and birch-bark (*Bhojpatra*) folios.
+- **Side-by-Side Transcription & Translation**: Original Brahmi, Sharada, and Newari script transcriptions paired with IAST international romanization, English curatorial translations, and Hindi translations.
+- **Vedic Phonetics**: Audio vocalization of classical Sanskrit aksharas.
 
-### 4. ⏳ Chronological Indian History Timeline (`/timeline`)
-- 11 comprehensive historical epochs: Indus Valley Civilization, Vedic Period, Mauryan Empire, Gupta Golden Era, Post-Gupta, Chola Dynasty, Delhi Sultanate, Vijayanagara Empire, Mughal Era, Maratha Empire, and Independent India.
-- Deep-dive dossiers covering civilizational milestones, prominent thinkers/rulers, and architectural styles.
+### 🏺 Living Traditions & GI-Certified Artisan Guilds
+- **Living Heritage First**: Master crafts, handlooms, lost-wax bronze casting, and tribal metallurgy.
+- **Ethical Custodianship**: Direct promotion of Geographical Indication (GI) certified artisan cooperatives with zero exposure of unconsented private telephone numbers or personal residential addresses.
 
-### 5. 🗺️ Interactive Heritage Map (`/map`)
-- Geospatial mapping of UNESCO World Heritage Sites, monuments, archaeological excavations, and craft villages.
-- Regional filtering, visiting guidelines, and environmental sensitivity indicators.
+### 🤖 Grounded Virasat AI Heritage Guide (Lightweight RAG)
+- **Zero Hallucinations**: User queries are grounded against a curated knowledge vector base of ASI accession records.
+- **Honest Citations & Confidence**: Every response provides explicit record IDs (e.g. `[ASI-104]`) and transparent confidence ratings (*High Confidence*, *Moderate Confidence*, *Needs Verification*).
+- **Visual Iconography Identification**: Multimodal analysis of temple postures, mudras, drapery folds, and dynastic idioms with explicit disclaimers: *"AI-assisted visual interpretation, not expert authentication"*.
 
-### 6. 📜 Ancient Manuscript Conservation Viewer (`/manuscripts`)
-- High-resolution loupe zoom for palm-leaf (*Talapatra*) and birch-bark (*Bhojpatra*) manuscripts.
-- Side-by-side ancient script transcription, English/Hindi translations, and Sanskrit metric chant playback.
-
-### 7. 🤖 Multimodal AI Heritage Guide (`/ai-guide`)
-- Museum research assistant with institutional citations and transparent interpretive disclaimers.
-- Web Speech voice input and voice recognition.
-- **Visual Iconography Identifier**: Analyzes artifact imagery for dynastic motifs, postures, and mudras.
-- Built-in input sanitization, prompt injection guard, and rate limiting.
-
-### 8. 🌿 Responsible Heritage Travel (`/sustainable-travel`)
-- Custom AI tour planner that creates responsible day-by-day itineraries with eco-friendly guidelines and artisan visits.
-
-### 9. 🎨 Living Heritage & Master Artisans Directory (`/artisans`)
-- Profiles of GI-tagged master craft traditions (Pashmina weavers, Swamimalai bronze sculptors, Nirona Rogan artists, Patan Patola weavers, Bastar Dhokra metalsmiths).
+### 🌿 Responsible Cultural Travel & SDG 11 Framework
+- **Overtourism Mitigation**: Dawn/dusk visitation advice, carrying-capacity protection for fragile rock-cut caves, and direct economic routing to rural craft cooperatives.
 
 ---
 
-## 🛠️ Technology Stack
+## 3. Technology Stack
 
-- **Framework**: Next.js 16 (App Router, Turbopack), React 19, TypeScript
-- **Styling**: Vanilla CSS & Tailwind CSS (Custom Heritage Design Tokens, Parchment Textures)
-- **Icons & Visuals**: Lucide React, Framer Motion
-- **Audio & Speech**: Web Speech API (Speech Recognition & Speech Synthesis)
-- **Security & Reliability**: In-memory rate limiting, prompt injection detection, security response headers (`CSP`, `X-Frame-Options`, `X-Content-Type-Options`)
-- **AI / ML Service**: Domain-grounded knowledge engine with citation tracking and iconography pattern matching.
+| Layer | Technologies |
+| :--- | :--- |
+| **Frontend Framework** | React 19, Vite 6, TypeScript |
+| **Styling & Design System** | Tailwind CSS v4, Museum Parchment Design System (`#FAF8F5`, `#151D2A`, `#936B38`) |
+| **Icons & Motion** | Lucide React, Motion |
+| **3D & Geospatial Engine** | Three.js (WebGL), Leaflet, OpenStreetMap |
+| **Backend / Serverless API** | Vercel Serverless Functions (`/api/ai-guide`, `/api/vision-ai`), Vite dev proxy plugin |
+| **AI / Multimodal LLM** | Google Gemini 2.5 Flash (`@google/genai`), Server-side RAG pipeline |
+| **Auth & Patron Database** | Supabase Auth, PostgreSQL, Row Level Security (RLS) |
 
 ---
 
-## 🚀 Getting Started
+## 4. Security & Privacy Architecture
+
+- **Absolute Secret Protection**: `GEMINI_API_KEY` is strictly executed in backend serverless handlers (`api/ai-guide-handler.ts`, `api/vision-ai-handler.ts`). It is **NEVER** exposed to client browser bundles or prefixed with `VITE_`.
+- **Public Heritage Browsing**: Guests enjoy full access to all collections, timelines, maps, manuscripts, and AI guides without creating an account.
+- **Row Level Security (RLS)**: Users can only read, update, or delete their own saved discoveries and submissions. Moderation approvals are restricted.
+
+---
+
+## 5. Supabase Setup & Database Schema
+
+Run the SQL migration in `supabase/migrations/001_initial_schema.sql` within your Supabase project's SQL editor.
+
+### Database Tables:
+1. `profiles`: Extended user profile linked to `auth.users(id)` with preferred language.
+2. `favorites`: Personal saved heritage discoveries with unique constraint on `(user_id, heritage_item_id)`.
+3. `learning_progress`: Tracks completion across curriculum modules.
+4. `submissions`: Community contributions marked `pending` until academic audit.
+5. `feedback`: Anonymized discrepancy reporting.
+
+---
+
+## 6. Getting Started Locally
 
 ### Prerequisites
-- Node.js 18+ or Node.js 20+
+- Node.js 18+ or 20+
 - npm
 
-### Installation & Run
+### Installation
 ```bash
-# Clone repository
+# Clone the repository
 git clone https://github.com/ShrilCarpenter/VirasatX.git
 cd VirasatX
 
 # Install dependencies
 npm install
 
-# Start development server
-npm run dev
+# Copy environment variables
+cp .env.example .env.local
 ```
 
+### Environment Variables (`.env.local`)
+```env
+# Supabase Configuration
+VITE_SUPABASE_URL="https://your-project.supabase.co"
+VITE_SUPABASE_PUBLISHABLE_KEY="your-supabase-publishable-key"
+
+# Google Gemini API Key (Server-side only)
+GEMINI_API_KEY="your-gemini-api-key"
+
+# Host URL
+APP_URL="http://localhost:3000"
+```
+
+### Development Server
+```bash
+npm run dev
+```
 Open [http://localhost:3000](http://localhost:3000) in your browser.
 
 ### Production Build
 ```bash
 npm run build
-npm run start
+npm run preview
 ```
 
 ---
 
-## 🏆 Smart India Hackathon 2026 Alignment
-- **Track**: Heritage & Culture (SIH26195)
-- **Problem Statement**: Digital preservation and accessibility of India's cultural heritage.
-- **UN Sustainable Development Goals**: SDG 8 (Decent Work & Economic Growth via Artisans) & SDG 11 (Sustainable Cities and Communities).
+## 7. SIH 2026 Verification & Compliance
+
+- **Problem Statement ID**: **SIH26197**
+- **Track**: Heritage & Culture (AICTE)
+- **Zero Legacy Errors**: Verified 0 references to legacy SIH problem statement IDs.
 
 ---
 
-© 2026 **Virasat AI Team** — Built for Smart India Hackathon 2026.
+## 8. License & Cultural Custodianship
+
+VirasatX is an open-source educational innovation platform. All artifact imagery, museum scans, and epigraphical records are documented in `src/data/imageCredits.ts` and `docs/image-credits.md` under open cultural access and educational fair-use principles.

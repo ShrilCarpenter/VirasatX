@@ -1,32 +1,38 @@
 {
-  "name": "virasat-ai",
-  "version": "0.1.0",
+  "name": "virasatx",
   "private": true,
+  "version": "1.0.0",
+  "type": "module",
   "scripts": {
-    "dev": "next dev",
-    "build": "next build",
-    "start": "next start",
-    "lint": "eslint"
+    "dev": "vite --port=3000 --host=0.0.0.0",
+    "build": "vite build",
+    "preview": "vite preview",
+    "lint": "tsc --noEmit"
   },
   "dependencies": {
-    "@types/three": "^0.185.4",
+    "@google/genai": "^2.4.0",
+    "@supabase/supabase-js": "^2.115.0",
+    "@tailwindcss/vite": "^4.1.14",
+    "@vitejs/plugin-react": "^5.0.4",
     "clsx": "^2.1.1",
-    "framer-motion": "^12.4.7",
-    "lucide-react": "^1.16.0",
-    "next": "^15.1.7",
+    "dotenv": "^17.2.3",
+    "leaflet": "^1.9.4",
+    "lucide-react": "^0.546.0",
+    "motion": "^12.23.24",
     "react": "^19.0.0",
     "react-dom": "^19.0.0",
+    "react-router-dom": "^7.2.0",
     "tailwind-merge": "^3.0.2",
-    "three": "^0.185.1"
+    "tailwindcss": "^4.1.14",
+    "three": "^0.185.1",
+    "vite": "^6.2.3"
   },
   "devDependencies": {
-    "@tailwindcss/postcss": "^4.0.0",
-    "@types/node": "^20",
-    "@types/react": "^19",
-    "@types/react-dom": "^19",
-    "eslint": "^9",
-    "eslint-config-next": "^15.1.7",
-    "tailwindcss": "^4.0.0",
-    "typescript": "^5"
+    "@types/leaflet": "^1.9.16",
+    "@types/node": "^22.14.0",
+    "@types/react": "^19.0.0",
+    "@types/react-dom": "^19.0.0",
+    "@types/three": "^0.185.4",
+    "typescript": "~5.8.2"
   }
 }
