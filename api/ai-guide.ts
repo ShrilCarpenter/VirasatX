@@ -1,4 +1,4 @@
-import { handleAIGuide } from './ai-guide-handler.js';
+import { handleAIGuide } from './ai-guide-handler';
 
 export default async function handler(req: any, res: any) {
   if (req.method !== 'POST') {

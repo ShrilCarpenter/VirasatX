@@ -1,4 +1,4 @@
-import { handleVisionAI } from './vision-ai-handler.js';
+import { handleVisionAI } from './vision-ai-handler';
 
 export default async function handler(req: any, res: any) {
   if (req.method !== 'POST') {

@@ -24,7 +24,7 @@ function serverApiPlugin(): Plugin {
           req.on('end', async () => {
             try {
               const data = JSON.parse(body || '{}');
-              const { handleAIGuide } = await import('./api/ai-guide-handler.js');
+              const { handleAIGuide } = await import('./api/ai-guide-handler');
               const response = await handleAIGuide(data);
               res.statusCode = 200;
               res.setHeader('Content-Type', 'application/json');
@@ -44,7 +44,7 @@ function serverApiPlugin(): Plugin {
           req.on('end', async () => {
             try {
               const data = JSON.parse(body || '{}');
-              const { handleVisionAI } = await import('./api/vision-ai-handler.js');
+              const { handleVisionAI } = await import('./api/vision-ai-handler');
               const response = await handleVisionAI(data);
               res.statusCode = 200;
               res.setHeader('Content-Type', 'application/json');
