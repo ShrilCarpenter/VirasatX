@@ -156,6 +156,7 @@ export const UniversalSearchModal: React.FC<UniversalSearchModalProps> = ({
                 <img
                   src={item.imageUrl}
                   alt={item.title}
+                  onError={(e) => { e.currentTarget.src = '/images/ui/placeholder-heritage.jpg'; }}
                   className="w-14 h-14 rounded-xl object-cover border border-stone-200 shrink-0"
                 />
                 <div>
@@ -187,6 +188,7 @@ export const UniversalSearchModal: React.FC<UniversalSearchModalProps> = ({
                 <img
                   src={trad.imageUrl}
                   alt={trad.title}
+                  onError={(e) => { e.currentTarget.src = '/images/ui/placeholder-heritage.jpg'; }}
                   className="w-14 h-14 rounded-xl object-cover border border-stone-200 shrink-0"
                 />
                 <div>
@@ -215,6 +217,7 @@ export const UniversalSearchModal: React.FC<UniversalSearchModalProps> = ({
                 <img
                   src={ms.imageUrl}
                   alt={ms.title}
+                  onError={(e) => { e.currentTarget.src = '/images/ui/placeholder-heritage.jpg'; }}
                   className="w-14 h-14 rounded-xl object-cover border border-stone-200 shrink-0"
                 />
                 <div>

@@ -51,6 +51,7 @@ export const ArtisanDetail: React.FC = () => {
           <img
             src={imageUrl}
             alt={title}
+            onError={(e) => { e.currentTarget.src = '/images/ui/placeholder-heritage.jpg'; }}
             className="w-full h-full object-cover"
           />
           <div className="absolute top-3 left-3 bg-emerald-950/80 backdrop-blur-md text-emerald-200 text-xs font-semibold px-3 py-1 rounded-full border border-emerald-700 flex items-center gap-1.5">

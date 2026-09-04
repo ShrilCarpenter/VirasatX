@@ -101,13 +101,6 @@ export const Navbar: React.FC<NavbarProps> = ({
               </span>
             </div>
           </Link>
-
-          {/* Official SIH26197 Track Badge */}
-          <div className="hidden xl:flex items-center pl-3 border-l border-stone-200">
-            <span className="font-mono text-[10px] px-2 py-0.5 rounded bg-amber-50 text-amber-900 border border-amber-300 font-bold">
-              SIH26197
-            </span>
-          </div>
         </div>
 
         {/* Desktop Navigation Links */}

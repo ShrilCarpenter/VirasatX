@@ -207,6 +207,7 @@ export const IdentifyPage: React.FC = () => {
                     <img
                       src={specimen.imageUrl}
                       alt={specimen.name}
+                      onError={(e) => { e.currentTarget.src = '/images/ui/placeholder-heritage.jpg'; }}
                       className="w-9 h-9 rounded-md object-cover shrink-0"
                     />
                     <div className="min-w-0">
@@ -354,6 +355,7 @@ export const IdentifyPage: React.FC = () => {
                           <img
                             src={rec.imageUrl}
                             alt={rec.title}
+                            onError={(e) => { e.currentTarget.src = '/images/ui/placeholder-heritage.jpg'; }}
                             className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
                           />
                         </div>

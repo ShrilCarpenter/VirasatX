@@ -26,10 +26,10 @@ export const HERITAGE_ITEMS: HeritageItem[] = [
     location: 'Kaveri Delta, Tamil Nadu',
     state: 'Tamil Nadu',
     repository: 'National Museum, New Delhi (Bronze Gallery, Showcase 14)',
-    imageUrl: 'https://images.unsplash.com/photo-1599571234909-29ed5d1321d6?q=80&w=1200&auto=format&fit=crop',
+    imageUrl: '/images/artifacts/chola-nataraja-bronze.jpg',
     secondaryImages: [
-      'https://commons.wikimedia.org/wiki/Special:FilePath/Shiva_as_the_Lord_of_Dance_LACMA_edit.jpg',
-      'https://commons.wikimedia.org/wiki/Special:FilePath/11th_century_Nataraja,_Chola_period_bronze,_Government_Museum,_Chennai.jpg'
+      '/images/artifacts/nataraja-detail-1.jpg',
+      '/images/artifacts/nataraja-detail-2.jpg'
     ],
     dimensions: '115 cm × 98 cm × 32 cm; 84 kg',
     material: 'Panchaloha (Copper, Tin, Zinc, Silver, Gold)',
@@ -85,7 +85,7 @@ export const HERITAGE_ITEMS: HeritageItem[] = [
     location: 'Thanjavur, Tamil Nadu',
     state: 'Tamil Nadu',
     repository: 'Archaeological Survey of India (Chennai Circle)',
-    imageUrl: 'https://images.unsplash.com/photo-1582510003544-4d00b7f74220?q=80&w=1200&auto=format&fit=crop',
+    imageUrl: '/images/monuments/brihadisvara-temple-thanjavur.jpg',
     dimensions: 'Height 66 m (216 ft), Octagonal Kumbam capstone ~81.3 tonnes',
     material: 'Crystalline hard granite (Charokite)',
     dynasty: 'Imperial Chola Dynasty (Rajaraja Chola I)',
@@ -122,7 +122,7 @@ export const HERITAGE_ITEMS: HeritageItem[] = [
     location: 'Sarnath, Varanasi',
     state: 'Uttar Pradesh',
     repository: 'Sarnath Archaeological Museum (ASI)',
-    imageUrl: 'https://images.unsplash.com/photo-1590076215667-875d4ef2d7ee?q=80&w=1200&auto=format&fit=crop',
+    imageUrl: '/images/artifacts/sarnath-lion-capital-ashoka.jpg',
     dimensions: 'Height 2.15 m (7 ft 1 in), Width 1.4 m',
     material: 'Chunar sandstone with high vitreous lustre',
     dynasty: 'Mauryan Dynasty (Emperor Ashoka)',
@@ -159,7 +159,7 @@ export const HERITAGE_ITEMS: HeritageItem[] = [
     location: 'Puri District, Odisha',
     state: 'Odisha',
     repository: 'Indira Gandhi National Centre for the Arts (IGNCA), Manuscript Division',
-    imageUrl: 'https://images.unsplash.com/photo-1461360370896-922624d12aa1?q=80&w=1200&auto=format&fit=crop',
+    imageUrl: '/images/manuscripts/palm-leaf-manuscript.jpg',
     dimensions: 'Folio length: 32 cm × 4.5 cm',
     material: 'Borassus flabellifer palm foliage, iron stylus (loha lekhani), lampblack soot',
     dynasty: 'Eastern Ganga / Gajapati Era',
@@ -196,7 +196,7 @@ export const HERITAGE_ITEMS: HeritageItem[] = [
     location: 'Ellora, Chhatrapati Sambhaji Nagar, Maharashtra',
     state: 'Maharashtra',
     repository: 'Archaeological Survey of India (Aurangabad Circle)',
-    imageUrl: 'https://images.unsplash.com/photo-1600100397608-f010f444f4e7?q=80&w=1200&auto=format&fit=crop',
+    imageUrl: '/images/monuments/kailasa-temple-ellora.jpg',
     dimensions: 'Pit dimensions: 84 m × 47 m × 33 m deep',
     material: 'Deccan Trap volcanic basalt bedrock',
     dynasty: 'Rashtrakuta Dynasty (Krishna I)',
@@ -233,7 +233,7 @@ export const HERITAGE_ITEMS: HeritageItem[] = [
     location: 'Ajanta Cave 1, Maharashtra',
     state: 'Maharashtra',
     repository: 'Archaeological Survey of India (ASI)',
-    imageUrl: 'https://images.unsplash.com/photo-1596178065887-1198b6148b2b?q=80&w=1200&auto=format&fit=crop',
+    imageUrl: '/images/artifacts/ajanta-padmapani-fresco.jpg',
     dimensions: 'Mural panel: 2.1 m × 1.3 m',
     material: 'Natural lapis lazuli, red ochre, lampblack on lime-clay plaster',
     dynasty: 'Vakataka Dynasty (Harishena Era)',
@@ -270,7 +270,7 @@ export const HERITAGE_ITEMS: HeritageItem[] = [
     location: 'Konark, Puri District, Odisha',
     state: 'Odisha',
     repository: 'Archaeological Survey of India',
-    imageUrl: 'https://images.unsplash.com/photo-1548013146-72479768bada?q=80&w=1200&auto=format&fit=crop',
+    imageUrl: '/images/monuments/konark-sun-temple-wheel.jpg',
     dimensions: 'Diameter: 3.0 m (9.8 ft) with 8 major & 8 minor spokes',
     material: 'Khondalite sandstone and dark chlorite stone',
     dynasty: 'Eastern Ganga Dynasty (Narasimhadeva I)',
@@ -307,7 +307,7 @@ export const HERITAGE_ITEMS: HeritageItem[] = [
     location: 'Nalanda, Bihar',
     state: 'Bihar',
     repository: 'Nalanda Archaeological Museum (ASI)',
-    imageUrl: 'https://images.unsplash.com/photo-1590076215667-875d4ef2d7ee?q=80&w=1200&auto=format&fit=crop',
+    imageUrl: '/images/artifacts/nalanda-seal-mahavihara.jpg',
     dimensions: 'Diameter: 8.5 cm × 2 cm',
     material: 'Terracotta baked clay with Brahmi / Siddhamatrka script',
     dynasty: 'Gupta to Pala Dynasties',
@@ -344,7 +344,7 @@ export const HERITAGE_ITEMS: HeritageItem[] = [
     location: 'Sanchi, Raisen District, Madhya Pradesh',
     state: 'Madhya Pradesh',
     repository: 'Archaeological Survey of India (Bhopal Circle)',
-    imageUrl: 'https://images.unsplash.com/photo-1588416936097-41850ab3d86d?q=80&w=1200&auto=format&fit=crop',
+    imageUrl: '/images/monuments/sanchi-great-stupa.jpg',
     dimensions: 'Dome height: 16.5 m (54 ft), Diameter: 36.5 m (120 ft)',
     material: 'Local sandstone blocks dry-masonry',
     dynasty: 'Mauryan to Satavahana Dynasties',
@@ -381,7 +381,7 @@ export const HERITAGE_ITEMS: HeritageItem[] = [
     location: 'Hampi, Vijayanagara District, Karnataka',
     state: 'Karnataka',
     repository: 'Archaeological Survey of India (Hampi Mini Circle)',
-    imageUrl: 'https://images.unsplash.com/photo-1600100397608-f010f444f4e7?q=80&w=1200&auto=format&fit=crop',
+    imageUrl: '/images/monuments/hampi-stone-chariot.jpg',
     dimensions: 'Chariot height: 5.2 m; Maha Mantapa: 56 musical colonnades',
     material: 'Local coarse crystalline granite and chlorite details',
     dynasty: 'Vijayanagara Empire (Tuluva Dynasty)',
@@ -418,7 +418,7 @@ export const HERITAGE_ITEMS: HeritageItem[] = [
     location: 'Agra, Uttar Pradesh',
     state: 'Uttar Pradesh',
     repository: 'Archaeological Survey of India (Agra Circle)',
-    imageUrl: 'https://images.unsplash.com/photo-1564507592333-c60657eea523?q=80&w=1200&auto=format&fit=crop',
+    imageUrl: '/images/monuments/taj-mahal-agra.jpg',
     dimensions: 'Total height: 73 m (240 ft); Plinth: 95 m × 95 m',
     material: 'Pure white Makrana marble inlaid with jade, crystal, lapis lazuli, and carnelian',
     dynasty: 'Mughal Empire (Shah Jahan)',
@@ -455,7 +455,7 @@ export const HERITAGE_ITEMS: HeritageItem[] = [
     location: 'Madurai, Tamil Nadu',
     state: 'Tamil Nadu',
     repository: 'HR&CE Department, Government of Tamil Nadu / ASI',
-    imageUrl: 'https://images.unsplash.com/photo-1600100397608-f010f444f4e7?q=80&w=1200&auto=format&fit=crop',
+    imageUrl: '/images/monuments/meenakshi-temple-madurai.jpg',
     dimensions: 'Southern Gopuram height: 51.9 m (170 ft); 14 gopurams total',
     material: 'Granite base, stucco-clad brick superstructure, natural mineral pigments',
     dynasty: 'Madurai Nayak Dynasty',
@@ -675,7 +675,7 @@ export const LIVING_TRADITIONS: LivingTradition[] = [
     location: 'Swamimalai, Thanjavur District, Tamil Nadu',
     region: 'South',
     guildCount: '12 Active Master Ateliers',
-    imageUrl: 'https://images.unsplash.com/photo-1599571234909-29ed5d1321d6?q=80&w=1200&auto=format&fit=crop',
+    imageUrl: '/images/traditions/swamimalai-bronze-craft.jpg',
     unbrokenSince: 'c. 950 CE (Imperial Chola Era)',
     keyPractices: [
       'Beeswax, dammar resin, and groundnut oil preparation for sculpturing the core model.',
@@ -702,7 +702,7 @@ export const LIVING_TRADITIONS: LivingTradition[] = [
     location: 'Kotwa & Madanpura, Varanasi, Uttar Pradesh',
     region: 'North',
     guildCount: 'Over 40,000 Pit Looms',
-    imageUrl: 'https://images.unsplash.com/photo-1610030469983-98e550d6193c?q=80&w=1200&auto=format&fit=crop',
+    imageUrl: '/images/traditions/varanasi-zari-silk.jpg',
     unbrokenSince: 'Mentioned in Jataka Tales (c. 5th c. BCE)',
     keyPractices: [
       'Naksha pattern drawing on graph paper transferred to wooden jacquard lattice punch cards.',
@@ -729,7 +729,7 @@ export const LIVING_TRADITIONS: LivingTradition[] = [
     location: 'Channapatna ("Gombegala Ooru"), Ramanagara, Karnataka',
     region: 'South',
     guildCount: '3,000+ Master Turners',
-    imageUrl: 'https://images.unsplash.com/photo-1566073771259-6a8506099945?q=80&w=1200&auto=format&fit=crop',
+    imageUrl: '/images/traditions/channapatna-toys.jpg',
     unbrokenSince: 'Patronized by Tipu Sultan in late 18th c.',
     keyPractices: [
       'Using sustainably harvested soft Wrightia tinctoria (Aale mara / ivory wood).',
@@ -756,7 +756,7 @@ export const LIVING_TRADITIONS: LivingTradition[] = [
     location: 'Thanjavur, Tamil Nadu',
     region: 'South',
     guildCount: '80+ Certified Studios',
-    imageUrl: 'https://images.unsplash.com/photo-1579783902614-a3fb3927b675?q=80&w=1200&auto=format&fit=crop',
+    imageUrl: '/images/traditions/thanjavur-painting.jpg',
     unbrokenSince: '16th Century (Maratha & Nayak Courts)',
     keyPractices: [
       'Plank preparation with teakwood board, unbleached cloth, and French chalk/tamarind gesso paste.',
@@ -783,7 +783,7 @@ export const LIVING_TRADITIONS: LivingTradition[] = [
     location: 'Patan, North Gujarat',
     region: 'West',
     guildCount: 'Only 3 Preserving Master Families',
-    imageUrl: 'https://images.unsplash.com/photo-1610030469983-98e550d6193c?q=80&w=1200&auto=format&fit=crop',
+    imageUrl: '/images/traditions/patan-patola-ikat.jpg',
     unbrokenSince: '11th Century (Solanki Dynasty)',
     keyPractices: [
       'Mathematical pre-calculation of warp and weft intersections with cotton tie knots.',
@@ -810,7 +810,7 @@ export const LIVING_TRADITIONS: LivingTradition[] = [
     location: 'Kondagaon & Bastar, Chhattisgarh',
     region: 'Central',
     guildCount: '25 Village Clusters',
-    imageUrl: 'https://images.unsplash.com/photo-1599571234909-29ed5d1321d6?q=80&w=1200&auto=format&fit=crop',
+    imageUrl: '/images/traditions/bastar-dhokra-craft.jpg',
     unbrokenSince: 'Over 4,000 Years (Direct continuity from Dancing Girl of Mohenjo-daro)',
     keyPractices: [
       'Preparation of clay core from ant-hill clay and paddy chaff.',
@@ -837,7 +837,7 @@ export const LIVING_TRADITIONS: LivingTradition[] = [
     location: 'Raghurajpur Heritage Village, Puri District, Odisha',
     region: 'East',
     guildCount: '120+ Hereditary Master Families',
-    imageUrl: 'https://images.unsplash.com/photo-1579783902614-a3fb3927b675?q=80&w=1200&auto=format&fit=crop',
+    imageUrl: '/images/traditions/odisha-pattachitra.jpg',
     unbrokenSince: '12th Century CE (Rooted in Jagannath Temple Rites)',
     keyPractices: [
       'Patta canvas preparation using cotton cloth bonded with tamarind seed gum and burnished with conch powder.',
@@ -876,7 +876,7 @@ export const ARTISANS_DATA: ArtisanProfile[] = [
       'Direct studio visits in Raghurajpur village adhering to respectful community visiting hours.',
       'Purchasing directly through registered artisan society certificates.'
     ],
-    imageUrl: 'https://images.unsplash.com/photo-1579783902614-a3fb3927b675?q=80&w=1200&auto=format&fit=crop',
+    imageUrl: '/images/traditions/odisha-pattachitra.jpg',
     verificationStatus: 'Scholar-verified'
   },
   {
@@ -897,7 +897,7 @@ export const ARTISANS_DATA: ArtisanProfile[] = [
       'Direct order placement through the Tamil Nadu Handicrafts Development Corporation (Poompuhar).',
       'Educational masterclasses for heritage conservation students.'
     ],
-    imageUrl: 'https://images.unsplash.com/photo-1599571234909-29ed5d1321d6?q=80&w=1200&auto=format&fit=crop',
+    imageUrl: '/images/traditions/swamimalai-bronze-craft.jpg',
     verificationStatus: 'Scholar-verified'
   },
   {
@@ -918,7 +918,7 @@ export const ARTISANS_DATA: ArtisanProfile[] = [
       'Purchase directly from certified bunkar society depots in Varanasi.',
       'Encourage transparent handloom traceability tags.'
     ],
-    imageUrl: 'https://images.unsplash.com/photo-1610030469983-98e550d6193c?q=80&w=1200&auto=format&fit=crop',
+    imageUrl: '/images/traditions/varanasi-zari-silk.jpg',
     verificationStatus: 'Scholar-verified'
   },
   {
@@ -939,7 +939,7 @@ export const ARTISANS_DATA: ArtisanProfile[] = [
       'Support institutional school orders for eco-friendly educational toys.',
       'Purchase directly from artisan cooperatives via Karnataka State Arts & Crafts Emporium (Cauvery).'
     ],
-    imageUrl: 'https://images.unsplash.com/photo-1566073771259-6a8506099945?q=80&w=1200&auto=format&fit=crop',
+    imageUrl: '/images/traditions/channapatna-toys.jpg',
     verificationStatus: 'Scholar-verified'
   }
 ];
@@ -963,8 +963,8 @@ export const MANUSCRIPTS_DATA: ManuscriptRecord[] = [
     translation: 'I glorify Agni, the high priest of the sacrifice, the divine minister of religious rites, the summoner of the gods, the greatest bestower of treasures.',
     hindiTranslation: 'मैं यज्ञ के पुरोहित, दिव्य देव, ऋत्विज और प्रचुर रत्नों के धारक अग्निदेव की स्तुति करता हूँ।',
     audioPhonetics: 'Mandala 1, Sukta 1, Rik 1 (Svarita & Udatta tonal Vedic chant cadence)',
-    imageUrl: 'https://images.unsplash.com/photo-1461360370896-922624d12aa1?q=80&w=1200&auto=format&fit=crop',
-    zoomDetailUrl: 'https://images.unsplash.com/photo-1461360370896-922624d12aa1?q=80&w=1600&auto=format&fit=crop',
+    imageUrl: '/images/manuscripts/rigveda-sharada-manuscript.jpg',
+    zoomDetailUrl: '/images/manuscripts/rigveda-sharada-manuscript.jpg',
     source: 'Bhandarkar Oriental Research Institute / UNESCO Memory of the World',
     verificationStatus: 'Scholar-verified',
     paleographyNotes: [
@@ -990,7 +990,7 @@ export const MANUSCRIPTS_DATA: ManuscriptRecord[] = [
     transliteration: 'gāthābhir abhiṣṭuvanti sma | sarvasattveṣu ca mahākaruṇāṁ samutpādayanti sma ||',
     translation: 'They praised with metrical verses and awakened boundless great compassion toward all sentient beings in the cosmos.',
     hindiTranslation: 'उन्होंने छंदबद्ध श्लोकों से स्तुति की और समस्त जीवित प्राणियों के प्रति महाकरुणा का संचार किया।',
-    imageUrl: 'https://images.unsplash.com/photo-1544716278-ca5e3f4abd8c?q=80&w=1200&auto=format&fit=crop',
+    imageUrl: '/images/manuscripts/gilgit-lotus-sutra.jpg',
     source: 'National Archives of India / Archaeological Survey of India',
     verificationStatus: 'Scholar-verified',
     paleographyNotes: [
@@ -1016,7 +1016,7 @@ export const MANUSCRIPTS_DATA: ManuscriptRecord[] = [
     transliteration: 'meghair meduram ambaraṁ vanabhuvaḥ śyāmās tamāladrumair naktaṁ bhīrur ayaṁ tvam eva tad imaṁ rādhe gṛhaṁ prāpaya ||',
     translation: 'The sky is thick with dark monsoon clouds, the woodland is shadowed with deep tamala trees; the night approaches and he is timid. O Radha, lead him safely home.',
     hindiTranslation: 'आकाश बादलों से घिरा है, तमाल वृक्षों से वन अंधकारमय हो रहा है; हे राधा, तुम इसे घर तक पहुँचा दो।',
-    imageUrl: 'https://images.unsplash.com/photo-1461360370896-922624d12aa1?q=80&w=1200&auto=format&fit=crop',
+    imageUrl: '/images/manuscripts/palm-leaf-chitra-pothi-full.jpg',
     source: 'IGNCA Manuscript Division / National Mission for Manuscripts',
     verificationStatus: 'Curator-reviewed',
     paleographyNotes: [
@@ -1036,7 +1036,7 @@ export const VISION_SPECIMENS: VisionSpecimen[] = [
     stylisticAttribution: 'Imperial Chola Dynastic Foundry (Kaveri Delta, Tamil Nadu)',
     comparativeSpecimen: 'National Museum New Delhi Showcase #14 / LACMA Accession #M.75.1',
     confidence: '98.4%',
-    imageUrl: 'https://images.unsplash.com/photo-1599571234909-29ed5d1321d6?q=80&w=1200&auto=format&fit=crop',
+    imageUrl: '/images/artifacts/chola-nataraja-bronze.jpg',
     regionBox: {
       label: 'Detected: Canonical Anandatandava Mudra & Prabhamandala',
       confidence: '98.4%',
@@ -1054,7 +1054,7 @@ export const VISION_SPECIMENS: VisionSpecimen[] = [
     stylisticAttribution: 'Kushan Empire / Gandhara School (Peshawar / Taxila Basin)',
     comparativeSpecimen: 'Government Museum Chandigarh & British Museum Asian Collection',
     confidence: '96.2%',
-    imageUrl: 'https://images.unsplash.com/photo-1590076215667-875d4ef2d7ee?q=80&w=1200&auto=format&fit=crop',
+    imageUrl: '/images/artifacts/sultanganj-buddha-bronze.jpg',
     regionBox: {
       label: 'Detected: Greco-Buddhist Sanghati Folds & Ushnisha',
       confidence: '96.2%',
@@ -1072,7 +1072,7 @@ export const VISION_SPECIMENS: VisionSpecimen[] = [
     stylisticAttribution: 'Vijayanagara / Nayak Dynastic Style (Deccan & Tamil Nadu)',
     comparativeSpecimen: 'Hampi Vittala Temple Mandapa / Madurai Meenakshi Thousand Pillar Hall',
     confidence: '95.7%',
-    imageUrl: 'https://images.unsplash.com/photo-1600100397608-f010f444f4e7?q=80&w=1200&auto=format&fit=crop',
+    imageUrl: '/images/monuments/hampi-stone-chariot.jpg',
     regionBox: {
       label: 'Detected: Rearing Yali Bracket & Fluted Granite Shaft',
       confidence: '95.7%',
@@ -1090,7 +1090,7 @@ export const VISION_SPECIMENS: VisionSpecimen[] = [
     stylisticAttribution: 'Mughal Imperial Atelier (Jahangir / Shah Jahan Era)',
     comparativeSpecimen: 'National Museum Miniature Gallery / Victoria and Albert Museum',
     confidence: '94.8%',
-    imageUrl: 'https://images.unsplash.com/photo-1579783902614-a3fb3927b675?q=80&w=1200&auto=format&fit=crop',
+    imageUrl: '/images/traditions/thanjavur-painting.jpg',
     regionBox: {
       label: 'Detected: Mughal Court Hashiya & Wasli Mineral Pigment Layering',
       confidence: '94.8%',

@@ -5,6 +5,8 @@ import { MANUSCRIPTS_DATA } from '../data/heritageData';
 import { Breadcrumbs } from '../components/Breadcrumbs';
 import { VerificationBadge } from '../components/VerificationBadge';
 
+import { SafeImage } from '../components/SafeImage';
+
 export const ManuscriptsPage: React.FC = () => {
   const [selectedScript, setSelectedScript] = useState<string>('All');
 
@@ -58,7 +60,7 @@ export const ManuscriptsPage: React.FC = () => {
           >
             <div>
               <div className="relative h-52 overflow-hidden bg-stone-900">
-                <img
+                <SafeImage
                   src={ms.imageUrl}
                   alt={ms.title}
                   className="w-full h-full object-cover"

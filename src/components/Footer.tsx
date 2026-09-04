@@ -13,25 +13,6 @@ export const Footer: React.FC<FooterProps> = ({ highContrast }) => {
         ? 'bg-black text-stone-300 border-stone-800' 
         : 'bg-[#151D2A] text-stone-300 border-stone-800'
     }`}>
-      {/* Top Banner: SIH26197 Official Alignment */}
-      <div className="border-b border-stone-800/80 bg-stone-950/40 py-3 px-4 sm:px-6">
-        <div className="max-w-7xl mx-auto flex flex-wrap items-center justify-between gap-3 text-xs">
-          <div className="flex items-center gap-2">
-            <span className="inline-block w-2 h-2 rounded-full bg-emerald-400"></span>
-            <span className="font-semibold text-white">Smart India Hackathon 2026</span>
-            <span className="text-stone-400">•</span>
-            <span className="text-[#D4AF37] font-mono font-bold">SIH26197</span>
-            <span className="text-stone-400">•</span>
-            <span className="text-stone-300">Theme: Heritage &amp; Culture</span>
-            <span className="text-stone-400">•</span>
-            <span className="text-stone-300">AICTE</span>
-          </div>
-          <div className="text-stone-400 text-xs hidden sm:block">
-            National Archival Repository Framework
-          </div>
-        </div>
-      </div>
-
       {/* Main 4-Column Editorial Links Layout (Prompt Section 59) */}
       <div className="max-w-7xl mx-auto px-4 sm:px-6 py-12 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-10">
         {/* Brand Description Column */}
@@ -178,7 +159,7 @@ export const Footer: React.FC<FooterProps> = ({ highContrast }) => {
               VirasatX — India's Heritage Repository
             </p>
             <p>
-              Smart India Hackathon (SIH26197) • AICTE Theme: Heritage &amp; Culture
+              National Digital Heritage Archive &amp; Cultural Knowledge System
             </p>
           </div>
           <p className="text-center md:text-right max-w-lg text-stone-400">

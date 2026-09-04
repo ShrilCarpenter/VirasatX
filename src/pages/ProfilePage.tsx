@@ -273,6 +273,7 @@ export const ProfilePage: React.FC = () => {
                           <img
                             src={item.imageUrl}
                             alt={item.title}
+                            onError={(e) => { e.currentTarget.src = '/images/ui/placeholder-heritage.jpg'; }}
                             className="w-16 h-16 rounded-xl object-cover border border-stone-200 shrink-0"
                           />
                           <div className="truncate">

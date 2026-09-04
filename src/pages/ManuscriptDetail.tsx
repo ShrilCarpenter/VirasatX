@@ -96,6 +96,7 @@ export const ManuscriptDetail: React.FC = () => {
           <img
             src={ms.imageUrl}
             alt={ms.title}
+            onError={(e) => { e.currentTarget.src = '/images/ui/placeholder-heritage.jpg'; }}
             className="max-h-[480px] w-auto rounded-xl shadow-2xl object-contain"
           />
         </div>

@@ -56,6 +56,7 @@ export const CollectionDetail: React.FC = () => {
                 <img
                   src={item.imageUrl}
                   alt={item.title}
+                  onError={(e) => { e.currentTarget.src = '/images/ui/placeholder-heritage.jpg'; }}
                   className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
                 />
                 <div className="absolute top-3 left-3 bg-black/60 backdrop-blur-md text-white text-[11px] font-medium px-2.5 py-1 rounded-full">

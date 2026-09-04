@@ -64,7 +64,7 @@ export const Home: React.FC<HomeProps> = ({ onOpenSearch, highContrast }) => {
           <div className="lg:col-span-7 space-y-6">
             <div className="inline-flex items-center gap-2 px-3 py-1 rounded-md border border-stone-300 bg-white/80 text-stone-700 text-xs font-mono">
               <span className="w-2 h-2 rounded-full bg-[#936B38]" />
-              <span>Smart India Hackathon 2026 • SIH26197</span>
+              <span>National Digital Heritage Repository</span>
             </div>
 
             <h1 className="font-serif text-4xl sm:text-5xl lg:text-6xl font-bold text-[#151D2A] leading-[1.12] tracking-tight">
@@ -365,29 +365,37 @@ export const Home: React.FC<HomeProps> = ({ onOpenSearch, highContrast }) => {
         {/* 6 Geographic Regions */}
         <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-3">
           {[
-            { region: 'North', focus: 'Gangetic Plains & Himalayas', count: 'Sarnath, Varanasi, Taxila' },
-            { region: 'South', focus: 'Kaveri Delta & Malabar', count: 'Thanjavur, Swamimalai, Muziris' },
-            { region: 'East', focus: 'Kalinga & Magadha', count: 'Konark, Nalanda, Puri' },
-            { region: 'West', focus: 'Deccan & Gujarat', count: 'Ajanta, Ellora, Patan' },
-            { region: 'Central', focus: 'Malwa & Narmada Valley', count: 'Sanchi, Khajuraho, Bastar' },
-            { region: 'Northeast', focus: 'Brahmaputra Basin', count: 'Majuli, Kamakhya, Ahom' }
+            { region: 'North', focus: 'Gangetic Plains & Himalayas', count: 'Sarnath, Varanasi, Taxila', image: '/images/regions/north-india.jpg' },
+            { region: 'South', focus: 'Kaveri Delta & Malabar', count: 'Thanjavur, Swamimalai, Muziris', image: '/images/regions/south-india.jpg' },
+            { region: 'East', focus: 'Kalinga & Magadha', count: 'Konark, Nalanda, Puri', image: '/images/regions/east-india.jpg' },
+            { region: 'West', focus: 'Deccan & Gujarat', count: 'Ajanta, Ellora, Patan', image: '/images/regions/west-india.jpg' },
+            { region: 'Central', focus: 'Malwa & Narmada Valley', count: 'Sanchi, Khajuraho, Bastar', image: '/images/regions/central-india.jpg' },
+            { region: 'Northeast', focus: 'Brahmaputra Basin', count: 'Majuli, Kamakhya, Ahom', image: '/images/regions/northeast-india.jpg' }
           ].map((reg) => (
             <div
               key={reg.region}
               onClick={() => navigate(`/discover?region=${encodeURIComponent(reg.region)}`)}
-              className="p-4 rounded-xl bg-white border border-stone-200 hover:border-[#936B38] hover:shadow-xs transition-all cursor-pointer group flex flex-col justify-between"
+              className="rounded-2xl overflow-hidden bg-white border border-stone-200 hover:border-[#936B38] hover:shadow-md transition-all cursor-pointer group flex flex-col justify-between"
             >
-              <div>
-                <span className="font-serif text-base font-bold text-stone-900 group-hover:text-[#936B38] transition-colors">
+              <div className="relative h-28 overflow-hidden bg-stone-900">
+                <SafeImage
+                  src={reg.image}
+                  alt={reg.region}
+                  className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent" />
+                <span className="absolute bottom-2 left-3 font-serif text-lg font-bold text-white drop-shadow-sm">
                   {reg.region}
                 </span>
-                <p className="text-[11px] text-stone-500 mt-1 font-medium">
+              </div>
+              <div className="p-3.5 flex flex-col justify-between flex-1">
+                <p className="text-[11px] text-stone-600 font-medium">
                   {reg.focus}
                 </p>
+                <p className="text-[10px] font-mono text-stone-400 mt-2.5 pt-2 border-t border-stone-100">
+                  {reg.count}
+                </p>
               </div>
-              <p className="text-[10px] font-mono text-stone-400 mt-3 pt-2 border-t border-stone-100">
-                {reg.count}
-              </p>
             </div>
           ))}
         </div>
