@@ -214,7 +214,7 @@ export const ArtifactViewer3D: React.FC<ArtifactViewer3DProps> = ({ item, highCo
           }`}
         >
           <Eye className="w-3.5 h-3.5" />
-          <span>360° Studio</span>
+          <span>3D Volumetric Proxy</span>
         </button>
         <button
           onClick={() => setViewMode('photo')}
@@ -223,7 +223,7 @@ export const ArtifactViewer3D: React.FC<ArtifactViewer3DProps> = ({ item, highCo
           }`}
         >
           <ImageIcon className="w-3.5 h-3.5" />
-          <span>Archival Photo</span>
+          <span>Archival Specimen Photo</span>
         </button>
       </div>
 
@@ -267,8 +267,8 @@ export const ArtifactViewer3D: React.FC<ArtifactViewer3DProps> = ({ item, highCo
       {viewMode === '3d' && webGlSupported ? (
         <div className="relative w-full h-[460px] cursor-grab active:cursor-grabbing">
           <div ref={mountRef} className="w-full h-full" />
-          <div className="absolute bottom-4 left-1/2 -translate-x-1/2 z-10 text-[11px] font-medium text-stone-500 bg-white/80 backdrop-blur-sm px-3 py-1 rounded-full border border-stone-200 shadow-sm pointer-events-none">
-            Drag to inspect 360° • Scroll/Pinch to zoom
+          <div className="absolute bottom-4 left-1/2 -translate-x-1/2 z-10 text-[11px] font-medium text-stone-600 bg-white/90 backdrop-blur-sm px-3 py-1 rounded-full border border-stone-200 shadow-sm pointer-events-none">
+            Rotate volumetric proxy • Scroll to zoom (Procedural geometry representation)
           </div>
         </div>
       ) : (

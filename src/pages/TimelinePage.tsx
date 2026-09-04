@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import { Clock, ArrowRight, Layers, MapPin, Sparkles, BookOpen } from 'lucide-react';
 import { EPOCHS, HERITAGE_ITEMS, LIVING_TRADITIONS } from '../data/heritageData';
 import { Breadcrumbs } from '../components/Breadcrumbs';
+import { SafeImage } from '../components/SafeImage';
 
 export const TimelinePage: React.FC = () => {
   const [selectedEpochId, setSelectedEpochId] = useState<string>(EPOCHS[0].id);
@@ -17,38 +18,38 @@ export const TimelinePage: React.FC = () => {
 
   return (
     <div className="max-w-7xl mx-auto px-4 sm:px-6 py-10 space-y-10 animate-fadeIn">
-      <Breadcrumbs items={[{ label: 'Chronological Indian History Timeline' }]} />
+      <Breadcrumbs items={[{ label: 'Chronological Registry' }, { label: 'Five Millennia Timeline' }]} />
 
       {/* Header */}
-      <div className="space-y-3 max-w-3xl">
-        <div className="flex items-center gap-2 text-xs font-bold text-[#936B38] uppercase tracking-wider">
+      <div className="border-b border-stone-200 pb-6 space-y-3">
+        <div className="inline-flex items-center gap-2 px-2.5 py-1 rounded-full bg-[#936B38]/10 text-[#936B38] text-xs font-mono uppercase tracking-wider font-semibold">
           <Clock className="w-3.5 h-3.5" />
-          <span>Chronological Civilizational Sequence</span>
+          <span>Civilizational Chronology</span>
         </div>
-        <h1 className="font-serif text-3xl sm:text-5xl font-bold text-stone-900 leading-tight">
-          5,000 Years Across 11 Epochs
+        <h1 className="font-serif text-3xl sm:text-4xl lg:text-5xl font-bold text-stone-900 tracking-tight leading-tight">
+          Five millennia. One connected story.
         </h1>
-        <p className="text-stone-600 text-sm sm:text-base leading-relaxed">
-          From the sophisticated brick hydraulic cities of Harappa to classical Sanskrit philosophy, monumental granite vimanas, and the modern constitutional preservation of living traditions.
+        <p className="text-stone-600 text-sm sm:text-base max-w-3xl leading-relaxed">
+          Traverse the developmental arcs of the Indian subcontinent from Bronze Age urbanism in the Indus Valley to classical philosophical treatises, monumental granite architecture, and contemporary constitutional preservation.
         </p>
       </div>
 
       {/* Horizontal Scrollable Timeline Ribbon */}
-      <div className="bg-white p-4 rounded-3xl border border-stone-200 shadow-sm overflow-x-auto scrollbar-none">
-        <div className="flex items-center gap-3 min-w-[800px] py-1">
+      <div className="bg-white p-4 rounded-2xl border border-stone-200/90 shadow-2xs overflow-x-auto scrollbar-none">
+        <div className="flex items-center gap-3 min-w-[840px] py-1">
           {EPOCHS.map((epoch, index) => {
             const isSelected = epoch.id === selectedEpochId;
             return (
               <button
                 key={epoch.id}
                 onClick={() => setSelectedEpochId(epoch.id)}
-                className={`relative px-4 py-3 rounded-2xl text-left transition-all shrink-0 border ${
+                className={`relative px-4 py-3 rounded-xl text-left transition-all shrink-0 border ${
                   isSelected
-                    ? 'bg-[#151D2A] text-white border-[#151D2A] shadow-md scale-102'
-                    : 'bg-stone-50 hover:bg-stone-100 text-stone-800 border-stone-200'
+                    ? 'bg-[#151D2A] text-white border-[#151D2A] shadow-xs'
+                    : 'bg-stone-50 hover:bg-stone-100/80 text-stone-800 border-stone-200'
                 }`}
               >
-                <span className={`text-[10px] font-mono block ${isSelected ? 'text-[#D4AF37]' : 'text-stone-500'}`}>
+                <span className={`text-[10px] font-mono block ${isSelected ? 'text-[#936B38]' : 'text-stone-500'}`}>
                   Epoch {index + 1}
                 </span>
                 <span className="font-serif text-sm font-bold block truncate max-w-[170px]">
@@ -64,14 +65,14 @@ export const TimelinePage: React.FC = () => {
       </div>
 
       {/* Selected Epoch Deep Dive Dossier */}
-      <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 items-start">
+      <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
         {/* Left Column: Epoch Historical Overview */}
-        <div className="lg:col-span-8 space-y-8 bg-white p-8 rounded-3xl border border-stone-200 shadow-sm">
+        <div className="lg:col-span-8 space-y-8 bg-white p-6 sm:p-8 rounded-2xl border border-stone-200/90 shadow-2xs">
           <div className="space-y-3">
-            <div className="inline-block text-xs font-mono font-semibold px-3 py-1 rounded-full bg-[#F7EFE6] text-[#936B38]">
+            <div className="inline-block text-xs font-mono font-semibold px-3 py-1 rounded-full bg-[#FAF8F5] text-[#936B38] border border-stone-200">
               {selectedEpoch.timeRange}
             </div>
-            <h2 className="font-serif text-3xl sm:text-4xl font-bold text-stone-900">
+            <h2 className="font-serif text-2xl sm:text-3xl font-bold text-stone-900">
               {selectedEpoch.name}
             </h2>
             <p className="text-stone-700 text-sm sm:text-base leading-relaxed">
@@ -81,8 +82,8 @@ export const TimelinePage: React.FC = () => {
 
           {/* Architectural Style & Breakthroughs */}
           {selectedEpoch.architecturalStyle && (
-            <div className="p-6 rounded-2xl bg-stone-50 border border-stone-200 space-y-2">
-              <span className="text-xs font-semibold uppercase text-stone-400 block tracking-wider">
+            <div className="p-5 rounded-xl bg-stone-50 border border-stone-200 text-xs text-stone-700 space-y-1.5">
+              <span className="font-mono text-[11px] font-semibold uppercase text-stone-400 block tracking-wider">
                 Architectural &amp; Structural Idiom
               </span>
               <p className="text-stone-800 text-sm font-medium leading-relaxed">
@@ -93,13 +94,13 @@ export const TimelinePage: React.FC = () => {
 
           {/* Civilizational Milestones Grid */}
           <div className="space-y-3">
-            <h3 className="font-serif text-xl font-bold text-stone-900">
+            <h3 className="font-serif text-lg font-bold text-stone-900">
               Civilizational Milestones &amp; Innovations
             </h3>
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
               {selectedEpoch.keyInnovations.map((item, idx) => (
-                <div key={idx} className="p-4 rounded-2xl border border-stone-200 bg-white flex items-start gap-3">
-                  <span className="w-5 h-5 rounded-full bg-[#F7EFE6] text-[#936B38] flex items-center justify-center text-xs font-bold shrink-0 mt-0.5">
+                <div key={idx} className="p-3.5 rounded-xl border border-stone-200 bg-white flex items-start gap-3">
+                  <span className="w-5 h-5 rounded-full bg-[#FAF8F5] text-[#936B38] border border-stone-200 flex items-center justify-center text-xs font-bold shrink-0 mt-0.5">
                     {idx + 1}
                   </span>
                   <span className="text-xs sm:text-sm text-stone-700 leading-relaxed font-medium">
@@ -113,12 +114,12 @@ export const TimelinePage: React.FC = () => {
           {/* Prominent Thinkers & Rulers */}
           {selectedEpoch.prominentThinkers && (
             <div className="space-y-3 pt-2">
-              <h3 className="font-serif text-xl font-bold text-stone-900">
+              <h3 className="font-serif text-lg font-bold text-stone-900">
                 Prominent Historical Figures &amp; Guild Masters
               </h3>
               <div className="flex flex-wrap gap-2">
                 {selectedEpoch.prominentThinkers.map((thinker, i) => (
-                  <span key={i} className="text-xs px-3.5 py-1.5 rounded-full bg-stone-100 text-stone-800 font-medium">
+                  <span key={i} className="text-xs px-3 py-1 rounded-lg bg-stone-100 text-stone-800 font-medium border border-stone-200">
                     {thinker}
                   </span>
                 ))}
@@ -130,8 +131,8 @@ export const TimelinePage: React.FC = () => {
         {/* Right Column: Connected Artifacts & Sites */}
         <div className="lg:col-span-4 space-y-6">
           {/* Archaeological Sites Card */}
-          <div className="p-6 rounded-3xl bg-white border border-stone-200 shadow-sm space-y-3">
-            <span className="text-xs font-semibold text-stone-400 uppercase tracking-wider block">
+          <div className="p-6 rounded-2xl bg-white border border-stone-200/90 shadow-2xs space-y-3">
+            <span className="text-xs font-mono font-bold text-[#936B38] uppercase tracking-wider block">
               Primary Archaeological Sites
             </span>
             <div className="space-y-2">
@@ -142,10 +143,10 @@ export const TimelinePage: React.FC = () => {
                 </div>
               ))}
             </div>
-            <div className="pt-2">
+            <div className="pt-2 border-t border-stone-100">
               <Link
                 to="/map"
-                className="inline-flex items-center gap-1.5 text-xs font-semibold text-[#151D2A] hover:text-[#936B38] transition-colors"
+                className="inline-flex items-center gap-1.5 text-xs font-semibold text-stone-900 hover:text-[#936B38] transition-colors"
               >
                 <span>View Sites on Heritage Map</span>
                 <ArrowRight className="w-3.5 h-3.5" />
@@ -154,8 +155,8 @@ export const TimelinePage: React.FC = () => {
           </div>
 
           {/* Connected Artifact Records */}
-          <div className="p-6 rounded-3xl bg-white border border-stone-200 shadow-sm space-y-4">
-            <span className="text-xs font-semibold text-stone-400 uppercase tracking-wider block">
+          <div className="p-6 rounded-2xl bg-white border border-stone-200/90 shadow-2xs space-y-4">
+            <span className="text-xs font-mono font-bold text-[#936B38] uppercase tracking-wider block">
               Connected Archival Records ({epochArtifacts.length})
             </span>
             {epochArtifacts.length > 0 ? (
@@ -164,15 +165,18 @@ export const TimelinePage: React.FC = () => {
                   <Link
                     key={artifact.id}
                     to={`/artifact/${artifact.id}`}
-                    className="flex items-center gap-3 p-2.5 rounded-2xl hover:bg-stone-50 border border-stone-100 transition-colors group"
+                    className="flex items-center gap-3 p-2 rounded-xl hover:bg-stone-50 border border-stone-100 transition-colors group"
                   >
-                    <img
-                      src={artifact.imageUrl}
-                      alt={artifact.title}
-                      className="w-14 h-14 rounded-xl object-cover border border-stone-200 shrink-0"
-                    />
+                    <div className="w-14 h-14 rounded-lg overflow-hidden border border-stone-200 shrink-0 bg-stone-100">
+                      <SafeImage
+                        src={artifact.imageUrl}
+                        alt={artifact.title}
+                        creditKey={artifact.id}
+                        className="w-full h-full object-cover"
+                      />
+                    </div>
                     <div className="truncate">
-                      <span className="text-[10px] font-mono text-[#936B38] block uppercase">
+                      <span className="text-[10px] font-mono text-[#936B38] block uppercase font-semibold">
                         {artifact.category}
                       </span>
                       <h4 className="font-serif text-xs font-bold text-stone-900 group-hover:text-[#A64B2A] transition-colors truncate">

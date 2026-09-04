@@ -1,9 +1,10 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
-import { HeartHandshake, ShieldCheck, MapPin, Sparkles, ArrowRight, Layers, Award } from 'lucide-react';
+import { HeartHandshake, MapPin, ArrowRight, Layers, Award } from 'lucide-react';
 import { LIVING_TRADITIONS, ARTISANS_DATA } from '../data/heritageData';
 import { Breadcrumbs } from '../components/Breadcrumbs';
 import { VerificationBadge } from '../components/VerificationBadge';
+import { SafeImage } from '../components/SafeImage';
 
 export const LivingTraditionsPage: React.FC = () => {
   const [selectedRegion, setSelectedRegion] = useState<string>('All');
@@ -16,19 +17,19 @@ export const LivingTraditionsPage: React.FC = () => {
 
   return (
     <div className="max-w-7xl mx-auto px-4 sm:px-6 py-10 space-y-12 animate-fadeIn">
-      <Breadcrumbs items={[{ label: 'Living Traditions & Master Guilds' }]} />
+      <Breadcrumbs items={[{ label: 'Intangible Heritage' }, { label: 'Living Traditions & Master Guilds' }]} />
 
       {/* Header */}
-      <div className="space-y-3 max-w-3xl">
-        <div className="flex items-center gap-2 text-xs font-bold text-emerald-700 uppercase tracking-wider">
+      <div className="border-b border-stone-200 pb-6 space-y-3">
+        <div className="inline-flex items-center gap-2 px-2.5 py-1 rounded-full bg-emerald-900/10 text-emerald-800 text-xs font-mono uppercase tracking-wider font-semibold">
           <HeartHandshake className="w-3.5 h-3.5" />
-          <span>Intangible Cultural Heritage</span>
+          <span>Living Heritage Continuum</span>
         </div>
-        <h1 className="font-serif text-3xl sm:text-5xl font-bold text-stone-900 leading-tight">
-          Living Traditions &amp; Master Craft Guilds
+        <h1 className="font-serif text-3xl sm:text-4xl lg:text-5xl font-bold text-stone-900 tracking-tight leading-tight">
+          Heritage is still alive.
         </h1>
-        <p className="text-stone-600 text-sm sm:text-base leading-relaxed">
-          India's civilizational memory does not live solely inside museum glass cases—it thrives in the living hands of hereditary sthapatis, master weavers, lacquer turners, and tribal metalsmiths preserving multi-generational techniques.
+        <p className="text-stone-600 text-sm sm:text-base max-w-3xl leading-relaxed">
+          India's civilizational memory does not dwell solely in stone monuments or glass museum vitrines. It lives in the hereditary hands of sthapatis, pattachitra chitrakars, master weavers, and tribal metallurgists maintaining centuries-old oral and material traditions.
         </p>
       </div>
 
@@ -38,13 +39,13 @@ export const LivingTraditionsPage: React.FC = () => {
           <button
             key={reg}
             onClick={() => setSelectedRegion(reg)}
-            className={`text-xs px-4 py-2 rounded-full font-medium transition-colors ${
+            className={`text-xs px-4 py-2 rounded-xl font-medium transition-colors ${
               selectedRegion === reg
-                ? 'bg-stone-900 text-white shadow-xs'
-                : 'bg-white text-stone-700 border border-stone-200 hover:bg-stone-100'
+                ? 'bg-[#151D2A] text-white shadow-xs'
+                : 'bg-white text-stone-700 border border-stone-200 hover:bg-stone-50'
             }`}
           >
-            {reg} India
+            {reg === 'All' ? 'All Traditions' : `${reg} India`}
           </button>
         ))}
       </div>
@@ -52,36 +53,37 @@ export const LivingTraditionsPage: React.FC = () => {
       {/* Living Traditions Cards Grid */}
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
         {filteredTraditions.map(trad => (
-          <div
+          <article
             key={trad.id}
-            className="rounded-3xl overflow-hidden bg-white border border-stone-200 shadow-sm hover:shadow-md transition-all flex flex-col justify-between"
+            className="rounded-2xl overflow-hidden bg-white border border-stone-200/90 shadow-2xs hover:shadow-md hover:border-[#936B38]/50 transition-all flex flex-col justify-between"
           >
             <div>
               <div className="relative h-56 overflow-hidden bg-stone-900">
-                <img
+                <SafeImage
                   src={trad.imageUrl}
                   alt={trad.title}
+                  creditKey={trad.id}
                   className="w-full h-full object-cover"
                 />
-                <div className="absolute top-3 left-3 bg-emerald-950/80 backdrop-blur-md text-emerald-200 text-xs font-semibold px-3 py-1 rounded-full border border-emerald-700 flex items-center gap-1.5">
+                <div className="absolute top-3 left-3 bg-[#151D2A]/85 backdrop-blur-md text-emerald-300 text-xs font-semibold px-3 py-1 rounded-full border border-emerald-500/30 flex items-center gap-1.5">
                   <Award className="w-3.5 h-3.5" />
                   <span>{trad.giTagStatus ? 'GI Registered' : 'Master Guild'}</span>
                 </div>
-                <div className="absolute bottom-3 left-3 right-3 bg-black/60 backdrop-blur-md text-white text-xs px-3 py-1.5 rounded-xl flex items-center justify-between">
-                  <span>{trad.location}</span>
-                  <span className="font-mono text-stone-300 text-[11px]">{trad.guildCount}</span>
+                <div className="absolute bottom-3 left-3 right-3 bg-[#151D2A]/80 backdrop-blur-md text-white text-xs px-3 py-1.5 rounded-lg flex items-center justify-between border border-white/10">
+                  <span className="truncate">{trad.location}</span>
+                  <span className="font-mono text-stone-300 text-[11px] shrink-0">{trad.guildCount}</span>
                 </div>
               </div>
 
               <div className="p-6 space-y-3">
-                <span className="text-[11px] font-mono text-[#936B38] uppercase font-bold tracking-wider">
+                <span className="text-[11px] font-mono text-[#936B38] uppercase font-bold tracking-wider block">
                   {trad.subCategory}
                 </span>
-                <h3 className="font-serif text-2xl font-bold text-stone-900">
+                <h2 className="font-serif text-2xl font-bold text-stone-900 leading-snug">
                   {trad.title}
-                </h3>
+                </h2>
                 <p className="text-xs text-stone-500 font-medium">
-                  {trad.community} • Unbroken since {trad.unbrokenSince}
+                  {trad.community} • Unbroken lineage since {trad.unbrokenSince}
                 </p>
                 <p className="text-xs text-stone-600 leading-relaxed pt-1">
                   {trad.description}
@@ -89,12 +91,12 @@ export const LivingTraditionsPage: React.FC = () => {
 
                 {/* Key practices list */}
                 <div className="space-y-1.5 pt-2">
-                  <span className="text-[11px] font-semibold text-stone-400 uppercase tracking-wider block">
+                  <span className="text-[11px] font-mono font-semibold text-stone-400 uppercase tracking-wider block">
                     Traditional Guild Practices:
                   </span>
                   {trad.keyPractices.map((practice, i) => (
                     <div key={i} className="text-xs text-stone-700 flex items-start gap-2">
-                      <span className="w-1.5 h-1.5 rounded-full bg-emerald-600 mt-1.5 shrink-0" />
+                      <span className="w-1.5 h-1.5 rounded-full bg-emerald-700 mt-1.5 shrink-0" />
                       <span>{practice}</span>
                     </div>
                   ))}
@@ -104,13 +106,13 @@ export const LivingTraditionsPage: React.FC = () => {
 
             <div className="p-6 pt-0 space-y-4">
               {trad.responsibleWaysToSupport && (
-                <div className="p-3.5 rounded-2xl bg-stone-50 border border-stone-200 text-[11px] text-stone-600 space-y-1">
-                  <span className="font-semibold text-stone-800 block">Responsible Ways to Support:</span>
+                <div className="p-3.5 rounded-xl bg-stone-50 border border-stone-200 text-[11px] text-stone-600 space-y-1">
+                  <span className="font-semibold text-stone-800 block">Mindful Engagement:</span>
                   <p>{trad.responsibleWaysToSupport[0]}</p>
                 </div>
               )}
 
-              <div className="pt-2 flex items-center justify-between text-xs">
+              <div className="pt-2 border-t border-stone-100 flex items-center justify-between text-xs">
                 <VerificationBadge status={trad.verificationStatus} size="sm" />
                 <Link
                   to={`/artisans/${trad.id}`}
@@ -121,18 +123,21 @@ export const LivingTraditionsPage: React.FC = () => {
                 </Link>
               </div>
             </div>
-          </div>
+          </article>
         ))}
       </div>
 
       {/* Featured Master Artisan Communities Section */}
-      <div className="pt-10 border-t border-stone-200 space-y-6">
-        <div>
+      <section className="pt-10 border-t border-stone-200 space-y-6">
+        <div className="space-y-1">
+          <span className="text-xs font-mono font-bold text-[#936B38] uppercase tracking-wider">
+            Ethical Custodianship &amp; Collective Rights
+          </span>
           <h2 className="font-serif text-2xl sm:text-3xl font-bold text-stone-900">
-            Respectful Artisan Community Registry
+            Artisan Cooperatives &amp; Master Guilds
           </h2>
-          <p className="text-xs text-stone-500 mt-1">
-            Celebrating hereditary cooperatives with geographical indication certifications. In strict accordance with ethical custodianship, no private phone numbers or unconsented personal addresses are displayed.
+          <p className="text-xs text-stone-500 max-w-2xl leading-relaxed">
+            Celebrating hereditary cooperatives with geographical indication certifications. In strict accordance with ethical custodianship, no unconsented personal addresses or private contact numbers are published.
           </p>
         </div>
 
@@ -140,14 +145,14 @@ export const LivingTraditionsPage: React.FC = () => {
           {ARTISANS_DATA.map(artisan => (
             <div
               key={artisan.id}
-              className="p-6 rounded-3xl bg-white border border-stone-200 shadow-sm space-y-4 flex flex-col justify-between"
+              className="p-6 rounded-2xl bg-white border border-stone-200/90 shadow-2xs space-y-4 flex flex-col justify-between hover:border-[#936B38]/50 transition-colors"
             >
               <div className="space-y-3">
                 <div className="flex items-center justify-between">
-                  <span className="text-[11px] font-mono text-emerald-700 font-bold px-2.5 py-0.5 rounded-full bg-emerald-50 border border-emerald-200">
-                    GI Tag {artisan.giCertificationNo}
+                  <span className="text-[11px] font-mono text-emerald-800 font-bold px-2.5 py-0.5 rounded-full bg-emerald-50 border border-emerald-200">
+                    GI #{artisan.giCertificationNo}
                   </span>
-                  <span className="text-xs text-stone-400">{artisan.generationSpan}</span>
+                  <span className="text-xs font-mono text-stone-400">{artisan.generationSpan}</span>
                 </div>
                 <h3 className="font-serif text-xl font-bold text-stone-900">
                   {artisan.name}
@@ -160,7 +165,7 @@ export const LivingTraditionsPage: React.FC = () => {
                 </p>
 
                 <div className="pt-2">
-                  <span className="text-[11px] font-semibold text-stone-400 uppercase block mb-1">
+                  <span className="text-[11px] font-mono font-semibold text-stone-400 uppercase block mb-1">
                     Organic Sustainable Practices:
                   </span>
                   <ul className="text-xs text-stone-700 space-y-1">
@@ -178,15 +183,16 @@ export const LivingTraditionsPage: React.FC = () => {
                 <VerificationBadge status={artisan.verificationStatus} size="sm" />
                 <Link
                   to={`/artisans/${artisan.id}`}
-                  className="font-semibold text-stone-900 hover:text-[#936B38]"
+                  className="font-semibold text-stone-900 hover:text-[#936B38] flex items-center gap-1"
                 >
-                  View Profile &rarr;
+                  <span>Guild Monograph</span>
+                  <ArrowRight className="w-3.5 h-3.5" />
                 </Link>
               </div>
             </div>
           ))}
         </div>
-      </div>
+      </section>
     </div>
   );
 };

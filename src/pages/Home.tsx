@@ -5,18 +5,20 @@ import {
   Sparkles, 
   ArrowRight, 
   Compass, 
-  Layers, 
   Clock, 
   ShieldCheck, 
   MapPin, 
   Camera, 
   BookOpen, 
   Leaf, 
-  CheckCircle,
+  ExternalLink,
+  ChevronRight,
+  Landmark,
   Eye
 } from 'lucide-react';
-import { HERITAGE_ITEMS, EPOCHS, LIVING_TRADITIONS, RESEARCH_PRESETS } from '../data/heritageData';
+import { HERITAGE_ITEMS, EPOCHS, LIVING_TRADITIONS, ARTISANS_DATA } from '../data/heritageData';
 import { VerificationBadge } from '../components/VerificationBadge';
+import { SafeImage } from '../components/SafeImage';
 
 interface HomeProps {
   onOpenSearch: () => void;
@@ -25,100 +27,149 @@ interface HomeProps {
 
 export const Home: React.FC<HomeProps> = ({ onOpenSearch, highContrast }) => {
   const navigate = useNavigate();
-  const [activeEraIndex, setActiveEraIndex] = useState(0);
+  const [activeEraId, setActiveEraId] = useState<string>('indus-valley');
+  const [searchQuery, setSearchQuery] = useState('');
 
+  // Primary specimens for editorial sections
   const specimenOfTheWeek = HERITAGE_ITEMS.find(i => i.id === 'nataraja') || HERITAGE_ITEMS[0];
-  const featuredTradition = LIVING_TRADITIONS[0];
+  const ajantaRecord = HERITAGE_ITEMS.find(i => i.id === 'padmapani') || HERITAGE_ITEMS[1];
+  const pattachitraTradition = LIVING_TRADITIONS.find(t => t.id === 'odisha-pattachitra') || LIVING_TRADITIONS[0];
+  const raghurajpurArtisans = ARTISANS_DATA.find(a => a.id === 'chitrakar-raghurajpur') || ARTISANS_DATA[0];
+
+  // Restrained timeline epochs for Section 14
+  const coreTimelineEpochs = [
+    { id: 'indus-valley', label: 'Indus Valley', period: 'c. 2600 – 1900 BCE', highlight: 'Standardized urban planning, bronze lost-wax casting, and steatite seals.' },
+    { id: 'vedic-era', label: 'Ancient India', period: 'c. 1500 – 500 BCE', highlight: 'Oral transmission of Vedic hymns, early iron metallurgy, and philosophical treatises.' },
+    { id: 'mauryan-era', label: 'Mauryan & Classical', period: 'c. 322 BCE – 550 CE', highlight: 'Ashokan moral edicts, Sanchi Stupa, Nalanda Mahavihara, and Ajanta frescoes.' },
+    { id: 'medieval-era', label: 'Medieval Dynasties', period: 'c. 600 – 1526 CE', highlight: 'Monumental Dravidian granite temples, Ellora rock excavations, and palm-leaf pothis.' },
+    { id: 'early-modern', label: 'Early Modern', period: 'c. 1526 – 1857 CE', highlight: 'Court miniature painting ateliers, Charbagh architecture, and double-ikat textiles.' },
+    { id: 'modern-republic', label: 'Modern India', period: '1947 – Present', highlight: 'Constitutional preservation of indigenous heritage and GI registry protection.' }
+  ];
+
+  const handleHeroSearchSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
+    if (searchQuery.trim()) {
+      navigate(`/discover?q=${encodeURIComponent(searchQuery.trim())}`);
+    } else {
+      onOpenSearch();
+    }
+  };
 
   return (
-    <div className="space-y-24 pb-20 animate-fadeIn">
-      {/* 1. Hero Section */}
-      <section className="relative pt-12 md:pt-20 px-4 sm:px-6 max-w-7xl mx-auto">
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+    <div className="space-y-20 sm:space-y-28 pb-20 animate-fadeIn">
+      {/* 1. HERO SECTION (Prompt Section 12) */}
+      <section className="pt-10 md:pt-16 px-4 sm:px-6 max-w-7xl mx-auto">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-14 items-center">
+          {/* Left Column: Vision & Action */}
           <div className="lg:col-span-7 space-y-6">
-            <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full border border-amber-300 bg-amber-50/80 text-amber-900 text-xs font-semibold">
-              <span className="w-2 h-2 rounded-full bg-amber-600 animate-pulse" />
+            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-md border border-stone-300 bg-white/80 text-stone-700 text-xs font-mono">
+              <span className="w-2 h-2 rounded-full bg-[#936B38]" />
               <span>Smart India Hackathon 2026 • SIH26197</span>
             </div>
 
-            <h1 className="text-4xl sm:text-5xl lg:text-6xl font-serif font-bold text-stone-900 leading-[1.15] tracking-tight">
-              India’s Heritage, <br />
-              <span className="italic font-normal text-[#936B38]">Understood, Preserved</span> <br />
-              and Experienced.
+            <h1 className="font-serif text-4xl sm:text-5xl lg:text-6xl font-bold text-[#151D2A] leading-[1.12] tracking-tight">
+              India's heritage, <br />
+              <span className="italic font-normal text-[#936B38]">connected.</span>
             </h1>
 
             <p className="text-stone-600 text-base sm:text-lg max-w-xl leading-relaxed">
-              An intelligent, multimodal cultural heritage platform grounded in primary scholarly archives—connecting ancient artifacts, monumental sacred architecture, rare manuscripts, and unbroken living artisan traditions.
+              Discover artifacts, places, traditions, manuscripts and living cultural practices through a source-grounded digital heritage repository.
             </p>
 
+            {/* Universal Hero Search Input (Prompt Section 13) */}
+            <form onSubmit={handleHeroSearchSubmit} className="pt-2 max-w-xl">
+              <div className="relative flex items-center rounded-xl bg-white border border-stone-300 shadow-xs focus-within:border-[#936B38] focus-within:ring-1 focus-within:ring-[#936B38] transition-all">
+                <Search className="w-4 h-4 text-[#936B38] ml-4 shrink-0" />
+                <input
+                  type="text"
+                  value={searchQuery}
+                  onChange={(e) => setSearchQuery(e.target.value)}
+                  placeholder="Search an artifact, tradition, place, manuscript or period…"
+                  className="w-full px-3 py-3.5 text-xs sm:text-sm text-stone-800 placeholder-stone-400 bg-transparent focus:outline-none"
+                  aria-label="Universal repository search"
+                />
+                <button
+                  type="submit"
+                  className="mr-2 px-4 py-2 rounded-lg bg-[#151D2A] text-white text-xs font-medium hover:bg-[#936B38] transition-colors shrink-0 cursor-pointer"
+                >
+                  Search
+                </button>
+              </div>
+
+              {/* Research query prompts */}
+              <div className="flex flex-wrap items-center gap-1.5 pt-2 text-[11px] text-stone-500">
+                <span className="text-stone-400">Try:</span>
+                {['Ajanta', 'Pattachitra', 'Chola bronzes', 'Nalanda', 'Madhubani', 'Indus Valley'].map((item) => (
+                  <button
+                    key={item}
+                    type="button"
+                    onClick={() => navigate(`/discover?q=${encodeURIComponent(item)}`)}
+                    className="underline hover:text-stone-900 cursor-pointer"
+                  >
+                    {item}
+                  </button>
+                ))}
+              </div>
+            </form>
+
+            {/* Primary & Secondary Call to Actions */}
             <div className="flex flex-wrap items-center gap-4 pt-2">
               <Link
                 to="/discover"
-                className="px-7 py-3.5 rounded-full bg-[#151D2A] text-white text-sm font-semibold hover:bg-[#936B38] transition-all shadow-md flex items-center gap-2 group"
+                className="px-6 py-3 rounded-lg bg-[#151D2A] text-white text-xs sm:text-sm font-semibold hover:bg-[#936B38] transition-colors shadow-xs flex items-center gap-2"
               >
-                <span>Explore India’s Heritage</span>
-                <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
+                <span>Explore Heritage</span>
+                <ArrowRight className="w-3.5 h-3.5" />
               </Link>
               <Link
                 to="/ai-guide"
-                className="px-7 py-3.5 rounded-full border border-stone-300 bg-white/80 hover:bg-white text-stone-800 text-sm font-semibold hover:border-stone-400 transition-all shadow-2xs flex items-center gap-2"
+                className="px-6 py-3 rounded-lg border border-stone-300 bg-white/90 hover:bg-white text-stone-800 text-xs sm:text-sm font-semibold hover:border-stone-400 transition-colors shadow-2xs flex items-center gap-2"
               >
-                <Sparkles className="w-4 h-4 text-[#936B38]" />
+                <Sparkles className="w-3.5 h-3.5 text-[#936B38]" />
                 <span>Ask Virasat AI</span>
               </Link>
             </div>
-
-            {/* Quick stats pills */}
-            <div className="pt-6 grid grid-cols-3 gap-4 border-t border-stone-200/80 text-left">
-              <div>
-                <span className="font-serif text-2xl font-bold text-stone-900">5,000+</span>
-                <p className="text-xs text-stone-500">Years of History</p>
-              </div>
-              <div>
-                <span className="font-serif text-2xl font-bold text-stone-900">11</span>
-                <p className="text-xs text-stone-500">Historical Epochs</p>
-              </div>
-              <div>
-                <span className="font-serif text-2xl font-bold text-stone-900">100%</span>
-                <p className="text-xs text-stone-500">Source-Grounded</p>
-              </div>
-            </div>
           </div>
 
-          {/* Hero Feature Showcase Card */}
+          {/* Right Column: ONE Powerful Heritage Visual (Prompt Section 12) */}
           <div className="lg:col-span-5">
-            <div className="relative rounded-3xl overflow-hidden shadow-2xl border border-stone-200 group bg-stone-900">
-              <img
+            <div className="relative rounded-2xl overflow-hidden border border-stone-300/80 shadow-md bg-stone-900">
+              <SafeImage
                 src={specimenOfTheWeek.imageUrl}
                 alt={specimenOfTheWeek.title}
-                className="w-full h-[460px] object-cover opacity-90 group-hover:scale-105 transition-transform duration-700"
+                creditKey={specimenOfTheWeek.id}
+                showCreditButton={true}
+                containerClassName="h-[440px] w-full"
+                priority={true}
               />
-              <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/30 to-transparent" />
-              <div className="absolute top-4 left-4 flex items-center gap-2">
-                <span className="px-3 py-1 rounded-full bg-black/60 backdrop-blur-md text-white text-xs font-semibold">
-                  Featured Specimen
-                </span>
+              <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/30 to-transparent pointer-events-none" />
+              
+              <div className="absolute top-4 left-4">
                 <VerificationBadge status={specimenOfTheWeek.verificationStatus} />
               </div>
-              <div className="absolute bottom-6 left-6 right-6 text-white space-y-2">
-                <p className="text-xs font-mono uppercase tracking-widest text-[#D4AF37]">
-                  {specimenOfTheWeek.period} • {specimenOfTheWeek.dynasty}
-                </p>
-                <h3 className="font-serif text-2xl font-bold leading-snug">
+
+              <div className="absolute bottom-5 left-5 right-5 text-white space-y-1.5">
+                <div className="flex items-center gap-2 text-[10px] font-mono text-stone-300 uppercase tracking-wider">
+                  <span>{specimenOfTheWeek.period}</span>
+                  <span>•</span>
+                  <span>{specimenOfTheWeek.region}</span>
+                </div>
+                <h2 className="font-serif text-2xl font-bold leading-snug">
                   {specimenOfTheWeek.title}
-                </h3>
-                <p className="text-xs text-stone-300 line-clamp-2">
+                </h2>
+                <p className="text-xs text-stone-300 line-clamp-2 leading-relaxed">
                   {specimenOfTheWeek.description}
                 </p>
                 <div className="pt-2 flex items-center justify-between text-xs">
                   <Link
                     to={`/artifact/${specimenOfTheWeek.id}`}
-                    className="inline-flex items-center gap-1.5 text-amber-300 font-semibold hover:text-white transition-colors"
+                    className="inline-flex items-center gap-1.5 text-[#D4AF37] font-medium hover:text-white transition-colors"
                   >
-                    <Eye className="w-4 h-4" />
-                    <span>Open 360° Inspection Studio</span>
+                    <span>View Archival Record &rarr;</span>
                   </Link>
-                  <span className="text-stone-400 font-mono text-[11px]">{specimenOfTheWeek.accessionNo}</span>
+                  <span className="font-mono text-[10px] text-stone-400">
+                    {specimenOfTheWeek.accessionNo}
+                  </span>
                 </div>
               </div>
             </div>
@@ -126,214 +177,239 @@ export const Home: React.FC<HomeProps> = ({ onOpenSearch, highContrast }) => {
         </div>
       </section>
 
-      {/* 2. Universal Search Bar Banner */}
-      <section className="px-4 sm:px-6 max-w-5xl mx-auto">
-        <div
-          onClick={onOpenSearch}
-          className="cursor-pointer p-4 sm:p-5 rounded-2xl bg-white border border-stone-300 shadow-sm hover:border-[#936B38] hover:shadow-md transition-all flex items-center justify-between gap-4"
-        >
-          <div className="flex items-center gap-3.5 text-stone-400 flex-1">
-            <Search className="w-5 h-5 text-[#936B38]" />
-            <span className="text-sm sm:text-base text-stone-500 font-medium">
-              Search artifacts, places, traditions, artists, manuscripts…
-            </span>
-          </div>
-          <kbd className="hidden sm:inline px-3 py-1.5 rounded-lg bg-stone-100 text-xs font-mono text-stone-500 border border-stone-200">
-            Press /
-          </kbd>
-        </div>
-      </section>
-
-      {/* 3. Explore by Era (Chronological Timeline Teaser) */}
-      <section className="px-4 sm:px-6 max-w-7xl mx-auto space-y-8">
-        <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-4 border-b border-stone-200 pb-4">
+      {/* 2. EXPLORE BY TIME (Prompt Section 14) */}
+      <section className="px-4 sm:px-6 max-w-7xl mx-auto space-y-6">
+        <div className="flex flex-col sm:flex-row sm:items-baseline justify-between gap-2 border-b border-stone-200 pb-3">
           <div>
-            <div className="flex items-center gap-2 text-xs font-bold text-[#936B38] uppercase tracking-wider">
-              <Clock className="w-3.5 h-3.5" />
-              <span>Civilizational Journey</span>
-            </div>
-            <h2 className="font-serif text-3xl font-bold text-stone-900 mt-1">
-              Explore by Historical Era
+            <span className="text-[10px] font-mono uppercase tracking-widest text-[#936B38] font-bold block">
+              CHRONOLOGY
+            </span>
+            <h2 className="font-serif text-2xl sm:text-3xl font-bold text-[#151D2A] mt-0.5">
+              Five millennia. One connected story.
             </h2>
           </div>
           <Link
             to="/timeline"
-            className="inline-flex items-center gap-1 text-sm font-semibold text-[#151D2A] hover:text-[#936B38] transition-colors"
+            className="inline-flex items-center gap-1 text-xs font-semibold text-[#151D2A] hover:text-[#936B38] transition-colors"
           >
-            <span>Full 11-Epoch Timeline</span>
-            <ArrowRight className="w-4 h-4" />
+            <span>Explore the Timeline</span>
+            <ArrowRight className="w-3.5 h-3.5" />
           </Link>
         </div>
 
-        {/* Epoch Selector Tabs */}
-        <div className="flex items-center gap-2 overflow-x-auto pb-2 scrollbar-none">
-          {EPOCHS.map((epoch, idx) => (
-            <button
-              key={epoch.id}
-              onClick={() => setActiveEraIndex(idx)}
-              className={`px-4 py-2 rounded-full text-xs font-medium whitespace-nowrap transition-all ${
-                activeEraIndex === idx
-                  ? 'bg-[#151D2A] text-white shadow-xs'
-                  : 'bg-white text-stone-700 border border-stone-200 hover:bg-stone-100'
-              }`}
-            >
-              {epoch.name}
-            </button>
-          ))}
+        {/* Restrained horizontal timeline selector */}
+        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-3">
+          {coreTimelineEpochs.map((epoch) => {
+            const isSelected = activeEraId === epoch.id;
+            return (
+              <button
+                key={epoch.id}
+                onClick={() => setActiveEraId(epoch.id)}
+                className={`p-3.5 rounded-xl text-left border transition-all cursor-pointer ${
+                  isSelected
+                    ? 'bg-white border-[#936B38] shadow-xs ring-1 ring-[#936B38]'
+                    : 'bg-white/60 border-stone-200 hover:border-stone-300 hover:bg-white'
+                }`}
+              >
+                <span className="text-[10px] font-mono text-stone-500 block truncate">
+                  {epoch.period}
+                </span>
+                <span className="font-serif text-sm font-bold text-stone-900 block mt-1">
+                  {epoch.label}
+                </span>
+              </button>
+            );
+          })}
         </div>
 
-        {/* Active Epoch Feature Card */}
+        {/* Active epoch summary snippet */}
         {(() => {
-          const currentEpoch = EPOCHS[activeEraIndex];
+          const selected = coreTimelineEpochs.find(e => e.id === activeEraId) || coreTimelineEpochs[0];
           return (
-            <div className="p-8 rounded-3xl bg-white border border-stone-200 shadow-sm grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
-              <div className="lg:col-span-8 space-y-4">
-                <div className="inline-block text-xs font-mono font-semibold px-3 py-1 rounded bg-[#F7EFE6] text-[#936B38]">
-                  {currentEpoch.timeRange}
-                </div>
-                <h3 className="font-serif text-2xl sm:text-3xl font-bold text-stone-900">
-                  {currentEpoch.name}
-                </h3>
-                <p className="text-stone-600 text-sm sm:text-base leading-relaxed">
-                  {currentEpoch.description}
+            <div className="p-5 rounded-xl bg-white border border-stone-200 flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+              <div className="space-y-1">
+                <span className="text-xs font-mono font-bold text-[#936B38]">
+                  {selected.label} ({selected.period})
+                </span>
+                <p className="text-xs sm:text-sm text-stone-600">
+                  {selected.highlight}
                 </p>
-                <div className="pt-2">
-                  <span className="text-xs font-semibold uppercase text-stone-400 block mb-2">Key Civilizational Breakthroughs</span>
-                  <div className="flex flex-wrap gap-2">
-                    {currentEpoch.keyInnovations.map((item, i) => (
-                      <span key={i} className="text-xs px-3 py-1 rounded-xl bg-stone-100 text-stone-800">
-                        {item}
-                      </span>
-                    ))}
-                  </div>
-                </div>
               </div>
-              <div className="lg:col-span-4 p-6 rounded-2xl bg-stone-50 border border-stone-200 space-y-4 text-center">
-                <span className="text-xs text-stone-400 uppercase font-semibold">Primary Archaeological Excavations</span>
-                <div className="space-y-1.5">
-                  {currentEpoch.primarySites.map((site, i) => (
-                    <div key={i} className="text-sm font-medium text-stone-800">
-                      {site}
-                    </div>
-                  ))}
-                </div>
-                <Link
-                  to="/timeline"
-                  className="inline-block w-full py-2.5 px-4 rounded-xl bg-stone-900 text-white text-xs font-semibold hover:bg-stone-800 transition-colors"
-                >
-                  Explore Epoch Dossier &rarr;
-                </Link>
-              </div>
+              <Link
+                to={`/timeline`}
+                className="px-4 py-2 rounded-lg bg-stone-100 hover:bg-stone-200 text-stone-800 text-xs font-medium transition-colors shrink-0 text-center"
+              >
+                Inspect Period Dossier
+              </Link>
             </div>
           );
         })()}
       </section>
 
-      {/* 4. Explore by Region & Cultural Corridors */}
-      <section className="px-4 sm:px-6 max-w-7xl mx-auto space-y-8">
-        <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-4 border-b border-stone-200 pb-4">
-          <div>
-            <div className="flex items-center gap-2 text-xs font-bold text-[#A64B2A] uppercase tracking-wider">
-              <Compass className="w-3.5 h-3.5" />
-              <span>Geospatial Heritage</span>
+      {/* 3. FEATURED HERITAGE — EDITORIAL COMPOSITION (Prompt Section 16) */}
+      <section className="px-4 sm:px-6 max-w-7xl mx-auto space-y-6">
+        <div className="border-b border-stone-200 pb-3">
+          <span className="text-[10px] font-mono uppercase tracking-widest text-[#936B38] font-bold block">
+            CURATORIAL HIGHLIGHT
+          </span>
+          <h2 className="font-serif text-2xl sm:text-3xl font-bold text-[#151D2A] mt-0.5">
+            Featured Heritage: Ajanta Caves
+          </h2>
+        </div>
+
+        {/* Asymmetrical Editorial Composition: 1 large story + 3 related records */}
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
+          {/* Main feature story */}
+          <div className="lg:col-span-7 bg-white rounded-2xl border border-stone-200 overflow-hidden shadow-xs">
+            <SafeImage
+              src={ajantaRecord.imageUrl}
+              alt={ajantaRecord.title}
+              creditKey={ajantaRecord.id}
+              showCreditButton={true}
+              containerClassName="h-72 w-full"
+            />
+            <div className="p-6 space-y-3">
+              <div className="flex items-center gap-2">
+                <span className="text-[10px] font-mono px-2 py-0.5 rounded bg-stone-100 text-stone-600">
+                  {ajantaRecord.dateBadge}
+                </span>
+                <span className="text-xs text-stone-500 font-medium">
+                  {ajantaRecord.location}
+                </span>
+                <VerificationBadge status={ajantaRecord.verificationStatus} />
+              </div>
+              <h3 className="font-serif text-2xl font-bold text-[#151D2A]">
+                {ajantaRecord.title}
+              </h3>
+              <p className="text-stone-600 text-xs sm:text-sm leading-relaxed">
+                {ajantaRecord.description} {ajantaRecord.historicalContext}
+              </p>
+              <div className="pt-2">
+                <Link
+                  to={`/artifact/${ajantaRecord.id}`}
+                  className="inline-flex items-center gap-1.5 text-xs font-semibold text-[#A64B2A] hover:underline"
+                >
+                  <span>Read Complete Monograph</span>
+                  <ArrowRight className="w-3.5 h-3.5" />
+                </Link>
+              </div>
             </div>
-            <h2 className="font-serif text-3xl font-bold text-stone-900 mt-1">
-              Explore by Cultural Corridor
+          </div>
+
+          {/* Connected Contextual Records (Prompt Section 2 & 16) */}
+          <div className="lg:col-span-5 space-y-4">
+            <span className="text-xs font-mono uppercase tracking-wider text-stone-500 font-bold block">
+              Related Knowledge Graph
+            </span>
+
+            {[
+              {
+                title: 'Buddhist Mural Traditions',
+                category: 'Visual Canons',
+                desc: 'Mineral pigments, lapis lazuli grounds, and the classical Shadanga principles of posture and expression.',
+                link: '/discover?q=mural'
+              },
+              {
+                title: 'Deccan Rock-Cut Architecture',
+                category: 'Sacred Engineering',
+                desc: 'Subterranean basalt excavations uniting Buddhist, Hindu, and Jain sanctuary construction in Maharashtra.',
+                link: '/artifact/ellora'
+              },
+              {
+                title: 'Ancient Indian Painting Treatises',
+                category: 'Scholarly Canon',
+                desc: 'Chitrasutra textual guidelines on portraiture, anatomical proportion, and natural pigment binding.',
+                link: '/learn'
+              }
+            ].map((related, idx) => (
+              <Link
+                key={idx}
+                to={related.link}
+                className="block p-4 rounded-xl bg-white border border-stone-200 hover:border-[#936B38] transition-all group"
+              >
+                <span className="text-[10px] font-mono uppercase text-[#936B38] font-bold block">
+                  {related.category}
+                </span>
+                <h4 className="font-serif text-base font-bold text-stone-900 group-hover:text-[#936B38] transition-colors mt-0.5">
+                  {related.title}
+                </h4>
+                <p className="text-xs text-stone-500 mt-1 leading-relaxed">
+                  {related.desc}
+                </p>
+              </Link>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* 4. EXPLORE BY PLACE (Prompt Section 15) */}
+      <section className="px-4 sm:px-6 max-w-7xl mx-auto space-y-6">
+        <div className="flex flex-col sm:flex-row sm:items-baseline justify-between gap-2 border-b border-stone-200 pb-3">
+          <div>
+            <span className="text-[10px] font-mono uppercase tracking-widest text-[#936B38] font-bold block">
+              GEOGRAPHY
+            </span>
+            <h2 className="font-serif text-2xl sm:text-3xl font-bold text-[#151D2A] mt-0.5">
+              Heritage has a place.
             </h2>
           </div>
           <Link
             to="/map"
-            className="inline-flex items-center gap-1 text-sm font-semibold text-[#151D2A] hover:text-[#936B38] transition-colors"
+            className="inline-flex items-center gap-1 text-xs font-semibold text-[#151D2A] hover:text-[#936B38] transition-colors"
           >
             <span>Open Interactive Map</span>
-            <ArrowRight className="w-4 h-4" />
+            <ArrowRight className="w-3.5 h-3.5" />
           </Link>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+        {/* 6 Geographic Regions */}
+        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-3">
           {[
-            {
-              title: 'Buddhist Pilgrimage',
-              region: 'North & East',
-              sites: 'Sarnath • Nalanda • Bodh Gaya',
-              desc: 'From the Ashoka Lion Capital to ancient Mahavihara intellectual scholastic assemblies.',
-              img: 'https://images.unsplash.com/photo-1590076215667-875d4ef2d7ee?q=80&w=800&auto=format&fit=crop'
-            },
-            {
-              title: 'Chola Granite & Bronze',
-              region: 'South (Kaveri Delta)',
-              sites: 'Thanjavur • Swamimalai • Gangaikonda',
-              desc: '66-metre dry granite vimanas and 1,000-year unbroken cire-perdue bronze foundries.',
-              img: 'https://images.unsplash.com/photo-1582510003544-4d00b7f74220?q=80&w=800&auto=format&fit=crop'
-            },
-            {
-              title: 'Deccan Rock-Cut Caves',
-              region: 'Western Ghats',
-              sites: 'Ellora • Ajanta • Elephanta',
-              desc: 'Top-down monolithic basalt excavations and sublime Gupta-Vakataka mural frescoes.',
-              img: 'https://images.unsplash.com/photo-1600100397608-f010f444f4e7?q=80&w=800&auto=format&fit=crop'
-            },
-            {
-              title: 'Kalinga Sun & Temple Arts',
-              region: 'East (Odisha Coast)',
-              sites: 'Konark • Puri • Bhubaneswar',
-              desc: 'Sundial chariot wheels, palm-leaf pothi manuscripts, and handwoven ikat silks.',
-              img: 'https://images.unsplash.com/photo-1548013146-72479768bada?q=80&w=800&auto=format&fit=crop'
-            }
-          ].map((corridor, i) => (
+            { region: 'North', focus: 'Gangetic Plains & Himalayas', count: 'Sarnath, Varanasi, Taxila' },
+            { region: 'South', focus: 'Kaveri Delta & Malabar', count: 'Thanjavur, Swamimalai, Muziris' },
+            { region: 'East', focus: 'Kalinga & Magadha', count: 'Konark, Nalanda, Puri' },
+            { region: 'West', focus: 'Deccan & Gujarat', count: 'Ajanta, Ellora, Patan' },
+            { region: 'Central', focus: 'Malwa & Narmada Valley', count: 'Sanchi, Khajuraho, Bastar' },
+            { region: 'Northeast', focus: 'Brahmaputra Basin', count: 'Majuli, Kamakhya, Ahom' }
+          ].map((reg) => (
             <div
-              key={i}
-              onClick={() => navigate('/map')}
-              className="rounded-2xl overflow-hidden bg-white border border-stone-200 shadow-sm hover:shadow-md hover:border-[#936B38] transition-all cursor-pointer group flex flex-col justify-between"
+              key={reg.region}
+              onClick={() => navigate(`/discover?region=${encodeURIComponent(reg.region)}`)}
+              className="p-4 rounded-xl bg-white border border-stone-200 hover:border-[#936B38] hover:shadow-xs transition-all cursor-pointer group flex flex-col justify-between"
             >
-              <div className="relative h-44 overflow-hidden bg-stone-900">
-                <img
-                  src={corridor.img}
-                  alt={corridor.title}
-                  className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
-                />
-                <div className="absolute top-3 left-3 bg-black/60 backdrop-blur-sm text-white text-[11px] font-semibold px-2.5 py-0.5 rounded-full">
-                  {corridor.region}
-                </div>
+              <div>
+                <span className="font-serif text-base font-bold text-stone-900 group-hover:text-[#936B38] transition-colors">
+                  {reg.region}
+                </span>
+                <p className="text-[11px] text-stone-500 mt-1 font-medium">
+                  {reg.focus}
+                </p>
               </div>
-              <div className="p-5 space-y-2 flex-1 flex flex-col justify-between">
-                <div>
-                  <h4 className="font-serif text-lg font-bold text-stone-900 group-hover:text-[#936B38] transition-colors">
-                    {corridor.title}
-                  </h4>
-                  <p className="text-xs font-semibold text-[#A64B2A] mt-0.5">{corridor.sites}</p>
-                  <p className="text-xs text-stone-600 mt-2 line-clamp-2 leading-relaxed">
-                    {corridor.desc}
-                  </p>
-                </div>
-                <div className="pt-3 border-t border-stone-100 text-xs font-semibold text-stone-900 flex items-center justify-between">
-                  <span>Explore Corridor</span>
-                  <ArrowRight className="w-3.5 h-3.5 group-hover:translate-x-1 transition-transform" />
-                </div>
-              </div>
+              <p className="text-[10px] font-mono text-stone-400 mt-3 pt-2 border-t border-stone-100">
+                {reg.count}
+              </p>
             </div>
           ))}
         </div>
       </section>
 
-      {/* 5. Living Heritage (Master Craft Guilds) */}
-      <section className="px-4 sm:px-6 max-w-7xl mx-auto space-y-8">
-        <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-4 border-b border-stone-200 pb-4">
+      {/* 5. LIVING HERITAGE & ARTISAN GUILDS (Prompt Section 17 & 18) */}
+      <section className="px-4 sm:px-6 max-w-7xl mx-auto space-y-6">
+        <div className="flex flex-col sm:flex-row sm:items-baseline justify-between gap-2 border-b border-stone-200 pb-3">
           <div>
-            <div className="flex items-center gap-2 text-xs font-bold text-emerald-700 uppercase tracking-wider">
-              <Leaf className="w-3.5 h-3.5" />
-              <span>Living Traditions &amp; Master Guilds</span>
-            </div>
-            <h2 className="font-serif text-3xl font-bold text-stone-900 mt-1">
-              Safeguarding Living Cultural Memory
+            <span className="text-[10px] font-mono uppercase tracking-widest text-[#936B38] font-bold block">
+              LIVING TRADITIONS
+            </span>
+            <h2 className="font-serif text-2xl sm:text-3xl font-bold text-[#151D2A] mt-0.5">
+              Heritage is still alive.
             </h2>
           </div>
           <Link
             to="/living-traditions"
-            className="inline-flex items-center gap-1 text-sm font-semibold text-[#151D2A] hover:text-[#936B38] transition-colors"
+            className="inline-flex items-center gap-1 text-xs font-semibold text-[#151D2A] hover:text-[#936B38] transition-colors"
           >
-            <span>View All Guild Traditions</span>
-            <ArrowRight className="w-4 h-4" />
+            <span>Explore Living Heritage</span>
+            <ArrowRight className="w-3.5 h-3.5" />
           </Link>
         </div>
 
@@ -341,36 +417,40 @@ export const Home: React.FC<HomeProps> = ({ onOpenSearch, highContrast }) => {
           {LIVING_TRADITIONS.slice(0, 3).map((trad) => (
             <div
               key={trad.id}
-              onClick={() => navigate('/living-traditions')}
-              className="rounded-2xl overflow-hidden bg-white border border-stone-200 shadow-sm hover:shadow-md transition-all cursor-pointer group flex flex-col justify-between"
+              onClick={() => navigate(`/living-traditions`)}
+              className="rounded-xl overflow-hidden bg-white border border-stone-200 shadow-2xs hover:border-stone-400 transition-all cursor-pointer group flex flex-col justify-between"
             >
-              <div className="relative h-48 overflow-hidden bg-stone-900">
-                <img
-                  src={trad.imageUrl}
-                  alt={trad.title}
-                  className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
-                />
-                <div className="absolute top-3 left-3 bg-emerald-950/80 backdrop-blur-sm text-emerald-200 text-[11px] font-semibold px-2.5 py-0.5 rounded-full border border-emerald-700">
-                  {trad.giTagStatus ? 'GI Registered Guild' : 'Master Guild'}
-                </div>
-              </div>
-              <div className="p-5 space-y-3 flex-1 flex flex-col justify-between">
+              <SafeImage
+                src={trad.imageUrl}
+                alt={trad.title}
+                containerClassName="h-44 w-full"
+              />
+              <div className="p-5 space-y-2.5 flex-1 flex flex-col justify-between">
                 <div>
-                  <span className="text-[11px] font-bold text-[#936B38] uppercase tracking-wider block">
-                    {trad.subCategory}
-                  </span>
-                  <h4 className="font-serif text-xl font-bold text-stone-900 group-hover:text-[#A64B2A] transition-colors mt-0.5">
+                  <div className="flex items-center justify-between gap-2">
+                    <span className="text-[10px] font-mono uppercase text-[#936B38] font-bold">
+                      {trad.subCategory}
+                    </span>
+                    {trad.giTagStatus && (
+                      <span className="text-[9px] font-mono px-1.5 py-0.5 rounded bg-emerald-50 text-emerald-800 border border-emerald-200 font-bold">
+                        GI Tag
+                      </span>
+                    )}
+                  </div>
+                  <h3 className="font-serif text-lg font-bold text-stone-900 group-hover:text-[#A64B2A] transition-colors mt-0.5">
                     {trad.title}
-                  </h4>
-                  <p className="text-xs text-stone-500 font-medium">{trad.community} • {trad.location}</p>
+                  </h3>
+                  <p className="text-xs text-stone-500 font-medium">
+                    {trad.community} • {trad.location}
+                  </p>
                   <p className="text-xs text-stone-600 mt-2 line-clamp-2 leading-relaxed">
                     {trad.description}
                   </p>
                 </div>
-                <div className="pt-3 border-t border-stone-100 flex items-center justify-between text-xs">
-                  <span className="text-stone-500 italic">{trad.unbrokenSince}</span>
-                  <span className="font-semibold text-stone-900 flex items-center gap-1">
-                    <span>Learn More</span>
+                <div className="pt-3 border-t border-stone-100 flex items-center justify-between text-xs text-stone-500">
+                  <span className="italic">{trad.unbrokenSince}</span>
+                  <span className="font-medium text-stone-800 flex items-center gap-1">
+                    <span>Inspect</span>
                     <ArrowRight className="w-3 h-3" />
                   </span>
                 </div>
@@ -380,160 +460,193 @@ export const Home: React.FC<HomeProps> = ({ onOpenSearch, highContrast }) => {
         </div>
       </section>
 
-      {/* 6. Ask Virasat AI Teaser */}
+      {/* 6. ARTIFACT OF THE WEEK (Prompt Section 19) */}
       <section className="px-4 sm:px-6 max-w-7xl mx-auto">
-        <div className="p-8 sm:p-12 rounded-3xl bg-[#151D2A] text-white shadow-xl grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
+        <div className="p-6 sm:p-8 rounded-2xl bg-white border border-stone-200 shadow-xs grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
+          {/* Museum Catalog Entry Image */}
+          <div className="lg:col-span-5">
+            <SafeImage
+              src={specimenOfTheWeek.imageUrl}
+              alt={specimenOfTheWeek.title}
+              creditKey={specimenOfTheWeek.id}
+              showCreditButton={true}
+              containerClassName="h-72 sm:h-80 w-full rounded-xl border border-stone-200"
+            />
+          </div>
+
+          {/* Museum Catalog Entry Metadata beside image (Prompt Section 19) */}
+          <div className="lg:col-span-7 space-y-4">
+            <div>
+              <span className="text-[10px] font-mono uppercase tracking-widest text-[#936B38] font-bold block">
+                ARTIFACT OF THE WEEK
+              </span>
+              <h3 className="font-serif text-2xl sm:text-3xl font-bold text-stone-900 mt-1">
+                {specimenOfTheWeek.title}
+              </h3>
+            </div>
+
+            {/* Catalog Specs */}
+            <div className="grid grid-cols-2 sm:grid-cols-3 gap-3 text-xs border-y border-stone-100 py-3">
+              <div>
+                <span className="text-stone-400 block text-[10px] uppercase font-mono">Period</span>
+                <span className="font-medium text-stone-800">{specimenOfTheWeek.dateBadge}</span>
+              </div>
+              <div>
+                <span className="text-stone-400 block text-[10px] uppercase font-mono">Region</span>
+                <span className="font-medium text-stone-800">{specimenOfTheWeek.region}</span>
+              </div>
+              <div>
+                <span className="text-stone-400 block text-[10px] uppercase font-mono">Material</span>
+                <span className="font-medium text-stone-800 truncate block">{specimenOfTheWeek.material.split(',')[0]}</span>
+              </div>
+              <div>
+                <span className="text-stone-400 block text-[10px] uppercase font-mono">Source</span>
+                <span className="font-medium text-stone-800 truncate block">{specimenOfTheWeek.source}</span>
+              </div>
+              <div>
+                <span className="text-stone-400 block text-[10px] uppercase font-mono">Verification</span>
+                <VerificationBadge status={specimenOfTheWeek.verificationStatus} />
+              </div>
+              <div>
+                <span className="text-stone-400 block text-[10px] uppercase font-mono">Accession</span>
+                <span className="font-mono text-stone-600">{specimenOfTheWeek.accessionNo}</span>
+              </div>
+            </div>
+
+            <p className="text-xs sm:text-sm text-stone-600 leading-relaxed">
+              {specimenOfTheWeek.description}
+            </p>
+
+            <div className="flex items-center gap-3 pt-2">
+              <Link
+                to={`/artifact/${specimenOfTheWeek.id}`}
+                className="px-5 py-2.5 rounded-lg bg-[#151D2A] text-white text-xs font-semibold hover:bg-[#936B38] transition-colors"
+              >
+                View Artifact
+              </Link>
+              <Link
+                to={`/artifact/${specimenOfTheWeek.id}#history`}
+                className="px-5 py-2.5 rounded-lg border border-stone-300 text-stone-700 text-xs font-semibold hover:bg-stone-50 transition-colors"
+              >
+                Explore its story
+              </Link>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* 7. VIRASAT AI RESEARCH COMPANION (Prompt Section 22) */}
+      <section className="px-4 sm:px-6 max-w-7xl mx-auto">
+        <div className="p-8 sm:p-10 rounded-2xl bg-[#151D2A] text-white shadow-md grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
           <div className="lg:col-span-8 space-y-4">
             <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-stone-800 text-amber-300 text-xs font-semibold border border-stone-700">
               <Sparkles className="w-3.5 h-3.5" />
-              <span>Dedicated Curatorial Research Assistant</span>
+              <span>Virasat AI • Dedicated Research Companion</span>
             </div>
-            <h2 className="font-serif text-3xl sm:text-4xl font-bold leading-tight">
+            <h2 className="font-serif text-3xl font-bold leading-tight">
               Scholarly AI Guidance with Explicit Citations &amp; Confidence
             </h2>
-            <p className="text-stone-300 text-sm sm:text-base leading-relaxed max-w-2xl">
-              Unlike generic chatbots, Virasat AI is strictly grounded in primary records from the Archaeological Survey of India, National Archives, and epigraphical corpuses. Every assertion links back to verified specimen IDs.
+            <p className="text-stone-300 text-xs sm:text-sm leading-relaxed max-w-2xl">
+              Unlike generic chatbots, Virasat AI is grounded in primary scholarly archives from the Archaeological Survey of India, National Archives, and epigraphical corpuses. Every answer distinguishes AI interpretation from source material.
             </p>
+
             <div className="pt-2 flex flex-wrap gap-2 text-xs">
-              {RESEARCH_PRESETS.slice(0, 3).map((p, i) => (
+              {[
+                'Why are Ajanta murals important?',
+                'How is Pattachitra traditionally made?',
+                'What is the lost-wax casting technique of Chola bronzes?'
+              ].map((q, idx) => (
                 <Link
-                  key={i}
+                  key={idx}
                   to={`/ai-guide`}
-                  className="px-3 py-1.5 rounded-full bg-stone-800/80 hover:bg-stone-700 text-stone-200 border border-stone-700 transition-colors"
+                  className="px-3 py-1.5 rounded-lg bg-stone-800/80 hover:bg-stone-700 text-stone-200 border border-stone-700 text-[11px] transition-colors"
                 >
-                  "{p.question}"
+                  "{q}"
                 </Link>
               ))}
             </div>
           </div>
+
           <div className="lg:col-span-4 text-center lg:text-right space-y-3">
             <Link
               to="/ai-guide"
-              className="inline-flex items-center gap-2 px-8 py-4 rounded-full bg-[#936B38] text-white text-sm font-semibold hover:bg-[#7D5B2F] shadow-lg transition-all"
+              className="inline-flex items-center gap-2 px-6 py-3 rounded-lg bg-[#936B38] text-white text-xs sm:text-sm font-semibold hover:bg-[#7D5B2F] transition-colors shadow-sm"
             >
-              <Sparkles className="w-4 h-4" />
+              <Sparkles className="w-3.5 h-3.5" />
               <span>Launch Research Studio</span>
             </Link>
             <p className="text-[11px] text-stone-400">
-              Zero client key leakage • Multi-tier confidence scoring
+              Source-linked • Confidence scoring • Error reporting
             </p>
           </div>
         </div>
       </section>
 
-      {/* 7. Identify an Artifact (Vision AI Teaser) */}
-      <section className="px-4 sm:px-6 max-w-7xl mx-auto">
-        <div className="p-8 sm:p-12 rounded-3xl bg-[#F6F3ED] border border-stone-300 shadow-sm grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
-          <div className="lg:col-span-7 space-y-4">
-            <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-stone-200 text-stone-800 text-xs font-semibold">
-              <Camera className="w-3.5 h-3.5 text-[#936B38]" />
-              <span>Visual Iconography Identifier</span>
+      {/* 8. LEARN & RESPONSIBLE HERITAGE (Prompt Section 31 & 71) */}
+      <section className="px-4 sm:px-6 max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-6">
+        {/* Learn Box */}
+        <div className="p-6 sm:p-8 rounded-2xl bg-white border border-stone-200 shadow-2xs space-y-4 flex flex-col justify-between">
+          <div className="space-y-2.5">
+            <div className="w-10 h-10 rounded-lg bg-amber-50 text-[#936B38] flex items-center justify-center">
+              <BookOpen className="w-5 h-5" />
             </div>
-            <h2 className="font-serif text-3xl font-bold text-stone-900">
-              Identify Sculptures, Mudras &amp; Dynastic Signatures
-            </h2>
-            <p className="text-stone-600 text-sm leading-relaxed">
-              Upload a photograph of a temple relief, sculpture, or miniature painting. Our iconography engine highlights detected mudras, postures (tribhanga), dynastic stylistic signatures, and matches comparative ASI repository specimens.
-            </p>
-            <div className="flex items-center gap-4 pt-2">
-              <Link
-                to="/ai-guide#vision"
-                className="px-6 py-3 rounded-full bg-[#151D2A] text-white text-xs font-semibold hover:bg-[#936B38] transition-colors shadow-sm flex items-center gap-2"
-              >
-                <Camera className="w-4 h-4" />
-                <span>Test Visual Analysis</span>
-              </Link>
-              <span className="text-xs text-stone-500 italic">
-                *AI-assisted visual interpretation, not expert authentication.
-              </span>
-            </div>
-          </div>
-          <div className="lg:col-span-5 bg-white p-5 rounded-2xl border border-stone-200 shadow-xs space-y-3">
-            <span className="text-xs font-semibold text-stone-400 uppercase tracking-wider block">
-              Supported Visual Classes
-            </span>
-            <div className="grid grid-cols-2 gap-2 text-xs">
-              {[
-                'Chola Bronzes',
-                'Gandhara Schist Statues',
-                'Dravidian Temple Columns',
-                'Mughal Court Miniatures',
-                'Madhubani Folk Murals',
-                'Pala-Sena Stone Stele'
-              ].map((cls, i) => (
-                <div key={i} className="p-2 rounded-xl bg-stone-50 text-stone-800 border border-stone-200 flex items-center gap-1.5">
-                  <CheckCircle className="w-3.5 h-3.5 text-emerald-600 shrink-0" />
-                  <span className="truncate">{cls}</span>
-                </div>
-              ))}
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* 8. Education & Responsible Travel Horizons */}
-      <section className="px-4 sm:px-6 max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-8">
-        {/* Education Box */}
-        <div className="p-8 rounded-3xl bg-white border border-stone-200 shadow-sm space-y-4 flex flex-col justify-between">
-          <div className="space-y-3">
-            <div className="w-12 h-12 rounded-2xl bg-amber-50 text-[#936B38] flex items-center justify-center">
-              <BookOpen className="w-6 h-6" />
-            </div>
-            <h3 className="font-serif text-2xl font-bold text-stone-900">
-              Heritage Learning for Schools &amp; Researchers
+            <h3 className="font-serif text-xl font-bold text-stone-900">
+              Curriculum &amp; Independent Learning
             </h3>
-            <p className="text-stone-600 text-sm leading-relaxed">
-              Curriculum-aligned learning paths, paleography transcription modules, and interactive cultural history quizzes built for students, teachers, and independent scholars.
+            <p className="text-stone-600 text-xs sm:text-sm leading-relaxed">
+              Curriculum-aligned learning paths on temple architecture, epigraphy, and manuscript traditions with interactive knowledge checks saved to your profile.
             </p>
           </div>
           <Link
             to="/learn"
-            className="inline-flex items-center gap-2 text-sm font-semibold text-[#151D2A] hover:text-[#936B38] transition-colors pt-4 border-t border-stone-100"
+            className="inline-flex items-center gap-2 text-xs font-semibold text-[#151D2A] hover:text-[#936B38] transition-colors pt-3 border-t border-stone-100"
           >
-            <span>Explore Learning Paths</span>
-            <ArrowRight className="w-4 h-4" />
+            <span>Explore Learning Modules</span>
+            <ArrowRight className="w-3.5 h-3.5" />
           </Link>
         </div>
 
-        {/* Responsible Travel Box */}
-        <div className="p-8 rounded-3xl bg-white border border-stone-200 shadow-sm space-y-4 flex flex-col justify-between">
-          <div className="space-y-3">
-            <div className="w-12 h-12 rounded-2xl bg-emerald-50 text-emerald-700 flex items-center justify-center">
-              <Leaf className="w-6 h-6" />
+        {/* Responsible Heritage Box (Prompt Section 31) */}
+        <div className="p-6 sm:p-8 rounded-2xl bg-white border border-stone-200 shadow-2xs space-y-4 flex flex-col justify-between">
+          <div className="space-y-2.5">
+            <div className="w-10 h-10 rounded-lg bg-emerald-50 text-emerald-700 flex items-center justify-center">
+              <Leaf className="w-5 h-5" />
             </div>
-            <h3 className="font-serif text-2xl font-bold text-stone-900">
-              Responsible Tourism &amp; Artisan Cluster Visits
+            <h3 className="font-serif text-xl font-bold text-stone-900">
+              Experience heritage responsibly.
             </h3>
-            <p className="text-stone-600 text-sm leading-relaxed">
-              Combat overtourism at fragile monument corridors. Plan mindful day-by-day itineraries supporting GI-certified artisan cooperatives and heritage homestays.
+            <p className="text-stone-600 text-xs sm:text-sm leading-relaxed">
+              Preservation guidance, respectful etiquette at sacred monument corridors, and sustainable support for registered artisan cooperatives.
             </p>
           </div>
           <Link
             to="/plan-visit"
-            className="inline-flex items-center gap-2 text-sm font-semibold text-[#151D2A] hover:text-[#936B38] transition-colors pt-4 border-t border-stone-100"
+            className="inline-flex items-center gap-2 text-xs font-semibold text-[#151D2A] hover:text-[#936B38] transition-colors pt-3 border-t border-stone-100"
           >
-            <span>Generate Responsible Visit Itinerary</span>
-            <ArrowRight className="w-4 h-4" />
+            <span>Plan Mindful Visit Itinerary</span>
+            <ArrowRight className="w-3.5 h-3.5" />
           </Link>
         </div>
       </section>
 
-      {/* 9. Sources, Trust & Institutional Integrity */}
-      <section className="px-4 sm:px-6 max-w-7xl mx-auto text-center space-y-4 pt-8">
-        <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-stone-100 text-stone-700 text-xs font-semibold">
-          <ShieldCheck className="w-4 h-4 text-emerald-600" />
-          <span>Institutional Research Standards</span>
+      {/* 9. SOURCES & TRUST (Prompt Section 21 & 42) */}
+      <section className="px-4 sm:px-6 max-w-7xl mx-auto text-center space-y-4 pt-4">
+        <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-stone-100 text-stone-700 text-xs font-semibold">
+          <ShieldCheck className="w-3.5 h-3.5 text-emerald-600" />
+          <span>Institutional Open Access &amp; Credibility</span>
         </div>
         <h2 className="font-serif text-2xl sm:text-3xl font-bold text-stone-900">
-          Curatorial Integrity &amp; Open Access
+          Source-Grounded Curatorial Integrity
         </h2>
-        <p className="text-stone-600 text-sm max-w-2xl mx-auto leading-relaxed">
-          Every artifact record, translation, and historical claim cites authenticated institutional archives—including the Archaeological Survey of India (ASI), National Museum New Delhi, and UNESCO World Heritage documentation.
+        <p className="text-stone-600 text-xs sm:text-sm max-w-2xl mx-auto leading-relaxed">
+          Every artifact, translation, and historical claim cites authenticated institutional archives—including the Archaeological Survey of India (ASI), National Museum, and UNESCO documentation.
         </p>
-        <div className="pt-2 flex items-center justify-center gap-6 text-xs text-stone-500">
-          <Link to="/sources" className="underline hover:text-stone-900">Primary Sources &amp; Licenses</Link>
+        <div className="pt-2 flex flex-wrap items-center justify-center gap-5 text-xs text-stone-500">
+          <Link to="/sources" className="underline hover:text-stone-900">Source References &amp; Licenses</Link>
           <span>•</span>
-          <Link to="/ai-transparency" className="underline hover:text-stone-900">AI Transparency Architecture</Link>
+          <Link to="/ai-transparency" className="underline hover:text-stone-900">AI Transparency</Link>
+          <span>•</span>
+          <Link to="/copyright" className="underline hover:text-stone-900">Copyright &amp; Image Rights</Link>
           <span>•</span>
           <Link to="/accessibility" className="underline hover:text-stone-900">Accessibility Statement</Link>
         </div>
@@ -541,3 +654,4 @@ export const Home: React.FC<HomeProps> = ({ onOpenSearch, highContrast }) => {
     </div>
   );
 };
+

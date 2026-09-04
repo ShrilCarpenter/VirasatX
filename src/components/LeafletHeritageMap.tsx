@@ -4,6 +4,7 @@ import { HeritageItem } from '../types';
 import { HERITAGE_ITEMS } from '../data/heritageData';
 import { Link } from 'react-router-dom';
 import { MapPin, Navigation, Compass, Layers } from 'lucide-react';
+import { SafeImage } from './SafeImage';
 
 interface LeafletHeritageMapProps {
   onSelectItem?: (item: HeritageItem) => void;
@@ -191,16 +192,17 @@ export const LeafletHeritageMap: React.FC<LeafletHeritageMapProps> = ({
         <div className="p-6 border-t lg:border-t-0 lg:border-l border-stone-200 flex flex-col justify-between bg-stone-50/50">
           {selectedItem ? (
             <div className="space-y-4">
-              <div className="relative rounded-2xl overflow-hidden h-48 bg-stone-900 border border-stone-200">
-                <img
+              <div className="relative rounded-xl overflow-hidden h-48 bg-stone-900 border border-stone-200">
+                <SafeImage
                   src={selectedItem.imageUrl}
                   alt={selectedItem.title}
+                  creditKey={selectedItem.id}
                   className="w-full h-full object-cover"
                 />
-                <div className="absolute top-3 left-3 bg-black/60 backdrop-blur-md text-white text-[11px] font-medium px-2.5 py-1 rounded-full">
+                <div className="absolute top-3 left-3 bg-[#151D2A]/80 backdrop-blur-md text-white text-[11px] font-medium px-2.5 py-1 rounded-full border border-white/10">
                   {selectedItem.category}
                 </div>
-                <div className="absolute bottom-3 right-3 bg-white/90 backdrop-blur-md text-stone-900 text-[11px] font-mono px-2 py-0.5 rounded-md">
+                <div className="absolute bottom-3 right-3 bg-white/95 backdrop-blur-md text-stone-900 text-[11px] font-mono px-2 py-0.5 rounded-md border border-stone-200">
                   {selectedItem.accessionNo}
                 </div>
               </div>

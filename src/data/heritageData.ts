@@ -827,10 +827,58 @@ export const LIVING_TRADITIONS: LivingTradition[] = [
     ],
     relatedArtifacts: ['nataraja'],
     verificationStatus: 'Scholar-verified'
+  },
+  {
+    id: 'odisha-pattachitra',
+    title: 'Odisha Pattachitra & Palm-Leaf Scroll Art',
+    subCategory: 'Sacred Narrative Scroll Painting',
+    description: 'Classical cloth-based and palm-leaf narrative painting characterized by rich natural mineral pigments, intricate mythological iconography, and fine freehand line work.',
+    community: 'Chitrakar Hereditary Guild',
+    location: 'Raghurajpur Heritage Village, Puri District, Odisha',
+    region: 'East',
+    guildCount: '120+ Hereditary Master Families',
+    imageUrl: 'https://images.unsplash.com/photo-1579783902614-a3fb3927b675?q=80&w=1200&auto=format&fit=crop',
+    unbrokenSince: '12th Century CE (Rooted in Jagannath Temple Rites)',
+    keyPractices: [
+      'Patta canvas preparation using cotton cloth bonded with tamarind seed gum and burnished with conch powder.',
+      '100% natural mineral pigments: white from sea conch, yellow from harital, red from hingula, black from lamp soot.',
+      'Meticulous freehand brushwork with fine squirrel and mouse-hair brushes, sealed with tree resin glaze.'
+    ],
+    materials: ['Wild Cotton Canvas', 'Tamarind Seed Gum', 'Conch Shell Chalk', 'Natural Mineral Pigments', 'Palm Leaves'],
+    processSteps: ['Canvas Priming', 'Conch Stone Burnishing', 'Red Ink Drawing', 'Mineral Color Infilling', 'Black Detail Outlining', 'Natural Resin Glazing'],
+    giTagStatus: 'GI Registered (#GI-87, Odisha Pattachitra)',
+    responsibleWaysToSupport: [
+      'Visit Raghurajpur Heritage Crafts Village respectfully, engaging directly with artisan family ateliers.',
+      'Verify authentic hand-painted canvas and palm leaf vs printed paper imitations.',
+      'Support verified government emporiums such as Utkalika (Odisha State Co-op).'
+    ],
+    relatedArtifacts: ['palm-leaf', 'konark-wheel'],
+    verificationStatus: 'Scholar-verified'
   }
 ];
 
 export const ARTISANS_DATA: ArtisanProfile[] = [
+  {
+    id: 'chitrakar-raghurajpur',
+    name: 'Raghurajpur Chitrakar Artisan Heritage Society',
+    tradition: 'Odisha Pattachitra & Tala Pothi Inscribing',
+    location: 'Raghurajpur, Puri District',
+    state: 'Odisha',
+    giTagCertified: true,
+    giCertificationNo: 'GI-87',
+    generationSpan: 'Over 30 Generations of Continuous Practice',
+    materials: ['Tamarind-treated Cotton Canvas', 'Conch Shell Powder', 'Harital Stone', 'Cured Palm Leaf', 'Iron Stylus'],
+    techniques: ['Natural pigment synthesis', 'Microscopic palm-leaf engraving (Tala Pothi)', 'Vedic iconographic composition'],
+    bio: 'An entire living heritage village where every family maintains the hereditary Chitrakar art. Their works are commissioned for the annual Rath Yatra at Puri and international museums.',
+    culturalContext: 'Traditionally created during the sacred Anasara fortnight when the Jagannath sanctum is secluded. The scrolls embody centuries of continuous oral and visual literature.',
+    sustainablePractices: ['Zero synthetic chemical solvents or plastic resins', 'All pigments derived from local stones, clay, and shells', 'Re-usable organic compost from palm waste'],
+    supportAvenues: [
+      'Direct studio visits in Raghurajpur village adhering to respectful community visiting hours.',
+      'Purchasing directly through registered artisan society certificates.'
+    ],
+    imageUrl: 'https://images.unsplash.com/photo-1579783902614-a3fb3927b675?q=80&w=1200&auto=format&fit=crop',
+    verificationStatus: 'Scholar-verified'
+  },
   {
     id: 'sthapati-swamimalai',
     name: 'Swamimalai Sthapati Master Cooperative',

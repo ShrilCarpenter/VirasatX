@@ -32,6 +32,12 @@
     -webkit-font-smoothing: antialiased;
     text-rendering: optimizeLegibility;
   }
+
+  /* Editorial Focus Rings for Keyboard Accessibility */
+  :focus-visible {
+    outline: 2px solid #936B38;
+    outline-offset: 2px;
+  }
 }
 
 ::selection {
@@ -79,8 +85,8 @@
 
 /* Scrollbar aesthetic */
 ::-webkit-scrollbar {
-  width: 8px;
-  height: 8px;
+  width: 7px;
+  height: 7px;
 }
 ::-webkit-scrollbar-track {
   background: #F3EFEA;
@@ -91,4 +97,19 @@
 }
 ::-webkit-scrollbar-thumb:hover {
   background: #936B38;
+}
+
+/* Editorial rule separator */
+.editorial-divider {
+  border-top: 1px solid #E7E3DC;
+}
+
+/* Respect user's motion preference */
+@media (prefers-reduced-motion: reduce) {
+  *, ::before, ::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
 }

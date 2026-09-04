@@ -25,6 +25,8 @@ import { SourcesPage } from './pages/SourcesPage';
 import { AITransparencyPage } from './pages/AITransparencyPage';
 import { AccessibilityPage } from './pages/AccessibilityPage';
 import { AboutPage } from './pages/AboutPage';
+import { IdentifyPage } from './pages/IdentifyPage';
+import { CopyrightPage } from './pages/CopyrightPage';
 
 // Auth Pages
 import { LoginPage } from './pages/LoginPage';
@@ -91,9 +93,11 @@ function MainAppLayout() {
           <Route path="/manuscripts" element={<ManuscriptsPage />} />
           <Route path="/manuscripts/:id" element={<ManuscriptDetail />} />
           <Route path="/ai-guide" element={<AIGuidePage />} />
+          <Route path="/identify" element={<IdentifyPage />} />
           <Route path="/plan-visit" element={<PlanVisitPage />} />
           <Route path="/learn" element={<LearnPage />} />
           <Route path="/sources" element={<SourcesPage />} />
+          <Route path="/copyright" element={<CopyrightPage />} />
           <Route path="/ai-transparency" element={<AITransparencyPage />} />
           <Route path="/accessibility" element={<AccessibilityPage highContrast={highContrast} onToggleContrast={() => setHighContrast(!highContrast)} />} />
           <Route path="/about" element={<AboutPage />} />
