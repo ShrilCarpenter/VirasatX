@@ -6,7 +6,7 @@ from pptx.enum.text import PP_ALIGN, MSO_ANCHOR
 from pptx.dml.color import RGBColor
 from pptx.enum.shapes import MSO_SHAPE
 
-def build_presentation(is_hackastra=False):
+def build_hackastra_verbatim_deck(output_pptx_path):
     prs = Presentation()
     prs.slide_width = Inches(13.333)
     prs.slide_height = Inches(7.5)
@@ -16,6 +16,9 @@ def build_presentation(is_hackastra=False):
     logo_png = os.path.join(cur_dir, "sih_logo.png")
     bulb_png = os.path.join(cur_dir, "sih_bulb.png")
     img_dir = os.path.join(cur_dir, "images")
+    fra_ui = os.path.join(img_dir, "fra_setu_ui.png")
+    fc_img = os.path.join(img_dir, "hackastra_flowchart.png")
+    arch_img = os.path.join(img_dir, "hackastra_arch.png")
 
     NAVY_TITLE = RGBColor(27, 54, 93)        # #1B365D
     BLACK = RGBColor(0, 0, 0)
@@ -23,14 +26,7 @@ def build_presentation(is_hackastra=False):
     GREEN_ACCENT = RGBColor(21, 128, 61)     # #15803D
     WHITE = RGBColor(255, 255, 255)
 
-    team_name = "Hackastra" if is_hackastra else "VirasatX"
-    s1_title = "SMART INDIA HACKATHON 2025" if is_hackastra else "SMART INDIA HACKATHON 2026"
-    
-    fc_img = os.path.join(img_dir, "hackastra_flowchart.png" if is_hackastra else "virasatx_flowchart.png")
-    arch_img = os.path.join(img_dir, "hackastra_arch.png" if is_hackastra else "virasatx_arch.png")
-    ui_img = os.path.join(img_dir, "fra_setu_ui.png" if is_hackastra else "home.png")
-
-    def add_common_header(slide, title_text, slide_num):
+    def add_common_header(slide, title_text, slide_num, team_name="Hackastra"):
         # 1. Top Left Team Oval
         oval = slide.shapes.add_shape(MSO_SHAPE.OVAL, Inches(0.45), Inches(0.18), Inches(1.85), Inches(0.75))
         oval.fill.solid()
@@ -100,7 +96,7 @@ def build_presentation(is_hackastra=False):
     # Top Title Centered
     h1_box = slide1.shapes.add_textbox(Inches(0.5), Inches(0.32), Inches(12.333), Inches(0.8))
     p_h1 = h1_box.text_frame.paragraphs[0]
-    p_h1.text = s1_title
+    p_h1.text = "SMART INDIA HACKATHON 2025"
     p_h1.font.name = "Times New Roman"
     p_h1.font.size = Pt(36)
     p_h1.font.bold = True
@@ -121,7 +117,7 @@ def build_presentation(is_hackastra=False):
     p_tp.font.color.rgb = BLACK
     p_tp.alignment = PP_ALIGN.CENTER
 
-    # Right SIH Brain Bulb Watermark (Centered)
+    # Right SIH Brain Bulb Watermark (Centered background)
     if os.path.exists(bulb_png):
         slide1.shapes.add_picture(bulb_png, Inches(5.2), Inches(1.5), width=Inches(3.8))
 
@@ -130,24 +126,14 @@ def build_presentation(is_hackastra=False):
     tf_m = meta_box.text_frame
     tf_m.word_wrap = True
 
-    if is_hackastra:
-        items = [
-            ("• Problem Statement ID –", "SIH25108", True),
-            ("• Problem Statement Title-", "Development of AI-powered FRA Atlas and WebGIS-based Decision Support System (DSS) for Integrated Monitoring of Forest Rights Act (FRA) Implementation.\n(States to be concentrated: Madhya Pradesh, Tripura , Odisha, Telangana)", False),
-            ("• Theme-", "Miscellaneous", True),
-            ("• PS Category- ", "Software", True),
-            ("• Team ID- ", "57385", False),
-            ("• Team Name- ", "Team Hackastra", False)
-        ]
-    else:
-        items = [
-            ("• Problem Statement ID –", "SIH26197", True),
-            ("• Problem Statement Title-", "Development of AI-powered Digital Heritage Repository & WebGIS-based Decision Support System (DSS) for Cultural Preservation, Provenance & Living Traditions.\n(States to be concentrated: Madhya Pradesh, Tripura , Odisha, Telangana, Rajasthan)", False),
-            ("• Theme-", "Miscellaneous", True),
-            ("• PS Category- ", "Software", True),
-            ("• Team ID- ", "57385", False),
-            ("• Team Name- ", "Team VirasatX", False)
-        ]
+    items = [
+        ("• Problem Statement ID –", "SIH25108", True),
+        ("• Problem Statement Title-", "Development of AI-powered FRA Atlas and WebGIS-based Decision Support System (DSS) for Integrated Monitoring of Forest Rights Act (FRA) Implementation.\n(States to be concentrated: Madhya Pradesh, Tripura , Odisha, Telangana)", False),
+        ("• Theme-", "Miscellaneous", True),
+        ("• PS Category- ", "Software", True),
+        ("• Team ID- ", "57385", False),
+        ("• Team Name- ", "Team Hackastra", False)
+    ]
 
     for idx, (label, val, val_under) in enumerate(items):
         p = tf_m.paragraphs[0] if idx == 0 else tf_m.add_paragraph()
@@ -180,7 +166,7 @@ def build_presentation(is_hackastra=False):
     # SLIDE 2: IDEA TITLE
     # =========================================================================
     slide2 = prs.slides.add_slide(blank_layout)
-    add_common_header(slide2, "IDEA TITLE", 2)
+    add_common_header(slide2, "IDEA TITLE", 2, "Hackastra")
 
     # Left Sharp Box
     add_sharp_border(slide2, 0.45, 1.08, 6.0, 5.75)
@@ -196,30 +182,17 @@ def build_presentation(is_hackastra=False):
     p_s2_head.font.color.rgb = BLUE_HEADING
     p_s2_head.space_after = Pt(6)
 
-    if is_hackastra:
-        sol_bullets = [
-            ("NGO Digital Aid :", "Teach Gram Sabhas and communities apps, IVR, and GIS tools."),
-            ("Digital Witness & Testimony:", "Voice and video records stored securely as valid proof."),
-            ("Title Insurance / Digital Patta :", "Ensures authenticity with secure 7/12 land record entry."),
-            ("Grievance Resolution & Illegal Alerts:", "Efficient FRA grievance handling and unauthorized land encroachment warnings."),
-            ("AI Disciplinary Dashboard :", "Suggests actions and tracks officer accountability."),
-            ("Analytics-Driven Officer Monitoring:", "Tracks verification time, claim outcomes, and grievances reported."),
-            ("Interactive FRA Web-GIS Atlas:", "Dynamic platform for exploring forest rights and assets."),
-            ("AI Disputes Mediator:", "Resolving conflicts within existing legal frameworks."),
-            ("GI Tagging and E-Signature :", "To preserve cultural heritage safeguard traditional products and paperless approval .")
-        ]
-    else:
-        sol_bullets = [
-            ("Unified Digital Heritage Portal :", "Comprehensive repository linking monuments, artifacts, manuscripts, and living traditions."),
-            ("Digital Witness & Testimony:", "Oral histories, artisan testimonies, and video records stored securely as valid proof."),
-            ("Title Insurance / Digital Patta :", "Ensures authenticity with secure blockchain-backed provenance and artifact registration."),
-            ("Grievance Resolution & Illegal Alerts:", "Efficient heritage grievance handling and unauthorized land encroachment warnings."),
-            ("AI Disciplinary Dashboard :", "Suggests actions and tracks officer and institutional cataloging accountability."),
-            ("Analytics-Driven Officer Monitoring:", "Tracks verification time, claim outcomes, and conservation grievances reported."),
-            ("Interactive Virasat Web-GIS Atlas:", "Dynamic platform for exploring heritage assets, ancient corridors, and excavation sites."),
-            ("AI Disputes Mediator:", "Resolving conflicts and contested claims within existing legal frameworks."),
-            ("GI Tagging and E-Signature :", "To preserve cultural heritage safeguard traditional products and paperless approval .")
-        ]
+    sol_bullets = [
+        ("NGO Digital Aid :", "Teach Gram Sabhas and communities apps, IVR, and GIS tools."),
+        ("Digital Witness & Testimony:", "Voice and video records stored securely as valid proof."),
+        ("Title Insurance / Digital Patta :", "Ensures authenticity with secure 7/12 land record entry."),
+        ("Grievance Resolution & Illegal Alerts:", "Efficient FRA grievance handling and unauthorized land encroachment warnings."),
+        ("AI Disciplinary Dashboard :", "Suggests actions and tracks officer accountability."),
+        ("Analytics-Driven Officer Monitoring:", "Tracks verification time, claim outcomes, and grievances reported."),
+        ("Interactive FRA Web-GIS Atlas:", "Dynamic platform for exploring forest rights and assets."),
+        ("AI Disputes Mediator:", "Resolving conflicts within existing legal frameworks."),
+        ("GI Tagging and E-Signature :", "To preserve cultural heritage safeguard traditional products and paperless approval .")
+    ]
 
     for title, desc in sol_bullets:
         p = tf2_l.add_paragraph()
@@ -247,7 +220,7 @@ def build_presentation(is_hackastra=False):
     # SLIDE 3: TECHNICAL APPROACH
     # =========================================================================
     slide3 = prs.slides.add_slide(blank_layout)
-    add_common_header(slide3, "TECHNICAL APPROACH", 3)
+    add_common_header(slide3, "TECHNICAL APPROACH", 3, "Hackastra")
 
     # Left Top Box: 10 Bullets
     add_sharp_border(slide3, 0.45, 1.08, 6.0, 2.85)
@@ -287,8 +260,8 @@ def build_presentation(is_hackastra=False):
 
     # Left Bottom Box: UI Screenshot
     add_sharp_border(slide3, 0.45, 4.05, 6.0, 2.78)
-    if os.path.exists(ui_img):
-        slide3.shapes.add_picture(ui_img, Inches(0.48), Inches(4.08), width=Inches(5.94), height=Inches(2.45))
+    if os.path.exists(fra_ui):
+        slide3.shapes.add_picture(fra_ui, Inches(0.48), Inches(4.08), width=Inches(5.94), height=Inches(2.45))
 
     cap_box = slide3.shapes.add_textbox(Inches(0.5), Inches(6.55), Inches(5.9), Inches(0.25))
     p_c = cap_box.text_frame.paragraphs[0]
@@ -307,7 +280,7 @@ def build_presentation(is_hackastra=False):
     # SLIDE 4: FEASIBILITY AND VIABILITY
     # =========================================================================
     slide4 = prs.slides.add_slide(blank_layout)
-    add_common_header(slide4, "FEASIBILITY AND VIABILITY", 4)
+    add_common_header(slide4, "FEASIBILITY AND VIABILITY", 4, "Hackastra")
 
     # Left Box: Feasibility
     add_sharp_border(slide4, 0.45, 1.08, 6.0, 5.75)
@@ -322,15 +295,6 @@ def build_presentation(is_hackastra=False):
     p_f.font.bold = True
     p_f.font.color.rgb = BLUE_HEADING
     p_f.space_after = Pt(4)
-
-    if is_hackastra:
-        stakeholder_title = "2. Stakeholder Support and Effective FRA Implementation:"
-        stakeholder_sub = "Ministries and NGOs already support FRA schemes."
-        consent_sub = "FRA holders’ informed consent required in all processes."
-    else:
-        stakeholder_title = "2. Stakeholder Support and Effective Heritage Implementation:"
-        stakeholder_sub = "Ministries and NGOs already support cultural preservation schemes."
-        consent_sub = "Artisan and community informed consent required in all processes."
 
     feas_tree = [
         ("1. Technical Feasibility:", [
@@ -348,8 +312,8 @@ def build_presentation(is_hackastra=False):
                 "Government data exists, needs proper connection.",
                 "Staff need basic training through short workshops."
             ]),
-            (stakeholder_title, [
-                stakeholder_sub,
+            ("2. Stakeholder Support and Effective FRA Implementation:", [
+                "Ministries and NGOs already support FRA schemes.",
                 "System strengthens efforts, not replacing existing work."
             ])
         ]),
@@ -359,7 +323,7 @@ def build_presentation(is_hackastra=False):
                 "Blockchain and encryption safeguard sensitive user data."
             ]),
             ("2. Consent Mechanism:", [
-                consent_sub,
+                "FRA holders’ informed consent required in all processes.",
                 "Real-time feedback enables secure two-way communication."
             ])
         ])
@@ -423,10 +387,10 @@ def build_presentation(is_hackastra=False):
         ("2. Social Viability:", [
             ("1. Empowers Communities & Improves Scheme Access:", [
                 "Provides transparency, secure records, better documentation.",
-                "Directly benefits FRA holders through scheme access." if is_hackastra else "Directly benefits artisans & custodians through scheme access."
+                "Directly benefits FRA holders through scheme access."
             ]),
             ("2. Reduces Conflict & Promotes Stronger Inclusion:", [
-                "Verified records, alerts reduce frequent land disputes." if is_hackastra else "Verified records, alerts reduce frequent attribution disputes.",
+                "Verified records, alerts reduce frequent land disputes.",
                 "Mobile updates, two-way communication improve engagement."
             ])
         ]),
@@ -476,7 +440,7 @@ def build_presentation(is_hackastra=False):
     # SLIDE 5: IMPACT AND BENEFITS
     # =========================================================================
     slide5 = prs.slides.add_slide(blank_layout)
-    add_common_header(slide5, "IMPACT AND BENEFITS", 5)
+    add_common_header(slide5, "IMPACT AND BENEFITS", 5, "Hackastra")
 
     # Left Box: Benefits
     add_sharp_border(slide5, 0.45, 1.08, 6.0, 5.75)
@@ -494,12 +458,12 @@ def build_presentation(is_hackastra=False):
 
     ben_tree = [
         ("1.Social Benefits:", [
-            "Digital platform enables communities with land rights tracking." if is_hackastra else "Digital platform enables communities with cultural rights tracking.",
+            "Digital platform enables communities with land rights tracking.",
             "IVR helpline, e-learning ensure inclusive literacy access.",
             "Transparent records, video testimonies reduce conflict, build trust."
         ]),
         ("2. Environmental Benefits:", [
-            "Sustainable forest use by recognized communities." if is_hackastra else "Sustainable site usage by recognized communities & travelers.",
+            "Sustainable forest use by recognized communities.",
             "Conservation through community stewardship.",
             "GI Tagging preserves cultural heritage & traditional products."
         ]),
@@ -555,20 +519,20 @@ def build_presentation(is_hackastra=False):
     p_imp.space_after = Pt(4)
 
     imp_tree = [
-        ("1.Secure Land Rights & Transparency:" if is_hackastra else "1.Secure Cultural Rights & Transparency:", [
+        ("1.Secure Land Rights & Transparency:", [
             "Communities track claims, reducing corruption and fraud.",
             "Digital patta ensures authenticity in land ownership records.",
             "Builds trust between citizens and government authorities."
         ]),
-        ("2. Forest Protection & Conservation with AI:" if is_hackastra else "2. Heritage Protection & Conservation with AI:", [
+        ("2. Forest Protection & Conservation with AI:", [
             "AI monitors land to prevent illegal encroachment.",
             "Conserves biodiversity and safeguards natural resources.",
-            "Promotes sustainable, community-driven forest management." if is_hackastra else "Promotes sustainable, community-driven cultural preservation."
+            "Promotes sustainable, community-driven forest management."
         ]),
         ("3. Boost Livelihoods & Local Development:", [
             "Resource planning improves incomes and rural economy.",
             "GI tagging protects heritage, boosts local products.",
-            "FRA enables fair access to welfare schemes." if is_hackastra else "VirasatX enables fair access to welfare schemes."
+            "FRA enables fair access to welfare schemes."
         ]),
         ("4. Digital, Eco-Friendly & Cost Effective:", [
             "Reduces paperwork,ensuring greener, eco-friendly governance.",
@@ -606,39 +570,18 @@ def build_presentation(is_hackastra=False):
     # SLIDE 6: RESEARCH AND REFERENCES
     # =========================================================================
     slide6 = prs.slides.add_slide(blank_layout)
-    add_common_header(slide6, "RESEARCH AND REFERENCES", 6)
+    add_common_header(slide6, "RESEARCH AND REFERENCES", 6, "Hackastra")
 
     add_sharp_border(slide6, 0.45, 1.08, 12.45, 5.75)
     s6_box = slide6.shapes.add_textbox(Inches(0.6), Inches(1.18), Inches(12.15), Inches(5.5))
     tf6 = s6_box.text_frame
     tf6.word_wrap = True
 
-    if is_hackastra:
-        refs = [
-            ("1. FRA: ", "The Forest Rights Act (FRA), 2006 gives rights to forest-dwelling and tribal people, but challenges in implementation remain.\nhttps://tribal.nic.in/FRA.aspx\nhttps://mpvanmitra.mkcl.org/hi"),
-            ("2. Best Practices for Web Security: ", "This guide outlines key web security measures to safeguard user information using Blockchain Technology.\nhttps://owasp.org/www-project-blockchain-appsec-standard/"),
-            ("3. The Wildlife Protection Act: ", "1972 aims to protect wild animals, birds, plants, and their habitats.\nhttps://share.google/F3sPygTbDmIslAmAd")
-        ]
-        lead_text = "To enable smooth implementation and integration of the FRA Atlas System, the following contacts serve as official state-level resources for communication, data coordination, and support:"
-        contacts = [
-            ("4. Madhya Pradesh: ", "dirtadp@mp.gov.in"),
-            ("5. Odisha: ", "https://stsc.odisha.gov.in/acts-policies-guidelines/scheduled-tribes-and-other-traditional-forest-dwellers"),
-            ("6. Tripura: ", "https://forest.tripura.gov.in/"),
-            ("7. Telangana: ", "https://forestrights.telangana.gov.in/")
-        ]
-    else:
-        refs = [
-            ("1. AMASR Act & NMM: ", "The Ancient Monuments and Archaeological Sites and Remains Act, 1958 and National Mission on Manuscripts (NMM) provide statutory framework for heritage protection.\nhttps://asi.nic.in/\nhttps://www.namami.gov.in/"),
-            ("2. Best Practices for Web Security: ", "OWASP Top 10 API Security & Blockchain Verification Standard for Immutable Provenance.\nhttps://owasp.org/www-project-blockchain-appsec-standard/"),
-            ("3. The Antiquities and Art Treasures Act: ", "1972 aims to regulate export trade in antiquities and art treasures, preventing illicit smuggling and unauthorized sales.\nhttps://asi.nic.in/antiquities-art-treasures-act/")
-        ]
-        lead_text = "To enable smooth implementation and integration of the Virasat Atlas System, the following contacts serve as official state-level resources for communication, data coordination, and support:"
-        contacts = [
-            ("4. Archaeological Survey of India (ASI): ", "contact.asi@gov.in"),
-            ("5. National Mission on Manuscripts (IGNCA): ", "director.nmm@ignca.nic.in"),
-            ("6. Ministry of Culture, Govt. of India: ", "https://www.indiaculture.gov.in/"),
-            ("7. National Portal of India (Cultural Heritage): ", "https://www.india.gov.in/topics/art-culture")
-        ]
+    refs = [
+        ("1. FRA: ", "The Forest Rights Act (FRA), 2006 gives rights to forest-dwelling and tribal people, but challenges in implementation remain.\nhttps://tribal.nic.in/FRA.aspx\nhttps://mpvanmitra.mkcl.org/hi"),
+        ("2. Best Practices for Web Security: ", "This guide outlines key web security measures to safeguard user information using Blockchain Technology.\nhttps://owasp.org/www-project-blockchain-appsec-standard/"),
+        ("3. The Wildlife Protection Act: ", "1972 aims to protect wild animals, birds, plants, and their habitats.\nhttps://share.google/F3sPygTbDmIslAmAd")
+    ]
 
     for idx, (head, body) in enumerate(refs):
         p = tf6.paragraphs[0] if idx == 0 else tf6.add_paragraph()
@@ -660,10 +603,17 @@ def build_presentation(is_hackastra=False):
     p_lead = tf6.add_paragraph()
     p_lead.space_after = Pt(8)
     r_l = p_lead.add_run()
-    r_l.text = lead_text
+    r_l.text = "To enable smooth implementation and integration of the FRA Atlas System, the following contacts serve as official state-level resources for communication, data coordination, and support:"
     r_l.font.name = "Arial"
     r_l.font.size = Pt(11)
     r_l.font.color.rgb = BLACK
+
+    contacts = [
+        ("4. Madhya Pradesh: ", "dirtadp@mp.gov.in"),
+        ("5. Odisha: ", "https://stsc.odisha.gov.in/acts-policies-guidelines/scheduled-tribes-and-other-traditional-forest-dwellers"),
+        ("6. Tripura: ", "https://forest.tripura.gov.in/"),
+        ("7. Telangana: ", "https://forestrights.telangana.gov.in/")
+    ]
 
     for head, val in contacts:
         p_c = tf6.add_paragraph()
@@ -682,19 +632,9 @@ def build_presentation(is_hackastra=False):
         r_v.font.size = Pt(11)
         r_v.font.color.rgb = BLUE_HEADING
 
-    return prs
+    prs.save(output_pptx_path)
+    print(f"Generated 100% Exact Hackastra PPTX at: {output_pptx_path}")
 
 if __name__ == "__main__":
-    cur_dir = os.path.dirname(os.path.abspath(__file__))
-    
-    # 1. Generate VirasatX Deck
-    virasat_path = os.path.join(cur_dir, "SIH2026_VirasatX_Idea_Submission.pptx")
-    prs_v = build_presentation(is_hackastra=False)
-    prs_v.save(virasat_path)
-    print(f"Generated VirasatX PPTX: {virasat_path}")
-
-    # 2. Generate Hackastra Deck (100% exact replica)
-    hack_path = os.path.join(cur_dir, "SIH_Hackastra_Exact_Submission.pptx")
-    prs_h = build_presentation(is_hackastra=True)
-    prs_h.save(hack_path)
-    print(f"Generated Hackastra PPTX: {hack_path}")
+    out_path = os.path.join(os.path.dirname(os.path.abspath(__file__)), "SIH_Hackastra_Exact_Submission.pptx")
+    build_hackastra_verbatim_deck(out_path)

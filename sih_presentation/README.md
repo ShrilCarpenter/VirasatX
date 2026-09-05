@@ -1,22 +1,20 @@
-# 🏛️ Smart India Hackathon 2026 — Official Idea Submission Deck
+# 🏛️ Smart India Hackathon — Submission Presentation Hub
 
-> **Theme**: Heritage & Culture (Problem Statement ID: `SIH26197`)  
-> **Team Name**: VirasatX  
-> **PS Category**: Software  
-> **Template**: 100% strict 1:1 match with the official SIH 2026 6-Slide Idea Submission Template.
+This repository contains the exact 1:1 Smart India Hackathon submission decks formatted precisely like the reference presentation (**Team Hackastra / `2_sih.pdf`**), down to the sharp 2px black-bordered rectangular cards, centered watermark, top badges, and layout geometry.
 
 ---
 
 ## 📁 Submission Files in this Folder
 
-| File | Format | Purpose |
+| File | Format | Description |
 | :--- | :--- | :--- |
-| **`SIH2026_VirasatX_Idea_Submission.pdf`** | **PDF** | **Official Submission File** — Direct upload to the SIH portal. Exactly 6 slides, 16:9 widescreen, clean human formatting. |
-| **`SIH2026_VirasatX_Idea_Submission.pptx`** | **PowerPoint (PPTX)** | **Editable Presentation** — Standard Microsoft PowerPoint file with exact fonts, oval badges, logo placements, and bullet hierarchy. |
-| **`index.html`** | **HTML Slide Deck** | Open in any web browser to view, present, or print to PDF. |
-| **`slide_1.png` to `slide_6.png`** | **PNG** | Exact rendered image preview of each slide. |
-| **`generate_presentation.py`** | **Python Script** | Script to generate the `.pptx` PowerPoint file. |
-| **`render_pdf_and_images.py`** | **Python Script** | Script to generate `.pdf` and slide `.png` screenshots. |
+| **[`SIH2026_VirasatX_Idea_Submission.pdf`](file:///c:/Users/Shril/Desktop/VirasatX/sih_presentation/SIH2026_VirasatX_Idea_Submission.pdf)** | **PDF** | **VirasatX Submission Deck** — Exact 1:1 Hackastra layout adapted for VirasatX (`SIH26197`), 6 slides, vector diagrams, sharp 2px black borders. |
+| **[`SIH2026_VirasatX_Idea_Submission.pptx`](file:///c:/Users/Shril/Desktop/VirasatX/sih_presentation/SIH2026_VirasatX_Idea_Submission.pptx)** | **PPTX** | **VirasatX Native Editable PowerPoint** — Full native slides with exact fonts, badges, sharp boxes, and embedded vector diagrams. |
+| **[`SIH_Hackastra_Exact_Submission.pdf`](file:///c:/Users/Shril/Desktop/VirasatX/sih_presentation/SIH_Hackastra_Exact_Submission.pdf)** | **PDF** | **Team Hackastra Reference Replica** — 100% verbatim duplicate of the reference PDF (`SIH25108`), line-by-line and box-by-box. |
+| **[`SIH_Hackastra_Exact_Submission.pptx`](file:///c:/Users/Shril/Desktop/VirasatX/sih_presentation/SIH_Hackastra_Exact_Submission.pptx)** | **PPTX** | **Team Hackastra Native Editable PowerPoint** — 100% verbatim editable PowerPoint deck of the reference presentation. |
+| **[`index.html`](file:///c:/Users/Shril/Desktop/VirasatX/sih_presentation/index.html)** | **HTML Hub** | Interactive presentation viewer with instant toggle between VirasatX and Hackastra decks, download buttons, and print support. |
+| **`slide_1.png` to `slide_6.png`** | **PNG** | High-resolution rendered slide images for VirasatX. |
+| **`hackastra_slide_1.png` to `hackastra_slide_6.png`** | **PNG** | High-resolution rendered slide images for Hackastra. |
 
 ---
 
