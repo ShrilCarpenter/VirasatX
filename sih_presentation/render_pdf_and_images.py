@@ -33,6 +33,18 @@ def render_both_decks():
             v_images.append(img_path)
             print(f"Rendered VirasatX Slide {idx}: {img_path}")
 
+        # Screenshot VirasatX diagrams for PPTX embedding
+        img_dir = os.path.join(cur_dir, "images")
+        fc_el = page.query_selector("#deck-virasatx #v-slide-2 svg.diagram-svg")
+        if fc_el:
+            fc_el.screenshot(path=os.path.join(img_dir, "virasatx_flowchart.png"))
+            print("Updated virasatx_flowchart.png")
+
+        arch_el = page.query_selector("#deck-virasatx #v-slide-3 svg.diagram-svg")
+        if arch_el:
+            arch_el.screenshot(path=os.path.join(img_dir, "virasatx_arch.png"))
+            print("Updated virasatx_arch.png")
+
         # Compile into VirasatX PDF
         doc_v = pymupdf.open()
         for img_path in v_images:
