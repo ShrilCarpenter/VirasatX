@@ -157,9 +157,9 @@
       position: absolute;
       top: 18px;
       left: 32px;
-      width: 200px;
-      height: 72px;
-      border: 2.2px solid #000000;
+      width: 170px;
+      height: 74px;
+      border: 2px solid #584B6F;
       border-radius: 50%;
       display: flex;
       flex-direction: column;
@@ -170,7 +170,7 @@
     }
 
     .header-team-oval span {
-      font-size: 21px;
+      font-size: 20px;
       font-weight: bold;
       color: #000000;
       line-height: 1.15;
@@ -197,6 +197,23 @@
       z-index: 10;
     }
 
+    /* SIH Official Exact Center Title (Serif, Bold, No Box) */
+    .header-center-title {
+      position: absolute;
+      top: 22px;
+      left: 50%;
+      transform: translateX(-50%);
+      font-family: "Times New Roman", Times, serif;
+      font-size: 46px;
+      font-weight: bold;
+      letter-spacing: 0.5px;
+      text-transform: uppercase;
+      color: #000000;
+      z-index: 10;
+      white-space: nowrap;
+      text-align: center;
+    }
+
     .header-sih-logo {
       position: absolute;
       top: 14px;
@@ -216,6 +233,26 @@
       font-weight: bold;
       color: #000000;
       z-index: 20;
+    }
+
+    /* SIH Official Blue Footer Bar */
+    .sih-footer-bar {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      height: 38px;
+      background: #0070C0;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 0 36px;
+      color: #FFFFFF;
+      font-size: 19px;
+      font-weight: bold;
+      font-family: Arial, sans-serif;
+      z-index: 25;
+      box-sizing: border-box;
     }
 
     /* Panels with Sharp Black Borders */
@@ -276,14 +313,15 @@
 
     .s1-center-title {
       position: absolute;
-      top: 155px;
+      top: 115px;
       left: 0;
       width: 100%;
       text-align: center;
+      font-family: "Times New Roman", Times, serif;
       font-size: 50px;
-      font-weight: 900;
+      font-weight: bold;
       color: #000000;
-      letter-spacing: 1.5px;
+      letter-spacing: 0.5px;
     }
 
     .s1-watermark {
@@ -382,7 +420,7 @@
   <div class="deck-container">
 
     <!-- #####################################################################
-         DECK 1: VIRASATX (CULTURAL HERITAGE SIH26197 — 100% HACKASTRA FORMAT)
+         DECK 1: VIRASATX (CULTURAL HERITAGE SIH26197 — EXACT SIH 2026 FORMAT)
          ##################################################################### -->
     <div class="deck-virasatx active-deck" id="deck-virasatx">
 
@@ -391,45 +429,43 @@
         <div class="s1-hackathon-title">SMART INDIA HACKATHON 2026</div>
         <img src="sih_logo.png" class="header-sih-logo" style="top: 25px; right: 50px; height: 90px;" alt="SIH Logo" />
         
-        <div class="s1-center-title">VIRASATX</div>
-        <div style="position: absolute; top: 220px; left: 0; width: 100%; text-align: center; font-size: 24px; font-weight: bold; color: #1E293B; letter-spacing: 0.5px;">India’s Heritage, Understood, Preserved &amp; Experienced</div>
-        <img src="sih_bulb.png" class="s1-watermark" alt="SIH Watermark" />
+        <div class="s1-center-title">TITLE PAGE</div>
 
-        <div class="s1-meta-list" style="top: 275px; gap: 18px;">
-          <div class="s1-meta-item highlight">
-            • <strong>Problem Statement ID –<u>SIH26197</u></strong>
+        <!-- Official Hexagonal Backdrop and Bulb Graphic on Right Side -->
+        <div style="position: absolute; right: 100px; top: 165px; width: 620px; height: 820px; display: flex; align-items: center; justify-content: center; z-index: 1;">
+          <svg viewBox="0 0 500 620" style="position: absolute; width: 100%; height: 100%;">
+            <polygon points="250,15 480,150 480,470 250,605 20,470 20,150" fill="#F1F5F9" stroke="#E2E8F0" stroke-width="2.5" />
+            <polygon points="0,310 45,280 90,310 90,360 45,390 0,360" fill="#E2E8F0" opacity="0.8"/>
+          </svg>
+          <img src="sih_bulb.png" style="width: 500px; height: auto; position: relative; z-index: 2;" alt="SIH Brain Bulb" />
+        </div>
+
+        <!-- Left Side: Exact 6 Official Pointers from Template -->
+        <div class="s1-meta-list" style="position: absolute; top: 310px; left: 70px; max-width: 1040px; display: flex; flex-direction: column; gap: 36px; z-index: 2; font-family: Arial, sans-serif;">
+          <div style="font-size: 28px; line-height: 1.4; color: #000000;">
+            • <strong>Problem Statement ID – <u>SIH26197</u></strong>
           </div>
 
-          <div class="s1-meta-item">
-            • <strong>Problem Statement-</strong> Student Innovation—Ideas that showcase the rich cultural heritage and traditions of India.
+          <div style="font-size: 28px; line-height: 1.4; color: #000000;">
+            • <strong>Problem Statement Title-</strong> Student Innovation—Ideas that showcase the rich cultural heritage and traditions of India
           </div>
 
-          <div class="s1-meta-item">
+          <div style="font-size: 28px; line-height: 1.4; color: #000000;">
             • <strong>Theme-</strong> <u>Heritage &amp; Culture</u>
           </div>
 
-          <div class="s1-meta-item">
+          <div style="font-size: 28px; line-height: 1.4; color: #000000;">
             • <strong>PS Category-</strong> <u>Software</u>
           </div>
 
-          <div class="s1-meta-item">
-            • <strong>Organization-</strong> AICTE
-          </div>
-
-          <div class="s1-meta-item" style="max-width: 1300px;">
-            • <strong>Project Pitch-</strong> “An AI-powered digital heritage ecosystem that connects monuments, artifacts, traditions, places, people and knowledge into one discoverable cultural experience.”
-          </div>
-
-          <div class="s1-meta-item">
+          <div style="font-size: 28px; line-height: 1.4; color: #000000;">
             • <strong>Team ID-</strong> 57385
           </div>
 
-          <div class="s1-meta-item">
-            • <strong>Team Name-</strong> Team VirasatX
+          <div style="font-size: 28px; line-height: 1.4; color: #000000;">
+            • <strong>Team Name (Registered on portal)</strong> Team VirasatX
           </div>
         </div>
-
-        <div class="slide-number">1</div>
       </div>
 
       <!-- SLIDE 2: IDEA TITLE -->
@@ -438,182 +474,172 @@
           <span>Team</span>
           <span>VirasatX</span>
         </div>
-        <div class="header-center-pill">IDEA TITLE</div>
+        <div class="header-center-title">IDEA TITLE: VIRASATX</div>
         <img src="sih_logo.png" class="header-sih-logo" alt="SIH Logo" />
 
-        <!-- Left Sharp Box -->
-        <div class="panel-box" style="left: 20px; top: 96px; width: 935px; height: 948px; padding: 22px 26px;">
-          <div class="panel-blue-title">❖ Proposed Solution:</div>
+        <!-- Official Subheading -->
+        <div style="position: absolute; left: 45px; top: 104px; font-size: 30px; font-weight: bold; color: #1F497D; font-family: Arial, sans-serif;">
+          <u>❖Proposed Solution (Describe your Idea/Solution/Prototype)</u>
+        </div>
 
-          <div class="bullet-row">
-            <div class="bullet-row-header">• <span class="green-title">Fragmented Knowledge &amp; Passive Discovery :</span></div>
-            <div class="bullet-desc">Heritage information is distributed across monuments, archives, museums and disconnected sources; digital heritage is often presented as isolated information.</div>
+        <!-- Left Column: The 3 Mandatory Pointers with rich points -->
+        <div style="position: absolute; left: 45px; top: 160px; width: 910px; font-family: Arial, sans-serif;">
+          <!-- Pointer 1 -->
+          <div style="font-size: 22px; font-weight: bold; color: #000000; margin-bottom: 6px;">
+            • Detailed explanation of the proposed solution
+          </div>
+          <div style="font-size: 17.5px; line-height: 1.42; color: #1E293B; margin-left: 24px; margin-bottom: 5px;">
+            • <strong>Unified Cultural Ecosystem:</strong> VirasatX connects monuments, 3D artifacts, living traditions, timelines, and regional geography into one cohesive, discoverable experience.
+          </div>
+          <div style="font-size: 17.5px; line-height: 1.42; color: #1E293B; margin-left: 24px; margin-bottom: 5px;">
+            • <strong>Multi-Modal Exploration:</strong> Interactive Three.js WebGL 3D artifact studio, 11-period chronological timeline, Leaflet GIS heritage mapping, and living artisan craft profiles.
+          </div>
+          <div style="font-size: 17.5px; line-height: 1.42; color: #1E293B; margin-left: 24px; margin-bottom: 14px;">
+            • <strong>Google Gemini Multimodal AI:</strong> Contextual conversational cultural Q&amp;A and visual iconography AI analyzing motifs, mudras, and architectural orders with fact-grounded guardrails.
           </div>
 
-          <div class="bullet-row">
-            <div class="bullet-row-header">• <span class="green-title">Low Discoverability &amp; Context Gap :</span></div>
-            <div class="bullet-desc">Traditional crafts, artisans and living heritage are hard to discover; understanding wider connections to history, place and community is fragmented.</div>
+          <!-- Pointer 2 -->
+          <div style="font-size: 22px; font-weight: bold; color: #000000; margin-bottom: 6px;">
+            • How it addresses the problem
+          </div>
+          <div style="font-size: 17.5px; line-height: 1.42; color: #1E293B; margin-left: 24px; margin-bottom: 5px;">
+            • <strong>Synthesizes Fragmented Archives:</strong> Overcomes isolated, disconnected heritage archives by linking assets across historical epochs and geographic regions into an intuitive discovery graph.
+          </div>
+          <div style="font-size: 17.5px; line-height: 1.42; color: #1E293B; margin-left: 24px; margin-bottom: 5px;">
+            • <strong>Bridges Cultural Context Gap:</strong> Transitions users from passive browsing to deep civilizational context (Dynasty → Period → Artisan Technique → Architectural Symbolism).
+          </div>
+          <div style="font-size: 17.5px; line-height: 1.42; color: #1E293B; margin-left: 24px; margin-bottom: 14px;">
+            • <strong>Elevates Endangered Traditions:</strong> Provides dedicated digital visibility and direct patronage pathways for endangered craft forms, folklore, and master artisans.
           </div>
 
-          <div class="bullet-row">
-            <div class="bullet-row-header">• <span class="green-title">Proposed Solution — Unified Discovery Platform :</span></div>
-            <div class="bullet-desc">VirasatX brings these discovery pathways together through one interconnected digital heritage experience.</div>
+          <!-- Pointer 3 -->
+          <div style="font-size: 22px; font-weight: bold; color: #000000; margin-bottom: 6px;">
+            • Innovation and uniqueness of the solution
           </div>
-
-          <div class="bullet-row">
-            <div class="bullet-row-header">• <span class="green-title">Heritage Collections &amp; Artifact Exploration :</span></div>
-            <div class="bullet-desc">Detailed digital exploration of cultural artifacts, contextual narratives, and historical background.</div>
+          <div style="font-size: 17.5px; line-height: 1.42; color: #1E293B; margin-left: 24px; margin-bottom: 5px;">
+            • <strong>Context-First Philosophy:</strong> “VirasatX connects the cultural context around heritage — not just isolated artifacts or 3D models.”
           </div>
-
-          <div class="bullet-row">
-            <div class="bullet-row-header">• <span class="green-title">Chronological Cultural Timeline :</span></div>
-            <div class="bullet-desc">Chronological exploration of Indian heritage across major historical periods and epochs.</div>
-          </div>
-
-          <div class="bullet-row">
-            <div class="bullet-row-header">• <span class="green-title">Interactive Heritage Map :</span></div>
-            <div class="bullet-desc">Geographical exploration linking monuments, regional heritage sites, and cultural traditions.</div>
-          </div>
-
-          <div class="bullet-row">
-            <div class="bullet-row-header">• <span class="green-title">Living Traditions &amp; Artisan Discovery :</span></div>
-            <div class="bullet-desc">Dedicated discovery pathway for traditional crafts, artisans, communities, and cultural practices.</div>
-          </div>
-
-          <div class="bullet-row">
-            <div class="bullet-row-header">• <span class="green-title">AI Heritage Guide &amp; Visual Iconography AI :</span></div>
-            <div class="bullet-desc">AI-assisted heritage guidance for contextual exploration and AI-assisted visual iconography discovery.</div>
-          </div>
-
-          <div class="bullet-row">
-            <div class="bullet-row-header">• <span class="green-title">Manuscripts &amp; Structured Learning :</span></div>
-            <div class="bullet-desc">Dedicated exploration of textual and inscriptional heritage with structured learning and responsible discovery.</div>
-          </div>
-
-          <div class="bullet-row">
-            <div class="bullet-row-header">• <span class="green-title">Unique Value Proposition (UVP) :</span></div>
-            <div class="bullet-desc">Artifact → Story → Period → Place → Tradition → Community → Learning → Responsible Experience.</div>
-          </div>
-
-          <div class="bullet-row">
-            <div class="bullet-row-header">• <span class="green-title">Cultural Context Focus :</span></div>
-            <div class="bullet-desc">“VirasatX connects the cultural context around heritage — not just the heritage object itself.”</div>
+          <div style="font-size: 17.5px; line-height: 1.42; color: #1E293B; margin-left: 24px; margin-bottom: 5px;">
+            • <strong>Interconnected Discovery Chain:</strong> Artifact → Story → Period → Place → Tradition → Community → Active Learning &amp; Patronage.
           </div>
         </div>
 
-        <!-- Right Sharp Box: Flowchart -->
-        <div class="panel-box" style="right: 20px; top: 96px; width: 935px; height: 948px; padding: 16px;">
-          <svg class="diagram-svg" viewBox="0 0 900 916" xmlns="http://www.w3.org/2000/svg">
+        <!-- Right Column: Flowchart SVG Container -->
+        <div style="position: absolute; right: 45px; top: 155px; width: 890px; height: 865px; border: 1.5px solid #CBD5E1; border-radius: 8px; background: #FFFFFF; padding: 12px; box-shadow: 0 4px 12px rgba(0,0,0,0.03);">
+          <svg class="diagram-svg" viewBox="0 0 880 830" xmlns="http://www.w3.org/2000/svg">
             <defs>
-              <marker id="v-arrow" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
-                <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#000" />
+              <marker id="v-sol-arrow" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+                <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#1B365D" />
               </marker>
             </defs>
 
-            <!-- Login Box -->
-            <rect x="360" y="15" width="180" height="58" fill="#FFF2CC" stroke="#000" stroke-width="1.8" />
-            <text x="450" y="51" text-anchor="middle" font-size="22" font-weight="bold" fill="#000">Login</text>
+            <!-- 1. Top User Discovery Layer -->
+            <rect x="150" y="12" width="580" height="65" rx="8" fill="#F8FAFC" stroke="#1B365D" stroke-width="2" />
+            <text x="440" y="38" text-anchor="middle" font-size="19" font-weight="bold" fill="#1B365D">Public / Students / Cultural Researchers / Tourists</text>
+            <text x="440" y="60" text-anchor="middle" font-size="14" fill="#475569">Universal Zero-Install Access (Mobile &amp; Desktop Web Browsers)</text>
 
-            <path d="M 450 73 L 450 98 L 175 98 L 175 125" fill="none" stroke="#000" stroke-width="1.8" marker-end="url(#v-arrow)" />
-            <path d="M 450 98 L 710 98 L 710 125" fill="none" stroke="#000" stroke-width="1.8" marker-end="url(#v-arrow)" />
+            <!-- Arrow Down -->
+            <path d="M 440 77 L 440 105" fill="none" stroke="#1B365D" stroke-width="2.2" marker-end="url(#v-sol-arrow)" />
 
-            <!-- User Login -->
-            <rect x="105" y="125" width="140" height="46" rx="23" ry="23" fill="#FFF2CC" stroke="#000" stroke-width="1.8" />
-            <text x="175" y="154" text-anchor="middle" font-size="16" font-weight="bold" fill="#000">User Login</text>
+            <!-- 2. VirasatX Platform Core -->
+            <rect x="120" y="107" width="640" height="66" rx="8" fill="#E0F2FE" stroke="#0284C7" stroke-width="2.2" />
+            <text x="440" y="135" text-anchor="middle" font-size="20" font-weight="bold" fill="#0369A1">VirasatX Digital Cultural Heritage Ecosystem</text>
+            <text x="440" y="157" text-anchor="middle" font-size="14" font-weight="600" fill="#0284C7">React 19 • TypeScript • Vite • Tailwind CSS • Vercel Edge</text>
 
-            <!-- Govt Login -->
-            <rect x="640" y="125" width="140" height="46" rx="23" ry="23" fill="#FFF2CC" stroke="#000" stroke-width="1.8" />
-            <text x="710" y="154" text-anchor="middle" font-size="16" font-weight="bold" fill="#000">Govt Login</text>
+            <!-- Branch Arrows -->
+            <path d="M 440 173 L 440 190 L 150 190 L 150 202" fill="none" stroke="#1B365D" stroke-width="2" marker-end="url(#v-sol-arrow)" />
+            <path d="M 440 173 L 440 202" fill="none" stroke="#1B365D" stroke-width="2" marker-end="url(#v-sol-arrow)" />
+            <path d="M 440 173 L 440 190 L 730 190 L 730 202" fill="none" stroke="#1B365D" stroke-width="2" marker-end="url(#v-sol-arrow)" />
 
-            <!-- Left User Track -->
-            <path d="M 175 171 L 175 212" fill="none" stroke="#000" stroke-width="1.8" marker-end="url(#v-arrow)" />
-            <rect x="80" y="212" width="190" height="52" fill="#FFF2CC" stroke="#000" stroke-width="1.5" />
-            <text x="175" y="244" text-anchor="middle" font-size="15" font-weight="bold" fill="#000">User Dashboard</text>
+            <!-- 3. Three Core Pillars -->
+            <!-- Pillar 1: 3D Studio -->
+            <rect x="30" y="204" width="240" height="158" rx="8" fill="#FFFFFF" stroke="#334155" stroke-width="1.8" />
+            <rect x="30" y="204" width="240" height="34" rx="8" fill="#F1F5F9" />
+            <text x="150" y="227" text-anchor="middle" font-size="15" font-weight="bold" fill="#0F172A">3D Artifact Studio</text>
+            <text x="45" y="258" font-size="13" fill="#1E293B">• WebGL &amp; Three.js Canvas</text>
+            <text x="45" y="282" font-size="13" fill="#1E293B">• Multi-Angle Studio Lights</text>
+            <text x="45" y="306" font-size="13" fill="#1E293B">• Texture &amp; Depth Shaders</text>
+            <text x="45" y="330" font-size="13" fill="#1E293B">• 60 FPS Mobile Rendering</text>
 
-            <path d="M 175 264 L 175 305" fill="none" stroke="#000" stroke-width="1.8" marker-end="url(#v-arrow)" />
-            <rect x="75" y="305" width="200" height="52" fill="#FFF2CC" stroke="#000" stroke-width="1.5" />
-            <text x="175" y="337" text-anchor="middle" font-size="15" font-weight="bold" fill="#000">Application Submission</text>
+            <!-- Pillar 2: Timeline & GIS -->
+            <rect x="320" y="204" width="240" height="158" rx="8" fill="#FFFFFF" stroke="#334155" stroke-width="1.8" />
+            <rect x="320" y="204" width="240" height="34" rx="8" fill="#F1F5F9" />
+            <text x="440" y="227" text-anchor="middle" font-size="15" font-weight="bold" fill="#0F172A">Chronology &amp; GIS Map</text>
+            <text x="335" y="258" font-size="13" fill="#1E293B">• 11 Historical Eras</text>
+            <text x="335" y="282" font-size="13" fill="#1E293B">• Leaflet Monument Geo-Pins</text>
+            <text x="335" y="306" font-size="13" fill="#1E293B">• Dynasty &amp; Period Filters</text>
+            <text x="335" y="330" font-size="13" fill="#1E293B">• Spatial Heritage Clustering</text>
 
-            <path d="M 175 357 L 175 398" fill="none" stroke="#000" stroke-width="1.8" marker-end="url(#v-arrow)" />
-            <rect x="85" y="398" width="180" height="52" fill="#FFF2CC" stroke="#000" stroke-width="1.5" />
-            <text x="175" y="430" text-anchor="middle" font-size="15" font-weight="bold" fill="#000">DocumentUpload</text>
+            <!-- Pillar 3: Living Traditions -->
+            <rect x="610" y="204" width="240" height="158" rx="8" fill="#FFFFFF" stroke="#334155" stroke-width="1.8" />
+            <rect x="610" y="204" width="240" height="34" rx="8" fill="#F1F5F9" />
+            <text x="730" y="227" text-anchor="middle" font-size="15" font-weight="bold" fill="#0F172A">Living Traditions</text>
+            <text x="625" y="258" font-size="13" fill="#1E293B">• Endangered Handlooms</text>
+            <text x="625" y="282" font-size="13" fill="#1E293B">• Terracotta &amp; Dokra Crafts</text>
+            <text x="625" y="306" font-size="13" fill="#1E293B">• Master Artisan Profiles</text>
+            <text x="625" y="330" font-size="13" fill="#1E293B">• Direct Patronage Pathways</text>
 
-            <path d="M 175 450 L 175 491" fill="none" stroke="#000" stroke-width="1.8" marker-end="url(#v-arrow)" />
-            <rect x="80" y="491" width="190" height="52" fill="#FFF2CC" stroke="#000" stroke-width="1.5" />
-            <text x="175" y="523" text-anchor="middle" font-size="15" font-weight="bold" fill="#000">Track Claim Status</text>
+            <!-- Convergence to AI Guide -->
+            <path d="M 150 362 L 150 382 L 440 382" fill="none" stroke="#1B365D" stroke-width="2" />
+            <path d="M 730 362 L 730 382 L 440 382" fill="none" stroke="#1B365D" stroke-width="2" />
+            <path d="M 440 362 L 440 398" fill="none" stroke="#1B365D" stroke-width="2.2" marker-end="url(#v-sol-arrow)" />
 
-            <path d="M 175 543 L 175 584" fill="none" stroke="#000" stroke-width="1.8" marker-end="url(#v-arrow)" />
-            <rect x="80" y="584" width="190" height="52" fill="#FFF2CC" stroke="#000" stroke-width="1.5" />
-            <text x="175" y="607" text-anchor="middle" font-size="13" font-weight="bold" fill="#000">Scheme</text>
-            <text x="175" y="625" text-anchor="middle" font-size="13" font-weight="bold" fill="#000">Recommendations</text>
+            <!-- 4. Google Gemini Multimodal AI Engine -->
+            <rect x="95" y="400" width="690" height="145" rx="8" fill="#FEF3C7" stroke="#D97706" stroke-width="2.2" />
+            <text x="440" y="428" text-anchor="middle" font-size="19" font-weight="bold" fill="#92400E">Google Gemini Multimodal AI Engine</text>
+            <text x="125" y="456" font-size="14.5" fill="#78350F">• <tspan font-weight="bold">Contextual Cultural Q&amp;A:</tspan> Historical narratives, dynasty context &amp; cultural symbolism</text>
+            <text x="125" y="480" font-size="14.5" fill="#78350F">• <tspan font-weight="bold">Visual Iconography AI:</tspan> Recognizes mudras, architectural orders &amp; motifs via image analysis</text>
+            <text x="125" y="504" font-size="14.5" fill="#78350F">• <tspan font-weight="bold">Fact-Grounded Guardrails:</tspan> Strictly constrained by verified institutional citations</text>
+            <text x="125" y="528" font-size="13.5" fill="#B45309">Voice Exploration via Web Speech API • Multilingual Translation across Indian Languages</text>
 
-            <path d="M 175 636 L 175 677" fill="none" stroke="#000" stroke-width="1.8" marker-end="url(#v-arrow)" />
-            <rect x="80" y="677" width="190" height="52" fill="#FFF2CC" stroke="#000" stroke-width="1.5" />
-            <text x="175" y="709" text-anchor="middle" font-size="15" font-weight="bold" fill="#000">Feedback &amp; Support</text>
+            <!-- Arrow to Repositories -->
+            <path d="M 440 545 L 440 572" fill="none" stroke="#1B365D" stroke-width="2.2" marker-end="url(#v-sol-arrow)" />
 
-            <!-- Right Govt Track -->
-            <path d="M 710 171 L 710 192" fill="none" stroke="#000" stroke-width="1.8" />
-            <path d="M 480 192 L 825 192" fill="none" stroke="#000" stroke-width="1.8" />
-            <path d="M 480 192 L 480 212" fill="none" stroke="#000" stroke-width="1.8" marker-end="url(#v-arrow)" />
-            <path d="M 595 192 L 595 212" fill="none" stroke="#000" stroke-width="1.8" marker-end="url(#v-arrow)" />
-            <path d="M 710 192 L 710 212" fill="none" stroke="#000" stroke-width="1.8" marker-end="url(#v-arrow)" />
-            <path d="M 825 192 L 825 212" fill="none" stroke="#000" stroke-width="1.8" marker-end="url(#v-arrow)" />
+            <!-- 5. Authoritative Heritage Repositories -->
+            <rect x="55" y="574" width="770" height="135" rx="8" fill="#F0FDF4" stroke="#16A34A" stroke-width="2" />
+            <text x="440" y="600" text-anchor="middle" font-size="17.5" font-weight="bold" fill="#14532D">Authoritative Cultural Knowledge Repositories</text>
 
-            <rect x="430" y="212" width="100" height="56" fill="#FFF2CC" stroke="#000" stroke-width="1.4" />
-            <text x="480" y="235" text-anchor="middle" font-size="11" font-weight="bold" fill="#000">Ministry Of</text>
-            <text x="480" y="251" text-anchor="middle" font-size="11" font-weight="bold" fill="#000">Culture / Tribal</text>
+            <g transform="translate(75, 614)">
+              <rect x="0" y="0" width="125" height="44" rx="6" fill="#FFFFFF" stroke="#16A34A" stroke-width="1.4"/>
+              <text x="62" y="22" text-anchor="middle" font-size="13.5" font-weight="bold" fill="#14532D">ASI</text>
+              <text x="62" y="37" text-anchor="middle" font-size="10" fill="#475569">Arch. Survey of India</text>
+            </g>
+            <g transform="translate(215, 614)">
+              <rect x="0" y="0" width="125" height="44" rx="6" fill="#FFFFFF" stroke="#16A34A" stroke-width="1.4"/>
+              <text x="62" y="22" text-anchor="middle" font-size="13.5" font-weight="bold" fill="#14532D">NMMA</text>
+              <text x="62" y="37" text-anchor="middle" font-size="10" fill="#475569">National Antiquities</text>
+            </g>
+            <g transform="translate(355, 614)">
+              <rect x="0" y="0" width="125" height="44" rx="6" fill="#FFFFFF" stroke="#16A34A" stroke-width="1.4"/>
+              <text x="62" y="22" text-anchor="middle" font-size="13.5" font-weight="bold" fill="#14532D">IGNCA</text>
+              <text x="62" y="37" text-anchor="middle" font-size="10" fill="#475569">Intangible Arts</text>
+            </g>
+            <g transform="translate(495, 614)">
+              <rect x="0" y="0" width="135" height="44" rx="6" fill="#FFFFFF" stroke="#16A34A" stroke-width="1.4"/>
+              <text x="67" y="22" text-anchor="middle" font-size="13.5" font-weight="bold" fill="#14532D">Archives / Museums</text>
+              <text x="67" y="37" text-anchor="middle" font-size="10" fill="#475569">Manuscripts &amp; Relics</text>
+            </g>
+            <g transform="translate(645, 614)">
+              <rect x="0" y="0" width="145" height="44" rx="6" fill="#FFFFFF" stroke="#16A34A" stroke-width="1.4"/>
+              <text x="72" y="22" text-anchor="middle" font-size="13" font-weight="bold" fill="#14532D">Supabase PostgreSQL</text>
+              <text x="72" y="37" text-anchor="middle" font-size="10" fill="#475569">RLS &amp; Edge Sync</text>
+            </g>
+            <text x="440" y="690" text-anchor="middle" font-size="12.5" fill="#166534">Structured Metadata Schemas • Open-Access Academic Attribution • Zero Proprietary Lock-in</text>
 
-            <rect x="545" y="212" width="100" height="56" fill="#FFF2CC" stroke="#000" stroke-width="1.4" />
-            <text x="595" y="235" text-anchor="middle" font-size="11" font-weight="bold" fill="#000">District &amp; State</text>
-            <text x="595" y="251" text-anchor="middle" font-size="11" font-weight="bold" fill="#000">Line Depts.</text>
+            <!-- Arrow to Outcome -->
+            <path d="M 440 709 L 440 734" fill="none" stroke="#1B365D" stroke-width="2.2" marker-end="url(#v-sol-arrow)" />
 
-            <rect x="660" y="212" width="100" height="56" fill="#FFF2CC" stroke="#000" stroke-width="1.4" />
-            <text x="710" y="235" text-anchor="middle" font-size="11" font-weight="bold" fill="#000">Forest, Archives</text>
-            <text x="710" y="251" text-anchor="middle" font-size="11" font-weight="bold" fill="#000">&amp; Rev. Depts.</text>
-
-            <rect x="775" y="212" width="100" height="56" fill="#FFF2CC" stroke="#000" stroke-width="1.4" />
-            <text x="825" y="235" text-anchor="middle" font-size="11" font-weight="bold" fill="#000">Planning</text>
-            <text x="825" y="251" text-anchor="middle" font-size="11" font-weight="bold" fill="#000">Authorities</text>
-
-            <!-- Lines converging to Govt Dashboard -->
-            <path d="M 480 268 L 480 288 L 772 288" fill="none" stroke="#000" stroke-width="1.8" />
-            <path d="M 825 268 L 825 288 L 772 288" fill="none" stroke="#000" stroke-width="1.8" />
-            <path d="M 772 288 L 772 320" fill="none" stroke="#000" stroke-width="1.8" marker-end="url(#v-arrow)" />
-
-            <rect x="677" y="320" width="190" height="52" fill="#FFF2CC" stroke="#000" stroke-width="1.5" />
-            <text x="772" y="343" text-anchor="middle" font-size="13" font-weight="bold" fill="#000">Government</text>
-            <text x="772" y="361" text-anchor="middle" font-size="13" font-weight="bold" fill="#000">Dashboard</text>
-
-            <path d="M 772 372 L 772 405" fill="none" stroke="#000" stroke-width="1.8" marker-end="url(#v-arrow)" />
-            <rect x="672" y="405" width="200" height="52" fill="#FFF2CC" stroke="#000" stroke-width="1.5" />
-            <text x="772" y="437" text-anchor="middle" font-size="14.5" font-weight="bold" fill="#000">Document Verification</text>
-
-            <path d="M 772 457 L 772 490" fill="none" stroke="#000" stroke-width="1.8" marker-end="url(#v-arrow)" />
-            <rect x="677" y="490" width="190" height="52" fill="#FFF2CC" stroke="#000" stroke-width="1.5" />
-            <text x="772" y="522" text-anchor="middle" font-size="14.5" font-weight="bold" fill="#000">Spatial Verification</text>
-
-            <path d="M 772 542 L 772 575" fill="none" stroke="#000" stroke-width="1.8" marker-end="url(#v-arrow)" />
-            <rect x="677" y="575" width="190" height="52" fill="#FFF2CC" stroke="#000" stroke-width="1.5" />
-            <text x="772" y="607" text-anchor="middle" font-size="14.5" font-weight="bold" fill="#000">Approve/Reject Claim</text>
-
-            <path d="M 772 627 L 772 660" fill="none" stroke="#000" stroke-width="1.8" marker-end="url(#v-arrow)" />
-            <rect x="677" y="660" width="190" height="52" fill="#FFF2CC" stroke="#000" stroke-width="1.5" />
-            <text x="772" y="692" text-anchor="middle" font-size="14.5" font-weight="bold" fill="#000">Update Virasat Atlas</text>
-
-            <path d="M 772 712 L 772 745" fill="none" stroke="#000" stroke-width="1.8" marker-end="url(#v-arrow)" />
-            <rect x="677" y="745" width="190" height="52" fill="#FFF2CC" stroke="#000" stroke-width="1.5" />
-            <text x="772" y="777" text-anchor="middle" font-size="14.5" font-weight="bold" fill="#000">Generate Reports</text>
-
-            <!-- Bottom Convergence -->
-            <path d="M 175 729 L 175 815 L 450 855" fill="none" stroke="#000" stroke-width="1.8" marker-end="url(#v-arrow)" />
-            <path d="M 772 797 L 772 815 L 610 855" fill="none" stroke="#000" stroke-width="1.8" marker-end="url(#v-arrow)" />
-
-            <rect x="430" y="855" width="200" height="58" fill="#FFF2CC" stroke="#000" stroke-width="1.8" />
-            <text x="530" y="891" text-anchor="middle" font-size="17" font-weight="bold" fill="#000">Virasat Heritage Atlas</text>
+            <!-- 6. Outcome Badge -->
+            <rect x="170" y="736" width="540" height="52" rx="26" fill="#1B365D" stroke="#000" stroke-width="1.5" />
+            <text x="440" y="768" text-anchor="middle" font-size="17" font-weight="bold" fill="#FFFFFF" letter-spacing="1.5px">EXPLORE • UNDERSTAND • PRESERVE</text>
           </svg>
         </div>
 
-        <div class="slide-number">2</div>
+        <div class="sih-footer-bar">
+          <span style="visibility: hidden; width: 40px;"></span>
+          <span style="margin: 0 auto;">@SIH Idea submission- Template</span>
+          <span style="font-size: 21px; font-weight: bold; width: 40px; text-align: right;">2</span>
+        </div>
       </div>
 
       <!-- SLIDE 3: TECHNICAL APPROACH -->
@@ -622,36 +648,55 @@
           <span>Team</span>
           <span>VirasatX</span>
         </div>
-        <div class="header-center-pill">TECHNICAL APPROACH</div>
+        <div class="header-center-title">TECHNICAL APPROACH</div>
         <img src="sih_logo.png" class="header-sih-logo" alt="SIH Logo" />
 
-        <!-- Left Top Sharp Box: 10 Bullets -->
-        <div class="panel-box" style="left: 20px; top: 96px; width: 935px; height: 435px; padding: 18px 24px;">
-          <div class="bullet-row" style="margin-bottom: 7px;">• <span class="green-title">Frontend Framework:</span> <span style="font-size: 19px; color:#000;">React 19, TypeScript, Vite &amp; Tailwind CSS with Motion.</span></div>
-          <div class="bullet-row" style="margin-bottom: 7px;">• <span class="green-title">AI Heritage Guide:</span> <span style="font-size: 19px; color:#000;">Google Gemini Multimodal AI for contextual cultural exploration.</span></div>
-          <div class="bullet-row" style="margin-bottom: 7px;">• <span class="green-title">Visual Iconography AI:</span> <span style="font-size: 19px; color:#000;">AI-assisted visual guidance for iconography and motif discovery.</span></div>
-          <div class="bullet-row" style="margin-bottom: 7px;">• <span class="green-title">Interactive Mapping:</span> <span style="font-size: 19px; color:#000;">Leaflet / OpenStreetMap for geographical heritage discovery.</span></div>
-          <div class="bullet-row" style="margin-bottom: 7px;">• <span class="green-title">3D Exploration Studio:</span> <span style="font-size: 19px; color:#000;">Three.js &amp; WebGL for interactive 3D artifact exploration.</span></div>
-          <div class="bullet-row" style="margin-bottom: 7px;">• <span class="green-title">Voice Interaction:</span> <span style="font-size: 19px; color:#000;">Web Speech API for voice-assisted queries and audio guidance.</span></div>
-          <div class="bullet-row" style="margin-bottom: 7px;">• <span class="green-title">Backend &amp; Database:</span> <span style="font-size: 19px; color:#000;">Supabase with PostgreSQL database and Row Level Security (RLS).</span></div>
-          <div class="bullet-row" style="margin-bottom: 7px;">• <span class="green-title">Secure Authentication:</span> <span style="font-size: 19px; color:#000;">Supabase Auth with role-based access control policies.</span></div>
-          <div class="bullet-row" style="margin-bottom: 7px;">• <span class="green-title">Cloud Deployment:</span> <span style="font-size: 19px; color:#000;">Vercel serverless edge deployment for global responsiveness.</span></div>
-          <div class="bullet-row" style="margin-bottom: 7px;">• <span class="green-title">Scalable Architecture:</span> <span style="font-size: 19px; color:#000;">Modular component hierarchy with structured content schemas.</span></div>
+        <!-- Left Top: Pointer 1 - Technologies to be used -->
+        <div style="position: absolute; left: 45px; top: 104px; width: 910px; font-family: Arial, sans-serif;">
+          <div style="font-size: 22px; font-weight: bold; color: #000000; margin-bottom: 10px;">
+            • Technologies to be used (e.g. programming languages, frameworks, hardware)
+          </div>
+          <div style="font-size: 17.5px; line-height: 1.42; color: #1E293B; margin-left: 24px; margin-bottom: 5px;">
+            • <strong>Frontend Framework:</strong> React 19, TypeScript, Vite &amp; Tailwind CSS with Motion for high-fidelity animations.
+          </div>
+          <div style="font-size: 17.5px; line-height: 1.42; color: #1E293B; margin-left: 24px; margin-bottom: 5px;">
+            • <strong>Multimodal AI Engine:</strong> Google Gemini AI for contextual cultural exploration and visual iconography analysis.
+          </div>
+          <div style="font-size: 17.5px; line-height: 1.42; color: #1E293B; margin-left: 24px; margin-bottom: 5px;">
+            • <strong>3D Artifact Studio:</strong> Three.js &amp; WebGL for real-time interactive 3D model rendering directly in mobile browsers.
+          </div>
+          <div style="font-size: 17.5px; line-height: 1.42; color: #1E293B; margin-left: 24px; margin-bottom: 5px;">
+            • <strong>GIS Spatial Mapping:</strong> Leaflet &amp; OpenStreetMap for geographic heritage discovery and cluster exploration.
+          </div>
+          <div style="font-size: 17.5px; line-height: 1.42; color: #1E293B; margin-left: 24px; margin-bottom: 5px;">
+            • <strong>Voice Interaction:</strong> Web Speech API for voice-assisted queries and hands-free audio guidance.
+          </div>
+          <div style="font-size: 17.5px; line-height: 1.42; color: #1E293B; margin-left: 24px; margin-bottom: 5px;">
+            • <strong>Backend &amp; Database:</strong> Supabase with PostgreSQL relational database and Row Level Security (RLS).
+          </div>
+          <div style="font-size: 17.5px; line-height: 1.42; color: #1E293B; margin-left: 24px; margin-bottom: 12px;">
+            • <strong>Cloud &amp; Edge:</strong> Vercel serverless edge deployment ensuring sub-second global response times.
+          </div>
+
+          <!-- Pointer 2 Heading -->
+          <div style="font-size: 22px; font-weight: bold; color: #000000; margin-bottom: 8px;">
+            • Methodology and process for implementation (Flow Charts/Images/ working prototype)
+          </div>
         </div>
 
-        <!-- Left Bottom Sharp Box: UI Screenshot -->
-        <div class="panel-box" style="left: 20px; top: 546px; width: 935px; height: 498px; padding: 0; display: flex; flex-direction: column;">
-          <div style="flex: 1; overflow: hidden; background: #FAF9F6; position: relative;">
-            <img src="images/home.png" style="width: 100%; height: 100%; object-fit: cover; object-position: top center;" alt="VirasatX UI" />
+        <!-- Left Bottom: Prototype Screenshot Card -->
+        <div style="position: absolute; left: 45px; top: 480px; width: 910px; height: 535px; border: 1.5px solid #CBD5E1; border-radius: 8px; overflow: hidden; background: #FAF9F6; display: flex; flex-direction: column; box-shadow: 0 4px 12px rgba(0,0,0,0.03);">
+          <div style="flex: 1; overflow: hidden; position: relative;">
+            <img src="images/home.png" style="width: 100%; height: 100%; object-fit: cover; object-position: top center;" alt="VirasatX UI Prototype" />
           </div>
-          <div style="padding: 10px 16px; background: #FFFFFF; border-top: 1.5px solid #000; font-size: 19px; font-weight: bold; color: #000;">
-            User Interface: It is a draft version, subject to future updates.
+          <div style="padding: 10px 18px; background: #FFFFFF; border-top: 1.5px solid #CBD5E1; font-size: 18px; font-weight: bold; color: #000000; font-family: Arial, sans-serif;">
+            Live Working Prototype: React 19 • Three.js WebGL • Gemini AI (<a href="https://virasatxai.vercel.app/" target="_blank" style="color: #0070C0; text-decoration: underline;">https://virasatxai.vercel.app/</a>)
           </div>
         </div>
 
-        <!-- Right Sharp Box: Complete Architecture Diagram -->
-        <div class="panel-box" style="right: 20px; top: 96px; width: 935px; height: 948px; padding: 14px;">
-          <svg class="diagram-svg" viewBox="0 0 900 920" xmlns="http://www.w3.org/2000/svg">
+        <!-- Right Column: Architecture Diagram Card -->
+        <div style="position: absolute; right: 45px; top: 104px; width: 890px; height: 911px; border: 1.5px solid #CBD5E1; border-radius: 8px; background: #FFFFFF; padding: 12px; box-shadow: 0 4px 12px rgba(0,0,0,0.03);">
+          <svg class="diagram-svg" viewBox="0 0 880 880" xmlns="http://www.w3.org/2000/svg">
             <defs>
               <marker id="v-arch-arrow" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
                 <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#000" />
@@ -659,37 +704,37 @@
             </defs>
 
             <!-- Web Browser Diamond -->
-            <polygon points="490,15 610,68 490,120 370,68" fill="#FFFFFF" stroke="#000" stroke-width="2" />
-            <g transform="translate(465, 30)">
+            <polygon points="440,15 560,68 440,120 320,68" fill="#FFFFFF" stroke="#000" stroke-width="2" />
+            <g transform="translate(415, 30)">
               <rect x="5" y="5" width="40" height="28" rx="2" fill="none" stroke="#000" stroke-width="2"/>
               <line x1="25" y1="33" x2="25" y2="40" stroke="#000" stroke-width="2"/>
               <line x1="15" y1="40" x2="35" y2="40" stroke="#000" stroke-width="2"/>
               <circle cx="25" cy="16" r="4" fill="#000"/>
               <path d="M 17 26 Q 25 20 33 26" fill="none" stroke="#000" stroke-width="1.8"/>
             </g>
-            <text x="490" y="98" text-anchor="middle" font-size="18" font-weight="bold" fill="#000">Web Browser</text>
+            <text x="440" y="98" text-anchor="middle" font-size="18" font-weight="bold" fill="#000">Web Browser</text>
 
-            <path d="M 490 120 L 490 148" fill="none" stroke="#000" stroke-width="2" marker-end="url(#v-arch-arrow)" />
+            <path d="M 440 120 L 440 148" fill="none" stroke="#000" stroke-width="2" marker-end="url(#v-arch-arrow)" />
 
             <!-- Request / Response Connectors -->
-            <path d="M 140 395 L 45 395 L 45 235 L 140 235" fill="none" stroke="#000" stroke-width="1.8" marker-end="url(#v-arch-arrow)" />
-            <text x="92" y="224" text-anchor="middle" font-size="16" font-weight="bold" fill="#000">Response</text>
+            <path d="M 120 395 L 35 395 L 35 235 L 120 235" fill="none" stroke="#000" stroke-width="1.8" marker-end="url(#v-arch-arrow)" />
+            <text x="75" y="224" text-anchor="middle" font-size="15" font-weight="bold" fill="#000">Response</text>
             
-            <path d="M 140 280 L 75 280 L 75 450 L 140 450" fill="none" stroke="#000" stroke-width="1.8" marker-end="url(#v-arch-arrow)" />
-            <text x="92" y="270" text-anchor="middle" font-size="16" font-weight="bold" fill="#000">Request</text>
+            <path d="M 120 280 L 60 280 L 60 450 L 120 450" fill="none" stroke="#000" stroke-width="1.8" marker-end="url(#v-arch-arrow)" />
+            <text x="75" y="270" text-anchor="middle" font-size="15" font-weight="bold" fill="#000">Request</text>
 
             <!-- Frontend Container -->
-            <rect x="140" y="148" width="730" height="175" fill="#FFFFFF" stroke="#000" stroke-width="1.8" />
+            <rect x="120" y="148" width="710" height="175" fill="#FFFFFF" stroke="#000" stroke-width="1.8" />
             
-            <rect x="420" y="166" width="140" height="46" rx="23" ry="23" fill="#FFFFFF" stroke="#000" stroke-width="1.8" />
-            <circle cx="455" cy="186" r="6" fill="#000"/>
-            <path d="M 444 202 Q 455 194 466 202" fill="none" stroke="#000" stroke-width="2"/>
-            <text x="495" y="195" text-anchor="middle" font-size="18" font-weight="bold" fill="#000">Login</text>
+            <rect x="370" y="166" width="140" height="46" rx="23" ry="23" fill="#FFFFFF" stroke="#000" stroke-width="1.8" />
+            <circle cx="405" cy="186" r="6" fill="#000"/>
+            <path d="M 394 202 Q 405 194 416 202" fill="none" stroke="#000" stroke-width="2"/>
+            <text x="445" y="195" text-anchor="middle" font-size="18" font-weight="bold" fill="#000">Login</text>
             
-            <text x="490" y="244" text-anchor="middle" font-size="22" font-weight="bold" fill="#000">Frontend</text>
+            <text x="440" y="244" text-anchor="middle" font-size="22" font-weight="bold" fill="#000">Frontend</text>
 
             <!-- 5 Badges -->
-            <g transform="translate(170, 260)">
+            <g transform="translate(145, 260)">
               <rect x="0" y="0" width="100" height="46" fill="#FFFFFF" stroke="#000" stroke-width="1.2" />
               <path d="M 14 8 L 32 8 L 30 32 L 23 35 L 16 32 Z" fill="#E44D26"/>
               <path d="M 23 10 L 23 33 L 28 31 L 30 10 Z" fill="#F16529"/>
@@ -697,7 +742,7 @@
               <text x="62" y="29" text-anchor="middle" font-size="16" font-weight="bold" fill="#000">HTML</text>
             </g>
 
-            <g transform="translate(305, 260)">
+            <g transform="translate(280, 260)">
               <rect x="0" y="0" width="100" height="46" fill="#FFFFFF" stroke="#000" stroke-width="1.2" />
               <path d="M 14 8 L 32 8 L 30 32 L 23 35 L 16 32 Z" fill="#1572B6"/>
               <path d="M 23 10 L 23 33 L 28 31 L 30 10 Z" fill="#33A9DC"/>
@@ -705,20 +750,20 @@
               <text x="62" y="29" text-anchor="middle" font-size="16" font-weight="bold" fill="#000">CSS</text>
             </g>
 
-            <g transform="translate(440, 260)">
+            <g transform="translate(415, 260)">
               <rect x="0" y="0" width="100" height="46" fill="#FFFFFF" stroke="#000" stroke-width="1.2" />
               <rect x="12" y="8" width="24" height="26" fill="#F7DF1E"/>
               <text x="18" y="27" font-size="14" font-weight="900" fill="#000">JS</text>
               <text x="62" y="29" text-anchor="middle" font-size="16" font-weight="bold" fill="#000">JS</text>
             </g>
 
-            <g transform="translate(575, 260)">
+            <g transform="translate(545, 260)">
               <rect x="0" y="0" width="125" height="46" fill="#FFFFFF" stroke="#000" stroke-width="1.2" />
               <path d="M 25 10 C 15 15, 12 30, 22 34 C 30 25, 30 15, 25 10 Z" fill="#78C257"/>
               <text x="75" y="29" text-anchor="middle" font-size="15" font-weight="bold" fill="#000">Leaflet.js</text>
             </g>
 
-            <g transform="translate(735, 260)">
+            <g transform="translate(700, 260)">
               <rect x="0" y="0" width="105" height="46" fill="#FFFFFF" stroke="#000" stroke-width="1.2" />
               <ellipse cx="25" cy="23" rx="12" ry="5" fill="none" stroke="#61DAFB" stroke-width="1.5" transform="rotate(30 25 23)"/>
               <ellipse cx="25" cy="23" rx="12" ry="5" fill="none" stroke="#61DAFB" stroke-width="1.5" transform="rotate(90 25 23)"/>
@@ -728,35 +773,35 @@
             </g>
 
             <!-- Backend Container -->
-            <rect x="140" y="355" width="730" height="270" fill="#FFFFFF" stroke="#000" stroke-width="1.8" />
-            <text x="505" y="388" text-anchor="middle" font-size="24" font-weight="bold" fill="#000">Backend</text>
+            <rect x="120" y="355" width="710" height="270" fill="#FFFFFF" stroke="#000" stroke-width="1.8" />
+            <text x="475" y="388" text-anchor="middle" font-size="24" font-weight="bold" fill="#000">Backend</text>
 
             <!-- Node API Gateway -->
-            <g transform="translate(165, 420)">
+            <g transform="translate(145, 420)">
               <polygon points="35,0 70,20 70,60 35,80 0,60 0,20" fill="#339933" />
               <text x="35" y="47" text-anchor="middle" font-size="18" font-weight="bold" fill="#FFF">node</text>
               <text x="35" y="106" text-anchor="middle" font-size="19" font-weight="bold" fill="#000">API Gateway</text>
             </g>
 
-            <path d="M 255 460 L 305 460 L 305 435 L 335 435" fill="none" stroke="#000" stroke-width="1.8" marker-end="url(#v-arch-arrow)" />
-            <path d="M 305 460 L 305 545 L 335 545" fill="none" stroke="#000" stroke-width="1.8" marker-end="url(#v-arch-arrow)" />
+            <path d="M 235 460 L 285 460 L 285 435 L 315 435" fill="none" stroke="#000" stroke-width="1.8" marker-end="url(#v-arch-arrow)" />
+            <path d="M 285 460 L 285 545 L 315 545" fill="none" stroke="#000" stroke-width="1.8" marker-end="url(#v-arch-arrow)" />
 
             <!-- Modules Row -->
-            <g transform="translate(335, 405)">
+            <g transform="translate(315, 405)">
               <rect x="0" y="0" width="150" height="65" fill="#FFFFFF" stroke="#000" stroke-width="1.4" />
               <circle cx="26" cy="32" r="15" fill="#38BDF8" opacity="0.4"/>
               <path d="M 15 32 Q 26 21 37 32 Q 26 43 15 32 Z" fill="#0284C7"/>
               <text x="92" y="38" text-anchor="middle" font-size="15.5" font-weight="bold" fill="#000">Map Module</text>
             </g>
 
-            <g transform="translate(515, 405)">
+            <g transform="translate(485, 405)">
               <rect x="0" y="0" width="150" height="65" fill="#FFFFFF" stroke="#000" stroke-width="1.4" />
               <rect x="14" y="18" width="26" height="26" rx="3" fill="#1E293B"/>
               <circle cx="27" cy="31" r="5" fill="#F97316"/>
               <text x="92" y="38" text-anchor="middle" font-size="16" font-weight="bold" fill="#000">Gemini AI</text>
             </g>
 
-            <g transform="translate(695, 405)">
+            <g transform="translate(655, 405)">
               <rect x="0" y="0" width="150" height="65" fill="#FFFFFF" stroke="#000" stroke-width="1.4" />
               <rect x="12" y="24" width="12" height="12" fill="#3B82F6"/>
               <line x1="24" y1="30" x2="32" y2="30" stroke="#000" stroke-width="2"/>
@@ -765,7 +810,7 @@
             </g>
 
             <!-- Databases Row -->
-            <g transform="translate(335, 520)">
+            <g transform="translate(315, 520)">
               <rect x="0" y="0" width="150" height="75" fill="#FFFFFF" stroke="#000" stroke-width="1.4" />
               <rect x="12" y="14" width="28" height="26" rx="2" fill="#336791"/>
               <text x="26" y="32" text-anchor="middle" font-size="13" font-weight="bold" fill="#FFF">Ps</text>
@@ -773,37 +818,37 @@
               <text x="88" y="55" text-anchor="middle" font-size="13" font-weight="bold" fill="#000">(Supabase)</text>
             </g>
 
-            <g transform="translate(515, 520)">
+            <g transform="translate(485, 520)">
               <rect x="0" y="0" width="150" height="75" fill="#FFFFFF" stroke="#000" stroke-width="1.4" />
               <path d="M 18 28 A 6 6 0 0 1 28 24 A 9 9 0 0 1 41 28 A 7 7 0 0 1 40 38 L 18 38 A 5 5 0 0 1 18 28 Z" fill="#64748B"/>
               <text x="88" y="35" text-anchor="middle" font-size="13" font-weight="bold" fill="#000">Cloud Object</text>
               <text x="88" y="55" text-anchor="middle" font-size="13" font-weight="bold" fill="#000">Storage</text>
             </g>
 
-            <g transform="translate(695, 520)">
+            <g transform="translate(655, 520)">
               <rect x="0" y="0" width="150" height="75" fill="#FFFFFF" stroke="#000" stroke-width="1.4" />
               <path d="M 16 36 C 20 24, 28 20, 34 28 C 36 32, 40 36, 44 36" fill="none" stroke="#00758F" stroke-width="3"/>
               <text x="92" y="44" text-anchor="middle" font-size="14" font-weight="bold" fill="#00758F">Database</text>
             </g>
 
             <!-- Bottom Containers -->
-            <rect x="140" y="655" width="415" height="155" fill="#FFFFFF" stroke="#000" stroke-width="1.8" />
-            <text x="347" y="690" text-anchor="middle" font-size="22" font-weight="bold" fill="#000">Integration:</text>
+            <rect x="120" y="655" width="415" height="155" fill="#FFFFFF" stroke="#000" stroke-width="1.8" />
+            <text x="327" y="690" text-anchor="middle" font-size="22" font-weight="bold" fill="#000">Integration:</text>
 
-            <g transform="translate(165, 715)">
+            <g transform="translate(145, 715)">
               <path d="M 12 28 A 16 16 0 0 1 36 12 L 24 24 Z" fill="#0284C7"/>
               <line x1="24" y1="24" x2="38" y2="38" stroke="#000" stroke-width="2"/>
               <text x="24" y="60" text-anchor="middle" font-size="14" font-weight="bold" fill="#000">Media Assets</text>
             </g>
 
-            <g transform="translate(295, 715)">
+            <g transform="translate(275, 715)">
               <circle cx="28" cy="24" r="14" fill="none" stroke="#475569" stroke-width="3"/>
               <circle cx="28" cy="24" r="5" fill="#475569"/>
               <text x="28" y="60" text-anchor="middle" font-size="14" font-weight="bold" fill="#000">Cultural</text>
               <text x="28" y="76" text-anchor="middle" font-size="14" font-weight="bold" fill="#000">Archives</text>
             </g>
 
-            <g transform="translate(425, 715)">
+            <g transform="translate(405, 715)">
               <path d="M 28 35 L 28 15" stroke="#EA580C" stroke-width="3"/>
               <path d="M 28 25 L 14 12" stroke="#EA580C" stroke-width="2.5"/>
               <path d="M 28 25 L 42 12" stroke="#EA580C" stroke-width="2.5"/>
@@ -811,211 +856,267 @@
               <text x="28" y="76" text-anchor="middle" font-size="13.5" font-weight="bold" fill="#000">Guide</text>
             </g>
 
-            <rect x="580" y="655" width="290" height="155" fill="#FFFFFF" stroke="#000" stroke-width="1.8" />
-            <text x="725" y="690" text-anchor="middle" font-size="22" font-weight="bold" fill="#000">Security:</text>
+            <rect x="555" y="655" width="275" height="155" fill="#FFFFFF" stroke="#000" stroke-width="1.8" />
+            <text x="692" y="690" text-anchor="middle" font-size="22" font-weight="bold" fill="#000">Security:</text>
 
-            <g transform="translate(705, 710)">
+            <g transform="translate(675, 710)">
               <rect x="5" y="14" width="34" height="26" rx="3" fill="#EAB308" stroke="#CA8A04" stroke-width="2"/>
               <path d="M 12 14 L 12 8 A 10 10 0 0 1 32 8 L 32 14" fill="none" stroke="#64748B" stroke-width="3"/>
               <circle cx="22" cy="26" r="3" fill="#713F12"/>
             </g>
-            <text x="725" y="775" text-anchor="middle" font-size="13.5" font-weight="bold" fill="#000">Supabase Auth, RLS,</text>
-            <text x="725" y="795" text-anchor="middle" font-size="13.5" font-weight="bold" fill="#000">HTTPS &amp; Secure Tokens</text>
+            <text x="692" y="775" text-anchor="middle" font-size="13.5" font-weight="bold" fill="#000">Supabase Auth, RLS,</text>
+            <text x="692" y="795" text-anchor="middle" font-size="13.5" font-weight="bold" fill="#000">HTTPS &amp; Secure Tokens</text>
           </svg>
         </div>
 
-        <div class="slide-number">3</div>
+        <div class="sih-footer-bar">
+          <span style="visibility: hidden; width: 40px;"></span>
+          <span style="margin: 0 auto;">@SIH Idea submission- Template</span>
+          <span style="font-size: 21px; font-weight: bold; width: 40px; text-align: right;">3</span>
+        </div>
       </div>
 
-      <!-- SLIDE 4: CORE INNOVATION -->
+      <!-- SLIDE 4: FEASIBILITY AND VIABILITY -->
       <div class="slide" id="v-slide-4">
         <div class="header-team-oval">
           <span>Team</span>
           <span>VirasatX</span>
         </div>
-        <div class="header-center-pill" style="font-size: 30px; white-space: nowrap;">WHAT MAKES VIRASATX DIFFERENT?</div>
+        <div class="header-center-title">FEASIBILITY AND VIABILITY</div>
         <img src="sih_logo.png" class="header-sih-logo" alt="SIH Logo" />
 
-        <!-- Left Sharp Box: Core Capabilities -->
-        <div class="panel-box" style="left: 20px; top: 96px; width: 935px; height: 948px; padding: 22px 28px;">
-          <div class="panel-blue-title">❖ Core Capabilities:</div>
-
-          <div class="bullet-row" style="margin-bottom: 18px;">
-            <div class="green-title" style="font-size: 21px;">• Virasat AI :</div>
-            <div class="bullet-desc">AI-assisted heritage guidance for contextual exploration and research-oriented discovery.</div>
+        <!-- Left Column: Pointer 1 - Analysis of the feasibility of the idea -->
+        <div style="position: absolute; left: 45px; top: 104px; width: 890px; font-family: Arial, sans-serif;">
+          <div style="font-size: 23px; font-weight: bold; color: #000000; margin-bottom: 12px;">
+            • Analysis of the feasibility of the idea
           </div>
 
-          <div class="bullet-row" style="margin-bottom: 18px;">
-            <div class="green-title" style="font-size: 21px;">• Visual Iconography AI :</div>
-            <div class="bullet-desc">AI-assisted exploration of visual cultural and iconographic information.</div>
+          <div style="margin-bottom: 14px;">
+            <div style="color: #15803D; font-weight: bold; text-decoration: underline; font-size: 20px; margin-bottom: 4px;">1. Technical Feasibility:</div>
+            <div style="font-size: 17.5px; line-height: 1.4; color: #1E293B; margin-left: 20px; margin-bottom: 4px;">• <strong>Lightweight Web Architecture:</strong> React 19, TypeScript, and WebGL deliver responsive 3D artifact rendering directly in mobile browsers without demanding native app downloads.</div>
+            <div style="font-size: 17.5px; line-height: 1.4; color: #1E293B; margin-left: 20px; margin-bottom: 4px;">• <strong>Modular Multimodal AI:</strong> Google Gemini multimodal AI orchestrated through serverless edge functions for rapid, low-latency contextual dialogue and iconography assistance.</div>
+            <div style="font-size: 17.5px; line-height: 1.4; color: #1E293B; margin-left: 20px;">• <strong>Standardized Cultural Data Schemas:</strong> Structured PostgreSQL &amp; JSON schemas compatible with national heritage classification and archival cataloging conventions.</div>
           </div>
 
-          <div class="bullet-row" style="margin-bottom: 18px;">
-            <div class="green-title" style="font-size: 21px;">• Heritage Atlas :</div>
-            <div class="bullet-desc">Interactive geographical discovery of heritage places and regions.</div>
+          <div style="margin-bottom: 14px;">
+            <div style="color: #15803D; font-weight: bold; text-decoration: underline; font-size: 20px; margin-bottom: 4px;">2. Operational Feasibility:</div>
+            <div style="font-size: 17.5px; line-height: 1.4; color: #1E293B; margin-left: 20px; margin-bottom: 4px;">• <strong>Public Open Datasets:</strong> Built upon documented public domain archives, monument registries, and academic resources without proprietary data dependencies.</div>
+            <div style="font-size: 17.5px; line-height: 1.4; color: #1E293B; margin-left: 20px; margin-bottom: 4px;">• <strong>Zero Infrastructure Overhead:</strong> Serverless deployment on Vercel and Supabase eliminates physical server management and ongoing operational overhead.</div>
+            <div style="font-size: 17.5px; line-height: 1.4; color: #1E293B; margin-left: 20px;">• <strong>Modular Content Extensibility:</strong> Structured content taxonomy allows adding new regional monuments, epochs, and craft traditions without platform refactoring.</div>
           </div>
 
-          <div class="bullet-row" style="margin-bottom: 18px;">
-            <div class="green-title" style="font-size: 21px;">• Cultural Timeline :</div>
-            <div class="bullet-desc">Chronological exploration of Indian heritage across historical periods.</div>
-          </div>
-
-          <div class="bullet-row">
-            <div class="green-title" style="font-size: 21px;">• Living Heritage :</div>
-            <div class="bullet-desc">Discovery pathway for traditional crafts, artisans, communities and cultural practices.</div>
+          <div>
+            <div style="color: #15803D; font-weight: bold; text-decoration: underline; font-size: 20px; margin-bottom: 4px;">3. Legal &amp; Ethical Feasibility:</div>
+            <div style="font-size: 17.5px; line-height: 1.4; color: #1E293B; margin-left: 20px; margin-bottom: 4px;">• <strong>Privacy &amp; Data Governance:</strong> Strictly compliant with India’s Digital Personal Data Protection (DPDP) Act with zero unauthorized user tracking or commercial data harvesting.</div>
+            <div style="font-size: 17.5px; line-height: 1.4; color: #1E293B; margin-left: 20px;">• <strong>Cultural Sensitivity &amp; Attribution:</strong> Strict prompt guardrails enforce respectful, non-distorted historical interpretation with explicit source citations.</div>
           </div>
         </div>
 
-        <!-- Right Sharp Box: Discovery Pathways & UVP -->
-        <div class="panel-box" style="right: 20px; top: 96px; width: 935px; height: 948px; padding: 22px 28px;">
-          <div class="panel-blue-title">❖ Discovery Pathways &amp; UVP:</div>
-
-          <div class="bullet-row" style="margin-bottom: 18px;">
-            <div class="green-title" style="font-size: 21px;">• Manuscripts &amp; Epigraphy :</div>
-            <div class="bullet-desc">Dedicated exploration of textual and inscriptional heritage.</div>
+        <!-- Right Column: Pointers 2 & 3 - Potential challenges and risks & Strategies -->
+        <div style="position: absolute; right: 45px; top: 104px; width: 890px; font-family: Arial, sans-serif;">
+          <!-- Pointer 2 -->
+          <div style="font-size: 23px; font-weight: bold; color: #000000; margin-bottom: 10px;">
+            • Potential challenges and risks
+          </div>
+          <div style="font-size: 17.5px; line-height: 1.4; color: #1E293B; margin-left: 20px; margin-bottom: 4px;">
+            • <strong>Data Fragmentation:</strong> Heritage information scattered across divergent regional archives with inconsistent naming conventions and periodization.
+          </div>
+          <div style="font-size: 17.5px; line-height: 1.4; color: #1E293B; margin-left: 20px; margin-bottom: 4px;">
+            • <strong>AI Hallucination Risk:</strong> Risk of large language models generating inaccurate historical dates, dynasties, or architectural attributions.
+          </div>
+          <div style="font-size: 17.5px; line-height: 1.4; color: #1E293B; margin-left: 20px; margin-bottom: 18px;">
+            • <strong>Connectivity Variations:</strong> Rich 3D models and high-resolution imagery may experience latency on 3G/4G rural networks.
           </div>
 
-          <div class="bullet-row" style="margin-bottom: 18px;">
-            <div class="green-title" style="font-size: 21px;">• Artifact Exploration :</div>
-            <div class="bullet-desc">Detailed digital exploration of cultural artifacts and their context.</div>
+          <!-- Pointer 3 -->
+          <div style="font-size: 23px; font-weight: bold; color: #000000; margin-bottom: 10px;">
+            • Strategies for overcoming these challenges
+          </div>
+          <div style="font-size: 17.5px; line-height: 1.4; color: #1E293B; margin-left: 20px; margin-bottom: 4px;">
+            • <strong>Unified Taxonomy Schemas:</strong> Standardized normalizers reconcile regional spelling variants, dynasties, and historical eras into a single linked graph.
+          </div>
+          <div style="font-size: 17.5px; line-height: 1.4; color: #1E293B; margin-left: 20px; margin-bottom: 4px;">
+            • <strong>Fact-Grounded Prompting:</strong> AI Guide strictly constrained to verified facts with explicit archival citations and transparent uncertainty disclaimers.
+          </div>
+          <div style="font-size: 17.5px; line-height: 1.4; color: #1E293B; margin-left: 20px; margin-bottom: 18px;">
+            • <strong>Progressive Asset Optimization:</strong> WebP compression, low-polygon 3D meshes, and intelligent browser caching ensure sub-second page loads.
           </div>
 
-          <div class="bullet-row" style="margin-bottom: 18px;">
-            <div class="green-title" style="font-size: 21px;">• Responsible Heritage :</div>
-            <div class="bullet-desc">Encourages informed and culturally responsible heritage discovery.</div>
+          <!-- Viability -->
+          <div style="font-size: 22px; font-weight: bold; color: #1B365D; margin-bottom: 8px;">
+            ❖ Economic Viability &amp; Scalability
           </div>
-
-          <div class="bullet-row" style="margin-bottom: 18px;">
-            <div class="green-title" style="font-size: 21px;">• Core Differentiator :</div>
-            <div style="font-size: 19px; font-weight: bold; margin-top: 4px; color: #475569;">MOST PLATFORMS:</div>
-            <div class="bullet-desc" style="font-style: italic;">“What is this place?”</div>
-            <div style="font-size: 19px; font-weight: bold; margin-top: 8px; color: #0070C0;">VIRASATX:</div>
-            <div class="bullet-desc" style="font-weight: 600;">“How does this place connect to history, people, traditions, artifacts and living culture?”</div>
+          <div style="font-size: 17.5px; line-height: 1.4; color: #1E293B; margin-left: 20px; margin-bottom: 4px;">
+            • <strong>Cost-Effective Foundation:</strong> Built on modern open-source web technologies with near-zero baseline hosting expenses.
           </div>
-
-          <div class="bullet-row">
-            <div class="green-title" style="font-size: 21px;">• Context-First Experience :</div>
-            <div class="bullet-desc">“VirasatX connects the cultural context around heritage — not just the heritage object itself.”</div>
+          <div style="font-size: 17.5px; line-height: 1.4; color: #1E293B; margin-left: 20px;">
+            • <strong>Elastic Cloud Scaling:</strong> Serverless edge hosting through Vercel and Supabase scales dynamically on demand from pilot districts to national scale.
           </div>
         </div>
 
-        <div class="slide-number">4</div>
+        <div class="sih-footer-bar">
+          <span style="visibility: hidden; width: 40px;"></span>
+          <span style="margin: 0 auto;">@SIH Idea submission- Template</span>
+          <span style="font-size: 21px; font-weight: bold; width: 40px; text-align: right;">4</span>
+        </div>
       </div>
 
-      <!-- SLIDE 5: FEASIBILITY / IMPACT / SCALABILITY -->
+      <!-- SLIDE 5: IMPACT AND BENEFITS -->
       <div class="slide" id="v-slide-5">
         <div class="header-team-oval">
           <span>Team</span>
           <span>VirasatX</span>
         </div>
-        <div class="header-center-pill" style="font-size: 28px; white-space: nowrap;">FEASIBILITY, IMPACT &amp; SCALABILITY</div>
+        <div class="header-center-title">IMPACT AND BENEFITS</div>
         <img src="sih_logo.png" class="header-sih-logo" alt="SIH Logo" />
 
-        <!-- Left Sharp Box: Feasibility & Impact -->
-        <div class="panel-box" style="left: 20px; top: 96px; width: 935px; height: 948px; padding: 22px 28px;">
-          <div class="panel-blue-title">❖ Feasibility &amp; Impact:</div>
-
-          <div class="bullet-row" style="margin-bottom: 16px;">
-            <div class="green-title" style="font-size: 21px;">1. Technical Feasibility:</div>
-            <div class="bullet-desc">• Modern React-based web architecture with Vite and Tailwind CSS.</div>
-            <div class="bullet-desc">• Modular AI capabilities powered by Google Gemini.</div>
-            <div class="bullet-desc">• Supabase-backed authentication and structured data services.</div>
-            <div class="bullet-desc">• Interactive mapping, 3D exploration, and multimedia.</div>
-            <div class="bullet-desc">• Responsive web interface deployed globally via Vercel.</div>
-            <div class="bullet-desc">• Expandable content architecture supporting new heritage categories.</div>
+        <!-- Left Column: Pointer 1 - Potential impact on the target audience -->
+        <div style="position: absolute; left: 45px; top: 104px; width: 890px; font-family: Arial, sans-serif;">
+          <div style="font-size: 23px; font-weight: bold; color: #000000; margin-bottom: 12px;">
+            • Potential impact on the target audience
           </div>
 
-          <div class="bullet-row">
-            <div class="green-title" style="font-size: 21px;">2. Social &amp; Cultural Impact:</div>
-            <div style="font-size: 19px; font-weight: bold; margin-top: 4px; color: #000;">• Preservation &amp; Discovery:</div>
-            <div class="bullet-desc">Makes cultural information more discoverable through a unified digital experience.</div>
-            <div style="font-size: 19px; font-weight: bold; margin-top: 6px; color: #000;">• Education:</div>
-            <div class="bullet-desc">Transforms heritage discovery into an interactive learning experience.</div>
-            <div style="font-size: 19px; font-weight: bold; margin-top: 6px; color: #000;">• Community Visibility:</div>
-            <div class="bullet-desc">Creates a digital pathway for discovering living traditions, crafts and artisan communities.</div>
-            <div style="font-size: 19px; font-weight: bold; margin-top: 6px; color: #000;">• Accessibility:</div>
-            <div class="bullet-desc">Allows people to explore cultural knowledge beyond physical locations.</div>
-            <div style="font-size: 19px; font-weight: bold; margin-top: 6px; color: #000;">• Responsible Discovery:</div>
-            <div class="bullet-desc">Encourages understanding cultural context before visiting or interacting with heritage.</div>
-          </div>
-        </div>
-
-        <!-- Right Sharp Box: Scalability & Future Scope -->
-        <div class="panel-box" style="right: 20px; top: 96px; width: 935px; height: 948px; padding: 22px 28px;">
-          <div class="panel-blue-title">❖ Scalability &amp; Future Scope:</div>
-
-          <div class="bullet-row" style="margin-bottom: 16px;">
-            <div class="green-title" style="font-size: 21px;">1. Scalability Architecture:</div>
-            <div style="font-size: 19px; font-weight: bold; margin-top: 4px; color: #000;">• Scalability Progression:</div>
-            <div class="bullet-desc">VirasatX MVP → Expanded Heritage Records → More Regions &amp; Languages → Institutional / Archive Integrations → Community Contribution → National-Scale Heritage Knowledge Platform.</div>
-            <div class="bullet-desc">• Modular architecture allows adding regions and categories without system redesign.</div>
-            <div class="bullet-desc">• Serverless edge hosting through Vercel and Supabase scales on demand.</div>
+          <div style="margin-bottom: 14px;">
+            <div style="color: #15803D; font-weight: bold; text-decoration: underline; font-size: 20px; margin-bottom: 4px;">1. Students &amp; Youth:</div>
+            <div style="font-size: 17.5px; line-height: 1.4; color: #1E293B; margin-left: 20px; margin-bottom: 4px;">• Replaces dry textbook memorization with interactive 3D artifact exploration, timeline epoch navigation, and conversational AI guidance.</div>
+            <div style="font-size: 17.5px; line-height: 1.4; color: #1E293B; margin-left: 20px;">• Fosters civilizational pride and active engagement among younger generations through visual and interactive learning pathways.</div>
           </div>
 
-          <div class="bullet-row">
-            <div class="green-title" style="font-size: 21px;">2. Future Scope (Planned Enhancements):</div>
-            <div class="bullet-desc">• Indian-language expansion across additional regional languages.</div>
-            <div class="bullet-desc">• Larger institutional datasets from archives and museum records.</div>
-            <div class="bullet-desc">• Community contribution workflows for grassroots cultural discovery.</div>
-            <div class="bullet-desc">• Advanced visual recognition for iconography.</div>
-            <div class="bullet-desc">• Richer 3D / immersive cultural experiences.</div>
-            <div class="bullet-desc">• Expanded educational modules and curricula integration.</div>
-            <div class="bullet-desc">• Museum and archive integrations.</div>
-            <div class="bullet-desc" style="font-style: italic; color: #475569; margin-top: 6px;">Note: The above items represent future scope and are not claimed as currently implemented.</div>
+          <div style="margin-bottom: 14px;">
+            <div style="color: #15803D; font-weight: bold; text-decoration: underline; font-size: 20px; margin-bottom: 4px;">2. Cultural Researchers &amp; Educators:</div>
+            <div style="font-size: 17.5px; line-height: 1.4; color: #1E293B; margin-left: 20px; margin-bottom: 4px;">• Provides a centralized digital platform linking monuments, artifacts, regional periods, and living traditions with institutional citations.</div>
+            <div style="font-size: 17.5px; line-height: 1.4; color: #1E293B; margin-left: 20px;">• Accelerates cultural studies with structured epoch relationships, iconography references, and comparative timelines.</div>
+          </div>
+
+          <div style="margin-bottom: 14px;">
+            <div style="color: #15803D; font-weight: bold; text-decoration: underline; font-size: 20px; margin-bottom: 4px;">3. Traditional Artisans &amp; Craft Communities:</div>
+            <div style="font-size: 17.5px; line-height: 1.4; color: #1E293B; margin-left: 20px; margin-bottom: 4px;">• Creates direct digital visibility for indigenous handlooms, terracotta, metalcasting, and regional craftsmanship.</div>
+            <div style="font-size: 17.5px; line-height: 1.4; color: #1E293B; margin-left: 20px;">• Connects traditional craftspeople to cultural discovery pathways, fostering greater public awareness and patronage.</div>
+          </div>
+
+          <div>
+            <div style="color: #15803D; font-weight: bold; text-decoration: underline; font-size: 20px; margin-bottom: 4px;">4. Cultural Tourists &amp; Heritage Travelers:</div>
+            <div style="font-size: 17.5px; line-height: 1.4; color: #1E293B; margin-left: 20px; margin-bottom: 4px;">• Promotes context-first responsible travel, encouraging deeper respect and cultural literacy before visiting physical heritage sites.</div>
+            <div style="font-size: 17.5px; line-height: 1.4; color: #1E293B; margin-left: 20px;">• Uncovers hidden, lesser-known regional heritage treasures beyond mainstream crowded tourist landmarks.</div>
           </div>
         </div>
 
-        <div class="slide-number">5</div>
+        <!-- Right Column: Pointer 2 - Benefits of the solution -->
+        <div style="position: absolute; right: 45px; top: 104px; width: 890px; font-family: Arial, sans-serif;">
+          <div style="font-size: 23px; font-weight: bold; color: #000000; margin-bottom: 12px;">
+            • Benefits of the solution (social, economic, environmental, etc.)
+          </div>
+
+          <div style="margin-bottom: 14px;">
+            <div style="color: #15803D; font-weight: bold; text-decoration: underline; font-size: 20px; margin-bottom: 4px;">1. Social &amp; Cultural Benefits:</div>
+            <div style="font-size: 17.5px; line-height: 1.4; color: #1E293B; margin-left: 20px; margin-bottom: 4px;">• Digitally preserves India’s tangible and intangible heritage for future generations.</div>
+            <div style="font-size: 17.5px; line-height: 1.4; color: #1E293B; margin-left: 20px;">• Fosters intercultural dialogue and civilizational awareness across diverse Indian regions and languages.</div>
+          </div>
+
+          <div style="margin-bottom: 14px;">
+            <div style="color: #15803D; font-weight: bold; text-decoration: underline; font-size: 20px; margin-bottom: 4px;">2. Educational &amp; Research Benefits:</div>
+            <div style="font-size: 17.5px; line-height: 1.4; color: #1E293B; margin-left: 20px; margin-bottom: 4px;">• Delivers an open-access cultural learning repository for schools, universities, and self-directed learners nationwide.</div>
+            <div style="font-size: 17.5px; line-height: 1.4; color: #1E293B; margin-left: 20px;">• Encourages interdisciplinary exploration connecting architecture, epigraphy, mythology, and craft sciences.</div>
+          </div>
+
+          <div style="margin-bottom: 14px;">
+            <div style="color: #15803D; font-weight: bold; text-decoration: underline; font-size: 20px; margin-bottom: 4px;">3. Economic &amp; Community Benefits:</div>
+            <div style="font-size: 17.5px; line-height: 1.4; color: #1E293B; margin-left: 20px; margin-bottom: 4px;">• Stimulates regional cultural tourism, dispersing economic benefits to rural communities and artisan clusters.</div>
+            <div style="font-size: 17.5px; line-height: 1.4; color: #1E293B; margin-left: 20px;">• Increases awareness and demand for authentic traditional craftsmanship and community-made goods.</div>
+          </div>
+
+          <div>
+            <div style="color: #15803D; font-weight: bold; text-decoration: underline; font-size: 20px; margin-bottom: 4px;">4. Digital Preservation &amp; Scalability:</div>
+            <div style="font-size: 17.5px; line-height: 1.4; color: #1E293B; margin-left: 20px; margin-bottom: 4px;">• Creates a future-ready, resilient digital architecture that scales seamlessly across hundreds of regional sites.</div>
+            <div style="font-size: 17.5px; line-height: 1.4; color: #1E293B; margin-left: 20px;">• Safeguards vulnerable cultural knowledge against permanent loss through structured digital documentation.</div>
+          </div>
+        </div>
+
+        <div class="sih-footer-bar">
+          <span style="visibility: hidden; width: 40px;"></span>
+          <span style="margin: 0 auto;">@SIH Idea submission- Template</span>
+          <span style="font-size: 21px; font-weight: bold; width: 40px; text-align: right;">5</span>
+        </div>
       </div>
 
-      <!-- SLIDE 6: RESEARCH / RESOURCES -->
+      <!-- SLIDE 6: RESEARCH AND REFERENCES -->
       <div class="slide" id="v-slide-6">
         <div class="header-team-oval">
           <span>Team</span>
           <span>VirasatX</span>
         </div>
-        <div class="header-center-pill">RESEARCH AND REFERENCES</div>
+        <div class="header-center-title">RESEARCH AND REFERENCES</div>
         <img src="sih_logo.png" class="header-sih-logo" alt="SIH Logo" />
 
-        <div class="panel-box" style="left: 20px; right: 20px; top: 96px; height: 948px; border-radius: 0; padding: 28px 36px;">
-          <div class="bullet-row" style="margin-bottom: 20px;">
-            <div class="green-title" style="font-size: 22px;">1. Project &amp; Prototype:</div>
-            <div style="font-size: 20px; margin-left: 20px; line-height: 1.5; color: #000; margin-top: 6px;">
+        <!-- Pointer 1 Heading -->
+        <div style="position: absolute; left: 45px; top: 104px; font-size: 23px; font-weight: bold; color: #000000; font-family: Arial, sans-serif;">
+          • Details / Links of the reference and research work
+        </div>
+
+        <!-- Left Column: Prototype & Institutional Sources -->
+        <div style="position: absolute; left: 45px; top: 148px; width: 890px; font-family: Arial, sans-serif;">
+          <div style="margin-bottom: 16px;">
+            <div style="color: #15803D; font-weight: bold; text-decoration: underline; font-size: 21px; margin-bottom: 6px;">1. Project &amp; Prototype:</div>
+            <div style="font-size: 18px; margin-left: 20px; line-height: 1.5; color: #000;">
               <strong>VirasatX — India’s Heritage Repository</strong><br>
-              Live Prototype: <a href="https://virasatxai.vercel.app/" target="_blank" style="color: #0070C0; text-decoration: underline;">https://virasatxai.vercel.app/</a><br>
-              GitHub Repository: <a href="https://github.com/ShrilCarpenter/VirasatX" target="_blank" style="color: #0070C0; text-decoration: underline;">https://github.com/ShrilCarpenter/VirasatX</a>
+              • Live Prototype: <a href="https://virasatxai.vercel.app/" target="_blank" style="color: #0070C0; text-decoration: underline;">https://virasatxai.vercel.app/</a><br>
+              • GitHub Repository: <a href="https://github.com/ShrilCarpenter/VirasatX" target="_blank" style="color: #0070C0; text-decoration: underline;">https://github.com/ShrilCarpenter/VirasatX</a><br>
+              • Core Modules: 3D WebGL Studio, 11-Era Chronology Timeline, Leaflet GIS Map, Gemini AI Guide
             </div>
           </div>
 
-          <div class="bullet-row" style="margin-bottom: 22px;">
-            <div class="green-title" style="font-size: 22px;">2. Research &amp; Reference Sources:</div>
-            <div style="font-size: 20px; margin-left: 20px; line-height: 1.45; color: #000; margin-top: 6px;">
+          <div>
+            <div style="color: #15803D; font-weight: bold; text-decoration: underline; font-size: 21px; margin-bottom: 6px;">2. Institutional Reference Sources:</div>
+            <div style="font-size: 17.5px; margin-left: 20px; line-height: 1.45; color: #000;">
               Institutional sources consulted for taxonomy, cataloging schemas, and heritage documentation:
-              <ul style="margin-top: 8px; margin-left: 10px; line-height: 1.55;">
+              <ul style="margin-top: 6px; margin-left: 10px; line-height: 1.5;">
                 <li>Ministry of Culture (<a href="https://www.indiaculture.gov.in/" target="_blank" style="color: #0070C0; text-decoration: underline;">https://www.indiaculture.gov.in/</a>)</li>
                 <li>Archaeological Survey of India (ASI) (<a href="https://asi.nic.in/" target="_blank" style="color: #0070C0; text-decoration: underline;">https://asi.nic.in/</a>)</li>
                 <li>National Archives of India (<a href="https://nationalarchives.nic.in/" target="_blank" style="color: #0070C0; text-decoration: underline;">https://nationalarchives.nic.in/</a>)</li>
-                <li>National Mission on Monuments and Antiquities</li>
+                <li>National Mission on Monuments and Antiquities (NMMA) (<a href="http://nmma.nic.in/" target="_blank" style="color: #0070C0; text-decoration: underline;">http://nmma.nic.in/</a>)</li>
                 <li>Museums of India (<a href="https://museumsofindia.gov.in/" target="_blank" style="color: #0070C0; text-decoration: underline;">https://museumsofindia.gov.in/</a>)</li>
                 <li>Indira Gandhi National Centre for the Arts (IGNCA) (<a href="https://ignca.gov.in/" target="_blank" style="color: #0070C0; text-decoration: underline;">https://ignca.gov.in/</a>)</li>
                 <li>Vedic Heritage Portal (<a href="https://vedicheritage.gov.in/" target="_blank" style="color: #0070C0; text-decoration: underline;">https://vedicheritage.gov.in/</a>)</li>
-                <li>UNESCO / Relevant Institutional Heritage Resources (<a href="https://whc.unesco.org/" target="_blank" style="color: #0070C0; text-decoration: underline;">https://whc.unesco.org/</a>)</li>
+                <li>UNESCO World Heritage Centre (<a href="https://whc.unesco.org/" target="_blank" style="color: #0070C0; text-decoration: underline;">https://whc.unesco.org/</a>)</li>
               </ul>
-            </div>
-          </div>
-
-          <div class="bullet-row">
-            <div class="green-title" style="font-size: 22px;">3. Closing Vision:</div>
-            <div style="font-size: 21px; margin-left: 20px; line-height: 1.5; color: #000; margin-top: 6px;">
-              <strong>VIRASATX</strong><br>
-              <em style="color: #1E293B;">“From scattered heritage knowledge to one connected cultural experience.”</em><br>
-              <strong style="color: #15803D;">Explore. Understand. Preserve.</strong><br>
-              Smart India Hackathon 2026 — Problem Statement ID: <strong>SIH26197</strong>
             </div>
           </div>
         </div>
 
-        <div class="slide-number">6</div>
+        <!-- Right Column: Research Frameworks & Closing Vision -->
+        <div style="position: absolute; right: 45px; top: 148px; width: 890px; font-family: Arial, sans-serif;">
+          <div style="margin-bottom: 20px;">
+            <div style="color: #15803D; font-weight: bold; text-decoration: underline; font-size: 21px; margin-bottom: 6px;">3. Technical Standards &amp; Frameworks:</div>
+            <div style="font-size: 17.5px; margin-left: 20px; line-height: 1.45; color: #1E293B;">
+              • <strong>W3C WebGL &amp; WebXR Guidelines:</strong> Mobile-optimized interactive 3D rendering standards.<br>
+              • <strong>CIDOC-CRM &amp; Dublin Core:</strong> Global cultural heritage cataloging and semantic metadata models.<br>
+              • <strong>Digital Personal Data Protection (DPDP) Act 2023:</strong> Full regulatory compliance for citizen privacy.<br>
+              • <strong>National Education Policy (NEP 2020):</strong> Integration with Indian Knowledge Systems (IKS) pedagogy.
+            </div>
+          </div>
+
+          <div style="background: #F8FAFC; border: 2px solid #1B365D; border-radius: 10px; padding: 26px 32px;">
+            <div style="font-size: 26px; font-weight: bold; color: #1B365D; font-family: 'Times New Roman', serif;">VIRASATX</div>
+            <div style="font-size: 20px; font-style: italic; color: #334155; margin: 10px 0;">
+              “From scattered heritage knowledge to one connected cultural experience.”
+            </div>
+            <div style="font-size: 22px; font-weight: 800; color: #15803D; letter-spacing: 1.2px;">
+              EXPLORE • UNDERSTAND • PRESERVE
+            </div>
+            <div style="font-size: 18px; color: #000000; margin-top: 16px;">
+              Smart India Hackathon 2026 — Problem Statement ID: <strong>SIH26197</strong>
+            </div>
+            <div style="font-size: 16px; color: #64748B; margin-top: 4px;">
+              Theme: Heritage &amp; Culture • PS Category: Software • Team: Team VirasatX (ID: 57385)
+            </div>
+          </div>
+        </div>
+
+        <div class="sih-footer-bar">
+          <span style="visibility: hidden; width: 40px;"></span>
+          <span style="margin: 0 auto;">@SIH Idea submission- Template</span>
+          <span style="font-size: 21px; font-weight: bold; width: 40px; text-align: right;">6</span>
+        </div>
       </div>
 
     </div>
