@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Smart India Hackathon 2025 - Idea Submission</title>
+  <title>VirasatX — SIH 2026 Official Idea Submission Deck (SIH26197)</title>
   <style>
     * {
       box-sizing: border-box;
@@ -12,8 +12,8 @@
     }
 
     body {
-      background-color: #1E293B;
-      font-family: Arial, sans-serif;
+      background-color: #0F172A;
+      font-family: 'Segoe UI', -apple-system, BlinkMacSystemFont, Roboto, Arial, sans-serif;
       min-height: 100vh;
       display: flex;
       flex-direction: column;
@@ -25,27 +25,26 @@
     /* Top Control Bar */
     .controls {
       width: 100%;
-      max-width: 1200px;
+      max-width: 1440px;
       display: flex;
       justify-content: space-between;
       align-items: center;
-      background: #0F172A;
+      background: #1E293B;
       border: 1px solid #334155;
       padding: 12px 24px;
       border-radius: 10px;
       margin-bottom: 24px;
       color: white;
-      box-shadow: 0 4px 15px rgba(0,0,0,0.4);
-      font-family: Arial, sans-serif;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.3);
     }
 
     .controls h2 {
-      font-size: 1.05rem;
-      font-weight: bold;
+      font-size: 1.1rem;
+      font-weight: 700;
       color: #F8FAFC;
       display: flex;
       align-items: center;
-      gap: 10px;
+      gap: 12px;
     }
 
     .btn-group {
@@ -54,365 +53,949 @@
     }
 
     button {
-      font-family: Arial, sans-serif;
-      background: #2563EB;
+      background: #0070C0;
       color: white;
       border: none;
       padding: 8px 18px;
-      font-size: 0.9rem;
-      font-weight: bold;
       border-radius: 6px;
+      font-size: 0.9rem;
+      font-weight: 600;
       cursor: pointer;
-      transition: all 0.2s;
-      display: inline-flex;
+      transition: all 0.2s ease;
+      display: flex;
       align-items: center;
       gap: 6px;
     }
 
     button:hover {
-      background: #1D4ED8;
+      background: #005A9C;
       transform: translateY(-1px);
     }
 
-    .btn-orange {
-      background: #EA580C;
-    }
-    .btn-orange:hover {
-      background: #C2410C;
-    }
-
-    /* Deck Container */
-    .deck {
-      width: 100%;
-      max-width: 1200px;
+    /* Slide Deck Container */
+    .deck-container {
       display: flex;
       flex-direction: column;
       gap: 36px;
+      width: 100%;
+      max-width: 1440px;
+      align-items: center;
     }
 
-    /* 16:9 Slide Exact Canvas matching Reference PPT */
+    /* Exact 16:9 Widescreen Slide (1920x1080) */
     .slide {
-      width: 100%;
-      aspect-ratio: 16 / 9;
+      width: 1920px;
+      height: 1080px;
       background: #FFFFFF;
       position: relative;
       overflow: hidden;
-      box-shadow: 0 12px 35px rgba(0,0,0,0.35);
+      box-shadow: 0 12px 40px rgba(0, 0, 0, 0.4);
       display: flex;
       flex-direction: column;
-      padding: 20px 38px 16px 38px;
-      font-family: Arial, sans-serif;
+      transform-origin: top center;
     }
 
-    /* Header for Slides 2 - 6 */
+    @media screen {
+      .slide {
+        transform: scale(0.72);
+        margin-bottom: -302px;
+      }
+    }
+
+    @media (min-width: 1800px) {
+      .slide {
+        transform: scale(0.85);
+        margin-bottom: -162px;
+      }
+    }
+
+    @media print {
+      body {
+        background: none;
+        padding: 0;
+      }
+      .controls {
+        display: none;
+      }
+      .deck-container {
+        gap: 0;
+      }
+      .slide {
+        transform: none !important;
+        margin: 0 !important;
+        page-break-after: always;
+        break-after: page;
+      }
+      @page {
+        size: 1920px 1080px;
+        margin: 0;
+      }
+    }
+
+    /* ==========================================================================
+       HEADER & FOOTER (MATCHING REFERENCE 1 ANATOMY 1:1)
+       ========================================================================== */
     .slide-header {
+      height: 110px;
+      width: 100%;
       display: flex;
-      justify-content: space-between;
       align-items: center;
-      height: 60px;
-      margin-bottom: 8px;
+      justify-content: space-between;
+      padding: 14px 48px;
       position: relative;
+      background: #FFFFFF;
+      border-bottom: 2px solid #F1F5F9;
     }
 
-    .team-oval {
-      width: 130px;
-      height: 52px;
-      border: 1.5px solid #000000;
-      border-radius: 50px;
+    .header-team {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .header-team-logo {
+      width: 50px;
+      height: 50px;
+      border-radius: 10px;
+      object-fit: contain;
+    }
+
+    .header-team-text {
       display: flex;
       flex-direction: column;
-      justify-content: center;
-      align-items: center;
-      text-align: center;
-      line-height: 1.15;
-      font-size: 0.9rem;
-      font-weight: bold;
-      color: #000000;
-      font-family: Arial, sans-serif;
-      background: #FFFFFF;
-      padding: 2px 4px;
     }
 
-    .pill-title-container {
-      flex: 1;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-    }
-
-    .pill-title {
-      border: 1.5px solid #000000;
-      border-radius: 30px;
-      padding: 3px 44px;
-      font-family: Arial, sans-serif;
-      font-size: 1.85rem;
-      font-weight: bold;
-      color: #000000;
+    .header-team-name {
+      font-size: 28px;
+      font-weight: 900;
       letter-spacing: 0.5px;
+      color: #002B49;
+      line-height: 1;
+    }
+
+    .header-team-tag {
+      font-size: 13px;
+      font-weight: 700;
+      color: #0070C0;
+      letter-spacing: 1px;
+    }
+
+    .header-title-container {
+      position: absolute;
+      left: 50%;
+      transform: translateX(-50%);
       text-align: center;
-      background: #FFFFFF;
+    }
+
+    .header-main-title {
+      font-size: 38px;
+      font-weight: 900;
+      letter-spacing: 2px;
+      color: #000000;
+      text-transform: uppercase;
+      line-height: 1;
+    }
+
+    .header-subtitle {
+      font-size: 16px;
+      font-weight: 600;
+      color: #334155;
+      margin-top: 4px;
+    }
+
+    .header-sih-logo {
+      height: 72px;
+      width: auto;
+      object-fit: contain;
+    }
+
+    /* Footer Banner */
+    .slide-footer {
+      height: 48px;
+      width: 100%;
+      background: #005A9C;
+      color: #FFFFFF;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 48px;
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      z-index: 10;
+    }
+
+    .footer-team-handle {
+      font-size: 22px;
+      font-weight: 800;
+      letter-spacing: 5px;
       text-transform: uppercase;
     }
 
-    .sih-logo-img {
-      height: 54px;
-      width: auto;
+    .footer-slide-num {
+      font-size: 26px;
+      font-weight: 900;
     }
 
-    /* Two-Column Grid */
-    .two-col-layout {
+    /* Slide Body Container */
+    .slide-body {
       flex: 1;
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 20px;
+      padding: 20px 48px 60px 48px;
+      display: flex;
+      gap: 28px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    /* Pill Badges (Exact match to Reference 1) */
+    .pill-badge {
+      display: inline-flex;
+      align-items: center;
+      padding: 6px 18px;
+      background: #475569;
+      color: #FFFFFF;
+      font-size: 14px;
+      font-weight: 800;
+      letter-spacing: 0.8px;
+      text-transform: uppercase;
+      border-radius: 20px;
+      margin-bottom: 10px;
+    }
+
+    .pill-badge-blue {
+      background: #0070C0;
+    }
+
+    .pill-badge-navy {
+      background: #002B49;
+    }
+
+    .pill-badge-gold {
+      background: #936B38;
+    }
+
+    .pill-badge-green {
+      background: #15803D;
+    }
+
+    /* Card Containers */
+    .card-box {
+      background: #FFFFFF;
+      border: 1.5px solid #0070C0;
+      border-radius: 12px;
+      padding: 16px 20px;
       position: relative;
     }
 
-    /* Center Vertical Divider Line */
-    .two-col-layout::before {
-      content: "";
-      position: absolute;
-      top: 0;
-      bottom: 0;
-      left: 50%;
-      width: 1.5px;
-      background-color: #000000;
-      transform: translateX(-50%);
+    .card-box-grey {
+      background: #F8FAFC;
+      border: 1.5px solid #CBD5E1;
+      border-radius: 12px;
+      padding: 16px 20px;
+      position: relative;
     }
 
-    .col-left, .col-right {
+    .arrow-bullet {
+      color: #0070C0;
+      font-weight: 900;
+      margin-right: 6px;
+    }
+
+    p.bullet-line {
+      font-size: 15px;
+      line-height: 1.4;
+      color: #000000;
+      margin-bottom: 8px;
+    }
+
+    p.bullet-line strong {
+      color: #000000;
+      font-weight: 800;
+    }
+
+    p.bullet-line:last-child {
+      margin-bottom: 0;
+    }
+
+    /* ==========================================================================
+       SLIDE 1 STYLES
+       ========================================================================== */
+    .slide-1-body {
+      display: grid;
+      grid-template-columns: 1.15fr 0.85fr;
+      gap: 36px;
+      padding-top: 28px;
+      align-items: center;
+    }
+
+    .s1-meta-list {
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+      margin-bottom: 24px;
+    }
+
+    .s1-meta-item {
+      display: flex;
+      align-items: baseline;
+      font-size: 21px;
+      line-height: 1.35;
+      color: #000000;
+    }
+
+    .s1-meta-item::before {
+      content: "•";
+      color: #000000;
+      font-size: 28px;
+      font-weight: 900;
+      margin-right: 14px;
+      line-height: 1;
+    }
+
+    .s1-meta-label {
+      font-weight: 800;
+      color: #000000;
+      margin-right: 8px;
+      white-space: nowrap;
+    }
+
+    .s1-meta-value {
+      font-weight: 800;
+      color: #15803D;
+    }
+
+    .s1-meta-value.highlight-id {
+      color: #15803D;
+      font-size: 25px;
+      font-weight: 900;
+    }
+
+    .s1-pitch-box {
+      background: #F8FAFC;
+      border: 2px solid #0070C0;
+      border-radius: 12px;
+      padding: 16px 22px;
+      margin-top: 10px;
+    }
+
+    .s1-pitch-title {
+      font-size: 13px;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 1.5px;
+      color: #0070C0;
+      margin-bottom: 6px;
+    }
+
+    .s1-pitch-text {
+      font-size: 17.5px;
+      font-weight: 600;
+      color: #0F172A;
+      line-height: 1.4;
+      font-style: italic;
+    }
+
+    .s1-right-container {
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      height: 100%;
+    }
+
+    .s1-backdrop-bulb {
+      position: absolute;
+      width: 460px;
+      height: auto;
+      opacity: 0.12;
+      z-index: 1;
+      pointer-events: none;
+    }
+
+    .s1-hero-preview {
+      position: relative;
+      z-index: 2;
+      width: 100%;
+      border-radius: 12px;
+      overflow: hidden;
+      border: 2px solid #CBD5E1;
+      box-shadow: 0 16px 36px rgba(0,0,0,0.18);
+      background: #FAF8F5;
+    }
+
+    .s1-hero-preview img {
+      width: 100%;
+      height: auto;
+      display: block;
+    }
+
+    .s1-tagline-badge {
+      margin-top: 14px;
+      z-index: 2;
+      background: #002B49;
+      color: #FFFFFF;
+      padding: 8px 24px;
+      border-radius: 20px;
+      font-size: 15px;
+      font-weight: 700;
+      letter-spacing: 1px;
+    }
+
+    /* ==========================================================================
+       SLIDE 2 STYLES (MATCHING REFERENCE 1 SLIDE 2)
+       ========================================================================== */
+    .slide-2-body {
+      display: grid;
+      grid-template-columns: 1.25fr 0.75fr;
+      gap: 28px;
+    }
+
+    .s2-left-column {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+
+    .s2-thumbs-row {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 10px;
+    }
+
+    .s2-thumb-card {
+      border-radius: 8px;
+      overflow: hidden;
+      border: 1px solid #CBD5E1;
+      background: #FFFFFF;
+      box-shadow: 0 3px 8px rgba(0,0,0,0.06);
+    }
+
+    .s2-thumb-card img {
+      width: 100%;
+      height: 84px;
+      object-fit: cover;
+      display: block;
+    }
+
+    .s2-thumb-title {
+      font-size: 11.5px;
+      font-weight: 800;
+      color: #0F172A;
+      padding: 4px 6px;
+      background: #F8FAFC;
+      border-top: 1px solid #E2E8F0;
+      text-align: center;
+      white-space: nowrap;
+    }
+
+    .s2-uvp-box {
+      background: #F0F9FF;
+      border: 1.5px solid #0070C0;
+      border-radius: 12px;
+      padding: 12px 18px;
+    }
+
+    .s2-uvp-flow {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      background: #FFFFFF;
+      padding: 6px 12px;
+      border-radius: 6px;
+      border: 1px solid #BAE6FD;
+      margin: 6px 0;
+      font-size: 12.5px;
+      font-weight: 800;
+      color: #0369A1;
+    }
+
+    .s2-right-column {
       display: flex;
       flex-direction: column;
       height: 100%;
     }
 
-    .col-left {
-      padding-right: 12px;
-    }
-
-    .col-right {
-      padding-left: 12px;
-    }
-
-    /* Section Heading (Blue ❖) */
-    .section-heading-blue {
-      font-size: 1.45rem;
-      font-weight: bold;
-      color: #0070C0;
-      margin-bottom: 6px;
-      display: flex;
-      align-items: center;
-      gap: 6px;
-      font-family: Arial, sans-serif;
-    }
-
-    .section-heading-blue span.diamond {
-      color: #0070C0;
-      font-size: 1.5rem;
-    }
-
-    /* Green Subtitle / Item Header */
-    .item-green-title {
-      font-family: Arial, sans-serif;
-      font-size: 0.92rem;
-      font-weight: bold;
-      color: #15803D;
-      text-decoration: underline;
-      margin-bottom: 2px;
-    }
-
-    /* Bullets */
-    .compact-bullets {
-      font-family: Arial, sans-serif;
-      list-style-type: disc;
-      padding-left: 18px;
-      margin-bottom: 6px;
+    .s2-arch-box {
+      background: #FFFFFF;
+      border: 1.5px solid #002B49;
+      border-radius: 12px;
+      padding: 16px;
+      height: 100%;
       display: flex;
       flex-direction: column;
-      gap: 2px;
+      justify-content: space-between;
     }
 
-    .compact-bullets li {
-      font-size: 0.82rem;
-      color: #000000;
-      line-height: 1.34;
-    }
-
-    .compact-bullets li strong {
-      color: #15803D;
-      text-decoration: underline;
-      font-weight: bold;
-    }
-
-    .compact-bullets li span.desc {
-      color: #000000;
-      text-decoration: none;
-      font-weight: normal;
-    }
-
-    /* Slide 1 - Title Page Specifics */
-    .slide-1-content {
-      flex: 1;
-      display: flex;
-      flex-direction: column;
-      position: relative;
-    }
-
-    .s1-top-bar {
+    .arch-title-bar {
       display: flex;
       justify-content: space-between;
       align-items: center;
-      margin-bottom: 8px;
+      margin-bottom: 10px;
     }
 
-    .s1-main-title {
-      font-family: 'Times New Roman', Times, serif;
-      font-size: 2.5rem;
-      font-weight: bold;
-      color: #1A365D;
-      letter-spacing: 0.5px;
-    }
-
-    .s1-page-badge {
+    .arch-flow-node {
+      border-radius: 8px;
+      padding: 8px 12px;
       text-align: center;
-      font-family: Arial, sans-serif;
-      font-size: 2.1rem;
-      font-weight: bold;
-      color: #000000;
-      letter-spacing: 1px;
-      margin-bottom: 24px;
+      font-size: 13px;
+      font-weight: 800;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.05);
     }
 
-    .s1-body {
-      flex: 1;
+    .node-user {
+      background: #EFF6FF;
+      color: #1E40AF;
+      border: 1.5px solid #93C5FD;
+    }
+
+    .node-core {
+      background: #FAF8F5;
+      color: #936B38;
+      border: 1.5px solid #D4AF37;
+    }
+
+    .node-branch {
+      font-size: 11.5px;
+      padding: 6px 8px;
+    }
+
+    .node-blue {
+      background: #F0F9FF;
+      color: #0369A1;
+      border: 1.5px solid #7DD3FC;
+    }
+
+    .node-orange {
+      background: #FFF7ED;
+      color: #C2410C;
+      border: 1.5px solid #FDBA74;
+    }
+
+    .node-green {
+      background: #F0FDF4;
+      color: #15803D;
+      border: 1.5px solid #86EFAC;
+    }
+
+    .arch-down-arrow {
+      text-align: center;
+      font-size: 16px;
+      color: #0070C0;
+      font-weight: 900;
+      line-height: 1;
+      margin: 2px 0;
+    }
+
+    .standards-row {
       display: grid;
-      grid-template-columns: 1.3fr 0.9fr;
-      align-items: center;
-      position: relative;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 6px;
+      margin-top: 8px;
+      background: #F8FAFC;
+      padding: 6px;
+      border-radius: 6px;
+      border: 1px solid #E2E8F0;
+      text-align: center;
+      font-size: 10.5px;
+      font-weight: 700;
+      color: #475569;
     }
 
-    .s1-details-list {
-      font-family: Arial, sans-serif;
-      list-style-type: disc;
-      padding-left: 26px;
+    /* ==========================================================================
+       SLIDE 3 STYLES (MATCHING REFERENCE 1 SLIDE 3)
+       ========================================================================== */
+    .slide-3-body {
       display: flex;
       flex-direction: column;
       gap: 16px;
     }
 
-    .s1-details-list li {
-      font-size: 1.15rem;
-      line-height: 1.38;
-      color: #000000;
+    .s3-flow-container {
+      background: #FFFFFF;
+      border: 2px dashed #0070C0;
+      border-radius: 12px;
+      padding: 16px 20px;
     }
 
-    .s1-details-list li strong {
-      font-size: 1.18rem;
-      font-weight: bold;
-      color: #000000;
-    }
-
-    .s1-details-list li span.val {
-      font-weight: normal;
-      color: #000000;
-    }
-
-    .s1-watermark {
+    .s3-start-bar {
       display: flex;
-      justify-content: center;
       align-items: center;
-      opacity: 0.9;
+      gap: 16px;
+      margin-bottom: 12px;
     }
 
-    .s1-watermark img {
-      max-height: 290px;
-      width: auto;
-    }
-
-    /* Flowchart / Diagram Styles (Slide 2 Right) */
-    .flowchart-svg-container {
-      width: 100%;
-      height: 100%;
+    .s3-start-pill {
+      background: #475569;
+      color: white;
+      padding: 6px 16px;
+      border-radius: 6px;
+      font-size: 14px;
+      font-weight: 800;
       display: flex;
-      justify-content: center;
       align-items: center;
+      gap: 6px;
     }
 
-    /* Architecture Diagram (Slide 3 Right) */
-    .arch-svg-container {
-      width: 100%;
-      height: 100%;
-      display: flex;
-      justify-content: center;
-      align-items: center;
+    .s3-decision-box {
+      background: #334155;
+      color: white;
+      padding: 8px 20px;
+      border-radius: 8px;
+      font-size: 15px;
+      font-weight: 800;
     }
 
-    /* UI Draft Mockup Card (Slide 3 Left) */
-    .ui-draft-card {
-      font-family: Arial, sans-serif;
-      border: 1.2px solid #000000;
-      border-radius: 4px;
-      padding: 5px 8px;
-      background: #F0FDF4;
-      margin-top: 4px;
+    .s3-branches-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr;
+      gap: 18px;
+    }
+
+    .s3-branch-col {
+      border: 1.5px solid #E2E8F0;
+      border-radius: 10px;
+      padding: 12px 14px;
+      background: #F8FAFC;
       display: flex;
       flex-direction: column;
-      gap: 3px;
+      gap: 8px;
     }
 
-    .ui-draft-inner {
-      display: grid;
-      grid-template-columns: 0.8fr 1.6fr 1fr;
-      gap: 4px;
-      background: #FFFFFF;
+    .s3-branch-header {
+      padding: 6px 12px;
+      border-radius: 6px;
+      text-align: center;
+      font-weight: 900;
+      font-size: 14px;
+      color: white;
+    }
+
+    .s3-step-node {
+      background: white;
       border: 1px solid #CBD5E1;
-      border-radius: 3px;
-      padding: 4px;
-      font-size: 0.64rem;
+      border-radius: 6px;
+      padding: 6px 10px;
+      font-size: 12.5px;
+      font-weight: 700;
+      color: #0F172A;
+      display: flex;
+      align-items: center;
+      gap: 8px;
     }
 
-    .ui-caption {
-      font-size: 0.72rem;
-      font-weight: bold;
+    .s3-bottom-row {
+      display: grid;
+      grid-template-columns: 1.2fr 0.8fr;
+      gap: 20px;
+      flex: 1;
+    }
+
+    .tech-stack-container {
+      background: #FFFFFF;
+      border: 1.5px solid #0070C0;
+      border-radius: 12px;
+      padding: 14px 18px;
+    }
+
+    .tech-stack-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 10px;
+      margin-top: 8px;
+    }
+
+    .tech-pill-box {
+      background: #F8FAFC;
+      border: 1px solid #CBD5E1;
+      border-radius: 6px;
+      padding: 6px 8px;
+      text-align: center;
+    }
+
+    .tech-pill-title {
+      font-size: 10px;
+      font-weight: 800;
+      color: #0070C0;
+      text-transform: uppercase;
+    }
+
+    .tech-pill-techs {
+      font-size: 12px;
+      font-weight: 800;
+      color: #0F172A;
+      margin-top: 2px;
+    }
+
+    /* ==========================================================================
+       SLIDE 4 STYLES (MATCHING REFERENCE 1 SLIDE 4)
+       ========================================================================== */
+    .slide-4-body {
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+
+    .s4-top-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 20px;
+    }
+
+    .s4-card-box {
+      background: #FFFFFF;
+      border-radius: 12px;
+      padding: 16px 20px;
+    }
+
+    .s4-card-box.blue {
+      border: 2px solid #0070C0;
+    }
+
+    .s4-card-box.green {
+      border: 2px solid #15803D;
+    }
+
+    .s4-card-header {
+      font-size: 20px;
+      font-weight: 900;
+      margin-bottom: 10px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .s4-sub-item {
+      margin-bottom: 8px;
+      font-size: 14.5px;
+      line-height: 1.4;
+    }
+
+    .s4-sub-item strong {
       color: #000000;
-      margin-top: 3px;
+      font-weight: 800;
+    }
+
+    .s4-bottom-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 20px;
+    }
+
+    .s4-challenge-box {
+      background: #F8FAFC;
+      border: 1.5px solid #CBD5E1;
+      border-radius: 12px;
+      padding: 14px 18px;
+    }
+
+    .s4-challenge-header {
+      font-size: 17px;
+      font-weight: 900;
+      color: #0070C0;
+      margin-bottom: 8px;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+
+    /* ==========================================================================
+       SLIDE 5 STYLES (MATCHING REFERENCE 1 SLIDE 5)
+       ========================================================================== */
+    .slide-5-body {
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+    }
+
+    .s5-top-split {
+      display: grid;
+      grid-template-columns: 1.25fr 0.75fr;
+      gap: 20px;
+    }
+
+    .s5-impact-bullets {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    .s5-table-container {
+      background: #1E293B;
+      border-radius: 10px;
+      overflow: hidden;
+      color: white;
+      font-size: 12px;
+    }
+
+    .s5-table {
+      width: 100%;
+      border-collapse: collapse;
+    }
+
+    .s5-table th {
+      background: #0F172A;
+      padding: 8px 10px;
+      font-weight: 800;
       text-align: left;
+      border-bottom: 1px solid #334155;
     }
 
-    /* Slide Number */
-    .slide-number-bottom-right {
-      position: absolute;
-      bottom: 6px;
-      right: 18px;
-      font-family: Arial, sans-serif;
-      font-size: 1.15rem;
-      font-weight: bold;
+    .s5-table td {
+      padding: 5.5px 10px;
+      border-bottom: 1px solid #334155;
+    }
+
+    .s5-banner-bar {
+      background: #F1F5F9;
+      border: 1px solid #CBD5E1;
+      border-radius: 6px;
+      padding: 6px 14px;
+      text-align: center;
+      font-size: 15px;
+      font-weight: 900;
+      letter-spacing: 2px;
+      color: #0F172A;
+      text-transform: uppercase;
+    }
+
+    .s5-modes-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr;
+      gap: 18px;
+    }
+
+    .s5-mode-card {
+      border: 2px solid #CBD5E1;
+      border-radius: 10px;
+      overflow: hidden;
+      background: #FFFFFF;
+    }
+
+    .s5-mode-card.blue {
+      border-color: #0070C0;
+    }
+
+    .s5-mode-card.orange {
+      border-color: #EA580C;
+    }
+
+    .s5-mode-card.green {
+      border-color: #15803D;
+    }
+
+    .s5-mode-header {
+      padding: 8px 12px;
+      font-weight: 900;
+      font-size: 14.5px;
+      color: white;
+      text-align: center;
+    }
+
+    .s5-mode-header.blue {
+      background: #0070C0;
+    }
+
+    .s5-mode-header.orange {
+      background: #EA580C;
+    }
+
+    .s5-mode-header.green {
+      background: #15803D;
+    }
+
+    .s5-mode-content {
+      padding: 12px 14px;
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+      font-size: 13px;
+    }
+
+    /* ==========================================================================
+       SLIDE 6 STYLES (MATCHING REFERENCE 1 SLIDE 6)
+       ========================================================================== */
+    .slide-6-body {
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+    }
+
+    .s6-ref-box {
+      background: #F8FAFC;
+      border: 1.5px solid #CBD5E1;
+      border-radius: 12px;
+      padding: 14px 20px;
+    }
+
+    .s6-ref-item {
+      font-size: 14.5px;
+      margin-bottom: 6px;
       color: #000000;
     }
 
-    /* Print & Export Rules */
-    @media print {
-      body {
-        background: transparent !important;
-        padding: 0 !important;
-      }
-      .controls {
-        display: none !important;
-      }
-      .deck {
-        max-width: 100% !important;
-        gap: 0 !important;
-      }
-      .slide {
-        page-break-after: always !important;
-        page-break-inside: avoid !important;
-        break-after: page !important;
-        box-shadow: none !important;
-        width: 100vw !important;
-        height: 56.25vw !important;
-        max-height: 100vh !important;
-        margin: 0 !important;
-      }
+    .s6-ref-item strong {
+      font-weight: 800;
+    }
+
+    .s6-ref-item a {
+      color: #0070C0;
+      text-decoration: underline;
+      font-weight: 700;
+    }
+
+    .s6-compare-row {
+      display: grid;
+      grid-template-columns: 1fr auto 1fr;
+      gap: 16px;
+      align-items: center;
+    }
+
+    .s6-compare-card {
+      border-radius: 12px;
+      padding: 14px 18px;
+    }
+
+    .s6-compare-card.left {
+      background: #F0F9FF;
+      border: 1.5px solid #BAE6FD;
+    }
+
+    .s6-compare-card.right {
+      background: #FFFFFF;
+      border: 2px solid #0070C0;
+    }
+
+    .s6-arrow-icon {
+      font-size: 28px;
+      color: #000000;
+      font-weight: 900;
+    }
+
+    .s6-res-row {
+      background: #F8FAFC;
+      border: 1.5px solid #CBD5E1;
+      border-radius: 12px;
+      padding: 12px 20px;
+      display: grid;
+      grid-template-columns: 0.9fr 1.1fr;
+      gap: 20px;
+      align-items: center;
+    }
+
+    .res-link-line {
+      font-size: 15px;
+      margin-bottom: 6px;
+    }
+
+    .res-link-line strong {
+      font-weight: 800;
+      color: #000000;
+    }
+
+    .res-link-line a {
+      color: #0070C0;
+      font-weight: 800;
+      text-decoration: underline;
     }
   </style>
 </head>
@@ -420,697 +1003,694 @@
 
   <!-- Controls -->
   <div class="controls">
-    <h2>🏛️ Smart India Hackathon — VirasatX Submission Deck (Exact Template Structure & Typography)</h2>
+    <h2>🏛️ VirasatX — Smart India Hackathon 2026 Official Idea Deck (SIH26197)</h2>
     <div class="btn-group">
       <button onclick="window.print()">🖨️ Print / Save as PDF</button>
-      <a href="SIH2026_SanskritiRakshaX_Idea_Submission.pptx" download style="text-decoration:none;">
-        <button class="btn-orange">📥 Download PPTX</button>
-      </a>
+      <button onclick="document.querySelector('.deck-container').requestFullscreen()">⛶ Fullscreen</button>
     </div>
   </div>
 
-  <div class="deck">
+  <div class="deck-container">
 
-    <!-- ==========================================
-         SLIDE 1: TITLE PAGE
-         ========================================== -->
+    <!-- ====================================================================
+         SLIDE 1: TITLE PAGE (MATCHING REFERENCE 1 SLIDE 1)
+         ==================================================================== -->
     <div class="slide" id="slide-1">
-      <div class="slide-1-content">
-        <div class="s1-top-bar">
-          <div class="s1-main-title">SMART INDIA HACKATHON 2025</div>
-          <img src="sih_logo.svg" alt="SIH Logo" class="sih-logo-img" />
-        </div>
-
-        <div class="s1-page-badge">TITLE PAGE</div>
-
-        <div class="s1-body">
-          <ul class="s1-details-list">
-            <li>
-              <strong>Problem Statement ID –</strong> <span class="val">SIH26197</span>
-            </li>
-            <li>
-              <strong>Problem Statement Title-</strong>
-              <span class="val">Digital Preservation, AI-Powered Paleography and Interactive 3D WebGIS Atlas for Indian Cultural Heritage, Monuments & Ancient Manuscripts. (Centres to be concentrated: National Archives, ASI Sites, Craft Clusters)</span>
-            </li>
-            <li>
-              <strong>Theme-</strong> <span class="val">Heritage & Culture</span>
-            </li>
-            <li>
-              <strong>PS Category-</strong> <span class="val">Software</span>
-            </li>
-            <li>
-              <strong>Team ID-</strong> <span class="val">57385</span>
-            </li>
-            <li>
-              <strong>Team Name-</strong> <span class="val">Sanskriti RakshaX</span>
-            </li>
-          </ul>
-
-          <div class="s1-watermark">
-            <img src="sih_bulb.svg" alt="SIH Lightbulb" />
+      <header class="slide-header">
+        <div class="header-team">
+          <img src="virasatx_logo.png" alt="VirasatX" class="header-team-logo" />
+          <div class="header-team-text">
+            <span class="header-team-name">VirasatX</span>
+            <span class="header-team-tag">India's Heritage Repository</span>
           </div>
         </div>
-      </div>
-      <div class="slide-number-bottom-right">1</div>
-    </div>
-
-
-    <!-- ==========================================
-         SLIDE 2: IDEA TITLE
-         ========================================== -->
-    <div class="slide" id="slide-2">
-      <div class="slide-header">
-        <div class="team-oval">
-          <span style="font-size: 0.78rem;">Team</span>
-          <span style="font-size: 0.84rem; font-weight: bold;">Sanskriti RakshaX</span>
+        <div class="header-title-container">
+          <h1 class="header-main-title" style="color: #002B49;">SMART INDIA HACKATHON 2026</h1>
         </div>
-        <div class="pill-title-container">
-          <div class="pill-title">IDEA TITLE</div>
-        </div>
-        <img src="sih_logo.svg" alt="SIH Logo" class="sih-logo-img" />
-      </div>
+        <img src="sih_logo.png" alt="Smart India Hackathon 2026" class="header-sih-logo" />
+      </header>
 
-      <div class="two-col-layout">
-        <!-- Left Column: Proposed Solution -->
-        <div class="col-left">
-          <div class="section-heading-blue">
-            <span class="diamond">❖</span> Proposed Solution:
-          </div>
-
-          <ul class="compact-bullets">
-            <li>
-              <strong>3D Archival & Artifact Studio :</strong><br/>
-              <span class="desc">360° interactive rotation, dynamic lighting simulation & sub-millimeter loupe inspection for sculptures.</span>
-            </li>
-            <li>
-              <strong>Ancient Manuscript Paleography :</strong><br/>
-              <span class="desc">AI transcription of fragile palm-leaf (Talapatra) & birch-bark (Bhojpatra) scripts with Sanskrit chant audio.</span>
-            </li>
-            <li>
-              <strong>Multimodal AI Heritage Guide :</strong><br/>
-              <span class="desc">Voice, vision, and multilingual conversational assistance grounded in verified ASI/museum archives.</span>
-            </li>
-            <li>
-              <strong>Computer Vision Iconography Scanner :</strong><br/>
-              <span class="desc">Identifies dynastic art styles, postures (asanas), mudras, and motifs from user photos.</span>
-            </li>
-            <li>
-              <strong>Chronological Epoch Explorer :</strong><br/>
-              <span class="desc">Interactive 11-epoch historical timeline spanning 5,000+ years of civilizational heritage.</span>
-            </li>
-            <li>
-              <strong>Interactive Heritage Web-GIS Atlas :</strong><br/>
-              <span class="desc">Dynamic geospatial platform for exploring monuments, excavations, and conservation zones.</span>
-            </li>
-            <li>
-              <strong>GI Artisan Marketplace & Livelihood :</strong><br/>
-              <span class="desc">Direct fair-trade connect supporting GI-certified traditional master artisan cooperatives.</span>
-            </li>
-            <li>
-              <strong>Sustainable Tourism & Itinerary AI :</strong><br/>
-              <span class="desc">Eco-friendly tour planner dispersing crowds away from overtouristed monuments.</span>
-            </li>
-            <li>
-              <strong>GI Tagging and E-Signature :</strong><br/>
-              <span class="desc">To preserve cultural heritage, safeguard traditional handicraft products and paperless verification.</span>
-            </li>
-          </ul>
-        </div>
-
-        <!-- Right Column: Flowchart Diagram with exact authentic shapes -->
-        <div class="col-right">
-          <div class="flowchart-svg-container">
-            <svg viewBox="0 0 460 380" width="100%" height="100%" style="font-family: Arial, sans-serif;">
-              <defs>
-                <marker id="arrow" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
-                  <path d="M 0 1 L 8 5 L 0 9 z" fill="#000000" />
-                </marker>
-              </defs>
-
-              <!-- Top Login Box -->
-              <rect x="180" y="5" width="100" height="26" rx="13" fill="#FEF08A" stroke="#000000" stroke-width="1.5" />
-              <text x="230" y="22" font-size="11" font-weight="bold" text-anchor="middle" fill="#000000">Login</text>
-
-              <!-- Line from Login down and branching left & right -->
-              <line x1="230" y1="31" x2="230" y2="44" stroke="#000000" stroke-width="1.2" />
-              <line x1="90" y1="44" x2="355" y2="44" stroke="#000000" stroke-width="1.2" />
-              <line x1="90" y1="44" x2="90" y2="54" stroke="#000000" stroke-width="1.2" marker-end="url(#arrow)" />
-              <line x1="355" y1="44" x2="355" y2="54" stroke="#000000" stroke-width="1.2" marker-end="url(#arrow)" />
-
-              <!-- Left Branch: User Login -->
-              <rect x="25" y="56" width="130" height="24" rx="12" fill="#FEF9C3" stroke="#000000" stroke-width="1.2" />
-              <text x="90" y="72" font-size="9.5" font-weight="bold" text-anchor="middle" fill="#000000">User / Scholar Login</text>
-
-              <line x1="90" y1="80" x2="90" y2="92" stroke="#000000" stroke-width="1.2" marker-end="url(#arrow)" />
-              <rect x="20" y="94" width="140" height="24" rx="2" fill="#FEF08A" stroke="#000000" stroke-width="1.2" />
-              <text x="90" y="110" font-size="9" font-weight="bold" text-anchor="middle" fill="#000000">User Dashboard</text>
-
-              <line x1="90" y1="118" x2="90" y2="130" stroke="#000000" stroke-width="1.2" marker-end="url(#arrow)" />
-              <rect x="20" y="132" width="140" height="24" rx="2" fill="#FEF08A" stroke="#000000" stroke-width="1.2" />
-              <text x="90" y="148" font-size="9" font-weight="bold" text-anchor="middle" fill="#000000">Application Submission</text>
-
-              <line x1="90" y1="156" x2="90" y2="168" stroke="#000000" stroke-width="1.2" marker-end="url(#arrow)" />
-              <rect x="20" y="170" width="140" height="24" rx="2" fill="#FEF08A" stroke="#000000" stroke-width="1.2" />
-              <text x="90" y="186" font-size="9" font-weight="bold" text-anchor="middle" fill="#000000">DocumentUpload</text>
-
-              <line x1="90" y1="194" x2="90" y2="206" stroke="#000000" stroke-width="1.2" marker-end="url(#arrow)" />
-              <rect x="20" y="208" width="140" height="24" rx="2" fill="#FEF08A" stroke="#000000" stroke-width="1.2" />
-              <text x="90" y="224" font-size="9" font-weight="bold" text-anchor="middle" fill="#000000">Track Claim Status</text>
-
-              <line x1="90" y1="232" x2="90" y2="244" stroke="#000000" stroke-width="1.2" marker-end="url(#arrow)" />
-              <rect x="20" y="246" width="140" height="24" rx="2" fill="#FEF08A" stroke="#000000" stroke-width="1.2" />
-              <text x="90" y="262" font-size="9" font-weight="bold" text-anchor="middle" fill="#000000">Scheme Recommendations</text>
-
-              <line x1="90" y1="270" x2="90" y2="282" stroke="#000000" stroke-width="1.2" marker-end="url(#arrow)" />
-              <rect x="20" y="284" width="140" height="24" rx="2" fill="#FEF08A" stroke="#000000" stroke-width="1.2" />
-              <text x="90" y="300" font-size="9" font-weight="bold" text-anchor="middle" fill="#000000">Feedback & Support</text>
-
-              <!-- Right Branch: Govt Login -->
-              <rect x="290" y="56" width="130" height="24" rx="12" fill="#FEF9C3" stroke="#000000" stroke-width="1.2" />
-              <text x="355" y="72" font-size="9.5" font-weight="bold" text-anchor="middle" fill="#000000">Govt Login</text>
-
-              <line x1="355" y1="80" x2="355" y2="88" stroke="#000000" stroke-width="1.2" marker-end="url(#arrow)" />
-
-              <!-- 4 Govt Depts -->
-              <rect x="200" y="90" width="58" height="26" rx="2" fill="#FEF08A" stroke="#000000" stroke-width="1" />
-              <text x="229" y="100" font-size="5.8" font-weight="bold" text-anchor="middle" fill="#000000">Ministry Of</text>
-              <text x="229" y="109" font-size="5.8" font-weight="bold" text-anchor="middle" fill="#000000">Culture / Tribal</text>
-
-              <rect x="262" y="90" width="58" height="26" rx="2" fill="#FEF08A" stroke="#000000" stroke-width="1" />
-              <text x="291" y="100" font-size="5.8" font-weight="bold" text-anchor="middle" fill="#000000">ASI & Line</text>
-              <text x="291" y="109" font-size="5.8" font-weight="bold" text-anchor="middle" fill="#000000">Depts.</text>
-
-              <rect x="324" y="90" width="62" height="26" rx="2" fill="#FEF08A" stroke="#000000" stroke-width="1" />
-              <text x="355" y="100" font-size="5.8" font-weight="bold" text-anchor="middle" fill="#000000">Archives &</text>
-              <text x="355" y="109" font-size="5.8" font-weight="bold" text-anchor="middle" fill="#000000">Revenue Depts.</text>
-
-              <rect x="390" y="90" width="58" height="26" rx="2" fill="#FEF08A" stroke="#000000" stroke-width="1" />
-              <text x="419" y="100" font-size="5.8" font-weight="bold" text-anchor="middle" fill="#000000">Planning</text>
-              <text x="419" y="109" font-size="5.8" font-weight="bold" text-anchor="middle" fill="#000000">Authorities</text>
-
-              <!-- Line from 4 Depts to Govt Dashboard -->
-              <line x1="229" y1="116" x2="229" y2="122" stroke="#000000" stroke-width="1" />
-              <line x1="291" y1="116" x2="291" y2="122" stroke="#000000" stroke-width="1" />
-              <line x1="355" y1="116" x2="355" y2="122" stroke="#000000" stroke-width="1" />
-              <line x1="419" y1="116" x2="419" y2="122" stroke="#000000" stroke-width="1" />
-              <line x1="229" y1="122" x2="419" y2="122" stroke="#000000" stroke-width="1" />
-              <line x1="335" y1="122" x2="335" y2="130" stroke="#000000" stroke-width="1.2" marker-end="url(#arrow)" />
-
-              <rect x="260" y="132" width="150" height="24" rx="2" fill="#FEF08A" stroke="#000000" stroke-width="1.2" />
-              <text x="335" y="148" font-size="9" font-weight="bold" text-anchor="middle" fill="#000000">Government Dashboard</text>
-
-              <line x1="335" y1="156" x2="335" y2="168" stroke="#000000" stroke-width="1.2" marker-end="url(#arrow)" />
-              <rect x="260" y="170" width="150" height="24" rx="2" fill="#FEF08A" stroke="#000000" stroke-width="1.2" />
-              <text x="335" y="186" font-size="9" font-weight="bold" text-anchor="middle" fill="#000000">Document Verification</text>
-
-              <line x1="335" y1="194" x2="335" y2="206" stroke="#000000" stroke-width="1.2" marker-end="url(#arrow)" />
-              <rect x="260" y="208" width="150" height="24" rx="2" fill="#FEF08A" stroke="#000000" stroke-width="1.2" />
-              <text x="335" y="224" font-size="9" font-weight="bold" text-anchor="middle" fill="#000000">Spatial Verification</text>
-
-              <line x1="335" y1="232" x2="335" y2="244" stroke="#000000" stroke-width="1.2" marker-end="url(#arrow)" />
-              <rect x="260" y="246" width="150" height="24" rx="2" fill="#FEF08A" stroke="#000000" stroke-width="1.2" />
-              <text x="335" y="262" font-size="9" font-weight="bold" text-anchor="middle" fill="#000000">Approve/Reject Claim</text>
-
-              <line x1="335" y1="270" x2="335" y2="282" stroke="#000000" stroke-width="1.2" marker-end="url(#arrow)" />
-              <rect x="260" y="284" width="150" height="24" rx="2" fill="#FEF08A" stroke="#000000" stroke-width="1.2" />
-              <text x="335" y="300" font-size="9" font-weight="bold" text-anchor="middle" fill="#000000">Update FRA Atlas</text>
-
-              <line x1="335" y1="308" x2="335" y2="318" stroke="#000000" stroke-width="1.2" marker-end="url(#arrow)" />
-              <rect x="260" y="320" width="150" height="22" rx="2" fill="#FEF08A" stroke="#000000" stroke-width="1.2" />
-              <text x="335" y="335" font-size="9" font-weight="bold" text-anchor="middle" fill="#000000">Generate Reports</text>
-
-              <!-- Converging bottom box: FRA Atlas + DSS -->
-              <line x1="90" y1="308" x2="90" y2="352" stroke="#000000" stroke-width="1.2" />
-              <line x1="335" y1="342" x2="335" y2="352" stroke="#000000" stroke-width="1.2" />
-              <line x1="90" y1="352" x2="230" y2="352" stroke="#000000" stroke-width="1.2" />
-              <line x1="335" y1="352" x2="230" y2="352" stroke="#000000" stroke-width="1.2" />
-              <line x1="230" y1="352" x2="230" y2="358" stroke="#000000" stroke-width="1.2" marker-end="url(#arrow)" />
-
-              <rect x="150" y="360" width="160" height="18" rx="2" fill="#FEF08A" stroke="#000000" stroke-width="1.2" />
-              <text x="230" y="373" font-size="9.5" font-weight="bold" text-anchor="middle" fill="#000000">FRA Atlas+DSS</text>
-            </svg>
-          </div>
-        </div>
-      </div>
-
-      <div class="slide-number-bottom-right">2</div>
-    </div>
-
-
-    <!-- ==========================================
-         SLIDE 3: TECHNICAL APPROACH
-         ========================================== -->
-    <div class="slide" id="slide-3">
-      <div class="slide-header">
-        <div class="team-oval">
-          <span style="font-size: 0.78rem;">Team</span>
-          <span style="font-size: 0.84rem; font-weight: bold;">Sanskriti RakshaX</span>
-        </div>
-        <div class="pill-title-container">
-          <div class="pill-title">TECHNICAL APPROACH</div>
-        </div>
-        <img src="sih_logo.svg" alt="SIH Logo" class="sih-logo-img" />
-      </div>
-
-      <div class="two-col-layout">
-        <!-- Left Column: Tech Stack & UI Preview -->
-        <div class="col-left">
-          <ul class="compact-bullets" style="margin-bottom: 2px;">
-            <li><strong>Data Extraction :</strong> <span class="desc">Optical Character Recognition(OCR), NLP.</span></li>
-            <li><strong>WebGIS platform :</strong> <span class="desc">Leaflet.js(for interactive maps).</span></li>
-            <li><strong>Asset Mapping :</strong> <span class="desc">Random Forest & CNN.</span></li>
-            <li><strong>Data Storage :</strong> <span class="desc">PostgreSQL & PostGIS(for geospatial data).</span></li>
-            <li><strong>Data Management :</strong> <span class="desc">Cloud Object Storage & MySQL(Structured).</span></li>
-            <li><strong>GeoServer :</strong> <span class="desc">Use standard protocols WMS and WFS to serve maps.</span></li>
-            <li><strong>Decision Support System :</strong> <span class="desc">for scheme recommendations.</span></li>
-            <li><strong>Blockchain based Security :</strong> <span class="desc">Hyperledger Fabric.</span></li>
-            <li><strong>Key Lock Framework :</strong> <span class="desc">Open-source Identity & Access Management</span></li>
-            <li><strong>Rasa :</strong> <span class="desc">Preferred for its offline, multilingual, and secure chatbot.</span></li>
-          </ul>
-
-          <!-- Draft UI Preview Mockup Box -->
-          <div class="ui-draft-card">
-            <div style="font-size:0.64rem; font-weight:bold; color:#166534; display:flex; justify-content:space-between;">
-              <span>🏛️ FRA Setu / VirasatX Portal (Working Prototype)</span>
-              <span>● English / हिन्दी / தமிழ்</span>
-            </div>
-            <div class="ui-draft-inner">
-              <div style="background:#F1F5F9; padding:3px; border-radius:2px; line-height:1.2;">
-                <strong>Nav</strong><br/>
-                • Home / Login<br/>
-                • Claims & Maps<br/>
-                • Downloads<br/>
-                • Help & Support
-              </div>
-              <div style="background:#0F172A; color:#F8FAFC; padding:4px; border-radius:2px; text-align:center;">
-                <span style="font-size:0.56rem; color:#38BDF8; font-weight:bold;">Interactive FRA Map / 3D Canvas</span><br/>
-                <span style="font-size:0.5rem; color:#94A3B8;">[ Real-time Layer Rendering | GeoServer ]</span>
-                <div style="display:flex; justify-content:center; gap:4px; margin-top:3px;">
-                  <span style="background:#16A34A; color:white; padding:1px 3px; border-radius:2px; font-size:0.5rem;">1250 Verified</span>
-                  <span style="background:#DC2626; color:white; padding:1px 3px; border-radius:2px; font-size:0.5rem;">89 Rejected</span>
-                </div>
-              </div>
-              <div style="background:#F8FAFC; padding:3px; border-radius:2px; line-height:1.2;">
-                <strong>Grievance / DSS</strong><br/>
-                <span style="font-size:0.52rem; color:#475569;">• AI Scheme Match<br/>• Officer Tracker<br/>• 2.1 Avg Days</span>
-              </div>
-            </div>
-            <div class="ui-caption">User Interface: It is a draft version, subject to future updates.</div>
-          </div>
-        </div>
-
-        <!-- Right Column: System Architecture Diagram matching exact reference diagram -->
-        <div class="col-right">
-          <div class="arch-svg-container">
-            <svg viewBox="0 0 460 380" width="100%" height="100%" style="font-family: Arial, sans-serif;">
-              <defs>
-                <marker id="arrow2" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
-                  <path d="M 0 1 L 8 5 L 0 9 z" fill="#000000" />
-                </marker>
-              </defs>
-
-              <!-- Web Browser Box (Top) -->
-              <rect x="140" y="8" width="180" height="30" rx="15" fill="#FFFFFF" stroke="#000000" stroke-width="1.5" />
-              <circle cx="160" cy="23" r="7" fill="none" stroke="#000000" stroke-width="1.2" />
-              <text x="235" y="27" font-size="10.5" font-weight="bold" text-anchor="middle" fill="#000000">Web Browser</text>
-
-              <line x1="230" y1="38" x2="230" y2="50" stroke="#000000" stroke-width="1.2" marker-end="url(#arrow2)" />
-
-              <!-- Frontend Box -->
-              <rect x="40" y="52" width="380" height="96" rx="2" fill="#FFFFFF" stroke="#000000" stroke-width="1.5" />
-              
-              <!-- Login & User Icon inside Frontend -->
-              <circle cx="230" cy="74" r="12" fill="#FEF08A" stroke="#000000" stroke-width="1.2" />
-              <circle cx="230" cy="70" r="4" fill="#000000" />
-              <path d="M 222 82 A 8 8 0 0 1 238 82 Z" fill="#000000" />
-              <text x="230" y="96" font-size="9.5" font-weight="bold" text-anchor="middle" fill="#000000">Frontend</text>
-
-              <!-- Tech Badges inside Frontend -->
-              <rect x="52" y="104" width="32" height="34" rx="2" fill="#E2E8F0" stroke="#CBD5E1" />
-              <text x="68" y="126" font-size="10" font-weight="bold" fill="#EA580C" text-anchor="middle">5</text>
-              <text x="68" y="135" font-size="6.5" font-weight="bold" fill="#475569" text-anchor="middle">HTML</text>
-
-              <rect x="94" y="104" width="40" height="34" rx="2" fill="#FEF3C7" stroke="#CBD5E1" />
-              <text x="114" y="124" font-size="8.5" font-weight="bold" fill="#B45309" text-anchor="middle">CSS</text>
-              <text x="114" y="135" font-size="6.5" font-weight="bold" fill="#475569" text-anchor="middle">CSS</text>
-
-              <rect x="144" y="104" width="32" height="34" rx="2" fill="#FEF9C3" stroke="#CBD5E1" />
-              <text x="160" y="124" font-size="8.5" font-weight="bold" fill="#CA8A04" text-anchor="middle">JS</text>
-              <text x="160" y="135" font-size="6.5" font-weight="bold" fill="#475569" text-anchor="middle">JS</text>
-
-              <rect x="186" y="104" width="110" height="34" rx="2" fill="#F0FDF4" stroke="#CBD5E1" />
-              <text x="241" y="124" font-size="9" font-weight="bold" fill="#166534" text-anchor="middle">Leaflet.js</text>
-              <text x="241" y="135" font-size="6.5" font-weight="bold" fill="#475569" text-anchor="middle">Leaflet.js</text>
-
-              <rect x="306" y="104" width="100" height="34" rx="2" fill="#EFF6FF" stroke="#CBD5E1" />
-              <text x="356" y="124" font-size="9" font-weight="bold" fill="#1D4ED8" text-anchor="middle">React</text>
-              <text x="356" y="135" font-size="6.5" font-weight="bold" fill="#475569" text-anchor="middle">React</text>
-
-              <!-- Request / Response Flow Lines -->
-              <line x1="90" y1="148" x2="90" y2="182" stroke="#000000" stroke-width="1.2" marker-end="url(#arrow2)" />
-              <text x="80" y="168" font-size="8.5" font-weight="bold" fill="#000000" text-anchor="end">Request</text>
-
-              <line x1="370" y1="182" x2="370" y2="148" stroke="#000000" stroke-width="1.2" marker-end="url(#arrow2)" />
-              <text x="380" y="168" font-size="8.5" font-weight="bold" fill="#000000">Response</text>
-
-              <!-- Backend Box -->
-              <rect x="40" y="184" width="380" height="96" rx="2" fill="#FFFFFF" stroke="#000000" stroke-width="1.5" />
-              
-              <!-- Backend Title & Node Logo -->
-              <text x="230" y="200" font-size="10.5" font-weight="bold" text-anchor="middle" fill="#000000">Backend</text>
-              
-              <!-- Left: Node.js / API Gateway -->
-              <rect x="50" y="206" width="75" height="42" rx="2" fill="#F0FDF4" stroke="#16A34A" stroke-width="1" />
-              <text x="87" y="226" font-size="10" font-weight="bold" fill="#15803D" text-anchor="middle">node</text>
-              <text x="87" y="238" font-size="7.5" font-weight="bold" fill="#000000" text-anchor="middle">API Gateway</text>
-
-              <!-- Right: 3 Submodules -->
-              <rect x="140" y="206" width="80" height="32" rx="2" fill="#EFF6FF" stroke="#000000" stroke-width="1" />
-              <text x="180" y="222" font-size="8" font-weight="bold" text-anchor="middle" fill="#000000">GIS module</text>
-
-              <rect x="230" y="206" width="80" height="32" rx="2" fill="#FDF2F8" stroke="#000000" stroke-width="1" />
-              <text x="270" y="222" font-size="8" font-weight="bold" text-anchor="middle" fill="#000000">AI/ML</text>
-
-              <rect x="320" y="206" width="85" height="32" rx="2" fill="#FEF3C7" stroke="#000000" stroke-width="1" />
-              <text x="362" y="222" font-size="8" font-weight="bold" text-anchor="middle" fill="#000000">Blockchain</text>
-
-              <!-- Databases Layer inside Backend -->
-              <text x="180" y="258" font-size="7" font-weight="bold" text-anchor="middle" fill="#000000">PostgreSQL</text>
-              <text x="180" y="267" font-size="7" font-weight="bold" text-anchor="middle" fill="#000000">+PostGIS</text>
-
-              <text x="270" y="260" font-size="7" font-weight="bold" text-anchor="middle" fill="#000000">Cloud Object</text>
-              <text x="270" y="269" font-size="7" font-weight="bold" text-anchor="middle" fill="#000000">Storage</text>
-
-              <text x="362" y="264" font-size="8" font-weight="bold" text-anchor="middle" fill="#000000">MySQL</text>
-
-              <!-- Line down from Backend to Integration & Security -->
-              <line x1="140" y1="280" x2="140" y2="295" stroke="#000000" stroke-width="1.2" marker-end="url(#arrow2)" />
-              <line x1="320" y1="280" x2="320" y2="295" stroke="#000000" stroke-width="1.2" marker-end="url(#arrow2)" />
-
-              <!-- Bottom Row: Integration & Security Boxes -->
-              <rect x="40" y="298" width="220" height="74" rx="2" fill="#FFFFFF" stroke="#000000" stroke-width="1.5" />
-              <text x="150" y="314" font-size="9.5" font-weight="bold" text-anchor="middle" fill="#000000">Integration:</text>
-              <text x="80" y="340" font-size="7.5" font-weight="bold" text-anchor="middle" fill="#000000">Satellite APIs</text>
-              <text x="150" y="340" font-size="7.5" font-weight="bold" text-anchor="middle" fill="#000000">Government</text>
-              <text x="150" y="350" font-size="7.5" font-weight="bold" text-anchor="middle" fill="#000000">APIS</text>
-              <text x="215" y="340" font-size="7.5" font-weight="bold" text-anchor="middle" fill="#000000">Decision Support</text>
-              <text x="215" y="350" font-size="7.5" font-weight="bold" text-anchor="middle" fill="#000000">System</text>
-
-              <rect x="270" y="298" width="150" height="74" rx="2" fill="#FFFFFF" stroke="#000000" stroke-width="1.5" />
-              <text x="345" y="314" font-size="9.5" font-weight="bold" text-anchor="middle" fill="#000000">Security:</text>
-              <text x="345" y="342" font-size="8" font-weight="bold" text-anchor="middle" fill="#000000">Blockchain, JSON web</text>
-              <text x="345" y="354" font-size="8" font-weight="bold" text-anchor="middle" fill="#000000">tokens, AES & RSA</text>
-            </svg>
-          </div>
-        </div>
-      </div>
-
-      <div class="slide-number-bottom-right">3</div>
-    </div>
-
-
-    <!-- ==========================================
-         SLIDE 4: FEASIBILITY AND VIABILITY
-         ========================================== -->
-    <div class="slide" id="slide-4">
-      <div class="slide-header">
-        <div class="team-oval">
-          <span style="font-size: 0.78rem;">Team</span>
-          <span style="font-size: 0.84rem; font-weight: bold;">Sanskriti RakshaX</span>
-        </div>
-        <div class="pill-title-container">
-          <div class="pill-title">FEASIBILITY AND VIABILITY</div>
-        </div>
-        <img src="sih_logo.svg" alt="SIH Logo" class="sih-logo-img" />
-      </div>
-
-      <div class="two-col-layout">
-        <!-- Left Column: Feasibility -->
-        <div class="col-left">
-          <div class="section-heading-blue">
-            <span class="diamond">❖</span> Feasibility:
-          </div>
-
-          <div class="item-green-title">1. Technical Feasibility:</div>
-          <div style="font-size:0.82rem; font-weight:bold; color:#000000; margin-left:4px;">1. Digitization, AI Mapping and Web-GIS Dashboards:</div>
-          <ul class="compact-bullets" style="margin-left:8px;">
-            <li>OCR and AI extract data from fragile ancient palm-leaf & birch-bark manuscripts.</li>
-            <li>Web-GIS dashboards show real-time interactive heritage maps and 3D models.</li>
-          </ul>
-
-          <div style="font-size:0.82rem; font-weight:bold; color:#000000; margin-left:4px;">2. DSS Integration with Blockchain Security:</div>
-          <ul class="compact-bullets" style="margin-left:8px;">
-            <li>AI engines match cultural schemes and tourist traffic to community needs.</li>
-            <li>Blockchain ensures secure, tamper-proof digital records and artisan GI credentials.</li>
-          </ul>
-
-          <div class="item-green-title">2. Operational Feasibility:</div>
-          <div style="font-size:0.82rem; font-weight:bold; color:#000000; margin-left:4px;">1. Existing Setup and Simple Staff Training:</div>
-          <ul class="compact-bullets" style="margin-left:8px;">
-            <li>Museum & archival data exists, needs unified digital integration.</li>
-            <li>Staff need basic training through short interactive workshops.</li>
-          </ul>
-
-          <div style="font-size:0.82rem; font-weight:bold; color:#000000; margin-left:4px;">2. Stakeholder Support and Effective Implementation:</div>
-          <ul class="compact-bullets" style="margin-left:8px;">
-            <li>Ministries, ASI, and cultural NGOs already support heritage preservation.</li>
-            <li>System strengthens existing efforts, seamlessly augmenting current curation work.</li>
-          </ul>
-
-          <div class="item-green-title">3. Legal & Ethical Feasibility:</div>
-          <div style="font-size:0.82rem; font-weight:bold; color:#000000; margin-left:4px;">1. Data Privacy & IP Safeguards:</div>
-          <ul class="compact-bullets" style="margin-left:8px;">
-            <li>Must follow India’s DPDP Act, ensuring legal compliance and encryption.</li>
-            <li>Blockchain and watermarking safeguard sensitive indigenous IP and artisan rights.</li>
-          </ul>
-
-          <div style="font-size:0.82rem; font-weight:bold; color:#000000; margin-left:4px;">2. Consent Mechanism:</div>
-          <ul class="compact-bullets" style="margin-left:8px;">
-            <li>Informed consent and transparent citations required in all archival processes.</li>
-            <li>Real-time feedback enables secure, two-way curatorial communication.</li>
-          </ul>
-        </div>
-
-        <!-- Right Column: Viability -->
-        <div class="col-right">
-          <div class="section-heading-blue">
-            <span class="diamond">❖</span> Viability:
-          </div>
-
-          <div class="item-green-title">1. Economic Viability:</div>
-          <div style="font-size:0.82rem; font-weight:bold; color:#000000; margin-left:4px;">1. Cost-Effective & Efficient:</div>
-          <ul class="compact-bullets" style="margin-left:8px;">
-            <li>Saves paperwork, manual digitizing effort, duplication, and reduces physical damage.</li>
-            <li>Cuts curation delays, transport expenses, and institutional overhead.</li>
-          </ul>
-
-          <div style="font-size:0.82rem; font-weight:bold; color:#000000; margin-left:4px;">2. Supported & Scalable Technology:</div>
-          <ul class="compact-bullets" style="margin-left:8px;">
-            <li>Backed by national digital missions and cultural tourism initiatives (SDG 8 & 11).</li>
-            <li>Open-source tech ensures flexible, low-cost, future-ready deployment.</li>
-          </ul>
-
-          <div class="item-green-title">2. Social Viability:</div>
-          <div style="font-size:0.82rem; font-weight:bold; color:#000000; margin-left:4px;">1. Empowers Communities & Improves Heritage Access:</div>
-          <ul class="compact-bullets" style="margin-left:8px;">
-            <li>Provides transparency, secure records, and interactive learning for 250M+ youth.</li>
-            <li>Directly benefits traditional GI master artisans through fair-trade market access.</li>
-          </ul>
-
-          <div style="font-size:0.82rem; font-weight:bold; color:#000000; margin-left:4px;">2. Reduces Conflict & Promotes Stronger Inclusion:</div>
-          <ul class="compact-bullets" style="margin-left:8px;">
-            <li>Verified records and academic citations reduce disputes in historical interpretations.</li>
-            <li>Mobile updates, voice guides, and regional languages improve grassroots engagement.</li>
-          </ul>
-
-          <div class="item-green-title">3. Scalability:</div>
-          <div style="font-size:0.82rem; font-weight:bold; color:#000000; margin-left:4px;">1. Pan-India Expansion for Wider Community Benefits:</div>
-          <ul class="compact-bullets" style="margin-left:8px;">
-            <li>Pilot in key museums & ASI circles, then scale seamlessly across India.</li>
-            <li>Adjust platform easily for state-level regional languages and local folklore.</li>
-          </ul>
-
-          <div style="font-size:0.82rem; font-weight:bold; color:#000000; margin-left:4px;">2. Cross-Sector Use of WebGIS + DSS:</div>
-          <ul class="compact-bullets" style="margin-left:8px;">
-            <li>Adaptable for archaeological survey, urban heritage planning, and education.</li>
-            <li>Useful in disaster management, structural monitoring, and post-crisis restoration.</li>
-          </ul>
-        </div>
-      </div>
-
-      <div class="slide-number-bottom-right">4</div>
-    </div>
-
-
-    <!-- ==========================================
-         SLIDE 5: IMPACT AND BENEFITS
-         ========================================== -->
-    <div class="slide" id="slide-5">
-      <div class="slide-header">
-        <div class="team-oval">
-          <span style="font-size: 0.78rem;">Team</span>
-          <span style="font-size: 0.84rem; font-weight: bold;">Sanskriti RakshaX</span>
-        </div>
-        <div class="pill-title-container">
-          <div class="pill-title">IMPACT AND BENEFITS</div>
-        </div>
-        <img src="sih_logo.svg" alt="SIH Logo" class="sih-logo-img" />
-      </div>
-
-      <div class="two-col-layout">
-        <!-- Left Column: Benefits -->
-        <div class="col-left">
-          <div class="section-heading-blue">
-            <span class="diamond">❖</span> Benefits:
-          </div>
-
-          <div class="item-green-title">1. Social Benefits:</div>
-          <ul class="compact-bullets">
-            <li>Digital platform empowers 250M+ students with interactive 3D civilizational exploration.</li>
-            <li>IVR helpline, voice guide, and 8 regional languages ensure inclusive literacy access.</li>
-            <li>Transparent records, authentic audio chants, and museum dossiers build cultural pride.</li>
-          </ul>
-
-          <div class="item-green-title">2. Environmental Benefits:</div>
-          <ul class="compact-bullets">
-            <li>Sustainable cultural tourism with AI-guided crowd dispersal away from fragile monuments.</li>
-            <li>Digital twins preserve physical integrity of deteriorating stone reliefs and manuscripts.</li>
-            <li>GI Tagging preserves cultural heritage, eco-friendly crafts & traditional products.</li>
-          </ul>
-
-          <div class="item-green-title">3. Economic Benefits:</div>
-          <ul class="compact-bullets">
-            <li>Access to schemes (National Heritage City Development, PRASHAD, Swadesh Darshan).</li>
-            <li>GI Tagging boosts local artisanal products & tribal livelihoods (SDG 8).</li>
-            <li>Direct artisan connect ensures economic stability -> higher wages & eliminating middlemen.</li>
-          </ul>
-
-          <div class="item-green-title">4. Governance Benefits:</div>
-          <ul class="compact-bullets">
-            <li>Audit trails ensure curatorial accountability, prevent asset theft or neglect.</li>
-            <li>Curatorial review portal boosts transparency, prevents illicit antiquities trade.</li>
-            <li>Cross-validation stops duplicate records, misinformation, and ungrounded AI claims.</li>
-          </ul>
-
-          <div class="item-green-title">5. Legal & Security Benefits:</div>
-          <ul class="compact-bullets">
-            <li>E-Signature & Digital Records provide legally valid archival accession provenance.</li>
-            <li>Protection against illicit duplication and intellectual property theft.</li>
-            <li>Digital witness/testimony ensures fair scholarly consensus and dispute settlement.</li>
-          </ul>
-        </div>
-
-        <!-- Right Column: Impacts -->
-        <div class="col-right">
-          <div class="section-heading-blue">
-            <span class="diamond">❖</span> Impacts:
-          </div>
-
-          <div class="item-green-title">1. Secure Cultural Rights & Transparency:</div>
-          <ul class="compact-bullets">
-            <li>Communities and researchers track heritage data, reducing fraud and neglect.</li>
-            <li>Digital catalog ensures authenticity in national and global archival records.</li>
-            <li>Builds institutional trust between citizens, scholars, and government authorities.</li>
-          </ul>
-
-          <div class="item-green-title">2. Heritage Protection & Conservation with AI:</div>
-          <ul class="compact-bullets">
-            <li>AI monitors structural and digital assets to prevent loss and decay.</li>
-            <li>Conserves civilizational knowledge and safeguards ancient Indian manuscripts.</li>
-            <li>Promotes sustainable, community-driven cultural resource management.</li>
-          </ul>
-
-          <div class="item-green-title">3. Boost Livelihoods & Local Development:</div>
-          <ul class="compact-bullets">
-            <li>Resource planning improves artisan incomes and rural handicraft clusters.</li>
-            <li>GI tagging protects traditional knowledge, boosts global market branding.</li>
-            <li>VirasatX enables fair access to cultural preservation grants and welfare schemes.</li>
-          </ul>
-
-          <div class="item-green-title">4. Digital, Eco-Friendly & Cost Effective:</div>
-          <ul class="compact-bullets">
-            <li>Reduces paper usage, ensuring greener, eco-friendly e-governance (SDG 11).</li>
-            <li>Preserves indigenous crafts through high-fidelity digital archiving tools.</li>
-            <li>Lowers administrative and physical curation costs while maximizing outreach.</li>
-          </ul>
-
-          <div class="item-green-title">5. Smart, Transparent & Scalable Governance:</div>
-          <ul class="compact-bullets">
-            <li>Transparent dashboards track museum digitizing progress and scholar engagement.</li>
-            <li>AI dispute mediation ensures historical fairness, reducing subjective human bias.</li>
-            <li>Unified digital platform enables future-ready, pan-India expansion (Viksit Bharat 2047).</li>
-          </ul>
-        </div>
-      </div>
-
-      <div class="slide-number-bottom-right">5</div>
-    </div>
-
-
-    <!-- ==========================================
-         SLIDE 6: RESEARCH AND REFERENCES
-         ========================================== -->
-    <div class="slide" id="slide-6">
-      <div class="slide-header">
-        <div class="team-oval">
-          <span style="font-size: 0.78rem;">Team</span>
-          <span style="font-size: 0.84rem; font-weight: bold;">Sanskriti RakshaX</span>
-        </div>
-        <div class="pill-title-container">
-          <div class="pill-title">RESEARCH AND REFERENCES</div>
-        </div>
-        <img src="sih_logo.svg" alt="SIH Logo" class="sih-logo-img" />
-      </div>
-
-      <div style="flex:1; display:flex; flex-direction:column; justify-content:space-between; font-size:0.86rem; line-height:1.45; padding-top:4px;">
+      <div class="slide-body slide-1-body">
         <div>
-          <div class="item-green-title" style="font-size:0.92rem;">1. Archaeological Survey of India (ASI) & National Heritage Portals:</div>
-          <div style="font-size:0.82rem; color:#000000; margin-left:4px; margin-bottom:2px;">
-            The Archaeological Survey of India (ASI) and Ministry of Culture govern the protection and documentation of cultural heritage monuments, ancient inscriptions, and archaeological excavations.
+          <div style="font-size: 26px; font-weight: 900; letter-spacing: 3px; color: #000000; text-transform: uppercase; margin-bottom: 16px; display: inline-flex; align-items: center; gap: 10px;">
+            <span style="display: inline-block; width: 6px; height: 26px; background: #0070C0; border-radius: 3px;"></span>
+            TITLE PAGE
           </div>
-          <div style="font-size:0.8rem; color:#0070C0; text-decoration:underline; margin-left:4px; margin-bottom:6px;">
-            https://asi.nic.in/ &nbsp;|&nbsp; https://asi.nic.in/epigraphy/
+          <div class="s1-meta-list">
+            <div class="s1-meta-item">
+              <span class="s1-meta-label">Problem Statement ID –</span>
+              <span class="s1-meta-value highlight-id">SIH26197</span>
+            </div>
+            <div class="s1-meta-item">
+              <span class="s1-meta-label">Problem Statement Title :</span>
+              <span class="s1-meta-value" style="font-size: 19px;">Student Innovation—Ideas that showcase the rich cultural heritage and traditions of India.</span>
+            </div>
+            <div class="s1-meta-item">
+              <span class="s1-meta-label">Theme :</span>
+              <span class="s1-meta-value">Heritage &amp; Culture</span>
+            </div>
+            <div class="s1-meta-item">
+              <span class="s1-meta-label">PS Category :</span>
+              <span class="s1-meta-value">Software</span>
+            </div>
+            <div class="s1-meta-item">
+              <span class="s1-meta-label">Lead Organization :</span>
+              <span class="s1-meta-value">All India Council for Technical Education (AICTE)</span>
+            </div>
+            <div class="s1-meta-item">
+              <span class="s1-meta-label">Team ID :</span>
+              <span class="s1-meta-value">[YOUR TEAM ID]</span>
+            </div>
+            <div class="s1-meta-item">
+              <span class="s1-meta-label">Team Name :</span>
+              <span class="s1-meta-value">VirasatX</span>
+            </div>
           </div>
 
-          <div class="item-green-title" style="font-size:0.92rem;">2. National Mission for Manuscripts (NMM) & Paleography Standards:</div>
-          <div style="font-size:0.82rem; color:#000000; margin-left:4px; margin-bottom:2px;">
-            Established by Ministry of Culture to unearth, preserve, and digitally catalog India’s vast manuscript heritage (Talapatra, Bhojpatra) and ancient epigraphy.
-          </div>
-          <div style="font-size:0.8rem; color:#0070C0; text-decoration:underline; margin-left:4px; margin-bottom:6px;">
-            https://www.namami.gov.in/ &nbsp;|&nbsp; https://ignca.gov.in/
-          </div>
-
-          <div class="item-green-title" style="font-size:0.92rem;">3. Best Practices for Web Security & Cryptographic Integrity:</div>
-          <div style="font-size:0.82rem; color:#000000; margin-left:4px; margin-bottom:2px;">
-            This framework outlines key web security measures, DPDP Act 2023 compliance, and verifiable tamper-proof records using Blockchain & Encryption Standards.
-          </div>
-          <div style="font-size:0.8rem; color:#0070C0; text-decoration:underline; margin-left:4px; margin-bottom:6px;">
-            https://owasp.org/www-project-top-ten/ &nbsp;|&nbsp; https://www.meity.gov.in/data-protection-framework
-          </div>
-
-          <div class="item-green-title" style="font-size:0.92rem;">4. The AMASR Act 1958 & GI Registry:</div>
-          <div style="font-size:0.82rem; color:#000000; margin-left:4px; margin-bottom:2px;">
-            The Ancient Monuments and Archaeological Sites and Remains Act (1958 & 2010) and Geographical Indications of Goods Act (1999) safeguarding cultural heritage & traditional artisan products.
-          </div>
-          <div style="font-size:0.8rem; color:#0070C0; text-decoration:underline; margin-left:4px; margin-bottom:10px;">
-            https://indiacode.nic.in/handle/123456789/1631 &nbsp;|&nbsp; https://ipindia.gov.in/geographical-indications.htm
+          <div class="s1-pitch-box">
+            <div class="s1-pitch-title">One-Line Project Pitch</div>
+            <div class="s1-pitch-text">
+              “An AI-powered digital heritage ecosystem that connects monuments, artifacts, traditions, places, people and knowledge into one discoverable cultural experience.”
+            </div>
           </div>
         </div>
 
-        <div style="background:#F8FAFC; border-left:3px solid #0070C0; padding:8px 12px; border-radius:3px;">
-          <div style="font-size:0.82rem; font-weight:bold; color:#0F172A; margin-bottom:4px;">
-            To enable smooth implementation and nationwide integration of the VirasatX Digital Heritage System, the following contacts and portals serve as official national-level resources for communication, data coordination, and institutional support:
+        <div class="s1-right-container">
+          <img src="sih_bulb.png" alt="SIH Emblem" class="s1-backdrop-bulb" />
+          <div class="s1-hero-preview">
+            <img src="images/home.png" alt="VirasatX Prototype Hero" />
           </div>
-          <div style="display:grid; grid-template-columns:1fr 1fr; gap:4px; font-size:0.78rem;">
-            <div><strong style="color:#15803D;">5. Ministry of Culture:</strong> <a href="https://indiaculture.gov.in/" style="color:#0070C0; text-decoration:underline;">https://indiaculture.gov.in/</a></div>
-            <div><strong style="color:#15803D;">6. National Museum, New Delhi:</strong> <a href="https://nationalmuseumindia.gov.in/" style="color:#0070C0; text-decoration:underline;">https://nationalmuseumindia.gov.in/</a></div>
-            <div><strong style="color:#15803D;">7. National Archives of India:</strong> <a href="https://www.abhilekh-patal.in/" style="color:#0070C0; text-decoration:underline;">https://www.abhilekh-patal.in/</a></div>
-            <div><strong style="color:#15803D;">8. UNESCO World Heritage Centre:</strong> <a href="https://whc.unesco.org/en/statesparties/in" style="color:#0070C0; text-decoration:underline;">https://whc.unesco.org/en/statesparties/in</a></div>
+          <div class="s1-tagline-badge">
+            “India’s Heritage, Understood, Preserved and Experienced.”
           </div>
         </div>
       </div>
 
-      <div class="slide-number-bottom-right">6</div>
+      <footer class="slide-footer">
+        <span class="footer-team-handle">@VirasatX</span>
+        <span class="footer-slide-num">1</span>
+      </footer>
+    </div>
+
+
+    <!-- ====================================================================
+         SLIDE 2: PROPOSED SOLUTION & UVP (MATCHING REFERENCE 1 SLIDE 2)
+         ==================================================================== -->
+    <div class="slide" id="slide-2">
+      <header class="slide-header">
+        <div class="header-team">
+          <img src="virasatx_logo.png" alt="VirasatX" class="header-team-logo" />
+          <div class="header-team-text">
+            <span class="header-team-name">VirasatX</span>
+            <span class="header-team-tag">Heritage Ecosystem</span>
+          </div>
+        </div>
+        <div class="header-title-container">
+          <h1 class="header-main-title">VIRASATX</h1>
+          <p class="header-subtitle">(India’s Heritage, Understood, Preserved &amp; Experienced)</p>
+        </div>
+        <img src="sih_logo.png" alt="Smart India Hackathon 2026" class="header-sih-logo" />
+      </header>
+
+      <div class="slide-body slide-2-body">
+        <div class="s2-left-column">
+          <!-- Problem Existing -->
+          <div class="card-box-grey">
+            <div class="pill-badge">PROBLEM EXISTING</div>
+            <p class="bullet-line"><span class="arrow-bullet">➤</span><strong>Fragmented Heritage Knowledge :</strong> India's heritage data is scattered across disconnected monuments, archives, museums, manuscripts, and living communities.</p>
+            <p class="bullet-line"><span class="arrow-bullet">➤</span><strong>Passive Digital Discovery :</strong> Existing portals present heritage as isolated, static information instead of an interconnected cultural experience.</p>
+            <p class="bullet-line"><span class="arrow-bullet">➤</span><strong>Low Discoverability of Living Heritage :</strong> Traditional craft guilds, master artisans, and regional folklore remain disconnected from monuments.</p>
+            <p class="bullet-line"><span class="arrow-bullet">➤</span><strong>Context Gap :</strong> Users discover <em>what</em> a heritage site is, but struggle to understand its period, place, tradition, people, and cultural context together.</p>
+          </div>
+
+          <!-- Prototype Visual Evidence Row -->
+          <div class="s2-thumbs-row">
+            <div class="s2-thumb-card">
+              <img src="images/discover.png" alt="Faceted Catalog" />
+              <div class="s2-thumb-title">🏛️ Faceted Catalog</div>
+            </div>
+            <div class="s2-thumb-card">
+              <img src="images/map.png" alt="Archaeological Atlas" />
+              <div class="s2-thumb-title">🗺️ Heritage Map</div>
+            </div>
+            <div class="s2-thumb-card">
+              <img src="images/living_traditions.png" alt="GI Artisan Directory" />
+              <div class="s2-thumb-title">🧵 Living Traditions</div>
+            </div>
+            <div class="s2-thumb-card">
+              <img src="images/ai_guide.png" alt="Virasat AI Guide" />
+              <div class="s2-thumb-title">🤖 Virasat AI Guide</div>
+            </div>
+          </div>
+
+          <!-- Proposed Solution -->
+          <div class="card-box-grey">
+            <div class="pill-badge pill-badge-blue">PROPOSED SOLUTION</div>
+            <p class="bullet-line"><span class="arrow-bullet">➤</span><strong>Unified Heritage Repository :</strong> Explore monuments, artifacts, collections, manuscripts, and living traditions in one place.</p>
+            <p class="bullet-line"><span class="arrow-bullet">➤</span><strong>Multimodal AI Guidance :</strong> Ask Virasat AI for research inquiries and upload photos for visual iconography identification.</p>
+            <p class="bullet-line"><span class="arrow-bullet">➤</span><strong>Contextual Continuity :</strong> Chronological 5,000-year timeline, geospatial GIS corridors, and ancient script paleography.</p>
+            <p class="bullet-line"><span class="arrow-bullet">➤</span><strong>Responsible Cultural Travel :</strong> Carrying-capacity advisories and rural craft linkages to empower local artisan economies.</p>
+          </div>
+
+          <!-- UVP -->
+          <div class="s2-uvp-box">
+            <div class="pill-badge pill-badge-gold" style="margin-bottom: 4px;">UVP (UNIQUE VALUE PROPOSITION)</div>
+            <div class="s2-uvp-flow">
+              <span>🏛️ Artifact</span><span style="color: #94A3B8;">→</span>
+              <span>📖 Story</span><span style="color: #94A3B8;">→</span>
+              <span>⏳ Period</span><span style="color: #94A3B8;">→</span>
+              <span>🗺️ Place</span><span style="color: #94A3B8;">→</span>
+              <span>🧵 Tradition</span><span style="color: #94A3B8;">→</span>
+              <span>👨‍🎨 Community</span><span style="color: #94A3B8;">→</span>
+              <span>🎓 Learning</span><span style="color: #94A3B8;">→</span>
+              <span>🌿 Responsible Experience</span>
+            </div>
+            <p style="font-size: 15px; font-weight: 800; color: #002B49; text-align: center; margin-top: 4px;">
+              “VirasatX doesn't just display heritage — it connects the cultural context around it.”
+            </p>
+          </div>
+        </div>
+
+        <!-- Right Side: Architecture Flowchart -->
+        <div class="s2-right-column">
+          <div class="s2-arch-box">
+            <div class="arch-title-bar">
+              <span class="pill-badge pill-badge-navy" style="margin: 0;">ARCHITECTURE</span>
+              <span style="font-size: 13px; font-weight: 800; color: #D97706;">★ - Innovation</span>
+            </div>
+
+            <div class="arch-flow-node node-user">
+              👤 <strong>User / Patron / Student</strong><br/>
+              <span style="font-size: 11.5px; font-weight: 600;">Text Query • Photo Upload • GIS Map Exploration</span>
+            </div>
+            <div class="arch-down-arrow">↓</div>
+
+            <div class="arch-flow-node node-core">
+              🏛️ <strong>VirasatX Digital Heritage Core</strong><br/>
+              <span style="font-size: 11.5px; font-weight: 600;">Grounded Knowledge Catalog • Local Media Assets</span>
+            </div>
+            <div class="arch-down-arrow">↓</div>
+
+            <!-- 3 Branches -->
+            <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 6px;">
+              <div class="arch-flow-node node-branch node-blue">
+                <strong>ONLINE MODE</strong><br/>
+                <span>Interactive 3D &amp; Atlas</span>
+              </div>
+              <div class="arch-flow-node node-branch node-orange">
+                <strong>AI RESEARCH</strong><br/>
+                <span>Grounded AI &amp; Vision</span>
+              </div>
+              <div class="arch-flow-node node-branch node-green">
+                <strong>LIVING HERITAGE</strong><br/>
+                <span>GI Artisan Guilds</span>
+              </div>
+            </div>
+            <div class="arch-down-arrow">↓</div>
+
+            <div class="arch-flow-node" style="background: #F1F5F9; border: 1.5px solid #0070C0; color: #002B49;">
+              ✅ <strong>Grounded Evidence &amp; Citations [ASI-104]</strong><br/>
+              <span style="font-size: 11.5px; font-weight: 600;">Confidence Ratings • Dynamic Curatorial Narration</span>
+            </div>
+            <div class="arch-down-arrow">↓</div>
+
+            <div class="arch-flow-node" style="background: #002B49; color: #FFFFFF; border: 1.5px solid #0070C0;">
+              ✨ <strong>Unbroken Cultural Horizon Experience</strong><br/>
+              <span style="font-size: 11.5px; font-weight: 500; color: #BAE6FD;">Explore → Learn → Understand → Preserve</span>
+            </div>
+
+            <!-- Standards row at bottom -->
+            <div class="standards-row">
+              <div>🏛️ <strong>ASI Grounded</strong></div>
+              <div>🔒 <strong>No PII Exposure</strong></div>
+              <div>♿ <strong>WCAG 2.1 AA</strong></div>
+              <div>📜 <strong>Open Access</strong></div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <footer class="slide-footer">
+        <span class="footer-team-handle">@VirasatX</span>
+        <span class="footer-slide-num">2</span>
+      </footer>
+    </div>
+
+
+    <!-- ====================================================================
+         SLIDE 3: TECHNICAL APPROACH (MATCHING REFERENCE 1 SLIDE 3)
+         ==================================================================== -->
+    <div class="slide" id="slide-3">
+      <header class="slide-header">
+        <div class="header-team">
+          <img src="virasatx_logo.png" alt="VirasatX" class="header-team-logo" />
+          <div class="header-team-text">
+            <span class="header-team-name">VirasatX</span>
+            <span class="header-team-tag">Engineering Workflow</span>
+          </div>
+        </div>
+        <div class="header-title-container">
+          <h1 class="header-main-title">TECHNICAL APPROACH</h1>
+        </div>
+        <img src="sih_logo.png" alt="Smart India Hackathon 2026" class="header-sih-logo" />
+      </header>
+
+      <div class="slide-body slide-3-body">
+        <!-- Flowchart container matching Reference 1 Slide 3 -->
+        <div class="s3-flow-container">
+          <div class="s3-start-bar">
+            <div class="s3-start-pill">🚀 Start Here</div>
+            <div class="s3-decision-box">Choose Cultural Exploration Pathway</div>
+            <span style="font-size: 13.5px; font-weight: 700; color: #EA580C;">• Visual Specimen Scan</span>
+            <span style="font-size: 13.5px; font-weight: 700; color: #0070C0;">• Scholarly Inquiry / Text</span>
+            <span style="font-size: 13.5px; font-weight: 700; color: #15803D;">• Geospatial &amp; 3D Studio</span>
+          </div>
+
+          <div class="s3-branches-grid">
+            <!-- Branch 1: Visual Vision AI -->
+            <div class="s3-branch-col" style="border-color: #FDBA74;">
+              <div class="s3-branch-header" style="background: #EA580C;">VISION AI PATHWAY</div>
+              <div class="s3-step-node">📷 Upload Artifact / Monument Photo</div>
+              <div class="s3-step-node">⚙️ Base64 Preprocessing &amp; Client Sanitization</div>
+              <div class="s3-step-node">🤖 Gemini 2.5 Flash Vision Multimodal Engine</div>
+              <div class="s3-step-node">🔍 Identify Mudras, Asanas, Drapery &amp; Dynasty</div>
+              <div class="s3-step-node" style="background: #FFF7ED; border-color: #EA580C; color: #C2410C;">
+                🎯 Output: Classification + Confidence Meter
+              </div>
+            </div>
+
+            <!-- Branch 2: Grounded AI Guide -->
+            <div class="s3-branch-col" style="border-color: #93C5FD;">
+              <div class="s3-branch-header" style="background: #0070C0;">AI HERITAGE GUIDE (RAG)</div>
+              <div class="s3-step-node">💬 Natural Query (English, Hindi, Sanskrit)</div>
+              <div class="s3-step-node">📚 Lexical &amp; Semantic Context Vector Retrieval</div>
+              <div class="s3-step-node">🏛️ Ground against Curated ASI Accession Records</div>
+              <div class="s3-step-node">⚡ Serverless Backend API Execution (/api/ai-guide)</div>
+              <div class="s3-step-node" style="background: #EFF6FF; border-color: #0070C0; color: #0369A1;">
+                🎯 Output: Grounded Response with [ASI-104] Citations
+              </div>
+            </div>
+
+            <!-- Branch 3: 3D & GIS Atlas -->
+            <div class="s3-branch-col" style="border-color: #86EFAC;">
+              <div class="s3-branch-header" style="background: #15803D;">GEOSPATIAL &amp; 3D STUDIO</div>
+              <div class="s3-step-node">🗺️ Leaflet OSM Interactive GPS Coordinate Atlas</div>
+              <div class="s3-step-node">🧭 6 Thematic Cultural Corridors (Chola, Buddhist, etc.)</div>
+              <div class="s3-step-node">🎮 Three.js WebGL 360° Tactile Inspection Studio</div>
+              <div class="s3-step-node">💡 Raking, Amber &amp; Neutral Museum Lighting</div>
+              <div class="s3-step-node" style="background: #F0FDF4; border-color: #15803D; color: #166534;">
+                🎯 Output: Tactile Inspection &amp; Audio Narration
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Bottom Row: Tech Stack Grid & Architecture Callout -->
+        <div class="s3-bottom-row">
+          <div class="tech-stack-container">
+            <div class="pill-badge pill-badge-navy" style="margin-bottom: 6px;">TECH STACK</div>
+            <div class="tech-stack-grid">
+              <div class="tech-pill-box">
+                <div class="tech-pill-title">Frontend</div>
+                <div class="tech-pill-techs">React 19 • Vite 6</div>
+              </div>
+              <div class="tech-pill-box">
+                <div class="tech-pill-title">Language &amp; CSS</div>
+                <div class="tech-pill-techs">TypeScript • Tailwind v4</div>
+              </div>
+              <div class="tech-pill-box">
+                <div class="tech-pill-title">AI &amp; Multimodal</div>
+                <div class="tech-pill-techs">Gemini 2.5 Flash</div>
+              </div>
+              <div class="tech-pill-box">
+                <div class="tech-pill-title">AI SDK</div>
+                <div class="tech-pill-techs">@google/genai</div>
+              </div>
+              <div class="tech-pill-box">
+                <div class="tech-pill-title">3D Engine</div>
+                <div class="tech-pill-techs">Three.js (WebGL)</div>
+              </div>
+              <div class="tech-pill-box">
+                <div class="tech-pill-title">Mapping GIS</div>
+                <div class="tech-pill-techs">Leaflet • OSM</div>
+              </div>
+              <div class="tech-pill-box">
+                <div class="tech-pill-title">Backend &amp; DB</div>
+                <div class="tech-pill-techs">Supabase • PostgreSQL</div>
+              </div>
+              <div class="tech-pill-box">
+                <div class="tech-pill-title">Deployment</div>
+                <div class="tech-pill-techs">Vercel Serverless</div>
+              </div>
+            </div>
+          </div>
+
+          <div class="card-box-grey" style="display: flex; flex-direction: column; justify-content: space-between;">
+            <div>
+              <div class="pill-badge pill-badge-green" style="margin-bottom: 6px;">PROTOTYPE VERIFICATION</div>
+              <p class="bullet-line" style="font-size: 13.5px;"><span class="arrow-bullet">➤</span><strong>Secret Shielding :</strong> Gemini API keys execute strictly in backend serverless functions; zero keys in client bundles.</p>
+              <p class="bullet-line" style="font-size: 13.5px;"><span class="arrow-bullet">➤</span><strong>Defensive SafeImage :</strong> Shimmer skeletons with zero layout shift (CLS &lt; 0.05) and archival parchment fallback.</p>
+            </div>
+            <div style="background: #002B49; color: #FFFFFF; padding: 6px 12px; border-radius: 6px; font-size: 13px; font-weight: 800; text-align: center;">
+              Principle : Modular • Scalable • Secure • Evidence-Aware
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <footer class="slide-footer">
+        <span class="footer-team-handle">@VirasatX</span>
+        <span class="footer-slide-num">3</span>
+      </footer>
+    </div>
+
+
+    <!-- ====================================================================
+         SLIDE 4: FEASIBILITY AND VIABILITY (MATCHING REFERENCE 1 SLIDE 4)
+         ==================================================================== -->
+    <div class="slide" id="slide-4">
+      <header class="slide-header">
+        <div class="header-team">
+          <img src="virasatx_logo.png" alt="VirasatX" class="header-team-logo" />
+          <div class="header-team-text">
+            <span class="header-team-name">VirasatX</span>
+            <span class="header-team-tag">Project Viability</span>
+          </div>
+        </div>
+        <div class="header-title-container">
+          <h1 class="header-main-title">FEASIBILITY AND VIABILITY</h1>
+        </div>
+        <img src="sih_logo.png" alt="Smart India Hackathon 2026" class="header-sih-logo" />
+      </header>
+
+      <div class="slide-body slide-4-body">
+        <!-- Top Half: Feasibility vs Viability -->
+        <div class="s4-top-grid">
+          <!-- Left: Feasibility -->
+          <div class="s4-card-box blue">
+            <div class="s4-card-header" style="color: #0070C0;">
+              FEASIBILITY :
+            </div>
+            <div class="s4-sub-item">
+              <strong>Technical :</strong>
+              Proven Tech Stack — React 19, TypeScript, Vite, Supabase PostgreSQL, and Three.js. Smooth cross-platform web execution with zero heavy native app download requirements.
+            </div>
+            <div class="s4-sub-item">
+              <strong>Secret Protection &amp; Security :</strong>
+              Serverless execution ensures Gemini API keys and database credentials are strictly isolated from client-side bundles.
+            </div>
+            <div class="s4-sub-item">
+              <strong>Innovation :</strong>
+              Domain-grounded RAG linking inquiries directly to verified ASI accession records (e.g. <code>[ASI-104]</code>) with confidence scoring.
+            </div>
+            <div class="s4-sub-item">
+              <strong>Operational :</strong>
+              Runs efficiently on low-bandwidth connections through client-side tile caching and progressive <code>&lt;SafeImage /&gt;</code> fallbacks.
+            </div>
+            <div class="s4-sub-item">
+              <strong>Cultural Data :</strong>
+              Uses open cultural access datasets structured to ASI and National Mission for Manuscripts (NMM) archival standards.
+            </div>
+          </div>
+
+          <!-- Right: Viability -->
+          <div class="s4-card-box green">
+            <div class="s4-card-header" style="color: #15803D;">
+              VIABILITY :
+            </div>
+            <div class="s4-sub-item">
+              <strong>Educational Reach :</strong>
+              Enables schools, rural colleges, and researchers across India to inspect high-resolution monuments, manuscripts, and 3D bronzes remotely.
+            </div>
+            <div class="s4-sub-item">
+              <strong>Policy &amp; National Mission :</strong>
+              Directly supports AICTE Student Innovation, Ministry of Culture digitization drives, and UNESCO Sustainable Tourism (SDG 11).
+            </div>
+            <div class="s4-sub-item">
+              <strong>Infrastructure Overhead :</strong>
+              Serverless edge deployment and Supabase free-tier database keep initial operational costs near zero, scaling seamlessly with traffic.
+            </div>
+            <div class="s4-sub-item">
+              <strong>Living Heritage Inclusion :</strong>
+              Directly spotlights GI-certified master artisan cooperatives (Swamimalai Bronzes, Aranmula Mirrors, Patan Patola) to foster rural craft livelihoods.
+            </div>
+            <div class="s4-sub-item">
+              <strong>Scalability &amp; Expansion :</strong>
+              Modular database schema allows continuous ingestion of state archaeological records and regional manuscript repositories.
+            </div>
+          </div>
+        </div>
+
+        <!-- Bottom Half: Challenges & Mitigations -->
+        <div class="s4-bottom-grid">
+          <div class="s4-challenge-box">
+            <div class="s4-challenge-header">TECHNICAL CHALLENGES :</div>
+            <div style="font-size: 14.5px; line-height: 1.4; margin-bottom: 6px;">
+              <strong>Risk :</strong> Generative AI models risk hallucinating historical dates, dynastic chronologies, and mudra attributions.
+            </div>
+            <div style="font-size: 14.5px; line-height: 1.4;">
+              <strong>Mitigation :</strong> Inquiries are strictly grounded against curated ASI accession catalogs; prompts enforce low temperature (0.2), cite explicit record numbers, and display transparent confidence meters.
+            </div>
+          </div>
+
+          <div class="s4-challenge-box">
+            <div class="s4-challenge-header">CULTURAL &amp; ADOPTION CHALLENGES :</div>
+            <div style="font-size: 14.5px; line-height: 1.4; margin-bottom: 6px;">
+              <strong>Risk :</strong> Traditional artisans and master sthapatis may face privacy intrusion or contact spam from public directories.
+            </div>
+            <div style="font-size: 14.5px; line-height: 1.4;">
+              <strong>Mitigation :</strong> Ethical custodianship protocol connects patrons strictly with certified Geographical Indication (GI) cooperative offices with zero exposure of personal telephone numbers or private home addresses.
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <footer class="slide-footer">
+        <span class="footer-team-handle">@VirasatX</span>
+        <span class="footer-slide-num">4</span>
+      </footer>
+    </div>
+
+
+    <!-- ====================================================================
+         SLIDE 5: IMPACTS & BENEFITS (MATCHING REFERENCE 1 SLIDE 5)
+         ==================================================================== -->
+    <div class="slide" id="slide-5">
+      <header class="slide-header">
+        <div class="header-team">
+          <img src="virasatx_logo.png" alt="VirasatX" class="header-team-logo" />
+          <div class="header-team-text">
+            <span class="header-team-name">VirasatX</span>
+            <span class="header-team-tag">Value Proposition</span>
+          </div>
+        </div>
+        <div class="header-title-container">
+          <h1 class="header-main-title">IMPACTS &amp; BENEFITS</h1>
+        </div>
+        <img src="sih_logo.png" alt="Smart India Hackathon 2026" class="header-sih-logo" />
+      </header>
+
+      <div class="slide-body slide-5-body">
+        <!-- Top Half: Bullets + Comparison Table -->
+        <div class="s5-top-split">
+          <div class="s5-impact-bullets">
+            <p class="bullet-line">
+              • <strong>Cultural Preservation &amp; Digitization :</strong> Digitally structures and safeguards fragile palm-leaf and birch-bark manuscripts, epigraphical records, and vanishing oral craft knowledge before physical decay occurs.
+            </p>
+            <p class="bullet-line">
+              • <strong>Educational &amp; Youth Engagement :</strong> Replaces passive textbook memorization with tactile 360° WebGL inspection, interactive geospatial timelines, and voice-assisted exploration for schools and universities nationwide.
+            </p>
+            <p class="bullet-line">
+              • <strong>Artisan Livelihood &amp; Sustainable Tourism (SDG 11) :</strong> Connects cultural tourists with GI-certified master artisan guilds and disperses tourist crowds from overburdened monuments to lesser-known heritage clusters.
+            </p>
+          </div>
+
+          <div class="s5-table-container">
+            <table class="s5-table">
+              <thead>
+                <tr>
+                  <th>Feature</th>
+                  <th style="text-align: center;">Existing Portals</th>
+                  <th style="text-align: center; color: #4ADE80;">VirasatX</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>Interconnected Cultural Context</td>
+                  <td style="text-align: center; color: #F87171;">❌</td>
+                  <td style="text-align: center; color: #4ADE80;">✔</td>
+                </tr>
+                <tr>
+                  <td>360° WebGL Archival Studio</td>
+                  <td style="text-align: center; color: #F87171;">❌</td>
+                  <td style="text-align: center; color: #4ADE80;">✔</td>
+                </tr>
+                <tr>
+                  <td>Visual Iconography AI Scanner</td>
+                  <td style="text-align: center; color: #F87171;">❌</td>
+                  <td style="text-align: center; color: #4ADE80;">✔</td>
+                </tr>
+                <tr>
+                  <td>Grounded ASI Accession Citations</td>
+                  <td style="text-align: center; color: #F87171;">❌</td>
+                  <td style="text-align: center; color: #4ADE80;">✔</td>
+                </tr>
+                <tr>
+                  <td>Living GI Artisan Guild Linkages</td>
+                  <td style="text-align: center; color: #F87171;">❌</td>
+                  <td style="text-align: center; color: #4ADE80;">✔</td>
+                </tr>
+                <tr>
+                  <td>Ancient Manuscript Decipherment</td>
+                  <td style="text-align: center; color: #F87171;">❌</td>
+                  <td style="text-align: center; color: #4ADE80;">✔</td>
+                </tr>
+                <tr>
+                  <td>Responsible Travel &amp; Carrying Capacity</td>
+                  <td style="text-align: center; color: #F87171;">❌</td>
+                  <td style="text-align: center; color: #4ADE80;">✔</td>
+                </tr>
+                <tr>
+                  <td>100% Local Media SafeImage Pipeline</td>
+                  <td style="text-align: center; color: #F87171;">❌</td>
+                  <td style="text-align: center; color: #4ADE80;">✔</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+        <!-- Middle Banner -->
+        <div class="s5-banner-bar">
+          H O W &nbsp; V I R A S A T X &nbsp; W O R K S &nbsp; A C R O S S &nbsp; M O D E S
+        </div>
+
+        <!-- Bottom Half: 3 Mode Boxes -->
+        <div class="s5-modes-grid">
+          <!-- Mode 1 -->
+          <div class="s5-mode-card blue">
+            <div class="s5-mode-header blue">MODE 1: EXPLORER (Public &amp; Students)</div>
+            <div class="s5-mode-content">
+              <div><strong>• For :</strong> Students, tourists, and casual cultural enthusiasts.</div>
+              <div><strong>• Process :</strong> Interactive search → 3D model inspection → Audio narrative → Timeline navigation.</div>
+              <div><strong>• Experience :</strong> Fast, zero-registration, engaging 3D visualization.</div>
+              <div><strong>• Best For :</strong> Visual learning, monument discovery, school projects.</div>
+            </div>
+          </div>
+
+          <!-- Mode 2 -->
+          <div class="s5-mode-card orange">
+            <div class="s5-mode-header orange">MODE 2: SCHOLAR &amp; RESEARCHER</div>
+            <div class="s5-mode-content">
+              <div><strong>• For :</strong> Historians, archaeologists, and epigraphists.</div>
+              <div><strong>• Process :</strong> Ask Virasat AI → Vector retrieval → Accession citations → Script transcription.</div>
+              <div><strong>• Experience :</strong> Evidence-aware RAG, confidence scores, Brahmi/Sharada folios.</div>
+              <div><strong>• Best For :</strong> Iconographic analysis, academic research, catalog citations.</div>
+            </div>
+          </div>
+
+          <!-- Mode 3 -->
+          <div class="s5-mode-card green">
+            <div class="s5-mode-header green">MODE 3: LIVING HERITAGE &amp; TRAVEL</div>
+            <div class="s5-mode-content">
+              <div><strong>• For :</strong> Cultural travelers and craft patrons.</div>
+              <div><strong>• Process :</strong> Plan Visit → Dawn/dusk crowd advisories → Discover nearby GI crafts → Cooperative routing.</div>
+              <div><strong>• Experience :</strong> Sustainable tourism, direct artisan visibility, SDG 11 compliance.</div>
+              <div><strong>• Best For :</strong> Ethical cultural itineraries, craft preservation, rural economy.</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <footer class="slide-footer">
+        <span class="footer-team-handle">@VirasatX</span>
+        <span class="footer-slide-num">5</span>
+      </footer>
+    </div>
+
+
+    <!-- ====================================================================
+         SLIDE 6: RESEARCH AND REFERENCES (MATCHING REFERENCE 1 SLIDE 6)
+         ==================================================================== -->
+    <div class="slide" id="slide-6">
+      <header class="slide-header">
+        <div class="header-team">
+          <img src="virasatx_logo.png" alt="VirasatX" class="header-team-logo" />
+          <div class="header-team-text">
+            <span class="header-team-name">VirasatX</span>
+            <span class="header-team-tag">Verification &amp; Links</span>
+          </div>
+        </div>
+        <div class="header-title-container">
+          <h1 class="header-main-title">RESEARCH AND REFERENCES</h1>
+        </div>
+        <img src="sih_logo.png" alt="Smart India Hackathon 2026" class="header-sih-logo" />
+      </header>
+
+      <div class="slide-body slide-6-body">
+        <!-- Top References Box -->
+        <div class="s6-ref-box">
+          <div class="s6-ref-item">
+            • <strong>Archaeological Survey of India (ASI) :</strong> Primary repository of centrally protected monuments, excavation records, and accession catalogs. <strong>Links :</strong> <a href="https://asi.nic.in" target="_blank">asi.nic.in</a> / <a href="https://nmma.nic.in" target="_blank">NMMA</a>
+          </div>
+          <div class="s6-ref-item">
+            • <strong>National Mission for Manuscripts (NMM) :</strong> National database of ancient Indian manuscripts, scripts, and preservation guidelines. <strong>Links :</strong> <a href="https://www.namami.gov.in" target="_blank">namami.gov.in</a> / <a href="https://ignca.gov.in" target="_blank">IGNCA</a>
+          </div>
+          <div class="s6-ref-item">
+            • <strong>Geographical Indications Registry of India :</strong> Official documentation for GI-certified traditional craft practices (GI-029 Swamimalai, GI-007 Aranmula). <strong>Link :</strong> <a href="https://ipindia.gov.in" target="_blank">ipindia.gov.in</a>
+          </div>
+          <div class="s6-ref-item">
+            • <strong>UNESCO World Heritage Centre :</strong> Cultural criteria and sustainable tourism framework for monumental conservation (SDG 11). <strong>Link :</strong> <a href="https://whc.unesco.org" target="_blank">whc.unesco.org</a>
+          </div>
+        </div>
+
+        <!-- Middle Compare Row -->
+        <div class="s6-compare-row">
+          <div class="s6-compare-card left">
+            <div style="font-size: 16px; font-weight: 900; color: #0070C0; margin-bottom: 6px;">SOLUTIONS ALREADY EXIST</div>
+            <p class="bullet-line" style="font-size: 14px;">• Most existing portals are isolated, static, and text-heavy; designed only for administrative filing.</p>
+            <p class="bullet-line" style="font-size: 14px;">• Separate websites for monuments, museums, manuscripts, and tourism with zero cross-linking.</p>
+            <p class="bullet-line" style="font-size: 14px;">• <strong>AVAILABLE SITES :</strong> ASI Portal / NMMA / State Tourism Portals / Commercial Travel Apps</p>
+          </div>
+
+          <div class="s6-arrow-icon">➔</div>
+
+          <div class="s6-compare-card right">
+            <div style="font-size: 16px; font-weight: 900; color: #002B49; margin-bottom: 6px;">OUR SOLUTIONS STANDS OUT</div>
+            <p class="bullet-line" style="font-size: 14px;">• <strong>One Ecosystem :</strong> Unites monuments, artifacts, manuscripts, and living traditions.</p>
+            <p class="bullet-line" style="font-size: 14px;">• <strong>Evidence-Aware :</strong> Real-time RAG citing exact ASI accession records [ASI-104].</p>
+            <p class="bullet-line" style="font-size: 14px;">• <strong>Tactile &amp; Geospatial :</strong> 360° Three.js WebGL studio and 6-corridor Leaflet atlas.</p>
+            <p class="bullet-line" style="font-size: 14px;">• <strong>Ethical Custodianship :</strong> Promotes GI craft guilds with zero personal contact exposure.</p>
+          </div>
+        </div>
+
+        <!-- Bottom Project Resources Row -->
+        <div class="s6-res-row">
+          <div>
+            <div style="font-size: 18px; font-weight: 900; color: #0070C0; margin-bottom: 8px;">PROJECT RESOURCES</div>
+            <div class="res-link-line"><strong>Live Prototype :</strong> <a href="https://virasatxai.vercel.app/" target="_blank">https://virasatxai.vercel.app/</a></div>
+            <div class="res-link-line"><strong>GitHub Repository :</strong> <a href="https://github.com/ShrilCarpenter/VirasatX" target="_blank">https://github.com/ShrilCarpenter/VirasatX</a></div>
+            <div class="res-link-line"><strong>Full Documentation :</strong> Architecture, API Specs &amp; License in README.md</div>
+            <div class="res-link-line"><strong>Problem Statement :</strong> SIH26197 • Heritage &amp; Culture • AICTE</div>
+          </div>
+
+          <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 12px;">
+            <div style="border-radius: 8px; overflow: hidden; border: 1px solid #CBD5E1; box-shadow: 0 4px 10px rgba(0,0,0,0.08);">
+              <img src="images/home.png" alt="Homepage Prototype" style="width: 100%; height: 115px; object-fit: cover; display: block;" />
+              <div style="font-size: 11px; font-weight: 800; text-align: center; padding: 4px; background: #FFFFFF; color: #0F172A;">Interactive Platform</div>
+            </div>
+            <div style="border-radius: 8px; overflow: hidden; border: 1px solid #CBD5E1; box-shadow: 0 4px 10px rgba(0,0,0,0.08);">
+              <img src="images/ai_guide.png" alt="Virasat AI Prototype" style="width: 100%; height: 115px; object-fit: cover; display: block;" />
+              <div style="font-size: 11px; font-weight: 800; text-align: center; padding: 4px; background: #FFFFFF; color: #0F172A;">Virasat AI Guide</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <footer class="slide-footer">
+        <span class="footer-team-handle">@VirasatX</span>
+        <span class="footer-slide-num">6</span>
+      </footer>
     </div>
 
   </div>
